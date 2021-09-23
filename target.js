@@ -209,7 +209,7 @@ var pxtTargetBundle = {
     "buildEngine": "codal",
     "codalTarget": {
       "name": "codal-brainpad",
-      "url": "https://github.com/Palomino34/codal-brainpad",
+      "url": "https://github.com/brainpad-board/codal-brainpad",
       "branch": "master",
       "type": "git"
     },

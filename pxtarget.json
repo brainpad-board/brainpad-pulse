@@ -206,7 +206,7 @@
         "buildEngine": "codal",
         "codalTarget": {
             "name": "codal-brainpad",
-            "url": "https://github.com/Palomino34/codal-brainpad",
+            "url": "https://github.com/ghi-electronics/codal-brainpad-pulse",
             "branch": "master",
             "type": "git"
         },

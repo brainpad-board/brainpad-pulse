@@ -65,6 +65,9 @@ namespace leds {
 		if (pxt::IsPulse())
 			return;
 			
+		if (leds < 0)
+			return;
+
 		pixel[leds]->setDigitalValue(value);
 	   	 	  	   
     }

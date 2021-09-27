@@ -1,12 +1,12 @@
 # Using Buttons
 
-## Step 1 @unplugged
+## Step 1 @fullscreen
 
-The BrainPad is equipt with four directional buttons (up, down, left and right) that we can program. In this tutorial we'll use the BrainPad buttons to play a four note song.
+The BrainPad Pulse is equipped with two directional buttons (A and B) that we can program. In this tutorial we'll use the BrainPad buttons to turn on the LED and activate the buzzer.
 
 ![BrainPad buzzer image](/static/images/buttons.jpg)
 
-## Step 2 @unplugged
+## Step 2 @fullscreen
 
 We use buttons every day to communicate with electronic devices all around us. Even the keyboard on your computer is made up of buttons. 
 
@@ -47,7 +47,7 @@ input.buttonUp.onEvent(ButtonEvent.Click, function () {
 
 ## Step 6 @fullscreen
 
-Next add a ``||music:play tone at||`` block to this ``||input:on button||`` event block. Set the paramater of this block to 392(Middle G) note.
+Next add a ``||music:play tone at||`` block to this ``||input:on button||`` event block. Set the parameter of this block to 392(Middle G) note.
 
 ```blocks
 input.buttonLeft.onEvent(ButtonEvent.Click, function () {

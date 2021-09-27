@@ -18,6 +18,17 @@ Step by step guide to coding your @boardname@.
 }
 ,
 {
+  "name": "A & B buttons",
+  "description": "Using the BrainPad Pulses Buttons",
+  "cardType": "tutorial",
+  "label": "A & B Buttons",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/a_b_buttons",
+  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
+
+}
+,
+{
   "name": "Buttons",
   "description": "Using the Buttons",
   "cardType": "tutorial",

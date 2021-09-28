@@ -3,6 +3,11 @@ namespace leds {
 
 }
 
+//% color="#40bf4a"
+namespace led {
+
+}
+
 //% color="#d65cd6"
 namespace input {
     

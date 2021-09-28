@@ -20,7 +20,8 @@
         "libs/controller",
         "libs/game",
         "libs/brainpad",
-        "libs/leds"
+        "libs/leds",
+        "libs/led"
     ],
     "serial": {
         "useHF2": true,
@@ -207,7 +208,7 @@
         "codalTarget": {
             "name": "codal-brainpad",
             "url": "https://github.com/brainpad-board/codal-brainpad",
-            "branch": "master",
+            "branch": "no_offset",
             "type": "git"
         },
         "codalBinary": "BRAINPAD",

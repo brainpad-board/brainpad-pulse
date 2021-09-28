@@ -18,7 +18,8 @@
     "accelerometer": "file:../accelerometer",
     "screen": "file:../screen",
     "display": "file:../display",    
-    "leds": "file:../leds"
+    "leds": "file:../leds",
+	"led": "file:../led"
   },
   "palette": [
     "#000000",

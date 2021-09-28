@@ -20,7 +20,9 @@
     "display": "file:../display",    
     "leds": "file:../leds",
 	"led": "file:../led",
-	"neopixel": "file:../neopixel"
+	"neopixel": "file:../neopixel",
+	"game": "file:../game",		
+	"controller": "file:../controller"	
   },
   "palette": [
     "#000000",

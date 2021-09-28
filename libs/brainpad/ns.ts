@@ -1,4 +1,14 @@
 //% color="#40bf4a"
+namespace controller {
+
+}
+
+//% color="#40bf4a"
+namespace game {
+
+}
+
+//% color="#40bf4a"
 namespace neopixel {
 
 }

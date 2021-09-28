@@ -3,13 +3,12 @@ declare namespace neopixel {
 
     /**
      * Flush neopixel .
-     * @param pin .
+     * @param dpin .
      * @param buffer.
-     * @param size.
      * @param rgb888.
      */
     //% shim=neopixel::Flush
-    function Flush(pin: int32, buffer: Buffer, size: int32, rgb888: boolean): void;
+    function Flush(dpin: DigitalInOutPin, buffer: Buffer, rgb888: boolean): void;
 }
 
 // Auto-generated. Do not edit. Really.

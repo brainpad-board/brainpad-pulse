@@ -100,7 +100,7 @@ namespace neopixel {
                 // this.buf[i] = 0xFF;
             // }
 			
-			Flush(5, this.buf, this._length, true);
+			Flush(this.pin, this.buf, true);
         }
 
         /**
@@ -133,9 +133,9 @@ namespace neopixel {
          */
         //% weight=10
         //% parts="neopixel" advanced=true
-        setPin(pin: DigitalPin): void {
+        setPin(pin: DigitalInOutPin): void {
             this.pin = pin;
-            pins.digitalWritePin(this.pin, 0);
+            this.pin.digitalWrite(false);
             // don't yield to avoid races on initialization
         }
        
@@ -208,20 +208,20 @@ namespace neopixel {
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the neopixel is connected.
-     * @param numleds number of leds in the strip, eg: 24,30,60,64
-     */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+     * @param numleds number of leds in the strip, eg: 2,4,8,16
+     */    	
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds"
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(pin: DigitalPin, numleds: number = 2): Strip {
         let strip = new Strip();
-        let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
+        let stride = 3;
         strip.buf = pins.createBuffer(numleds * stride);
         strip.start = 0;
         strip._length = numleds;
-        strip._mode = mode || NeoPixelMode.RGB;
+        strip._mode = NeoPixelMode.RGB;
         strip._matrixWidth = 0;
         strip.brightness = 128;
         strip.setPin(pin)

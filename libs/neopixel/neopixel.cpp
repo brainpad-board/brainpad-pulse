@@ -60,37 +60,24 @@ namespace neopixel {
 
 
     bool init = false;
-    int isPulse;
-
-    _mbed::Pin* pixel[1];
 
     /**
      * Flush neopixel .
-     * @param pin .
+     * @param dpin .
      * @param buffer.
-     * @param size.
      * @param rgb888.
      */
      //%  
-    void Flush(int pin, Buffer buffer, int size, bool rgb888) {
+    void Flush(DigitalInOutPin dpin, Buffer buffer, bool rgb888) {
         uint8_t* buffer8 = buffer->data;
-		size *= 3;
-
-        pin = 0x04;
+		volatile int size = buffer->length;
+		volatile int pin = dpin->name;
 		
 		GPIO_TypeDef* port = Port(pin >> 4);
         pin = pin & 0x0F;
         uint16_t bit = 1 << (pin);
 
         uint8_t data;
-
-		if (!init) {
-			init = true;
-			
-			auto en = lookupPin(PA_4);	
-			en->setDigitalValue(0);
-		}
-		
 		
 
         if (rgb888) {
@@ -108,35 +95,7 @@ namespace neopixel {
             }
         }
 
-        // if (!init) {
-
-            // init = true;
-
-            // if (pxt::IsPulse())
-                // return ;
-
-            // auto en = lookupPin(PA_9);	
-
-            // en->setDigitalValue(1);
-
-            // const uint32_t pinArray[] = { BRAINPAD_TICK_LED1 , BRAINPAD_TICK_LED2 , BRAINPAD_TICK_LED3 , BRAINPAD_TICK_LED4 , BRAINPAD_TICK_LED5 ,
-                                  // BRAINPAD_TICK_LED6 , BRAINPAD_TICK_LED7 , BRAINPAD_TICK_LED8 , BRAINPAD_TICK_LED9 , BRAINPAD_TICK_LED10,
-                                  // BRAINPAD_TICK_LED11, BRAINPAD_TICK_LED12, BRAINPAD_TICK_LED13, BRAINPAD_TICK_LED14, BRAINPAD_TICK_LED15, 
-                                  // BRAINPAD_TICK_LED16, BRAINPAD_TICK_LED17, BRAINPAD_TICK_LED18, BRAINPAD_TICK_LED19, BRAINPAD_TICK_LED20,
-                                  // BRAINPAD_TICK_LED21, BRAINPAD_TICK_LED22, BRAINPAD_TICK_LED23, BRAINPAD_TICK_LED24, BRAINPAD_TICK_LED25};
-            // for (int i = 0; i < 25; i++) {						
-                // pixel[i] = new _mbed::Pin(0, pinArray[i], PIN_CAPABILITY_DIGITAL);
-            // }
-        // }
-
-
-        // if (pxt::IsPulse())
-            // return;
-
-        // if (leds < 0)
-            // return;
-
-        // pixel[leds]->setDigitalValue(value);
+       
 
     }
 

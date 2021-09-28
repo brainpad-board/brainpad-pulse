@@ -22,7 +22,8 @@
 	"led": "file:../led",
 	"neopixel": "file:../neopixel",
 	"game": "file:../game",		
-	"controller": "file:../controller"	
+	"controller": "file:../controller",	
+	"animation": "file:../animation"	
   },
   "palette": [
     "#000000",

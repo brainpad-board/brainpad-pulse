@@ -1,0 +1,16 @@
+{
+    "name": "neopixel",
+    "description": "Neopixel driver",
+    "files": [
+        "README.md",
+        "neopixel.ts",
+        "neopixel.cpp",
+        "shims.d.ts",
+        "ns.ts",
+        "enums.d.ts"
+    ],
+    "public": true,
+    "dependencies": {
+        "core": "file:../core"
+    }
+}

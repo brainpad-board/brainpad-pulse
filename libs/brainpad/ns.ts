@@ -1,4 +1,9 @@
 //% color="#40bf4a"
+namespace neopixel {
+
+}
+
+//% color="#40bf4a"
 namespace leds {
 
 }

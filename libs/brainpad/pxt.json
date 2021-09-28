@@ -19,7 +19,8 @@
     "screen": "file:../screen",
     "display": "file:../display",    
     "leds": "file:../leds",
-	"led": "file:../led"
+	"led": "file:../led",
+	"neopixel": "file:../neopixel"
   },
   "palette": [
     "#000000",

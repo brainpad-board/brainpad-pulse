@@ -22,7 +22,8 @@
         "libs/brainpad",
         "libs/leds",
         "libs/led",
-		"libs/neopixel"
+		"libs/neopixel",
+		"libs/sonar"
     ],
     "serial": {
         "useHF2": true,

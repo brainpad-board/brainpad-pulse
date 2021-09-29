@@ -1,0 +1,15 @@
+{
+    "name": "sonar",
+    "description": "A MakeCode package to use sonar sensors",
+	 "files": [
+        "README.md",
+        "sonar.ts",
+        "ns.ts"
+    ],
+    "public": true,
+	"dependencies": {
+        "core": "file:../core"
+    }
+   
+    
+}

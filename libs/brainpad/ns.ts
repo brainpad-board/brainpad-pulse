@@ -1,4 +1,10 @@
 //% color="#40bf4a"
+namespace sonar {
+
+}
+
+
+//% color="#40bf4a"
 namespace animation {
 
 }

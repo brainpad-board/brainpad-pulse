@@ -2,9 +2,9 @@
     "id": "brainpad",
     "platformid": "codal",
     "nickname": "brainpad",
-    "name": "GHI Brain Pad",
-    "title": "GHI Brain Pad - Blocks / Javascript editor",
-    "description": "A Blocks / JavaScript code editor for the GHI Brain Pad.",
+    "name": "BrainPad",
+    "title": "BrainPad - Blocks / Javascript editor",
+    "description": "A Blocks / JavaScript code editor for the BrainPad.",
     "corepkg": "brainpad",
     "ignoreDocsErrors": true,
     "bundleddirs": [
@@ -151,7 +151,7 @@
         "hasHex": true,
         "deployDrives": ".*",
         "deployFileMarker": "INFO.TXT",
-        "driveName": "BrainPad2",
+        "driveName": "BrainPad",
         "openocdScript": "source [find interface/cmsis-dap.cfg]; source [find target/stm32f4x.cfg]",
         "flashCodeAlign": 256,
         "floatingPoint": true,
@@ -226,7 +226,7 @@
         "serviceId": "brainpad"
     },
     "appTheme": {
-        "accentColor": "#0089BF",
+        "accentColor": "#F08000",
         "logoUrl": "https://www.brainpad.com/",
         "logo": "./static/logo.png",
         "docsLogo": "./static/logo.square.png",
@@ -262,7 +262,7 @@
             },
             {
                 "name": "Buy",
-                "path": "https://www.brainpad.com/buy"
+                "path": "https://www.brainpad.com"
             }
         ],
         "showHomeScreen": true,

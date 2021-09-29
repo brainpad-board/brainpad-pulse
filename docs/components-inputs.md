@@ -27,17 +27,6 @@ Step by step guide to coding your @boardname@.
   "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
 
 }
-,
-{
-  "name": "Buttons",
-  "description": "Using the Buttons",
-  "cardType": "tutorial",
-  "label": "Buttons",
-  "labelClass": "orange ribbon large",
-  "url":"/tutorials/buttons",
-  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
-  
-} 
 ]
 
 ```

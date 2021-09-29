@@ -1,5 +1,36 @@
 //% color="#40bf4a"
+namespace sonar {
+
+}
+
+
+//% color="#40bf4a"
+namespace animation {
+
+}
+
+//% color="#40bf4a"
+namespace controller {
+
+}
+
+//% color="#40bf4a"
+namespace game {
+
+}
+
+//% color="#40bf4a"
+namespace neopixel {
+
+}
+
+//% color="#40bf4a"
 namespace leds {
+
+}
+
+//% color="#40bf4a"
+namespace led {
 
 }
 

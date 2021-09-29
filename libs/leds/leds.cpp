@@ -67,6 +67,9 @@ namespace leds {
 			
 		if (leds < 0)
 			return;
+		
+		if (leds > 33)
+			return;
 
 		pixel[leds]->setDigitalValue(value);
 	   	 	  	   

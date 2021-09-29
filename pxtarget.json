@@ -20,7 +20,10 @@
         "libs/controller",
         "libs/game",
         "libs/brainpad",
-        "libs/leds"
+        "libs/leds",
+        "libs/led",
+		"libs/neopixel",
+		"libs/sonar"
     ],
     "serial": {
         "useHF2": true,

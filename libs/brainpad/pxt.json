@@ -18,7 +18,13 @@
     "accelerometer": "file:../accelerometer",
     "screen": "file:../screen",
     "display": "file:../display",    
-    "leds": "file:../leds"
+    "leds": "file:../leds",
+	"led": "file:../led",
+	"neopixel": "file:../neopixel",
+	"game": "file:../game",		
+	"controller": "file:../controller",	
+	"animation": "file:../animation",	
+	"sonar": "file:../sonar"	
   },
   "palette": [
     "#000000",

@@ -308,7 +308,7 @@ namespace pxsim.visuals {
         private pinNmToCoord: Map<Coord> = {
         };
 		
-		// private led:SVGCircleElement;
+		private led:SVGCircleElement;
 		private counter: number = 0;
 
         constructor(public props: IBoardProps) {
@@ -511,24 +511,24 @@ namespace pxsim.visuals {
         }
 
         private updateLed() {			
-			// let state = this.board;
-            // if (!state) return;
+			let state = this.board;
+            if (!state) return;
 			
-			// const on = state.ledState.getState();
+			const on = state.ledState.getState();
 			
-			// if (this.led) 
-			// {
-				// if (on) {
-					// svg.fill(this.led, `#ff0000`);
-					// this.led.style.strokeWidth = "0.28349999";
-					// this.led.style.stroke = "#ff0000";
-				// }
-				// else {
-					// svg.fill(this.led, `#ffffff`);
-					// this.led.style.strokeWidth = "0.28349999";
-					// this.led.style.stroke = "#0000ff";
-				// }
-			// }						
+			if (this.led) 
+			{
+				if (on) {
+					svg.fill(this.led, `#ff0000`);
+					this.led.style.strokeWidth = "0.28349999";
+					this.led.style.stroke = "#ff0000";
+				}
+				else {
+					svg.fill(this.led, `#ffffff`);
+					this.led.style.strokeWidth = "0.28349999";
+					this.led.style.stroke = "#0000ff";
+				}
+			}						
 		}
 		
 		private UpdateScreen() {
@@ -948,7 +948,7 @@ namespace pxsim.visuals {
 			this.buttons = btnids.map(n => this.element.getElementById("BUTTON_" + n) as SVGElement);
 			this.buttons.forEach(b => svg.addClass(b, "sim-button-outer"));
 			
-			// this.led = this.element.getElementById("LED") as SVGCircleElement;
+			this.led = this.element.getElementById("LED") as SVGCircleElement;
         }
 
         private mkBtn(left: number, top: number, label: string): { outer: SVGElement, inner: SVGElement } {

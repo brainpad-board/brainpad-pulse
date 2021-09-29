@@ -1,4 +1,4 @@
 
-//% block="Led"
+//% block="Led Debug Only"
 namespace led {
 }

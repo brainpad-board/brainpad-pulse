@@ -1,0 +1,72 @@
+CACHE MANIFEST
+
+CACHE:
+/brainpad-pulse/semantic.js
+/brainpad-pulse/main.js
+/brainpad-pulse/pxtapp.js
+/brainpad-pulse/typescript.js
+/brainpad-pulse/marked/marked.min.js
+/brainpad-pulse/highlight.js/highlight.pack.js
+/brainpad-pulse/jquery.js
+/brainpad-pulse/pxtlib.js
+/brainpad-pulse/pxtcompiler.js
+/brainpad-pulse/pxtblockly.js
+/brainpad-pulse/pxtwinrt.js
+/brainpad-pulse/pxteditor.js
+/brainpad-pulse/pxtsim.js
+/brainpad-pulse/pxtembed.js
+/brainpad-pulse/pxtworker.js
+/brainpad-pulse/pxtweb.js
+/brainpad-pulse/blockly.css
+/brainpad-pulse/semantic.css
+/brainpad-pulse/rtlsemantic.css
+
+
+/brainpad-pulse/editor.js
+
+
+# blockly
+/brainpad-pulse/blockly/media/sprites.png
+/brainpad-pulse/blockly/media/click.mp3
+/brainpad-pulse/blockly/media/disconnect.wav
+/brainpad-pulse/blockly/media/delete.mp3
+
+# monaco; keep in sync with webapp/public/index.html
+/brainpad-pulse/vs/loader.js
+/brainpad-pulse/vs/base/worker/workerMain.js
+/brainpad-pulse/vs/basic-languages/src/bat.js
+/brainpad-pulse/vs/basic-languages/src/cpp.js
+/brainpad-pulse/vs/editor/editor.main.css
+/brainpad-pulse/vs/editor/editor.main.js
+/brainpad-pulse/vs/editor/editor.main.nls.js
+/brainpad-pulse/vs/language/json/jsonMode.js
+/brainpad-pulse/vs/language/json/jsonWorker.js
+/brainpad-pulse/vs/language/typescript/lib/typescriptServices.js
+/brainpad-pulse/vs/language/typescript/src/mode.js
+/brainpad-pulse/vs/language/typescript/src/worker.js
+
+# charts
+/brainpad-pulse/smoothie/smoothie_compressed.js
+/brainpad-pulse/images/Bars_black.gif
+
+# ai
+/brainpad-pulse/ai.0.js
+
+/brainpad-pulse/worker.js
+/brainpad-pulse/monacoworker.js
+
+# ver Wed Sep 29 2021 09:26:51 GMT-0400 (Eastern Daylight Time)
+
+# target
+/brainpad-pulse/docs\static\logo.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\Microsoft-logo_rgb_c-gray-square.png
+/brainpad-pulse/docs\static\Microsoft-logo_rgb_c-gray.png
+/brainpad-pulse/docs\static\hero.jpg
+
+/brainpad-pulse/target.js
+  
+NETWORK:
+*

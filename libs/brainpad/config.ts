@@ -28,11 +28,9 @@ namespace config {
 	export const PIN_P20 = DAL.PB_11; // pwm
 	
 	
-	
-	export const PIN_SCL = DAL.PB_13; // pwm
-    export const PIN_SDA = DAL.PB_14; // pwm
-	// export const PIN_SCL = DAL.PB_8; // pwm
-	// export const PIN_SDA = DAL.PB_9; // pwm
+		
+	export const PIN_SCL = PIN_P19; // pwm
+	export const PIN_SDA = PIN_P20; // pwm
     // export const PIN_RX = DAL.PA_10; // pwm
     // export const PIN_TX = DAL.PA_9; // pwm
 
@@ -47,9 +45,12 @@ namespace config {
     // export const PIN_MISO = DAL.PB_4; //
     // export const PIN_MOSI = DAL.PB_5; // 
     
-    // accelerometer and screen are on the same I2C as external
-    export const PIN_ACCELEROMETER_SDA = PIN_SDA;
-    export const PIN_ACCELEROMETER_SCL = PIN_SCL;
+    // accelerometer and screen are on the same I2C1
+	export const PIN_ACCELEROMETER_SDA = DAL.PB_14; // Pulse
+    export const PIN_ACCELEROMETER_SCL = DAL.PB_13; // Pulse
+	
+    // export const PIN_ACCELEROMETER_SDA = DAL.PB_9; //Dev
+    // export const PIN_ACCELEROMETER_SCL = DAL.PB_8; //Dev
     export const PIN_ACCELEROMETER_INT = DAL.PA_14;
 
     //export const PIN_SERVO_1 = DAL.PA_3;
@@ -63,6 +64,5 @@ namespace config {
 	export const PIN_BTN_A = DAL.PC_13;
 	export const PIN_BTN_B = DAL.PB_7;
 	
-	//export const PIN_SHIT = DAL.PA_5;
-	
+	//export const PIN_SHIT = DAL.PA_5;	
 }

@@ -29,10 +29,10 @@ namespace config {
 	
 	
 	
-	// export const PIN_SCL = DAL.PB_13; // pwm
-    // export const PIN_SDA = DAL.PB_14; // pwm
-	export const PIN_SCL = DAL.PB_8; // pwm
-	export const PIN_SDA = DAL.PB_9; // pwm
+	export const PIN_SCL = DAL.PB_13; // pwm
+    export const PIN_SDA = DAL.PB_14; // pwm
+	// export const PIN_SCL = DAL.PB_8; // pwm
+	// export const PIN_SDA = DAL.PB_9; // pwm
     // export const PIN_RX = DAL.PA_10; // pwm
     // export const PIN_TX = DAL.PA_9; // pwm
 

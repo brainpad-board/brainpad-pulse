@@ -210,7 +210,7 @@
         "codalTarget": {
             "name": "codal-brainpad",
             "url": "https://github.com/brainpad-board/codal-brainpad",
-            "branch": "no_offset",
+            "branch": "master",
             "type": "git"
         },
         "codalBinary": "BRAINPAD",

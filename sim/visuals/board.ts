@@ -519,9 +519,9 @@ namespace pxsim.visuals {
 			if (this.led) 
 			{
 				if (on) {
-					svg.fill(this.led, `#ff0000`);
+					svg.fill(this.led, `#f08000`);
 					this.led.style.strokeWidth = "0.28349999";
-					this.led.style.stroke = "#ff0000";
+                    this.led.style.stroke = "#f08000";
 				}
 				else {
 					svg.fill(this.led, `#ffffff`);

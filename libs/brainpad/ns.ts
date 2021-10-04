@@ -25,11 +25,6 @@ namespace neopixel {
 }
 
 //% color="#40bf4a"
-namespace leds {
-
-}
-
-//% color="#40bf4a"
 namespace led {
 
 }

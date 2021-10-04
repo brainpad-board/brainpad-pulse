@@ -3,7 +3,7 @@ namespace display {
 	/**
      * TODO: describe your function here
      */
-	//* blockId=led_set_matrix 
+	//* blockId=led_set_matrix
     //% block="Set leds" group="Virtual Leds"
     //% imageLiteral=1
     //% imageLiteralColumns=12

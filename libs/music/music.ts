@@ -126,7 +126,6 @@ enum BeatFraction {
     Breve = 64
 }
 
-//% color="#F55D3E" weight=97
 namespace music {
 
     let beatsPerMinute: number;

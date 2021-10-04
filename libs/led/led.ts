@@ -2,7 +2,7 @@
 /**
  * Outputs.
  */
-//% color="#00FF00" weight=97 icon="\uf205"
+//% color="#00FF00" weight=98 icon="\uf205"
 namespace led {	
 	/**
     * Turns on or off the led

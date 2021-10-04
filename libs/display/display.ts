@@ -1,7 +1,7 @@
 /**
  * Basic screen display functionalities
  */
-//% weight=98 icon="\uf108" color="#311557"
+//% weight=99 icon="\uf108" color="#311557"
 //% groups='["Screen", "Charts", "Virtual Leds"]'
 namespace display {
     const textOffset = 4;

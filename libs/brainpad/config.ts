@@ -62,7 +62,5 @@ namespace config {
     // export const PIN_BTN_DOWN = DAL.PB_10;
 	
 	export const PIN_BTN_A = DAL.PC_13;
-	export const PIN_BTN_B = DAL.PB_7;
-	
-	//export const PIN_SHIT = DAL.PA_5;	
+	export const PIN_BTN_B = DAL.PB_7;		
 }

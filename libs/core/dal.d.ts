@@ -575,7 +575,7 @@ declare const enum DAL {
     CFG_PIN_PWM = 63,
     CFG_PIN_INT = 64,
 	
-    CFG_PIN_SHIT = 65,
+    CFG_PIN_TESTMODE = 65,
 	CFG_PIN_P3 = 66,
     CFG_PIN_P0 = 67, 
     CFG_PIN_P4 = 68,

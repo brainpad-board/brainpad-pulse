@@ -39,7 +39,7 @@ enum FlipOption {
 /**
  * A sprite on the screen
  **/
-//% blockNamespace=sprites color="#4B7BEC" blockGap=8
+//% blockNamespace=sprites color="#4B7BEC" blockGap=8 
 class Sprite implements SpriteLike {
     //% group="Properties" blockSetVariable="mySprite"
     //% blockCombine block="x (horizontal position)"

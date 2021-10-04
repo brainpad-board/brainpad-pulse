@@ -3,7 +3,6 @@ namespace sonar {
 
 }
 
-
 //% color="#40bf4a"
 namespace animation {
 
@@ -21,11 +20,6 @@ namespace game {
 
 //% color="#40bf4a"
 namespace neopixel {
-
-}
-
-//% color="#40bf4a"
-namespace leds {
 
 }
 

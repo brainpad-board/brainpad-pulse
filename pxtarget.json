@@ -20,7 +20,6 @@
         "libs/controller",
         "libs/game",
         "libs/brainpad",
-        "libs/leds",
         "libs/led",
 		"libs/neopixel",
 		"libs/sonar"

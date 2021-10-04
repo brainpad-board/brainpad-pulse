@@ -2,13 +2,12 @@
 /**
  * Outputs.
  */
-//% groups='["other", "Colors"]'
-//% color="#00FF00" weight=97 icon="\uf205"
+//% color="#00FF00" weight=98 icon="\uf205"
 namespace led {	
 	/**
     * Turns on or off the led
     */
-	//% blockId=led_set block="set led to %on=toggleHighLow"
+	//% blockId=led_set block="set led to %on=toggleOnOff"
     //% weight=89
 	//% blockGap=8
 	export function setled(on: boolean) {

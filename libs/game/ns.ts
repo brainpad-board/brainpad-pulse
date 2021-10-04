@@ -1,4 +1,4 @@
 
-//% block="Game"
+//% block="Game Engine"
 namespace game {
 }

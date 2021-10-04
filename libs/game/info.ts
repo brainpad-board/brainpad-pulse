@@ -3,7 +3,7 @@
  * Head-up display
  *
 */
-//% color=#AA5585 weight=45 icon="\uf2bb"
+//% color=#AA5585 weight=46 icon="\uf2bb"
 namespace info {
 
     enum Visibility {

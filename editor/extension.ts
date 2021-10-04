@@ -44,7 +44,7 @@ namespace pxt.editor {
                             <div class="content">
                                 <div class="description">
                                     <span class="ui blue circular label">2</span>
-                                    ${lf("Press the RESET button to go into programming mode. When the lights turn green, you're ready to go.")}
+                                    ${lf("Press A & B buttons for 3 seconds to go into programming mode. The screen will tell you when it's MakeCode READY !!")}
                                 </div>
                             </div>
                         </div>

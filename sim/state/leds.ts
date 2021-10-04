@@ -69,7 +69,7 @@ namespace pxsim {
     }
 }
 
-namespace pxsim.leds {    		
+namespace pxsim.display {    		
 	let needMatrixLedUpDate:boolean;
 	
 	export function getMatrixLedUpdateState() : boolean {

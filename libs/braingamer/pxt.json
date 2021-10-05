@@ -3,7 +3,9 @@
     "description": "BrainGamer driver", 
 	"icon": "docs/static/libs/braingamer.png",	
     "files": [
-        "braingamer.ts"
+        "braingamer.ts",
+		"braingamer.cpp",
+		"shims.d.ts"
     ],
     "dependencies": {
         "core": "file:../core"

@@ -36,7 +36,7 @@ namespace braingamer {
 	
 	//% blockId=braingamer_vibrate block="set vibrate %on=toggleOnOff"
     export function Vibrate(on: boolean): void {
-        
+        __setVibrate(on);    
     } 
 	
 	

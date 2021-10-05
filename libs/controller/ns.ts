@@ -1,4 +1,4 @@
 
-//% block="Brain Gamer"
+//% block="Game Controller"
 namespace controller {
 }

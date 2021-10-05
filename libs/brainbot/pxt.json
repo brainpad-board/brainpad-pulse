@@ -1,7 +1,7 @@
 {
     "name": "brainbot",
     "description": "BrainBot driver", 
-	"icon": "./static/libs/brainbot.png",	
+	"icon": "docs/static/libs/brainbot.png",	
     "files": [
         "brainbot.ts"
     ],

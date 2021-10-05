@@ -1,0 +1,11 @@
+{
+    "name": "brainbot",
+    "description": "BrainBot driver", 
+	"icon": "./static/libs/brainbot.png",	
+    "files": [
+        "brainbot.ts"
+    ],
+    "dependencies": {
+        "core": "file:../core"
+    }
+}

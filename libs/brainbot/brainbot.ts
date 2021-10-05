@@ -32,12 +32,17 @@ namespace brainbot {
     } 
 	
 	//% blockId=brainbot_taillight block="Set tail light left color %leftcolor right color %rightcolor"
-    export function Headlight(leftcolor: number, rightcolor: number): void {
+    export function Taillight(leftcolor: number, rightcolor: number): void {
         
     } 
 	
 	//% blockId=brainbot_groundsensor block="ground sensor"
     export function GroundSensor(): number {
+        return 0;
+    } 
+	
+	//% blockId=brainbot_distancesensor block="distance sensor"
+    export function DistanceSensor(): number {
         return 0;
     } 
 

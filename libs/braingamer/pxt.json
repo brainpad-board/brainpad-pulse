@@ -1,0 +1,11 @@
+{
+    "name": "braingamer",
+    "description": "BrainGamer driver", 
+	"icon": "./static/libs/braingamer.png",	
+    "files": [
+        "braingamer.ts"
+    ],
+    "dependencies": {
+        "core": "file:../core"
+    }
+}

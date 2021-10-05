@@ -23,7 +23,8 @@
         "libs/led",
 		"libs/neopixel",
 		"libs/sonar",
-		"libs/brainbot"
+		"libs/brainbot",
+		"libs/braingamer"
     ],
     "serial": {
         "useHF2": true,

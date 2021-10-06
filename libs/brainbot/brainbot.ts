@@ -1,4 +1,9 @@
-
+enum GroundSensor {
+	None = 0,
+	Right = 1,
+	Left = 2,
+	Both = 3
+}
 /**
  * GameBot
  */
@@ -104,17 +109,30 @@ namespace brainbot {
     } 
 	
 	//% blockId=brainbot_taillight block="Set tail light left color %leftcolor right color %rightcolor"
-    export function Taillight(leftcolor: number, rightcolor: number): void {
-        
+    export function Taillight(leftcolor: NeoPixelColors, rightcolor: NeoPixelColors): void {
+		let strip: neopixel.Strip = null
+		strip = neopixel.create(pins.P12, 2)
+		strip.setPixelColor(0, neopixel.colors(leftcolor))
+		strip.setPixelColor(1, neopixel.colors(rightcolor))
+		strip.show()
     } 
 	
 	//% blockId=brainbot_groundsensor block="ground sensor"
-    export function GroundSensor(): number {
-        return 0;
+    export function ReadGroundSensor(): GroundSensor {
+        
+		if (pins.P14.digitalRead() && pins.P13.digitalRead()) {
+			return GroundSensor.None;
+		}
+		else if (pins.P14.digitalRead())
+			return GroundSensor.Left;
+		else if (pins.P13.digitalRead())
+			return GroundSensor.Right;
+
+		return GroundSensor.Both;
     } 
 	
 	//% blockId=brainbot_distancesensor block="distance sensor"
-    export function DistanceSensor(): number {
+    export function ReadDistanceSensor(): number {
         return 0;
     } 
 

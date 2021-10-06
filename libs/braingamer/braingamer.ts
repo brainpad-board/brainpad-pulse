@@ -154,17 +154,21 @@ namespace braingamer {
 	
 	//% blockId=brainbot_beep block="Beep"
     export function Beep(): void {
-        music.ringTone(1000);
+		pins.P0.analogWrite(512)
+		pins.P0.analogSetPeriod(1000)
 		pause(100);
-		music.ringTone(0);
+		pins.P0.analogWrite(0)
     }
 
 	//% blockId=brainbot_sound block="set sound %on=toggleOnOff"
     export function Sound(on: boolean): void {
-        if (on)
-			music.ringTone(1000);
+        if (on) {
+			pins.P0.analogWrite(512)
+			pins.P0.analogSetPeriod(1000)
+		}
+			
 		else
-			music.ringTone(0);
+			pins.P0.analogWrite(0)
     }	
 	
 	//% blockId=braingamer_vibrate block="set vibrate %on=toggleOnOff"

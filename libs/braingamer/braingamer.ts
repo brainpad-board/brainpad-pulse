@@ -36,7 +36,11 @@ namespace braingamer {
 	
 	//% blockId=braingamer_vibrate block="set vibrate %on=toggleOnOff"
     export function Vibrate(on: boolean): void {
-        __setVibrate(on);    
+        if (on)
+			pins.P8.digitalWrite(false)
+		else 
+			pins.P8.digitalWrite(true)
+				
     } 
 	
 	

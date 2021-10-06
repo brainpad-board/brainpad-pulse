@@ -25,14 +25,33 @@ namespace braingamer {
 	
 	//% blockId=braingamer_rocket block="rocket %gamerrocket"
     export function Rocket(gamerrocket: GamerRocket): number {
-        return 0;
+        let value = 0;
+		if (gamerrocket == GamerRocket.X) {
+			value = pins.P4.analogRead();
+		}
+		else 
+			value = pins.P3.analogRead();
+		
+		value = Math.map(value, 0, 1024, 0, 100);
+		
+		return value | 0;
     } 
 
 	
-	//% blockId=braingamer_beep block="Beep"
+	//% blockId=brainbot_beep block="Beep"
     export function Beep(): void {
-        
-    } 
+        music.ringTone(1000);
+		pause(100);
+		music.ringTone(0);
+    }
+
+	//% blockId=brainbot_sound block="set sound %on=toggleOnOff"
+    export function Sound(on: boolean): void {
+        if (on)
+			music.ringTone(1000);
+		else
+			music.ringTone(0);
+    }	
 	
 	//% blockId=braingamer_vibrate block="set vibrate %on=toggleOnOff"
     export function Vibrate(on: boolean): void {

@@ -89,7 +89,7 @@ namespace brainbot {
 			music.ringTone(0);
     }	
 		
-	//% blockId=brainbot_headlight block="Set head light color to red %red green %green blue %blue"
+	//% blockId=brainbot_headlight block="Set headlight color to red %red green %green blue %blue"
 	//% red.min=0 red.max=255
 	//% green.min=0 green.max=255
 	//% blue.min=0 blue.max=255
@@ -108,7 +108,7 @@ namespace brainbot {
         
     } 
 	
-	//% blockId=brainbot_taillight block="Set tail light left color %leftcolor right color %rightcolor"
+	//% blockId=brainbot_taillight block="Set taillight left color %leftcolor right color %rightcolor"
     export function Taillight(leftcolor: NeoPixelColors, rightcolor: NeoPixelColors): void {
 		let strip: neopixel.Strip = null
 		strip = neopixel.create(pins.P12, 2)
@@ -117,7 +117,7 @@ namespace brainbot {
 		strip.show()
     } 
 	
-	//% blockId=brainbot_groundsensor block="ground sensor"
+	//% blockId=brainbot_groundsensor block="read ground sensor"
     export function ReadGroundSensor(): GroundSensor {
         
 		if (pins.P14.digitalRead() && pins.P13.digitalRead()) {
@@ -131,9 +131,14 @@ namespace brainbot {
 		return GroundSensor.Both;
     } 
 	
-	//% blockId=brainbot_distancesensor block="distance sensor"
+	//% blockId=brainbot_distancesensor block="read distance"
     export function ReadDistanceSensor(): number {
-        return 0;
+        let distance = sonar.ping(
+							pins.P16,
+							pins.P15,
+							PingUnit.Centimeters
+							) ;
+		return distance;
     } 
 
 	

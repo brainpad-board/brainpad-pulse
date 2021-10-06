@@ -80,20 +80,20 @@ namespace neopixel {
         uint8_t data;
 		
 
-        if (rgb888) {
-            for (int32_t i = 0; i < size; i++) {
-                data = buffer8[i];
+		target_disable_irq();
+		for (int32_t i = 0; i < size; i++) {
+			data = buffer8[i];
 
-                for (int32_t b = 7; b >= 0; b--) {
-                    if (data & (1 << b)) {
-                        WS2812_SendOne(port, bit);
-                    }
-                    else {
-                        WS2812_SendZero(port, bit);
-                    }
-                }
-            }
-        }
+			for (int32_t b = 7; b >= 0; b--) {
+				if (data & (1 << b)) {
+					WS2812_SendOne(port, bit);
+				}
+				else {
+					WS2812_SendZero(port, bit);
+				}
+			}
+		}
+        target_enable_irq();
 
        
 

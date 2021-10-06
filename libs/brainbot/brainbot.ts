@@ -54,6 +54,17 @@ namespace brainbot {
 	
 	//% blockId=brainbot_stop block="Stop"
     export function Stop(): void {
+		let deviceAddress = 0x1;
+		let data: number[] = [0x2, 0, 0, 0, 0]
+		
+		for (let i = 0; i <5 ; i++) {
+			pins.i2cWriteNumber(
+					deviceAddress,
+					data[i],
+					NumberFormat.Int8LE,
+					i < 4 ? true : false
+				);
+		}		
         
     } 
 

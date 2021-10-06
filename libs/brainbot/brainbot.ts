@@ -9,10 +9,47 @@ namespace brainbot {
      * Move
      */
     //% blockId=brainbot_move block="Move left speed %leftspeed right speed %rightspeed"
-	//% leftspeed.min=0 leftspeed.max=100
-	//% rightspeed.min=0 rightspeed.max=100
+	//% leftspeed.min=-100 leftspeed.max=100
+	//% rightspeed.min=-100 rightspeed.max=100
     export function Move(leftspeed: number, rightspeed: number): void {
-        
+		let deviceAddress = 0x1;
+		
+		
+		let left = Math.map(leftspeed, -100, 100, -255, 255);
+		let right = Math.map(rightspeed, -100, 100, -255, 255);
+		let data: number[] = []
+		
+		data = [0x2, 0, 0, 0, 0];
+
+		if (left > 0) {
+			data[1] = left;
+			data[2] = 0x00;
+		}
+		else {
+			left *= -1
+			data[1] = 0;
+			data[2] = left;
+		}
+		
+		if (right > 0) {
+			data[3] = right;
+			data[4] = 0x00;
+		}
+		else {
+			right *= -1
+			data[3] = 0;
+			data[4] = right;
+		}
+		
+		
+		for (let i = 0; i <5 ; i++) {
+			pins.i2cWriteNumber(
+					deviceAddress,
+					data[i],
+					NumberFormat.Int8LE,
+					i < 4 ? true : false
+				);
+		}				
     } 
 	
 	//% blockId=brainbot_stop block="Stop"

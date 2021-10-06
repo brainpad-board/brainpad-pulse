@@ -71,9 +71,19 @@ namespace brainbot {
 	
 	//% blockId=brainbot_beep block="Beep"
     export function Beep(): void {
-        
-    } 
-	
+        music.ringTone(1000);
+		pause(100);
+		music.ringTone(0);
+    }
+
+	//% blockId=brainbot_sound block="set sound %on=toggleOnOff"
+    export function Sound(on: boolean): void {
+        if (on)
+			music.ringTone(1000);
+		else
+			music.ringTone(0);
+    }	
+		
 	//% blockId=brainbot_headlight block="Set head light color to %color"
     export function Headlight(color: number): void {
         

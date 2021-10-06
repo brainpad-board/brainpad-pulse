@@ -84,8 +84,22 @@ namespace brainbot {
 			music.ringTone(0);
     }	
 		
-	//% blockId=brainbot_headlight block="Set head light color to %color"
-    export function Headlight(color: number): void {
+	//% blockId=brainbot_headlight block="Set head light color to red %red green %green blue %blue"
+	//% red.min=0 red.max=255
+	//% green.min=0 green.max=255
+	//% blue.min=0 blue.max=255
+    export function Headlight(red: number, green: number, blue: number): void {
+		let deviceAddress = 0x1;		
+		let data: number[] = [0x1, red, green, blue ];
+	
+		for (let i = 0; i <5 ; i++) {
+			pins.i2cWriteNumber(
+					deviceAddress,
+					data[i],
+					NumberFormat.Int8LE,
+					i < 3 ? true : false
+				);
+		}		
         
     } 
 	

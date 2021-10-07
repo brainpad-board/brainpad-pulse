@@ -5,7 +5,7 @@ namespace config {
     export const DEFAULT_BUTTON_MODE = DAL.BUTTON_ACTIVE_LOW_PULL_UP;
 
     //export const PIN_LIGHT = DAL.PB_1; // adc
-    // export const PIN_TEMPERATURE = DAL.PB_0; // adc
+    export const PIN_TEMPERATURE = DAL.PC_0; // adc sensor. We use channel 17 which doesn't map anywhere to pin. We use PC_0 and convert to channel 17 because we don't use PC_0.
 
     export const PIN_P3 = DAL.PA_1; // pwm
     export const PIN_P0 = DAL.PA_5; // pwm

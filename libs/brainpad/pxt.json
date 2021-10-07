@@ -16,6 +16,7 @@
     "buttons": "file:../buttons",
     "music": "file:../music",    
     "accelerometer": "file:../accelerometer",
+	"thermometer": "file:../thermometer",
     "screen": "file:../screen",
     "display": "file:../display",
 	"led": "file:../led",

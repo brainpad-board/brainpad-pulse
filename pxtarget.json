@@ -12,6 +12,7 @@
         "libs/base",
         "libs/core",
         "libs/accelerometer",
+		"libs/thermometer",
         "libs/music",        
         "libs/buttons",       
         "libs/screen",

@@ -240,7 +240,7 @@
     "organizationUrl": "https://makecode.com/",
     "organizationLogo": "docs/static/Microsoft-logo_rgb_c-gray-square.png",
     "organizationWideLogo": "docs/static/Microsoft-logo_rgb_c-gray.png",
-    "homeUrl": "/brainpad-pulse/",
+    "homeUrl": "/",
     "embedUrl": "https://makecode.brainpad.com/",
     "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
     "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
@@ -254,15 +254,15 @@
     "docMenu": [
       {
         "name": "Blocks",
-        "path": "/brainpad-pulse/docs/blocks"
+        "path": "/docs/blocks"
       },
       {
         "name": "JavaScript",
-        "path": "/brainpad-pulse/docs/javascript"
+        "path": "/docs/javascript"
       },
       {
         "name": "Reference",
-        "path": "/brainpad-pulse/docs/reference"
+        "path": "/docs/reference"
       },
       {
         "name": "Buy",

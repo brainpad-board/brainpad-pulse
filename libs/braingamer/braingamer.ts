@@ -11,6 +11,37 @@ enum GamerButton {
 }
 
 
+declare namespace braingamer {	
+	/**
+     * Up button.
+     */
+
+    //% shim=pxt::getButtonByPin(PB_4,BUTTON_ACTIVE_LOW_PULL_UP)
+    const buttonUp: Button;
+	
+	/**
+     * Down button.
+     */
+
+    //% shim=pxt::getButtonByPin(PB_5,BUTTON_ACTIVE_LOW_PULL_UP)
+    const buttonDown: Button;
+	
+	/**
+     * Left button.
+     */
+
+    //% shim=pxt::getButtonByPin(PB_3,BUTTON_ACTIVE_LOW_PULL_UP)
+    const buttonLeft: Button;
+	
+	/**
+     * Left button.
+     */
+
+    //% shim=pxt::getButtonByPin(PB_12,BUTTON_ACTIVE_LOW_PULL_UP)
+    const buttonRight: Button;
+
+}
+
 /**
  * BrainGamer
  */
@@ -125,17 +156,13 @@ namespace braingamer {
     }
 	
 	//% fixedInstance block="left"
-    export const left = new ButtonGamer(1, input.buttonLeft.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+    export const left = new ButtonGamer(1, braingamer.buttonLeft.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="up"
-    export const up = new ButtonGamer(2, input.buttonUp.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+    export const up = new ButtonGamer(2, braingamer.buttonUp.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="right"
-    export const right = new ButtonGamer(3, input.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+    export const right = new ButtonGamer(3, braingamer.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="down"
-    export const down = new ButtonGamer(4, input.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-	//% fixedInstance block="A"
-    export const A = new ButtonGamer(5, input.buttonA.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-    //% fixedInstance block="B"
-    export const B = new ButtonGamer(6, input.buttonB.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+    export const down = new ButtonGamer(4, braingamer.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
 	
 	//% blockId=braingamer_rocket block="rocket %gamerrocket"
     export function Rocket(gamerrocket: GamerRocket): number {
@@ -152,7 +179,7 @@ namespace braingamer {
     } 
 
 	
-	//% blockId=brainbot_beep block="Beep"
+	//% blockId=braingamer_beep block="Beep"
     export function Beep(): void {
 		pins.P0.analogWrite(512)
 		pins.P0.analogSetPeriod(1000)
@@ -160,7 +187,7 @@ namespace braingamer {
 		pins.P0.analogWrite(0)
     }
 
-	//% blockId=brainbot_sound block="set sound %on=toggleOnOff"
+	//% blockId=braingamer_sound block="set sound %on=toggleOnOff"
     export function Sound(on: boolean): void {
         if (on) {
 			pins.P0.analogWrite(512)

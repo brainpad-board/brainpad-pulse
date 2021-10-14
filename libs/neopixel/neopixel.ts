@@ -121,7 +121,7 @@ namespace neopixel {
          */
         //% blockId="neopixel_length" block="%strip|length" blockGap=8
         //% strip.defl=strip
-        //% weight=60 advanced=true
+        //% weight=60
         length() {
             return this._length;
         }
@@ -235,8 +235,7 @@ namespace neopixel {
      * @param blue value of the blue channel between 0 and 255. eg: 255
      */
     //% weight=1
-    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
-    //% advanced=true
+    //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"   
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -245,8 +244,7 @@ namespace neopixel {
      * Gets the RGB value of a known color
     */
     //% weight=2 blockGap=8
-    //% blockId="neopixel_colors" block="%color"
-    //% advanced=true
+    //% blockId="neopixel_colors" block="%color"    
     export function colors(color: NeoPixelColors): number {
         return color;
     }

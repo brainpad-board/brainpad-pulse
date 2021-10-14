@@ -12,48 +12,48 @@ declare namespace pins {
 	const P3: PwmPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P4)
-	const P4: PwmPin;
+	const P4: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P5)
-	const P5: PwmPin;
+	const P5: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P6)
-	const P6: PwmPin;
+	const P6: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P7)
-	const P7: PwmPin;
+	const P7: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P8)
-	const P8: PwmPin;
+	const P8: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P9)
-	const P9: PwmPin;
+	const P9: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P10)
-	const P10: PwmPin;
+	const P10: AnalogInPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P11)
-	const P11: PwmPin;
+	const P11: DigitalInOutPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P12)
-	const P12: PwmPin;
+	const P12: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P13)
-	const P13: PwmPin;
+	const P13: DigitalInOutPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P14)
-	const P14: PwmPin;
+	const P14: DigitalInOutPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P15)
-	const P15: PwmPin;
+	const P15: DigitalInOutPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P16)
-	const P16: PwmPin;
+	const P16: DigitalInOutPin;
     	
 	//% fixedInstance shim=pxt::getPin(PIN_19)
-    const SCL: PwmPin;
+    const SCL: DigitalInOutPin;
     //% fixedInstance shim=pxt::getPin(PIN_20)
-    const SDA: PwmPin;
+    const SDA: DigitalInOutPin;
    /*
     //% fixedInstance shim=pxt::getPin(PIN_RX)
     const RX1: PwmOnlyPin;
@@ -93,33 +93,5 @@ declare namespace input {
     //% block="button B" weight=94 fixedInstance
     //% shim=pxt::getButtonByPin(PB_7,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonB: Button;
-	
-	/**
-     * Up button.
-     */
-    //% block="button Up" weight=93 fixedInstance
-    //% shim=pxt::getButtonByPin(PB_4,BUTTON_ACTIVE_LOW_PULL_UP)
-    const buttonUp: Button;
-	
-	/**
-     * Down button.
-     */
-    //% block="button Down" weight=92 fixedInstance
-    //% shim=pxt::getButtonByPin(PB_5,BUTTON_ACTIVE_LOW_PULL_UP)
-    const buttonDown: Button;
-	
-	/**
-     * Left button.
-     */
-    //% block="button Left" weight=92 fixedInstance
-    //% shim=pxt::getButtonByPin(PB_3,BUTTON_ACTIVE_LOW_PULL_UP)
-    const buttonLeft: Button;
-	
-	/**
-     * Left button.
-     */
-    //% block="button Right" weight=91 fixedInstance
-    //% shim=pxt::getButtonByPin(PB_12,BUTTON_ACTIVE_LOW_PULL_UP)
-    const buttonRight: Button;
-
 }
+

@@ -1,6 +1,6 @@
 {
     "name": "led",
-    "description": "My led driver",
+    "description": "Led driver",
     "files": [
         "README.md",
         "led.ts",

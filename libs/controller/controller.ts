@@ -10,7 +10,6 @@ enum ControllerButtonEvent {
 /**
  * Access to game controls
  */
-//% weight=1 color="#e15f41" icon="\uf11b" advanced=true
 namespace controller {
     let _userEventsEnabled = true;
     let _activeButtons: Button[];

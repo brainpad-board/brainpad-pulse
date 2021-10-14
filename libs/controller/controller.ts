@@ -123,15 +123,16 @@ namespace controller {
      */
     //%
     export function dx(step: number = 100) {
-        const ctx = control.eventContext();
-        if (!ctx) return 0;
+        // const ctx = control.eventContext();
+        // if (!ctx) return 0;
 
-        if (controller.left.isPressed()) {
-            if (controller.right.isPressed()) return 0
-            else return -step * ctx.deltaTime;
-        }
-        else if (controller.right.isPressed()) return step * ctx.deltaTime
-        else return 0
+        // if (controller.left.isPressed()) {
+            // if (controller.right.isPressed()) return 0
+            // else return -step * ctx.deltaTime;
+        // }
+        // else if (controller.right.isPressed()) return step * ctx.deltaTime
+        // else return 0
+		return 0;
     }
 
     /**
@@ -140,15 +141,16 @@ namespace controller {
      */
     //%
     export function dy(step: number = 100) {
-        const ctx = control.eventContext();
-        if (!ctx) return 0;
+        // const ctx = control.eventContext();
+        // if (!ctx) return 0;
 
-        if (controller.up.isPressed()) {
-            if (controller.down.isPressed()) return 0
-            else return -step * ctx.deltaTime;
-        }
-        else if (controller.down.isPressed()) return step * ctx.deltaTime
-        else return 0
+        // if (controller.up.isPressed()) {
+            // if (controller.down.isPressed()) return 0
+            // else return -step * ctx.deltaTime;
+        // }
+        // else if (controller.down.isPressed()) return step * ctx.deltaTime
+        // else return 0
+		return 0;
     }
 
     /**

@@ -132,10 +132,6 @@ namespace braingamer {
     export const right = new ButtonGamer(3, input.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="down"
     export const down = new ButtonGamer(4, input.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-	//% fixedInstance block="A"
-    export const A = new ButtonGamer(5, input.buttonA.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-    //% fixedInstance block="B"
-    export const B = new ButtonGamer(6, input.buttonB.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
 	
 	//% blockId=braingamer_rocket block="rocket %gamerrocket"
     export function Rocket(gamerrocket: GamerRocket): number {

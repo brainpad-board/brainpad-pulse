@@ -23,27 +23,27 @@ namespace controller {
             controlledSprites = [];
             game.currentScene().eventContext.registerFrameHandler(19, () => {
                 controlledSprites.forEach(controlled => {
-                    if (controlled.vx) {
-                        controlled.s.vx = 0;
+                    // if (controlled.vx) {
+                        // controlled.s.vx = 0;
 
-                        if (controller.right.isPressed()) {
-                            controlled.s.vx = controlled.vx;
-                        }
-                        if (controller.left.isPressed()) {
-                            controlled.s.vx = -controlled.vx;
-                        }
-                    }
+                        // if (controller.right.isPressed()) {
+                            // controlled.s.vx = controlled.vx;
+                        // }
+                        // if (controller.left.isPressed()) {
+                            // controlled.s.vx = -controlled.vx;
+                        // }
+                    // }
 
-                    if (controlled.vy) {
-                        controlled.s.vy = 0;
+                    // if (controlled.vy) {
+                        // controlled.s.vy = 0;
 
-                        if (controller.down.isPressed()) {
-                            controlled.s.vy = controlled.vy;
-                        }
-                        if (controller.up.isPressed()) {
-                            controlled.s.vy = -controlled.vy;
-                        }
-                    }
+                        // if (controller.down.isPressed()) {
+                            // controlled.s.vy = controlled.vy;
+                        // }
+                        // if (controller.up.isPressed()) {
+                            // controlled.s.vy = -controlled.vy;
+                        // }
+                    // }
                 });
             });
         }

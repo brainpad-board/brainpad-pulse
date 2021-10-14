@@ -216,11 +216,7 @@ int rotation(Rotation kind) {
  * Sets the accelerometer sample range in gravities.
  * @param range a value describe the maximum strengh of acceleration measured
  */
-//% help=input/set-accelerometer-range
-//% blockId=device_set_accelerometer_range block="set accelerometer|range %range"
-//% weight=5
-//% parts="accelerometer"
-//% group="More" weight=15 blockGap=8
+//%
 void setAccelerometerRange(AcceleratorRange range) {
     getWAccel()->acc.setRange((int)range);
 }

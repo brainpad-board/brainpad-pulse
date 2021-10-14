@@ -94,3 +94,4 @@ declare namespace input {
     //% shim=pxt::getButtonByPin(PB_7,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonB: Button;
 }
+

@@ -24,7 +24,7 @@ declare namespace pins {
 	const P7: PwmPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P8)
-	const P8: PwmPin;
+	const P8: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P9)
 	const P9: PwmPin;
@@ -33,27 +33,27 @@ declare namespace pins {
 	const P10: PwmPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P11)
-	const P11: PwmPin;
+	const P11: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P12)
-	const P12: PwmPin;
+	const P12: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P13)
-	const P13: PwmPin;
+	const P13: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P14)
-	const P14: PwmPin;
+	const P14: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P15)
-	const P15: PwmPin;
+	const P15: PwmOnlyPin;
 	
 	//% fixedInstance shim=pxt::getPin(PIN_P16)
-	const P16: PwmPin;
+	const P16: PwmOnlyPin;
     	
 	//% fixedInstance shim=pxt::getPin(PIN_19)
-    const SCL: PwmPin;
+    const SCL: PwmOnlyPin;
     //% fixedInstance shim=pxt::getPin(PIN_20)
-    const SDA: PwmPin;
+    const SDA: PwmOnlyPin;
    /*
     //% fixedInstance shim=pxt::getPin(PIN_RX)
     const RX1: PwmOnlyPin;

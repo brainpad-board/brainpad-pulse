@@ -13,10 +13,7 @@ namespace console {
      * Write a line of text to the console output.
      * @param value to send
      */
-    //% weight=90
-    //% help=console/log blockGap=8
-    //% blockId=console_log block="console|log %text"
-    //% text.shadowOptions.toString=true
+    //%
     export function log(text: string): void {
         // pad text on the 32byte boundar
         text += "\r\n";
@@ -30,9 +27,7 @@ namespace console {
      * @param name name of the value stream, eg: "x"
      * @param value to write
      */
-    //% weight=88 blockGap=8
-    //% help=console/log-value
-    //% blockId=console_log_value block="console|log value %name|= %value"
+    //%
     export function logValue(name: string, value: number): void {
         log(name ? `${name}: ${value}` : `${value}`)
     }

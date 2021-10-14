@@ -9,11 +9,6 @@ namespace animation {
 }
 
 //% color="#40bf4a"
-namespace controller {
-
-}
-
-//% color="#40bf4a"
 namespace game {
 
 }
@@ -50,11 +45,6 @@ namespace pins {
 
 //% color="#006E90"
 namespace serial {
-
-}
-
-//% color="#006E90"
-namespace console {
 
 }
 

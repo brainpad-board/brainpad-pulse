@@ -179,7 +179,7 @@ namespace braingamer {
     } 
 
 	
-	//% blockId=brainbot_beep block="Beep"
+	//% blockId=braingamer_beep block="Beep"
     export function Beep(): void {
 		pins.P0.analogWrite(512)
 		pins.P0.analogSetPeriod(1000)
@@ -187,7 +187,7 @@ namespace braingamer {
 		pins.P0.analogWrite(0)
     }
 
-	//% blockId=brainbot_sound block="set sound %on=toggleOnOff"
+	//% blockId=braingamer_sound block="set sound %on=toggleOnOff"
     export function Sound(on: boolean): void {
         if (on) {
 			pins.P0.analogWrite(512)

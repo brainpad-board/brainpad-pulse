@@ -5,7 +5,7 @@
  * http://shinta.main.jp/
  */
 #include "pxt.h"
-#include "ReceiverIR.h"
+#include "receiverir.h"
 
 #define LOCK() uint32_t stateIrq = target_state_irq(); target_disable_irq()
 #define UNLOCK() if ((stateIrq & 1) == 0) __enable_irq()

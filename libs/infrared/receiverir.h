@@ -10,7 +10,7 @@
 
 #include <mbed.h>
 
-#include "RemoteIR.h"
+#include "remoteir.h"
 
 /**
  * IR receiver class.

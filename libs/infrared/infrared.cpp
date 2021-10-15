@@ -1,7 +1,7 @@
 #include "pxt.h"
 #include <map>
 #include <vector>
-#include "ReceiverIR.h"
+#include "receiverir.h"
 using namespace pxt;
 
 typedef struct {

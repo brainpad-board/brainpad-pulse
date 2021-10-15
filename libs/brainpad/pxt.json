@@ -24,7 +24,8 @@
 	"game": "file:../game",		
 	"controller": "file:../controller",	
 	"animation": "file:../animation",	
-	"sonar": "file:../sonar"	
+	"sonar": "file:../sonar",	
+	"infrared": "file:../infrared"
   },
   "palette": [
     "#000000",

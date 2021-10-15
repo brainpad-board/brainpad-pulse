@@ -1,0 +1,17 @@
+{
+    "name": "ir",    
+    "description": "IR receiver driver", 
+    "files": [
+        "infrared.ts",
+        "shims.d.ts",
+        "enums.d.ts",
+        "infrared.cpp",
+        "receiverir.cpp",
+        "receiverir.h",
+        "remoteir.h"
+    ],
+	"dependencies": {
+        "core": "file:../core"
+    },
+    "public": true   
+}

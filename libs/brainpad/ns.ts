@@ -1,4 +1,9 @@
 //% color="#311557"
+namespace infrared {
+
+}
+
+//% color="#311557"
 namespace sonar {
 
 }

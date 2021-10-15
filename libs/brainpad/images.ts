@@ -1,5 +1,9 @@
 namespace images {
     //% fixedInstance jres
+    export const logo = image.ofBuffer(hex``);
+    //% fixedInstance jres
+    export const logo2 = image.ofBuffer(hex``);
+    //% fixedInstance jres
     export const butterfly1 = image.ofBuffer(hex``);
     //% fixedInstance jres
     export const butterfly2 = image.ofBuffer(hex``);

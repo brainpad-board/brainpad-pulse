@@ -57,7 +57,7 @@ namespace pxt.editor {
                             <div class="content">
                                 <div class="description">
                                     <span class="ui blue circular label">3</span>
-                                    ${lf("Click and drag the file you downloaded onto {0}.", boardDriveName)}
+                                    ${lf("Select the file and either copy/paste or drag the file to the {0}.", boardDriveName)}
                                 </div>
                             </div>
                         </div>

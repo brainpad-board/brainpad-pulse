@@ -80,10 +80,8 @@ namespace display {
 
     /**
      * Sends the log messages to the brick screen and uses the brick up and down buttons to scroll.
-     */
-    //% blockId=displayshowconsole block="show console"
-    //% weight=1
-    //% help=display/show-console
+     */    
+    //%
     export function showConsole(): void {
         display.text.scroll(0);
     }

@@ -13,7 +13,7 @@ Step by step guide to coding your @boardname@.
   "label": "LED",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/led.jpg"
+  "imageUrl":"docs/static/cp/projects/thumb/led.jpg"
 } 
 ,
 {
@@ -23,7 +23,7 @@ Step by step guide to coding your @boardname@.
   "label": "Buzzer",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/buzzer.jpg"
+  "imageUrl":"docs/static/cp/projects/thumb/buzzer.jpg"
 } 
 ,
 {
@@ -33,7 +33,7 @@ Step by step guide to coding your @boardname@.
   "label": "Display",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/display.jpg"
+  "imageUrl":"docs/static/cp/projects/thumb/display.jpg"
 }
 , 
 {
@@ -43,7 +43,7 @@ Step by step guide to coding your @boardname@.
   "label": "Accelerometer",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/accel.jpg"
+  "imageUrl":"docs/static/cp/projects/thumb/accel.jpg"
   
 }
 ,
@@ -54,7 +54,7 @@ Step by step guide to coding your @boardname@.
   "label": "A & B Buttons",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
+  "imageUrl":"docs/static/cp/projects/thumb/buttons.jpg"
 
 }
 ]

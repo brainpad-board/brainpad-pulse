@@ -6,7 +6,7 @@
 
 - Install Node.js (https://nodejs.org/en/download/). Keep setup configuration as default,  except check on box "Automatically install the nececsary tools..." when asked.
 - Install GCC compiler. Version 8 or higher. https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads.
-  Change default location to "C:\GCC" when asked. Some scripts are not happy with space in path.
+  Change default location to "C:\GCC" when asked. Some scripts are not happy with space in path. Make sure add "C:\gcc\bin" to PATH.
 - Download ninja tool. Execute binary file (window version) can be downloaded from: https://github.com/ninja-build/ninja/releases. 
   Create a folder called ninja from. Let say C:\ninja.
   Put ninja.exe to C:\ninja. We will have "C:\ninja\ninja.exe".
@@ -17,7 +17,7 @@
 - Create a folder called "MakeCode". Assume this folder is on root C:\
 - clone https://github.com/microsoft/pxt.git
 - clone https://github.com/microsoft/pxt-common-packages.git
-- clone https://github.com/ghi-electronics/pxt-brainpadpulse.git
+- clone https://github.com/ghi-electronics/brainpad-pulse.git
         
 Put all of them inside MakeCode folder.
 
@@ -38,8 +38,9 @@ These instructions assume Window 10 - 64bit
 - run "npm install"
 
 ### Build Brainpad pulse
-- run "cd C:\MakeCode\pxt-brainpadpulse"
+- run "cd C:\MakeCode\brainpad-pulse"
 - run "npm install"
+- run "npm install -g pxt"
 - run "pxt link ../pxt"
 - run "pxt link ../pxt-common-packages"
 

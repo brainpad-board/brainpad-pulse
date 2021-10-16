@@ -17,7 +17,7 @@
 - Create a folder called "MakeCode". Assume this folder is on root C:\
 - clone https://github.com/microsoft/pxt.git
 - clone https://github.com/microsoft/pxt-common-packages.git
-- clone https://github.com/ghi-electronics/brainpad-pulse.git
+- clone https://github.com/brainpad-board/brainpad-pulse.git
         
 Put all of them inside MakeCode folder.
 

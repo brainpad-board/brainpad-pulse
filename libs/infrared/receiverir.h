@@ -17,9 +17,7 @@
  */
 class ReceiverIR {
 public:
-	int riseCount;
-	int fallCount;
-	int wdtCount;
+
 	uint64_t lastTick;
 	uint32_t necMessage;
 	int32_t bitIndex;

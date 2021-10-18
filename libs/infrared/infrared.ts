@@ -16,12 +16,18 @@ namespace infrared {
 
   /**
   * read last key
-  */
-  //% blockId=ir_read_last_key
-  //% block="read last key from %pin"
+  */ 
   //% shim=infrared::readkey
   export function readkey(pin: Pins): number {
     return 100
+  }
+  
+  /**
+  * clear last key
+  */
+  //% shim=infrared::clearkey
+  export function clearkey(pin: Pins): void {
+    return
   }
   
   /**

@@ -146,7 +146,7 @@ namespace brainbot {
 		return distance;
     } 
 	
-	//% blockId=brainbot_infrared block="read last key"
+	//% blockId=brainbot_read_infrared block="read last infrared key"
 	export function ReadLastKey(): number {		
 		if (init_ir == false) {
 			infrared.init(Pins.P8)
@@ -155,6 +155,17 @@ namespace brainbot {
 		}
 		
 		return infrared.readkey(Pins.P8)
+	}
+	
+	//% blockId=brainbot_clear_infrared block="clear last infrared key"
+	export function ClearLastKey(): void {		
+		if (init_ir == false) {
+			infrared.init(Pins.P8)
+			
+			init_ir = true
+		}
+		
+		infrared.clearkey(Pins.P8)
 	}
 
 	

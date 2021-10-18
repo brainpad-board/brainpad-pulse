@@ -6,6 +6,9 @@
         "brainbot.ts"
     ],
     "dependencies": {
-        "core": "file:../core"
+        "core": "file:../core",
+		"neopixel": "file:../neopixel",
+		"sonar": "file:../sonar",
+		"infrared": "file:../infrared"
     }
 }

@@ -123,9 +123,8 @@ namespace braingamer {
 
         /**
          * Pauses until a button is pressed or released
-         */
-        //% weight=98 blockGap=8 help=controller/button/pause-until
-        //% blockId=keypauseuntil block="pause until %button **button** is %event"
+         */        
+        //%
         pauseUntil(event: ControllerButtonEvent) {
             control.waitForEvent(event, this.id)
         }

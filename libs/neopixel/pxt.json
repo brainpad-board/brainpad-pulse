@@ -1,6 +1,7 @@
 {
     "name": "neopixel",
-    "description": "Neopixel driver",
+    "description": "A MakeCode package to use Neopixel",
+	"icon": "docs/static/libs/neopixel.png",
     "files": [
         "README.md",
         "neopixel.ts",

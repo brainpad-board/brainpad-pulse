@@ -1,5 +1,5 @@
 //% color="#311557"
-namespace ir {
+namespace infrared {
 
 }
 

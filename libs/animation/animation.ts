@@ -2,6 +2,7 @@
     Animation library for sprites
 */
 //% color="#03AA74" weight=48 icon="\uf021"
+//% advanced=true
 namespace animation {
     //Handles all the updates
     let _onAnimUpdate: (() => void)[] = null;

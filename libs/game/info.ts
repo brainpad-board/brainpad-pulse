@@ -4,6 +4,7 @@
  *
 */
 //% color=#AA5585 weight=46 icon="\uf2bb"
+//% advanced=true
 namespace info {
 
     enum Visibility {

@@ -24,13 +24,11 @@ namespace config {
 	export const PIN_P14 = DAL.PB_4; // pwm
 	export const PIN_P15 = DAL.PB_5; // pwm
 	export const PIN_P16 = DAL.PB_12; // pwm
-	export const PIN_P19 = DAL.PB_10; // pwm
-	export const PIN_P20 = DAL.PB_11; // pwm
 	
 	
 		
-	export const PIN_SCL = PIN_P19; // pwm
-	export const PIN_SDA = PIN_P20; // pwm
+	export const PIN_SCL = DAL.PB_10; // pwm
+	export const PIN_SDA = DAL.PB_11; // pwm
     // export const PIN_RX = DAL.PA_10; // pwm
     // export const PIN_TX = DAL.PA_9; // pwm
 

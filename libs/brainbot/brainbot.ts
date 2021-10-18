@@ -167,6 +167,21 @@ namespace brainbot {
 		
 		infrared.clearkey(Pins.P8)
 	}
+	
+	/**
+	* button pushed.
+	*/
+	//% blockId=brainbot_infrared received_event
+	//% block="on |%btn| button pressed"
+	export function onPressEvent(btn: RemoteButton, body:Action): void {
+		if (init_ir == false) {
+			infrared.init(Pins.P8)
+			
+			init_ir = true
+		}
+		
+		infrared.onPressEvent(btn, body)
+	}
 
 	
 }

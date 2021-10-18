@@ -1,7 +1,7 @@
 /**
  * infrared remote
  */
-//% color=50 weight=0
+//% color=#311557 weight=80
 //% icon="\uf1eb"
 namespace infrared {
   /**

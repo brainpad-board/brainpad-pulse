@@ -3,38 +3,38 @@
 
     // This line gets patched up by the cloud
     var pxtConfig = {
-    "relprefix": "/brainpad-pulse/",
+    "relprefix": "/",
     "verprefix": "",
-    "workerjs": "/brainpad-pulse/worker.js",
-    "monacoworkerjs": "/brainpad-pulse/monacoworker.js",
+    "workerjs": "/worker.js",
+    "monacoworkerjs": "/monacoworker.js",
     "pxtVersion": "4.3.1",
     "pxtRelId": "",
-    "pxtCdnUrl": "/brainpad-pulse/",
-    "commitCdnUrl": "/brainpad-pulse/",
-    "blobCdnUrl": "/brainpad-pulse/",
-    "cdnUrl": "/brainpad-pulse/",
+    "pxtCdnUrl": "/",
+    "commitCdnUrl": "/",
+    "blobCdnUrl": "/",
+    "cdnUrl": "/",
     "targetVersion": "0.0.0",
     "targetRelId": "",
     "targetUrl": "",
     "targetId": "brainpad",
-    "simUrl": "/brainpad-pulse/simulator.html",
-    "partsUrl": "/brainpad-pulse/siminstructions.html",
-    "runUrl": "/brainpad-pulse/run.html",
-    "docsUrl": "/brainpad-pulse/docs.html",
+    "simUrl": "/simulator.html",
+    "partsUrl": "/siminstructions.html",
+    "runUrl": "/run.html",
+    "docsUrl": "/docs.html",
     "isStatic": true
 };
 
     var scripts = [
-        "/brainpad-pulse/highlight.js/highlight.pack.js",
-        "/brainpad-pulse/bluebird.min.js",
-        "/brainpad-pulse/semantic.js",
-        "/brainpad-pulse/marked/marked.min.js",
-        "/brainpad-pulse/target.js",
-        "/brainpad-pulse/pxtembed.js"
+        "/highlight.js/highlight.pack.js",
+        "/bluebird.min.js",
+        "/semantic.js",
+        "/marked/marked.min.js",
+        "/target.js",
+        "/pxtembed.js"
     ]
 
     if (typeof jQuery == "undefined")
-        scripts.unshift("/brainpad-pulse/jquery.js")
+        scripts.unshift("/jquery.js")
 
     var pxtCallbacks = []
 

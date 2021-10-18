@@ -1,8 +1,9 @@
 /**
  * Game transitions and dialog
  **/
-//% color=#008272 weight=50 icon="\uf111"
+//% color=#008272 weight=50 icon="\uf11b"
 //% groups='["Gameplay", "Prompt"]'
+//% advanced=true
 namespace game {
     /**
      * Determins if diagnostics are shown

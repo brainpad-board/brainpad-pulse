@@ -1,6 +1,6 @@
 {
     "name": "braingamer",
-    "description": "BrainGamer driver", 
+    "description": "A MakeCode package to use BrainGamer", 
 	"icon": "docs/static/libs/braingamer.png",	
     "files": [
         "braingamer.ts"

@@ -20,12 +20,10 @@
     "screen": "file:../screen",
     "display": "file:../display",
 	"led": "file:../led",
-	"neopixel": "file:../neopixel",
 	"game": "file:../game",		
 	"controller": "file:../controller",	
-	"animation": "file:../animation",	
-	"sonar": "file:../sonar",	
-	"infrared": "file:../infrared"
+	"animation": "file:../animation"
+
   },
   "palette": [
     "#000000",

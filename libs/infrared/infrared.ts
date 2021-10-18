@@ -1,26 +1,38 @@
 /**
- * IR remote
+ * infrared remote
  */
-//% color=50 weight=0
+//% color=#0000ff weight=80
 //% icon="\uf1eb"
-namespace IR {
+namespace infrared {
   /**
   * initialization
   */
   //% blockId=ir_init
   //% block="connect ir receiver to %pin"
-  //% shim=IR::init
+  //% shim=infrared::init
   export function init(pin: Pins): void {
     return
   }
 
   /**
+  * read last key
+  */
+  //% blockId=ir_read_last_key
+  //% block="read last key from %pin"
+  //% shim=infrared::readkey
+  export function readkey(pin: Pins): number {
+    return 100
+  }
+  
+  /**
   * button pushed.
   */
   //% blockId=ir_received_event
   //% block="on |%btn| button pressed"
-  //% shim=IR::onPressEvent
+  //% shim=infrared::onPressEvent
   export function onPressEvent(btn: RemoteButton, body:Action): void {
     return
   }
+  
+  
 }

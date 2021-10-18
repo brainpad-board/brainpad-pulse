@@ -14,6 +14,7 @@ Frame handlers:
  */
 //% weight=49 color="#4B7BEC" icon="\uf1d8"
 //% groups='["Create", "Properties", "Overlaps", "Collisions", "Lifecycle"]'
+//% advanced=true
 namespace sprites {
 
     /**

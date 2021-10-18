@@ -2,9 +2,9 @@
 
 
 
-    //% color=50 weight=80
-    //% icon="\uf1eb"
-declare namespace IR {
+//% color=#0000ff weight=80
+//% icon="\uf1eb"
+declare namespace infrared {
 }
 
 // Auto-generated. Do not edit. Really.

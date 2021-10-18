@@ -1,4 +1,4 @@
-//% color="#311557"
+//% color="#0000ff"
 namespace infrared {
 
 }

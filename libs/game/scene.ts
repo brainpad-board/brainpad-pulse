@@ -2,6 +2,7 @@
  * Control the background, tiles and camera
  */
 //% groups='["Background", "Tiles", "Camera"]'
+//% advanced=true
 namespace scene {
     export enum Flag {
         NeedsSorting = 1 << 1,

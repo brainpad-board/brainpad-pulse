@@ -1,7 +1,7 @@
 /**
  * infrared remote
  */
-//% color=#311557 weight=80
+//% color=#0000ff weight=80
 //% icon="\uf1eb"
 namespace infrared {
   /**
@@ -15,6 +15,16 @@ namespace infrared {
   }
 
   /**
+  * read last key
+  */
+  //% blockId=ir_read_last_key
+  //% block="read last key from %pin"
+  //% shim=infrared::readkey
+  export function readkey(pin: Pins): number {
+    return 100
+  }
+  
+  /**
   * button pushed.
   */
   //% blockId=ir_received_event
@@ -23,4 +33,6 @@ namespace infrared {
   export function onPressEvent(btn: RemoteButton, body:Action): void {
     return
   }
+  
+  
 }

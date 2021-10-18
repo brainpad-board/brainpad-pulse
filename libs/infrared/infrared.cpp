@@ -93,6 +93,17 @@ namespace infrared {
     rx = new ReceiverIR((PinName)pin);
 	rx->onReceived = &onReceivable;
     tsb.start(); //interrupt timer for debounce
+	buf[0] = 100;
+
+  }
+  
+  //%
+  int readkey(Pins pin){
+	int key = buf[0];
+	
+	buf[0] = 100; // reset key
+			
+    return key;
 
   }
 

@@ -2,7 +2,7 @@
 
 
 
-//% color=#311557 weight=80
+//% color=#0000ff weight=80
 //% icon="\uf1eb"
 declare namespace infrared {
 }

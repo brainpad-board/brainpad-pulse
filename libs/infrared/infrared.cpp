@@ -54,7 +54,7 @@ enum class RemoteButton {
   Nine = 26
 };
 
-namespace IR { 
+namespace infrared { 
 
   map<RemoteButton, vA> actions;
   map<RemoteButton, uint32_t> lastact;

@@ -10,7 +10,8 @@ enum GroundSensor {
 //% block="BrainBot"
 //% weight=70 icon="\uf185" color=#EC7505
 namespace brainbot {
-    /**
+    let init_ir: boolean = false
+	/**
      * Move
      */
     //% blockId=brainbot_move block="Move left speed %leftspeed right speed %rightspeed"
@@ -144,6 +145,17 @@ namespace brainbot {
 							) ;
 		return distance;
     } 
+	
+	//% blockId=brainbot_infrared block="read last key"
+	export function ReadLastKey(): number {		
+		if (init_ir == false) {
+			infrared.init(Pins.P8)
+			
+			init_ir = true
+		}
+		
+		return infrared.readkey(Pins.P8)
+	}
 
 	
 }

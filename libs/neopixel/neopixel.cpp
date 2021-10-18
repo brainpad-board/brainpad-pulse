@@ -11,14 +11,8 @@
 
 #define WS2812_TICK_4_3 8
 
-
-// static uint16_t ws2812_tick_one = WS2812_TICK_ONE;
-// static uint16_t ws2812_tick_zero = WS2812_TICK_ZERO;
-
-// void WS2812_Reset() {
-    // ws2812_tick_one = WS2812_TICK_ONE;
-    // ws2812_tick_zero = WS2812_TICK_ZERO;
-// }
+#define LOCK() uint32_t stateIrq = target_state_irq(); target_disable_irq()
+#define UNLOCK() if ((stateIrq & 1) == 0) __enable_irq()
 
 #pragma GCC push_options
 #pragma GCC optimize ("O2")
@@ -80,7 +74,7 @@ namespace neopixel {
         uint8_t data;
 		
 
-		target_disable_irq();
+		LOCK();
 		for (int32_t i = 0; i < size; i++) {
 			data = buffer8[i];
 
@@ -93,7 +87,7 @@ namespace neopixel {
 				}
 			}
 		}
-        target_enable_irq();
+        UNLOCK();
 
        
 

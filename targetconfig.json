@@ -36,7 +36,11 @@
   ],
   "galleries": {
 
-    "OnBoard Components": "onboard",
-    "Coding": "coding"   
+    "Basics": "basics",
+    "Display": "display",
+    "Games": "games",
+    "BrainBot": "brainbot",
+    "Circuits": "circuits",
+    "Blocks": "blocks"   
   }
 }

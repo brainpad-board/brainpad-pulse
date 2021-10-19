@@ -1,60 +1,60 @@
-# OnBoard
+# Circuits
 
-## Onboard Components
+## Programming Circuits
 
 Step by step guide to coding your @boardname@.
 
 ```codecard
 [
 {
-  "name": "New? Try This First",
-  "description": "In this tutorial, we will use the BrainPad's onboard LED",
+  "name": "Using Digital BrainClips",
+  "description": "In this tutorial, we will cover the BrainClips that use Digital signals",
   "cardType": "tutorial",
-  "label": "LED",
+  "label": "Digital Clips",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/led.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Play a Song",
-  "description": "In this tutorial, we will use the BrainPad's buzzer to create different sounds",
+  "name": "Using Analog BrainClips",
+  "description": "In this tutorial, we will cover the BrainClips that use Analog signals. ",
   "cardType": "tutorial",
-  "label": "Buzzer",
+  "label": "Analog Clips",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/buzzer.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Showing Images",
-  "description": "In this tutorial, we will use the BrainPad's display to show a series images in a simple animation",
+  "name": "Using Other BrainClips",
+  "description": "In this tutorial, we will cover BrainClips that don't use Digital or Analog",
   "cardType": "tutorial",
-  "label": "Display",
+  "label": "Other Clips",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/display.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 }
 , 
 {
-  "name": "BrainPad Motion",
-  "description": "Using the BrainPad's built in Accelerometer",
+  "name": "Using BrainPower",
+  "description": "Using the BrainPower to create wearable projects",
   "cardType": "tutorial",
-  "label": "Accelerometer",
+  "label": "BrainPower",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/accel.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
   
 }
 ,
 {
-  "name": "A & B buttons",
-  "description": "Using the BrainPad Pulses Buttons",
+  "name": "Using BrainTronics",
+  "description": "Using the BrainTronics to expand your learning",
   "cardType": "tutorial",
-  "label": "A & B Buttons",
+  "label": "BrainTronics",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 
 }
 ]

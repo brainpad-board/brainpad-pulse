@@ -1,60 +1,60 @@
-# OnBoard
+# Games
 
-## Onboard Components
+## Making Games
 
 Step by step guide to coding your @boardname@.
 
 ```codecard
 [
 {
-  "name": "New? Try This First",
-  "description": "In this tutorial, we will use the BrainPad's onboard LED",
+  "name": "Controlling Your Sprites",
+  "description": "In this tutorial, we'll cover moving your sprites",
   "cardType": "tutorial",
-  "label": "LED",
+  "label": "Moving Sprites",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/led.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Play a Song",
-  "description": "In this tutorial, we will use the BrainPad's buzzer to create different sounds",
+  "name": "Detecting Sprite Collision",
+  "description": "In this tutorial, we show you how to detect collision between Sprites",
   "cardType": "tutorial",
-  "label": "Buzzer",
+  "label": "Collision",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/buzzer.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Showing Images",
-  "description": "In this tutorial, we will use the BrainPad's display to show a series images in a simple animation",
+  "name": "Adding Scoring & Lives",
+  "description": "In this tutorial, we show you how to add scoring and lives to game",
   "cardType": "tutorial",
-  "label": "Display",
+  "label": "Scoring",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/display.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 }
 , 
 {
-  "name": "BrainPad Motion",
-  "description": "Using the BrainPad's built in Accelerometer",
+  "name": "Creating Game World",
+  "description": "Creating scrollable tilemaps for your games",
   "cardType": "tutorial",
-  "label": "Accelerometer",
+  "label": "Tile Maps",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/accel.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
   
 }
 ,
 {
-  "name": "A & B buttons",
-  "description": "Using the BrainPad Pulses Buttons",
+  "name": "Using the BrainGamer",
+  "description": "Using the BrainGamer to control your game",
   "cardType": "tutorial",
-  "label": "A & B Buttons",
+  "label": "BrainGamer",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 
 }
 ]

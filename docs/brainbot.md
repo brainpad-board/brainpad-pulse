@@ -1,60 +1,60 @@
-# OnBoard
+# BrainBot
 
-## Onboard Components
+## BrainPad BrainBot
 
 Step by step guide to coding your @boardname@.
 
 ```codecard
 [
 {
-  "name": "New? Try This First",
-  "description": "In this tutorial, we will use the BrainPad's onboard LED",
+  "name": "Making the BrainBot Move",
+  "description": "In this tutorial, show you how to move the BrainBot",
   "cardType": "tutorial",
-  "label": "LED",
+  "label": "Dance",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/led.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Play a Song",
-  "description": "In this tutorial, we will use the BrainPad's buzzer to create different sounds",
+  "name": "BrainBot Distance Sensor",
+  "description": "In this tutorial, we'll use implement the BrainBot Distance Sensor",
   "cardType": "tutorial",
-  "label": "Buzzer",
+  "label": "Sonar",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/buzzer.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 } 
 ,
 {
-  "name": "Showing Images",
-  "description": "In this tutorial, we will use the BrainPad's display to show a series images in a simple animation",
+  "name": "Following a Line",
+  "description": "In this tutorial, we will use the BrainBot line sensor",
   "cardType": "tutorial",
-  "label": "Display",
+  "label": "Line Detect",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/display.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 }
 , 
 {
-  "name": "BrainPad Motion",
+  "name": "BrainBot Lights & Sound",
   "description": "Using the BrainPad's built in Accelerometer",
   "cardType": "tutorial",
-  "label": "Accelerometer",
+  "label": "Light Show",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/accel.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
   
 }
 ,
 {
-  "name": "A & B buttons",
-  "description": "Using the BrainPad Pulses Buttons",
+  "name": "BrainBot IR Remote",
+  "description": "Using the IR remote to control the BrainBot",
   "cardType": "tutorial",
-  "label": "A & B Buttons",
+  "label": "Remote Control",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/buttons.jpg"
+  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
 
 }
 ]

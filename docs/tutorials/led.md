@@ -22,7 +22,7 @@ Let's drag a new block into the ``||loops:forever||`` block. In our block menu u
 
  ```blocks
 forever(function () {
-    led.on()
+    led.setled(true)
 })
 ```
 
@@ -32,7 +32,7 @@ Let's make it blink! To make it blink we first need to add a pause just under th
 
  ```blocks
 forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
 })
 ```
@@ -43,9 +43,9 @@ We next to an LED OFF block just below the ``||loops:pause||`` block.
 
  ```blocks
 forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
-    led.off()
+    led.setled(false)
 })
 ```
 
@@ -55,9 +55,9 @@ The LED doesn't quite blink properly yet, we need to add one last pause after we
 
  ```blocks
 forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
-    led.off()
+    led.setled(false)
     pause(1000)
 })
 ```

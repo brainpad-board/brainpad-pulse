@@ -102,7 +102,7 @@ namespace brainbot {
 		let deviceAddress = 0x1;		
 		let data: number[] = [0x1, red, green, blue ];
 	
-		for (let i = 0; i <5 ; i++) {
+		for (let i = 0; i <4 ; i++) {
 			pins.i2cWriteNumber(
 					deviceAddress,
 					data[i],

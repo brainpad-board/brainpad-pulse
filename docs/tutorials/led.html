@@ -537,31 +537,31 @@
          
     <div class="ui text">
         <h1 id="onboard-led">Onboard LED</h1><h2 id="step-1-unplugged">Step 1 </h2><p>Let’s start by doing something simple. Let’s light up the LED on the BrainPad.</p>
-<p><img class="ui centered image" src="docs/static/images/led.jpg" alt="BrainPad buzzer image"></p>
+<p><img class="ui centered image" src="docs/static/images/led.jpg" alt="BrainPad led image"></p>
 <h2 id="step-2-unplugged">Step 2 </h2><p>You’ll notice the project begins with a <code>||loops:forever||</code> block. Anything we place inside this block will keep running forever in the program.</p>
 <pre><code class="lang-blocks">forever(function () {
 
 })</code></pre>
 <h2 id="step-3-fullscreen">Step 3 </h2><p>Let’s drag a new block into the <code>||loops:forever||</code> block. In our block menu under LED grab the led on block and drag it into the <code>||loops:forever||</code> block. You’ll see the LED in the simulator is now on. </p>
 <pre><code class="lang-blocks">forever(function () {
-    led.on()
+    led.setled(true)
 })</code></pre>
 <h2 id="step-4-fullscreen">Step 4 </h2><p>Let’s make it blink! To make it blink we first need to add a pause just under the LED block. Let’s set the pause to 1000ms, which is 1 second.</p>
 <pre><code class="lang-blocks">forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
 })</code></pre>
 <h2 id="step-5-fullscreen">Step 5 </h2><p>We next to an LED OFF block just below the <code>||loops:pause||</code> block.</p>
 <pre><code class="lang-blocks">forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
-    led.off()
+    led.setled(false)
 })</code></pre>
 <h2 id="step6-fullscreen">Step6 </h2><p>The LED doesn’t quite blink properly yet, we need to add one last pause after we turn the led off and wait 1 second before we turn it back on. Once added we now have a properly blinking LED. </p>
 <pre><code class="lang-blocks">forever(function () {
-    led.on()
+    led.setled(true)
     pause(1000)
-    led.off()
+    led.setled(false)
     pause(1000)
 })</code></pre>
 

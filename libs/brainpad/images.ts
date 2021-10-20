@@ -44,9 +44,7 @@ namespace images {
     //% fixedInstance jres
     export const floppy1 = image.ofBuffer(hex``);
     //% fixedInstance jres
-    export const floppy2 = image.ofBuffer(hex``);
-    //% fixedInstance jres
-    export const frown = image.ofBuffer(hex``);
+    export const floppy2 = image.ofBuffer(hex``);  
     //% fixedInstance jres
     export const globe = image.ofBuffer(hex``);
     //% fixedInstance jres
@@ -61,6 +59,8 @@ namespace images {
     export const iSign = image.ofBuffer(hex``);
     //% fixedInstance jres
     export const smile = image.ofBuffer(hex``);
+    //% fixedInstance jres
+    export const frown = image.ofBuffer(hex``);
     //% fixedInstance jres
     export const stegosaurus = image.ofBuffer(hex``);
     //% fixedInstance jres
@@ -83,12 +83,4 @@ namespace images {
     export const Jumper3 = image.ofBuffer(hex``);
     //% fixedInstance jres
     export const Jumper4 = image.ofBuffer(hex``);
-    //% fixedInstance jres
-    export const Barrel1 = image.ofBuffer(hex``);
-    //% fixedInstance jres
-    export const Barrel2 = image.ofBuffer(hex``);
-    //% fixedInstance jres
-    export const Barrel3 = image.ofBuffer(hex``);
-    //% fixedInstance jres
-    export const Barrel4 = image.ofBuffer(hex``);
 }

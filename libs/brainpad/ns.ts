@@ -28,7 +28,7 @@ namespace led {
 
 }
 
-//% color="#d65cd6"
+//% color="#D400D4"
 namespace input {
     
 }

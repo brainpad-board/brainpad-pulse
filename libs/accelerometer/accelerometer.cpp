@@ -148,7 +148,7 @@ namespace input {
 //% gesture.fieldEditor="gridpicker"
 //% gesture.fieldOptions.width=220
 //% gesture.fieldOptions.columns=3
-//% weight=92 blockGap=12
+//% weight=98 blockGap=12
 void onGesture(Gesture gesture, Action body) {
     auto acc = &getWAccel()->acc;
     acc->updateSample();
@@ -198,10 +198,7 @@ int acceleration(Dimension dimension) {
  * The pitch or roll of the device, rotation along the ``x-axis`` or ``y-axis``, in degrees.
  * @param kind TODO
  */
-//% help=input/rotation
-//% blockId=device_get_rotation block="rotation (°)|%NAME"
-//% parts="accelerometer"
-//% group="More" weight=38
+//% 
 int rotation(Rotation kind) {
     switch (kind) {
     case Rotation::Pitch:

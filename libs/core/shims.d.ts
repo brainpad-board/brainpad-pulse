@@ -99,7 +99,7 @@ declare interface DigitalInOutPin {
      * Register code to run when a pin event occurs. 
      */
     //% help=pins/on-event weight=20 blockGap=8
-    //% blockId=pinsonevent block="on|pin %pin|%event"
+    //% blockId=pinsonevent block="on|pin %pin|pulsed %event"
     //% blockNamespace=pins
     //% pin.fieldEditor="gridpicker"
     //% pin.fieldOptions.width=220

@@ -7,14 +7,16 @@ enum class PulseValue {
     Low = DEVICE_PIN_EVT_PULSE_LO
 };
 
-enum class PinEvent {
+enum class PinEvent {	
+/*
     //% block="pulse high"
     PulseHigh = DEVICE_PIN_EVT_PULSE_HI,
     //% block="pulse low"
-    PulseLow = DEVICE_PIN_EVT_PULSE_LO,
-    //% block="rise"
+    PulseLow = DEVICE_PIN_EVT_PULSE_LO,	
+*/	
+    //% block="high"
     Rise = DEVICE_PIN_EVT_RISE,
-    //% block="fall"
+    //% block="low"
     Fall = DEVICE_PIN_EVT_FALL,
 };
 
@@ -80,7 +82,7 @@ void onPulsed(DigitalInOutPin pin, PulseValue pulse, Action body) {
 * Register code to run when a pin event occurs. 
 */
 //% help=pins/on-event weight=20 blockGap=8
-//% blockId=pinsonevent block="on|pin %pin|%event"
+//% blockId=pinsonevent block="on|pin %pin|pulsed %event"
 //% blockNamespace=pins
 //% pin.fieldEditor="gridpicker"
 //% pin.fieldOptions.width=220
@@ -88,11 +90,11 @@ void onPulsed(DigitalInOutPin pin, PulseValue pulse, Action body) {
 //% parts="slideswitch" trackArgs=0
 void onEvent(DigitalInOutPin pin, PinEvent event, Action body) {
     switch(event) {
-        case PinEvent::PulseHigh:
-        case PinEvent::PulseLow:
-            pin->eventOn(DEVICE_PIN_EVENT_ON_PULSE);
-            registerWithDal(pin->id, (int)event, body);
-            break;
+        // case PinEvent::PulseHigh:
+        // case PinEvent::PulseLow:
+            // pin->eventOn(DEVICE_PIN_EVENT_ON_PULSE);
+            // registerWithDal(pin->id, (int)event, body);
+            // break;
         case PinEvent::Rise:
         case PinEvent::Fall:
             pin->eventOn(DEVICE_PIN_EVENT_ON_EDGE);

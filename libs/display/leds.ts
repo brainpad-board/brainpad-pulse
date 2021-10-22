@@ -10,6 +10,7 @@ namespace display {
     //% imageLiteralRows=3
 	//% async
 	//% color=#1E90FF	
+	//% blockHidden=true
     export function __setMatrixLeds(leds: string, interval:number = 400): void {		
 		let ledMatrix: string = "";
 		
@@ -61,7 +62,8 @@ namespace display {
      * TODO: describe your function here
      */
 	//* blockId=led_clear_matrix 
-    //% block="Clear leds"    
+    //% block="Clear leds"
+	//% blockHidden=true    
     export function __ClearMatrixLeds(): void {
 		screen.fill(0);
 		

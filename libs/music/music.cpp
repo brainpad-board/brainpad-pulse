@@ -49,12 +49,14 @@ void setOutput(SoundOutputDestination out) {
 //% group="Tone"
 void playTone(int frequency, int ms) {
   auto pitchPin = lookupPin(
-      soundOutputDestination == SoundOutputDestination::Speaker ? PB_8 : PA_8);
+      soundOutputDestination == SoundOutputDestination::Speaker ? PB_8 : PA_5);
 
   if (frequency <= 0) {
     pitchPin->setAnalogValue(0);
   } else {
-    pitchPin->setAnalogValue(512);
+    //pitchPin->setAnalogValue(512);
+	auto v = Scale(vol, 0, 255, 0, 1024);
+	pitchPin->setAnalogValue(v);
     pitchPin->setAnalogPeriodUs(1000000 / frequency);
     if (ms > 0) {
       int d = max(1, ms - NOTE_PAUSE); // allow for short rest
@@ -78,9 +80,9 @@ void playTone(int frequency, int ms) {
 //% group="Volume"
 //% blockGap=8
 void setVolume(int volume) {
-	auto pitchPin = lookupPin(soundOutputDestination == SoundOutputDestination::Speaker ? PB_8 : PA_8);
+	auto pitchPin = lookupPin(soundOutputDestination == SoundOutputDestination::Speaker ? PB_8 : PA_5);
 	
-	auto v = Scale(volume, 0, 255, 0, 1024);
+	auto v = Scale(volume, 0, 255, 0, 512);
 	pitchPin->setAnalogValue(v);
 	
 	vol = volume;

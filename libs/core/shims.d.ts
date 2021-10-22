@@ -65,7 +65,7 @@ declare interface DigitalInOutPin {
     //% name.fieldEditor="gridpicker"
     //% name.fieldOptions.width=220
     //% name.fieldOptions.columns=4 shim=DigitalInOutPinMethods::digitalRead
-    digitalRead(): boolean;
+    digitalRead(): int32;
 
     /**
      * Set a pin or connector value to either 0 or 1.

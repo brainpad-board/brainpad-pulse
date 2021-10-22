@@ -39,8 +39,8 @@ namespace DigitalInOutPinMethods {
 //% name.fieldEditor="gridpicker"
 //% name.fieldOptions.width=220
 //% name.fieldOptions.columns=4
-bool digitalRead(DigitalInOutPin name) {
-    return PINOP(getDigitalValue()) != 0;
+int digitalRead(DigitalInOutPin name) {
+    return PINOP(getDigitalValue());
 }
 
 /**

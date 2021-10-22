@@ -29,6 +29,7 @@ namespace display {
     //% blockId=displayshowstring block="show string %text|at line %line"
     //% weight=98 inlineInputMode="inline" blockGap=8
     //% help=display/show-string
+	//% group="Screen"
     export function showString(text: string, line: number) {
         // line indexing starts at 1.
         line = (line - 1) >> 0;
@@ -50,6 +51,7 @@ namespace display {
     //% weight=96 inlineInputMode="inline" blockGap=8
     //% help=display/show-number
     //% line.min=1 line.max=10
+	//% group="Screen"
     export function showNumber(value: number, line: number) {
         showString("" + value, line);
     }
@@ -63,6 +65,7 @@ namespace display {
     //% weight=96 inlineInputMode="inline" blockGap=8
     //% help=display/show-value
     //% line.min=1 line.max=10
+	//% group="Screen"
     export function showValue(name: string, value: number, line: number) {
         value = Math.round(value * 1000) / 1000;
         showString((name ? name + ": " : "") + value, line);
@@ -74,6 +77,7 @@ namespace display {
     //% blockId=displayclear block="clear display"
     //% weight=90
     //% help=display/clear
+	//% group="Screen"
     export function clear() {
         screen.fill(0)
     }

@@ -94,6 +94,7 @@ namespace music {
     //% blockId=music_play_sound block="play sound %sound=music_sounds"
     //% parts="headphone"
     //% weight=95 blockGap=8
+	//% group="Sound"
     export function playSound(sound: string) {
         const queue = soundQueue();
         const melody = new Melody(sound);
@@ -114,6 +115,7 @@ namespace music {
     //% blockId=music_play_sound_until_done block="play sound %sound=music_sounds|until done"
     //% parts="headphone"
     //% weight=94 blockGap=8
+	//% group="Sound"
     export function playSoundUntilDone(sound: string) {
         const queue = soundQueue();
         const melody = new Melody(sound);
@@ -126,11 +128,12 @@ namespace music {
     //% help=music/stop-all-sounds
     //% blockId=music_stop_all_sounds block="stop all sounds"
     //% weight=93
+	//% group="Volume"
     export function stopAllSounds() {
         const queue = soundQueue();
         queue.cancel();
         music.rest(1);
-    }
+    }	
 
     class Melody {
         static freqTable: number[];

@@ -33,7 +33,7 @@ namespace input {
     
 }
 
-//% color="#F55D3E"
+//% color="#E63022"
 namespace music {
 
 }

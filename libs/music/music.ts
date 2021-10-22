@@ -126,6 +126,7 @@ enum BeatFraction {
     Breve = 64
 }
 
+//% groups='["Sound", "Tone", "Volume", "Tempo"]'
 namespace music {
 
     let beatsPerMinute: number;
@@ -135,38 +136,41 @@ namespace music {
     * @param frequency pitch of the tone to play in Hertz (Hz), eg: Note.C
     */
     //% help=music/ring-tone
-    //% blockId=music_ring block="ring tone|at %note=device_note"
+    //% blockId=music_ring block="ring tone (Hz) %note=device_note"
     //% parts="headphone" trackArgs=0
     //% blockNamespace=music inBasicCategory=true
     //% weight=75 blockGap=8
+	//% group="Tone"
     export function ringTone(frequency: number) {
         playTone(frequency, 0);
     }
 
     /**
     * Rest, or play silence, for some time (in milleseconds).
-    * @param ms rest duration in milliseconds (ms), eg: BeatFraction.Half
+    * @param ms rest duration in milliseconds (ms), eg: BeatFraction.Whole
     */
     //% help=music/rest
     //% blockId=music_rest block="rest|for %duration=device_beat"
     //% parts="headphone" trackArgs=0
     //% blockNamespace=music
     //% weight=74
+	//% group="Tone"
     export function rest(ms: number) {
         playTone(0, Math.max(ms, 20));
     }
-
+	
     function init() {
         if (!beatsPerMinute) beatsPerMinute = 120;
     }
 
     /**
      * Return the duration of a beat in milliseconds (the beat fraction).
-     * @param fraction the fraction of the current whole note, eg: BeatFraction.Half
+     * @param fraction the fraction of the current whole note, eg: BeatFraction.Whole
      */
     //% help=music/beat
     //% blockId=device_beat block="%fraction|beat"
-    //% weight=9 blockGap=8
+    //% weight=65 blockGap=8
+	//% group="Tempo"
     export function beat(fraction?: BeatFraction): number {
         init();
         if (fraction == null) fraction = BeatFraction.Whole;
@@ -189,6 +193,7 @@ namespace music {
     //% help=music/tempo
     //% blockId=device_tempo block="tempo (bpm)"
     //% weight=64
+	//% group="Tempo"
     export function tempo(): number {
         init();
         return beatsPerMinute;
@@ -199,8 +204,9 @@ namespace music {
      * @param bpm The change in beats per minute to the tempo, eg: 20
      */
     //% help=music/change-tempo-by weight=37
-    //% blockId=device_change_tempo block="change tempo by %value|(bpm)"
-    //% weight=66 blockGap=8
+    //% blockId=device_change_tempo block="change tempo by (bpm) %value"
+    //% weight=67 blockGap=8
+	//% group="Tempo"
     export function changeTempoBy(bpm: number): void {
         init();
         setTempo(beatsPerMinute + bpm);
@@ -211,9 +217,10 @@ namespace music {
      * @param bpm The new tempo in beats per minute, eg: 120
      */
     //% help=music/set-tempo
-    //% blockId=device_set_tempo block="set tempo to %value|(bpm)"
+    //% blockId=device_set_tempo block="set tempo to (bpm) %value"
     //% bpm.min=4 bpm.max=400
-    //% weight=65 blockGap=8
+    //% weight=66 blockGap=8
+	//% group="Tempo"
     export function setTempo(bpm: number): void {
         init();
         if (bpm > 0) {

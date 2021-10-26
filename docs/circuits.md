@@ -12,8 +12,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Digital Clips",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/digital.jpg"
 } 
 ,
 {
@@ -22,8 +22,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Analog Clips",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/analog.jpg"
 } 
 ,
 {
@@ -32,8 +32,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Other Clips",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/other.jpg"
 }
 , 
 {
@@ -42,8 +42,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "BrainPower",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/brainpower.jpg"
   
 }
 ,
@@ -53,8 +53,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "BrainTronics",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/braintronics.jpg"
 
 }
 ]

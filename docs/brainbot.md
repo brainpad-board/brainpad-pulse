@@ -7,13 +7,13 @@ Step by step guide to coding your @boardname@.
 ```codecard
 [
 {
-  "name": "Making the BrainBot Move",
+  "name": "Moving the BrainBot",
   "description": "In this tutorial, show you how to move the BrainBot",
   "cardType": "tutorial",
   "label": "Dance",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/led",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/brainbot",
+  "imageUrl":"/static/cp/projects/thumb/movingBrainBot.jpg"
 } 
 ,
 {
@@ -22,8 +22,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Sonar",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/buzzer",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/sonar.jpg"
 } 
 ,
 {
@@ -32,8 +32,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Line Detect",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/display",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/line.jpg"
 }
 , 
 {
@@ -42,8 +42,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Light Show",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/accelerometer",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/lightshow.jpg"
   
 }
 ,
@@ -53,8 +53,8 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Remote Control",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/a_b_buttons",
-  "imageUrl":"/static/cp/projects/thumb/comingSoon.jpg"
+  "url":"/tutorials/comingSoon",
+  "imageUrl":"/static/cp/projects/thumb/remote.jpg"
 
 }
 ]

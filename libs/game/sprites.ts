@@ -13,7 +13,7 @@ Frame handlers:
  * Sprites on screen
  */
 //% weight=49 color="#4B7BEC" icon="\uf1d8"
-//% groups='["Create", "Properties", "Overlaps", "Collisions", "Lifecycle"]'
+//% groups='["Create", "Control", "Properties", "Overlaps", "Collisions", "Lifecycle"]'
 //% advanced=true
 namespace sprites {
 
@@ -41,6 +41,24 @@ namespace sprites {
 
         return sprite
     }
+	
+	 /**
+     * Control a sprite using the direction buttons from the controller. Note that this
+     * control will take over the vx and vy of the sprite and overwrite any changes
+     * made unless a 0 is passed.
+     *
+     * @param sprite The Sprite to control
+     * @param vx The velocity used for horizontal movement when left/right is pressed
+     * @param vy The velocity used for vertical movement when up/down is pressed
+     */
+	//% group="Control"
+	//% blockId="sprite_control_sprite" block="control sprite $sprite=variables_get(mySprite) with vx $vx vy $vy"
+    //% weight=100
+    //% vx.defl=100 vy.defl=100
+    //% help=controller/control-sprite
+    export function controlSprite(sprite: Sprite, vx: number, vy: number) {
+		controller.controlSprite(sprite, vx, vy);
+	}
 
     /**
      * Return an array of all sprites of the given kind.

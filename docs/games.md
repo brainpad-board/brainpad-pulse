@@ -32,7 +32,7 @@ Step by step guide to coding your @boardname@.
   "cardType": "tutorial",
   "label": "Moving",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/moving",
+  "url":"/tutorials/comingSoon",
   "imageUrl":"/static/cp/projects/thumb/moving.jpg"
 }
 ,

@@ -10,9 +10,9 @@ Step by step guide to coding your @boardname@.
   "name": "Using Digital BrainClips",
   "description": "In this tutorial, we will cover the BrainClips that use Digital signals",
   "cardType": "tutorial",
-  "label": "Digital Clips",
+  "label": "Digital Write",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
+  "url":"/tutorials/digital_write",
   "imageUrl":"/static/cp/projects/thumb/digital.jpg"
 } 
 ,
@@ -20,9 +20,29 @@ Step by step guide to coding your @boardname@.
   "name": "Using Analog BrainClips",
   "description": "In this tutorial, we will cover the BrainClips that use Analog signals. ",
   "cardType": "tutorial",
-  "label": "Analog Clips",
+  "label": "Analog Write",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
+  "url":"/tutorials/analog_write",
+  "imageUrl":"/static/cp/projects/thumb/analog.jpg"
+} 
+,
+{
+  "name": "Using Digital BrainClips",
+  "description": "In this tutorial, we will cover the BrainClips that use Digital signals",
+  "cardType": "tutorial",
+  "label": "Digital Read",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/digital_read",
+  "imageUrl":"/static/cp/projects/thumb/digital.jpg"
+} 
+,
+{
+  "name": "Using Analog BrainClips",
+  "description": "In this tutorial, we will cover the BrainClips that use Analog signals. ",
+  "cardType": "tutorial",
+  "label": "Analog Read",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/analog_read",
   "imageUrl":"/static/cp/projects/thumb/analog.jpg"
 } 
 ,

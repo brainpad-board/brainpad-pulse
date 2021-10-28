@@ -141,7 +141,7 @@
     "cloud": {
         "workspace": false,
         "packages": true,
-        "sharing": true,
+        "sharing": false,
         "publishing": true,
         "importing": false,
         "preferredPackages": [],

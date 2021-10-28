@@ -76,7 +76,7 @@ var pxsim;
     })(PinName = pxsim.PinName || (pxsim.PinName = {}));
     var paletteSrc = [
         "#000000",
-        "#00FFFF",
+        "#FFFFFF",
     ];
     var DalBoard = /** @class */ (function (_super) {
         __extends(DalBoard, _super);

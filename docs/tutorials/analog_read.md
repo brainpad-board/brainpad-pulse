@@ -1,42 +1,43 @@
 # Analog Read
 
 ## Step 1 @unplugged
-This lesson uses the BrainClips kit. Analog clips can either read or write. In this lesson we'll cover analog write using the RGB LED.
+This lesson uses the BrainClips kit. We're going to demonstrate how to read an analog value from the Rocker Module
 
-![BrainClip RGB Module](../static/images/rgbmodule.jpg)
+![BrainClip RGB Module](../static/images/rockermodule.jpg)
 
 ## Step 2 @unplugged
-Analog signals, unlike digital signals, has a continuous electrical signal, that can change value over time. A dimmer switch which adjusts the level of a light is an example of how an analog signal works. The switch itself isn't analog but what it demonstrates is. 
+Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to X, P1 to Y, 3V to VCC, GND to GND).
 
-![Digital Signal](../static/images/analog1.jpg)
+ ![Rocker Module wiring diagram](../static/images/clipdiagram3.jpg)
 
 ## Step 3 @unplugged
-We're going to use the same RGB LED module we did in the digital write tutorial. This time rather than turn each of the LEDS inside ON or OFF, we will adjust the RED, GREEN, and BLUE values to make different colors. Just like we did in digital write. Connect the alligator clips as shown in the diagram from the Pulse to the module (P0 to RED, P1 to GREEN, P2 to BLUE, GND to GND).
+While connecting the wires, you may have noticed we connected P0 to X and P1 to Y. The rocker returns both an X and Y signal. The values range from 0 to 1023 for both X & Y
 
- ![RGB Module Wiring Diagram](../static/images/clipdiagram1.jpg)
+ ![Rocker Module XY](../static/images/rockerXY.jpg)
+
+## Step 4 @fullscreen
+Let's display the values of X & Y on the screen when we move the rocker. We need for the BrainPad to constantly read the X and Y. So let's put ``||display:showNumber||`` block inside our ``||loops:forever||`` block 
+
+```blocks
+forever(function () {
+    display.showNumber(0, 1)
+})
+```
 
 ## Step 5 @fullscreen
-Now we're ready to start building our code blocks. Under the ADVANCED tab click on PINS and select the ``||pins:analog write||`` block. You'll notice the ``||pins:analog write||`` blocks can hold a value between 0 to 1023. With 0 being OFF to 1023 being fully ON. Try changing the value and downloading to the BrainPad Pulse to see the results.  
+Finally we just need to grab the ``||pins:analog read||`` block it's found by clicking 'ADVANCED and then 'PINS' Drag it into the ``||display:showNumber||`` block. By default it's already reading P0. Transfer your project to the BrainPad Pulse. Move the joystick on the Rocker and let's see what happens. 
 
- ```blocks
-pins.P0.analogWrite(1023)
+```blocks
+forever(function () {
+    display.showNumber(pins.P0.analogRead(), 1)
+})
+
 ```
 
 ## Step 6 @unplugged
-You may have noticed that changing the value in the block changes the level of intensity of the RED led  
+The values when we aren't touching the rocker are around 500 for X and 500 Y. We could tell our program not to do anything when the Rocker is in this range. 
 
-![RGB Module Wiring Diagram](../static/images/redLed.jpg)
 
-## Step 7 @fullscreen
-Drag in two more of the ``||pins:analog write||`` blocks and change pins to P1 and P2 in the new blocks. Try changing the values inside the blocks and download to the BrainPad to see what kind of colors you can create. The number of possible colors is 1024 to power of 3 or 1,073,741,824 different possible colors. Many of these might look similar but all would be slightly different.
+## Step 7 @unplugged
+You'll also notice it's never exactly one number. This is the nature of an analog signal and the sensitivity of the Rocker. We have to adjust our code for this sensitivity. Code we create would have to read an acceptable range, say between 450 & 550 to tell us when the Rocker isn't moving.
 
- ```blocks
-pins.P0.analogWrite(800)
-pins.P0.analogWrite(50)
-pins.P0.analogWrite(300)
-```
-
-## Step 8 @unplugged
-What colors were you able to create? We now have a better understanding of how many LEDS put together can make images like an LED TV or giant LED billboards.
-
-![LED Billboards](../static/images/billboard.jpg)

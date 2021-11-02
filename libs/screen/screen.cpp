@@ -23,10 +23,11 @@ namespace pxt {
             lastImg = img;
         }
 
-        if (lastImg && lastImg->isDirty()) {
+        // TQD_TODO
+        if (lastImg/* && lastImg->isDirty()*/) {
             if (lastImg->bpp() != 1 || lastImg->width() != LCD_WIDTH || lastImg->height() != LCD_HEIGHT)
                 target_panic(906);
-            lastImg->clearDirty();
+            /*lastImg->clearDirty();*/
             auto display = getWDisplay();
             display->lcd.writeScreenBuffer(lastImg->pix());
         }

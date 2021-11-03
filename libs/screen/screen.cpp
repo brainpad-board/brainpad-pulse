@@ -14,22 +14,37 @@ namespace pxt {
 
     SINGLETON(WDisplay);
 
-    static Image_ lastImg;
+    //static Image_ lastImg;
+	static uint8_t lastImageBuffer[1024];
     //%
     void updateScreen(Image_ img) {
-        if (img && img != lastImg) {
-            decrRC(lastImg);
-            incrRC(img);
-            lastImg = img;
-        }
+        // if (img && img != lastImg) {
+            // decrRC(lastImg);
+            // incrRC(img);
+            // lastImg = img;
+        // }
+		
+		        
+        if (img /*lastImg->isDirty()*/) {
+			uint8_t isDirty = false;
+			uint8_t* pix = img->pix();
 
-        // TQD_TODO
-        if (lastImg/* && lastImg->isDirty()*/) {
-            if (lastImg->bpp() != 1 || lastImg->width() != LCD_WIDTH || lastImg->height() != LCD_HEIGHT)
-                target_panic(906);
-            /*lastImg->clearDirty();*/
-            auto display = getWDisplay();
-            display->lcd.writeScreenBuffer(lastImg->pix());
+			for (int i = 0; i < 1024; i++) {
+				if (lastImageBuffer[i] != pix[i]) {
+					lastImageBuffer[i] = pix[i];
+
+					isDirty = true;
+				}
+			}
+
+			if (isDirty) {
+				
+				if (img->bpp() != 1 || img->width() != LCD_WIDTH || img->height() != LCD_HEIGHT)
+					target_panic(906);
+				/*lastImg->clearDirty();*/
+				auto display = getWDisplay();
+				display->lcd.writeScreenBuffer(lastImageBuffer);
+			}
         }
     }
 

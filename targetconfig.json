@@ -1,0 +1,47 @@
+{
+    "packages": {
+        "approvedOrgs": [
+            "Microsoft",
+            "ghi-electronics"
+        ],
+        "approvedRepos": [
+        ]
+    },
+  "languages": [
+    "en",
+    "ar",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es-ES",
+    "fi",
+    "fr",
+    "hu",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "no",
+    "pt-BR",
+    "pt-PT",
+    "ru",
+    "si-LK",
+    "sk",
+    "sv-SE",
+    "tr",
+    "uk",
+    "zh-CN",
+    "zh-TW"
+  ],
+  "galleries": {
+
+    "Block Basics": "blocks",
+    "On Board Components": "basics",
+    "Display": "display",
+    "Robots - Coming Soon": "brainbot",
+    "Games": "games",
+    "Circuits": "circuits"
+
+  }
+}

@@ -47,7 +47,7 @@ Step by step guide to coding your @boardname@.
 } 
 ,
 {
-  "name": "BrainClip Digital Read",
+  "name": "BrainClip Analog Read",
   "description": "In this tutorial, we will cover the BrainClips that use Analog signals. ",
   "cardType": "tutorial",
   "label": "Analog Read",

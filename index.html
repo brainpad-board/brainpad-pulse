@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="/brainpad-pulse/release.manifest" data-framework="typescript">
+<html lang="en" manifest="/release.manifest" data-framework="typescript">
 
 <head>
     <meta charset="utf-8">
@@ -68,7 +68,7 @@
 <!-- end include appmeta.html -->
 
 
-    <link rel="stylesheet" data-rtl="/brainpad-pulse/rtlsemantic.css" href="/brainpad-pulse/semantic.css" type="text/css">
+    <link rel="stylesheet" data-rtl="/rtlsemantic.css" href="/semantic.css" type="text/css">
 </head>
 
 <body class="main">
@@ -98,38 +98,38 @@
     <script>
         // This line gets patched up by the cloud
         var pxtConfig = {
-    "relprefix": "/brainpad-pulse/",
+    "relprefix": "/",
     "verprefix": "",
-    "workerjs": "/brainpad-pulse/worker.js",
-    "monacoworkerjs": "/brainpad-pulse/monacoworker.js",
-    "gifworkerjs": "/brainpad-pulse/gifjs/gif.worker.js",
-    "serviceworkerjs": "/brainpad-pulse/serviceworker.js",
-    "typeScriptWorkerJs": "/brainpad-pulse/tsworker.js",
+    "workerjs": "/worker.js",
+    "monacoworkerjs": "/monacoworker.js",
+    "gifworkerjs": "/gifjs/gif.worker.js",
+    "serviceworkerjs": "/serviceworker.js",
+    "typeScriptWorkerJs": "/tsworker.js",
     "pxtVersion": "7.3.7",
     "pxtRelId": "localDirRelId",
-    "pxtCdnUrl": "/brainpad-pulse/",
-    "commitCdnUrl": "/brainpad-pulse/",
-    "blobCdnUrl": "/brainpad-pulse/",
-    "cdnUrl": "/brainpad-pulse/",
+    "pxtCdnUrl": "/",
+    "commitCdnUrl": "/",
+    "blobCdnUrl": "/",
+    "cdnUrl": "/",
     "targetVersion": "0.0.0",
     "targetRelId": "",
     "targetUrl": "",
     "targetId": "brainpad",
-    "simUrl": "/brainpad-pulse/simulator.html",
-    "simserviceworkerUrl": "/brainpad-pulse/simulatorserviceworker.js",
-    "simworkerconfigUrl": "/brainpad-pulse/workerConfig.js",
-    "partsUrl": "/brainpad-pulse/siminstructions.html",
-    "runUrl": "/brainpad-pulse/run.html",
-    "docsUrl": "/brainpad-pulse/docs.html",
-    "multiUrl": "/brainpad-pulse/multi.html",
-    "asseteditorUrl": "/brainpad-pulse/asseteditor.html",
-    "skillmapUrl": "/brainpad-pulse/skillmap.html",
+    "simUrl": "/simulator.html",
+    "simserviceworkerUrl": "/simulatorserviceworker.js",
+    "simworkerconfigUrl": "/workerConfig.js",
+    "partsUrl": "/siminstructions.html",
+    "runUrl": "/run.html",
+    "docsUrl": "/docs.html",
+    "multiUrl": "/multi.html",
+    "asseteditorUrl": "/asseteditor.html",
+    "skillmapUrl": "/skillmap.html",
     "isStatic": true
 };
     </script>
     
 <!-- include apptrackingweb.html -->
-<script type="text/javascript" src="/brainpad-pulse/pxtweb.js"></script>
+<script type="text/javascript" src="/pxtweb.js"></script>
 <!-- end include apptrackingweb.html -->
 
     
@@ -137,7 +137,7 @@
 <script type="text/javascript">
     window.loadAppInsights = function (includeCookie, telemetryInitializer) {
         //Backend will patch / + blb + / with CDN url and the check that URL ends with the sha would pass
-        var isProduction = includeCookie && (/[0-9a-f]{40}\/$/.test("/brainpad-pulse/"));
+        var isProduction = includeCookie && (/[0-9a-f]{40}\/$/.test("/"));
         var appInsights=window.appInsights||function(config){
             function i(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",y=u.createElement(o),r,f;y.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(y);try{t.cookie=u.cookie}catch(p){}for(t.queue=[],t.version="1.0",r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)i("track"+r.pop());return i("set"+s),i("clear"+s),i(h+a),i(c+a),i(h+v),i(c+v),i("flush"),config.disableExceptionTracking||(r="onerror",i("_"+r),f=e[r],e[r]=function(config,i,u,e,o){var s=f&&f(config,i,u,e,o);return s!==!0&&t["_"+r](config,i,u,e,o),s}),t
         }({
@@ -147,7 +147,7 @@
             disableExceptionTracking: true,
             isCookieUseDisabled: !isProduction,
             isStorageUseDisabled: !isProduction,
-            url: "/brainpad-pulse/ai.0.js"
+            url: "/ai.0.js"
         });
         window.appInsights=appInsights;
         appInsights.queue.push(function () {
@@ -174,9 +174,9 @@
 </script>
 <!-- end include apptracking.html -->
 
-    <script type="text/javascript" src="/brainpad-pulse/pxtapp.js"></script>
-    <script type="text/javascript" src="/brainpad-pulse/target.js"></script>
-    <script id="mainscript" type="text/javascript" src="/brainpad-pulse/main.js"></script>
+    <script type="text/javascript" src="/pxtapp.js"></script>
+    <script type="text/javascript" src="/target.js"></script>
+    <script id="mainscript" type="text/javascript" src="/main.js"></script>
     <xml id="blocklyToolboxDefinitionCategory" style="display: none">
         <!-- An empty category is required so that Blockly launches in category mode -->
         <category name="">
@@ -198,27 +198,27 @@
         // this get rewritten to blob URLs with SHAs while uploading to the cloud
         // keep in sync with release.manifest
         window.MonacoPaths = {
-            "vs/loader": "/brainpad-pulse/vs/loader.js",
-            "vs/base/worker/workerMain": "/brainpad-pulse/vs/base/worker/workerMain.js",
-            "vs/basic-languages/bat/bat": "/brainpad-pulse/vs/basic-languages/bat/bat.js",
-            "vs/basic-languages/cpp/cpp": "/brainpad-pulse/vs/basic-languages/cpp/cpp.js",
-            "vs/basic-languages/markdown/markdown": "/brainpad-pulse/vs/basic-languages/markdown/markdown.js",
-            "vs/basic-languages/python/python": "/brainpad-pulse/vs/basic-languages/python/python.js",
-            "vs/basic-languages/typescript/typescript": "/brainpad-pulse/vs/basic-languages/typescript/typescript.js",
-            "vs/editor/editor.main.css": "/brainpad-pulse/vs/editor/editor.main.css",
-            "vs/editor/editor.main": "/brainpad-pulse/vs/editor/editor.main.js",
-            "vs/editor/editor.main.nls": "/brainpad-pulse/vs/editor/editor.main.nls.js",
-            "vs/language/json/jsonMode": "/brainpad-pulse/vs/language/json/jsonMode.js",
-            "vs/language/json/jsonWorker": "/brainpad-pulse/vs/language/json/jsonWorker.js",
-            "vs/language/typescript/tsMode": "/brainpad-pulse/vs/language/typescript/tsMode.js",
-            "vs/language/typescript/tsWorker": "/brainpad-pulse/vs/language/typescript/tsWorker.js",
-            "lzma/lzma_worker-min.js": "/brainpad-pulse/lzma/lzma_worker-min.js",
-            "smoothie/smoothie_compressed.js": "/brainpad-pulse/smoothie/smoothie_compressed.js",
-            "pxtblockly.js": "/brainpad-pulse/pxtblockly.js",
-            "blockly.css": "/brainpad-pulse/blockly.css",
-            "rtlblockly.css": "/brainpad-pulse/rtlblockly.css",
-            "gifjs/gif.js": "/brainpad-pulse/gifjs/gif.js",
-            "qrcode/qrcode.min.js": "/brainpad-pulse/qrcode/qrcode.min.js"
+            "vs/loader": "/vs/loader.js",
+            "vs/base/worker/workerMain": "/vs/base/worker/workerMain.js",
+            "vs/basic-languages/bat/bat": "/vs/basic-languages/bat/bat.js",
+            "vs/basic-languages/cpp/cpp": "/vs/basic-languages/cpp/cpp.js",
+            "vs/basic-languages/markdown/markdown": "/vs/basic-languages/markdown/markdown.js",
+            "vs/basic-languages/python/python": "/vs/basic-languages/python/python.js",
+            "vs/basic-languages/typescript/typescript": "/vs/basic-languages/typescript/typescript.js",
+            "vs/editor/editor.main.css": "/vs/editor/editor.main.css",
+            "vs/editor/editor.main": "/vs/editor/editor.main.js",
+            "vs/editor/editor.main.nls": "/vs/editor/editor.main.nls.js",
+            "vs/language/json/jsonMode": "/vs/language/json/jsonMode.js",
+            "vs/language/json/jsonWorker": "/vs/language/json/jsonWorker.js",
+            "vs/language/typescript/tsMode": "/vs/language/typescript/tsMode.js",
+            "vs/language/typescript/tsWorker": "/vs/language/typescript/tsWorker.js",
+            "lzma/lzma_worker-min.js": "/lzma/lzma_worker-min.js",
+            "smoothie/smoothie_compressed.js": "/smoothie/smoothie_compressed.js",
+            "pxtblockly.js": "/pxtblockly.js",
+            "blockly.css": "/blockly.css",
+            "rtlblockly.css": "/rtlblockly.css",
+            "gifjs/gif.js": "/gifjs/gif.js",
+            "qrcode/qrcode.min.js": "/qrcode/qrcode.min.js"
         }
     </script>
 </body>

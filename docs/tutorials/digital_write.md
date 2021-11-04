@@ -1,7 +1,13 @@
+```template
+//
+```
+
+
+
 # Digital Write
 
 ## Step 1 @unplugged
-This lesson uses the BrainClips kit. We'll talk about digital clips in the kit. Digital clips can either read or write. A button is an example of a module that we would read, while an LED would be an example of a module we would write to. In this lesson we'll cover digital write.
+Digital clips can either read or write. A button is an example of a module that we would read, while an LED would be an example of a module we would write to. In this lesson we'll cover digital write.
 
 ![BrainClip Button Module](../static/images/digitalclip.jpg)
 
@@ -17,12 +23,12 @@ Let's use the RGB module found inside the kit. The RGB LED has 3 different color
 ![BrainClip RGB Module](../static/images/rgbmodule.jpg)
 
 ## Step 4 @unplugged
-Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to RED, P1 to GREEN, P2 to BLUE, GND to GND).
+Connect the alligator clips as shown in the diagram from the Pulse to the Module.
 
  ![RGB Module Wiring Diagram](../static/images/clipdiagram1.jpg)
 
 ## Step 5 @fullscreen
-Now we're ready to start building our code blocks. Under the ADVANCED tab click on PINS and select the ``||pins:digital write||`` block. Set the pin HIGH by selecting the switch inside the block. Let's download what we have to the BrainPad and see what happens. Can you guess what will happen?
+Now we're ready to start building our code blocks. Under ``||pins:PINS||`` grab the ``||pins:digital write||`` block and drag it into the ``||loops:on start||`` block. Set the pin HIGH by click the switch inside the block. Let's download what we have to the BrainPad and see what happens. Can you guess what will happen?
 
  ```blocks
 pins.P0.digitalWrite(true)
@@ -33,7 +39,7 @@ If you said the LED would turn RED then you guessed correctly. We sent a Digital
 
 ![RGB Module Wiring Diagram](../static/images/redLed.jpg)
 
-## Step 7 @fullscreen
+## Step 7 @unplugged
 Drag in two more of the ``||pins:digital write||`` blocks and change pins to P1 and P2 in the new blocks. Set P0 and P2 to LOW, and P1 to HIGH. Download to the BrainPad. By now you should know what the result will be. 
 
  ```blocks

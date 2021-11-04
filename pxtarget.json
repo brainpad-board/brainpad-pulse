@@ -286,6 +286,7 @@
       "zh-CN",
       "zh-TW"
     ],
+	"python": true,
     "allowPackageExtensions": true
   }
 }

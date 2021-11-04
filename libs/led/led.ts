@@ -2,7 +2,7 @@
 /**
  * Outputs.
  */
-//% color="#00FF00" weight=98 icon="\uf205"
+//% color="#00FF00" weight=96 icon="\uf205"
 namespace led {	
 	let led_state: boolean = false
 	/**

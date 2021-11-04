@@ -2,13 +2,13 @@
 
 ## Step 1 @unplugged
 
-We're going to create a Jumper Game and we'll need 'sprites' to do it. A 'sprite' is a 2-dimensional image that is integrated into a larger scene such as a game. A player's character would be a good example of a sprite. 
+We're going to create a Jumper Game and we'll need 'sprites' to do it. A 'sprite' is a 2-dimensional image that we use in games. A player's character would be a good example of a sprite. So would the things they have to avoid.  
 
 ![BrainPad buzzer image](../static/images/sprite1.jpg)
 
 ## Step 2 @fullscreen
 
-To create a sprite the first step is to select the ``||sprites:set mySprite||`` block it can be found in the 'SPRITES' menu below the 'ADVANCED' drop-down. Once you drag in the block click on the 'mySprite' drop down and select 'Rename variable...'. Let's name our variable 'Jumper' since that's the game we'll be creating.
+Click on 'Advanced'. Select ``||sprites:Sprites||``. Grab the ``||sprites:set mySprite||`` block and drag it into the ``||loops:on start||``. Let create a variable name. In the block click on the 'mySprite' drop down and select 'Rename variable...'. Let's name our variable 'Jumper' since that's the game we'll be creating.
 
 
 ```blocks
@@ -40,7 +40,7 @@ mySprite = sprites.create(img`
 
 ## Step 3 @fullscreen
 
-Click on the Grey empty box inside the block. The sprite editor will pop up. On the side of the sprite editor are the tools used to draw a sprite. Play around with these tools and draw something inside the box. While using the sprite editor try holding down the 'Shift' key. It turns the 'pencil tool' into a 'line tool' and the 'box tool' into a 'circle tool'. 
+Click on the Grey empty area inside the block. The sprite editor will pop up. On the side of the sprite editor are the tools used to draw a sprite. Play around with these tools and draw something inside the box. While using the sprite editor try holding down the 'Shift' key. It turns the 'pencil tool' into a 'line tool' and the 'box tool' into a 'circle tool'. 
 
  ![BrainPad buzzer image](../static/images/sprite2.jpg)
 

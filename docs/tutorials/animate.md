@@ -1,30 +1,4 @@
-# Animation
-
- 
-
-## Step 1 @unplugged
-
- 
-
-We've created sprites but they just sit there. Let's create an animation and add frames to it. To make it more fun!
-
- 
-
-![BrainPad buzzer image](../static/images/animate.gif)
-
- 
-
- 
-
-## Step 2 @fullscreen
-
- 
-
-The first step is add a sprite that we want to animate, complete the steps we did in the first tutorial to add our sprite named Jumper to the ``||loops:on start||`` block. Remember to set the size to 16x16
-
- 
-
-```blocks
+```template
 
 enum SpriteKind {
 
@@ -74,19 +48,22 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
- 
-
 ```
 
- 
+# Animation
 
  
 
-## Step 3 @fullscreen
+## Step 1 @unplugged
 
- 
+We've created sprites but they just sit there. Let's create an animation and add frames to it. To make it more fun!
 
-The next thing we need to do is bring in the block that will set the timing of our animation and create a name for that animation. We can find this block under the 'ADVANCED' tab under 'ANIMATION' it's called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'myAnimation', change the interval to 200ms. This is how fast our animation will change frames.
+![BrainPad buzzer image](../static/images/animate.gif)
+
+
+## Step 2 @fullscreen
+
+We need to set the timing of our animation and create a name for that animation. We can find this block we need under 'ADVANCED' select 'ANIMATION' it's called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'myAnimation', change the interval to 200ms. This is how fast our animation will change frames.
 
  
 

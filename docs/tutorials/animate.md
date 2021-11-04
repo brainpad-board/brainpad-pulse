@@ -1,66 +1,831 @@
-# On Start vs Forever Blocks
+# Animation
+
+ 
 
 ## Step 1 @unplugged
 
-In this tutorial we explain the difference between the ``||loops:on start||`` and ``||loops:forever||`` blocks. We will also demonstrate how each works by blinking the on-board LED.
+ 
 
-![on Start and forever blocks](../static/images/onstartCard.jpg)
+We've created sprites but they just sit there. Let's create an animation and add frames to it. To make it more fun!
 
-## Step 2 @unplugged
+ 
 
-The ``||loops:on start||`` block runs when the BrainPad is first powered up. Any code placed inside the ``||loops:on start||`` block runs only once, at the beginning of your program. 
+![BrainPad buzzer image](../static/images/animate.gif)
 
-![on Start and forever blocks](../static/images/onstart.jpg)
+ 
 
+ 
+
+## Step 2 @fullscreen
+
+ 
+
+The first step is add a sprite that we want to animate, complete the steps we did in the first tutorial to add our sprite named Jumper to the ``||loops:on start||`` block. Remember to set the size to 16x16
+
+ 
+
+```blocks
+
+enum SpriteKind {
+
+    Player,
+
+    Enemy
+
+}
+
+ 
+
+let Jumper: Sprite = null
+
+Jumper = sprites.create(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`, SpriteKind.Player)
+
+ 
+
+```
+
+ 
+
+ 
 
 ## Step 3 @fullscreen
 
-To demonstrate how the ``||loops:on start||`` block works. Start by dragging in the ``||led:led on||`` block into the ``||loops:on Start||`` block
+ 
 
- ```blocks
-led.on()
+The next thing we need to do is bring in the block that will set the timing of our animation and create a name for that animation. We can find this block under the 'ADVANCED' tab under 'ANIMATION' it's called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'myAnimation', change the interval to 200ms. This is how fast our animation will change frames.
+
+ 
+
+```blocks
+
+enum SpriteKind {
+
+    Player,
+
+    Enemy
+
+}
+
+enum ActionKind {
+
+    Walking,
+
+    Idle,
+
+    Jumping
+
+}
+
+let myAnimation: animation.Animation = null
+
+let Jumper: Sprite = null
+
+Jumper = sprites.create(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`, SpriteKind.Player)
+
+myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+
 ```
+
+ 
+
+## Step 3 @fullscreen
+
+ 
+
+Next, we need to drag in the ``||animation:add frame||`` block. Click on the grey box in the center inside the block. Add the first Jumper image to the ``||animation:add frame||`` block. Remember to also change the size to 16x16 like we did our first sprite. Drag in another ``||animation:add frame||`` block followed by the next Jumper image from the gallery. Do this until all 4 Jumper images are created like the blocks below.
+
+ 
+
+```blocks
+
+enum SpriteKind {
+
+    Player,
+
+    Enemy
+
+}
+
+enum ActionKind {
+
+    Walking,
+
+    Idle,
+
+    Jumping
+
+}
+
+let myAnimation: animation.Animation = null
+
+let Jumper: Sprite = null
+
+Jumper = sprites.create(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`, SpriteKind.Player)
+
+myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . . 1 1 1 1 . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . 1 1 1 1 1 1 . . .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 1 1
+
+. . . 1 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 . . . . . . . . 1 . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . 1 1 1 1 1 . 1 1 1 1 . . .
+
+. . . 1 1 . . . . 1 1 1 . . . .
+
+. . . . . . . . . 1 1 1 1 . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . . . . 1 . . . .
+
+. . . 1 . 1 1 1 1 . 1 . . . . .
+
+. . . . 1 1 1 . 1 1 1 1 1 . . .
+
+. . . . . 1 1 . . 1 1 1 1 . . .
+
+. . . . . 1 1 1 1 . . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 1 .
+
+. . . . 1 1 1 . . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 1 1 1 1 1 1 1 1 . . .
+
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 . . . . . . . 1 . 1 1
+
+. . . 1 1 . 1 1 1 1 1 . . 1 1 1
+
+. . . 1 1 1 1 1 . . . 1 1 1 1 1
+
+. . . 1 1 . . . . . . . . . . .
+
+. . . 1 1 1 1 . . . . . . . . .
+
+`)
+
+ 
+
+```
+
+ 
 
 ## Step 4 @fullscreen
 
-Next we will add the ``||loops:pause||`` block found under LOOPS. Follow this with  an ``||led:led off||`` block into the ``||loops:on start||`` block. Just below the first ``||led:led on||`` block we just added. Change the pause duration to 500 ms/half a second. 
  
- ```blocks
-led.on()
-pause(500)
-led.off()
+
+In this step we need to attach 'myAnimation' to the 'Jumper' sprite. We can find the ``||animation:attach animation||`` block under 'ANIMATION' once dragged in change the selections to 'myAnimation' and to sprite 'Jumper'
+
+ 
+
+```blocks
+
+enum SpriteKind {
+
+    Player,
+
+    Enemy
+
+}
+
+enum ActionKind {
+
+    Walking,
+
+    Idle,
+
+    Jumping
+
+}
+
+let myAnimation: animation.Animation = null
+
+let Jumper: Sprite = null
+
+Jumper = sprites.create(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`, SpriteKind.Player)
+
+myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . . 1 1 1 1 . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . 1 1 1 1 1 1 . . .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 1 1
+
+. . . 1 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 . . . . . . . . 1 . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . 1 1 1 1 1 . 1 1 1 1 . . .
+
+. . . 1 1 . . . . 1 1 1 . . . .
+
+. . . . . . . . . 1 1 1 1 . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . . . . 1 . . . .
+
+. . . 1 . 1 1 1 1 . 1 . . . . .
+
+. . . . 1 1 1 . 1 1 1 1 1 . . .
+
+. . . . . 1 1 . . 1 1 1 1 . . .
+
+. . . . . 1 1 1 1 . . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 1 .
+
+. . . . 1 1 1 . . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 1 1 1 1 1 1 1 1 . . .
+
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 . . . . . . . 1 . 1 1
+
+. . . 1 1 . 1 1 1 1 1 . . 1 1 1
+
+. . . 1 1 1 1 1 . . . 1 1 1 1 1
+
+. . . 1 1 . . . . . . . . . . .
+
+. . . 1 1 1 1 . . . . . . . . .
+
+`)
+
+animation.attachAnimation(Jumper, myAnimation)
+
 ```
+
+ 
 
 ## Step 5 @fullscreen
 
-The LED turns ON then OFF after just 1/2 a second. If you missed it, refresh the simulator and note the LED's change. 
+ 
+
+Once we've attached the animation to the sprite we just need to activate the animation using the ``||animation:activate animation||`` block. This may seem like an unnecessary step but we can activate different animations from different places in our code. In our sample though we do it all inside the ``||loops:on start||`` block just to show you all the necessary components of animation.
+
+ 
+
+```blocks
+
+enum SpriteKind {
+
+    Player,
+
+    Enemy
+
+}
+
+enum ActionKind {
+
+    Walking,
+
+    Idle,
+
+    Jumping
+
+}
+
+let myAnimation: animation.Animation = null
+
+let Jumper: Sprite = null
+
+Jumper = sprites.create(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`, SpriteKind.Player)
+
+myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . 1 1 . . 1 1 1 1 1 . . . .
+
+. . . . 1 1 . 1 1 . 1 . . . . .
+
+. . . . . 1 1 1 . 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . . 1 1 1 1 . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . 1 1 1 1 1 1 . . .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 1 1
+
+. . . 1 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 . . . . . . . . 1 . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 . .
+
+. . . 1 1 1 1 1 . 1 1 1 1 . . .
+
+. . . 1 1 . . . . 1 1 1 . . . .
+
+. . . . . . . . . 1 1 1 1 . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . . . . . . . . . . .
+
+. . . . . 1 1 1 1 1 1 . . . . .
+
+. . . . 1 1 1 1 1 1 1 1 1 1 . .
+
+. . . . . . . . 1 1 . 1 . . . .
+
+. . . 1 1 1 . 1 1 1 . 1 1 1 . .
+
+. . . 1 1 1 . . 1 1 1 . 1 1 1 .
+
+. . . 1 1 1 1 1 1 1 . . . 1 . .
+
+. . . . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 1 1 1 1 1 1 . . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 1 1 1 1 1 1 1 . . . .
+
+. . . 1 1 . . . . . . 1 . . . .
+
+. . . 1 . 1 1 1 1 . 1 . . . . .
+
+. . . . 1 1 1 . 1 1 1 1 1 . . .
+
+. . . . . 1 1 . . 1 1 1 1 . . .
+
+. . . . . 1 1 1 1 . . . . . . .
+
+`)
+
+myAnimation.addAnimationFrame(img`
+
+. . . . . . 1 1 1 1 1 1 . . . .
+
+. . . . . 1 1 1 1 1 1 1 1 1 1 .
+
+. . . . . . . . . 1 1 . 1 . . .
+
+. . . . 1 1 1 . 1 1 1 . 1 1 1 .
+
+. . . . 1 1 1 . . 1 1 1 . 1 1 1
+
+. . . . 1 1 1 1 1 1 1 . . . 1 .
+
+. . . . . . 1 1 1 1 1 1 1 1 . .
+
+. . . 1 1 1 1 1 1 1 1 1 1 . . .
+
+. 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1
+
+. 1 1 . . 1 1 1 1 1 1 1 1 . . .
+
+. . . . 1 . . . . . . . 1 . 1 1
+
+. . . 1 1 . 1 1 1 1 1 . . 1 1 1
+
+. . . 1 1 1 1 1 . . . 1 1 1 1 1
+
+. . . 1 1 . . . . . . . . . . .
+
+. . . 1 1 1 1 . . . . . . . . .
+
+`)
+
+animation.attachAnimation(Jumper, myAnimation)
+
+animation.setAction(Jumper, ActionKind.Walking)
+
+```
+
+ 
+
+## Step 6 @fullscreen
+
+ 
+
+Congratulations!! You've completed your first animated sprite. Try creating your own animated sprite using as many or few frames as you like. A game can contain many different animations attached to the same sprite. Say for example when standing still, jumping, or ducking, could all be different animations. With each animation attached to the same sprite. When we want to use that animation we just use the ``||animation:activate animation||`` block, say when a button is pressed or not pressed.
+
+ 
+
+![BrainPad buzzer image](../static/images/animate.gif)
 
 
-## Step 6 @unplugged
-
-The ``||loops:forever||`` block is different then the ``||loops:on start||`` block, the code inside the ``||loops:forever||`` block runs forever. Once the last block inside your ``||loops:forever||`` block is executed, the program will go back to the first block inside the ``||loops:forever||`` block and start again, forever. 
-
-![on Start and forever blocks](../static/images/forever.jpg)
-
-## Step 7 @fullscreen
-
-Next will put the exact same blocks inside the ``||loops:forever||`` block. We will add another ``||loops:pause||`` block to the end,  to determine how long the LED remains off. Before looping back to the beginning of the forever block. 
-
- ```blocks
-forever(function () {
-    led.on()
-    pause(500)
-    led.off()
-    pause(500)
-})
-``` 
-
-## Step 8 @fullscreen
-The ``||loops:on start||`` block runs first. Immediately followed by the ``||loops:forever||`` block, which continues to blink the LED, until we turn off the device. 
-
-
-## Step 9 @fullscreen
-
-These two very useful blocks serve an important purpose when programming embedded devices. We can use the ``||loops:on start||`` block to set up things in our program on startup. The part of the program we want to run continuously goes inside the ``||loops:forever||`` block, and loops as long as the device is on. 
-
-![on Start and forever blocks](../static/images/onstartCard.jpg)

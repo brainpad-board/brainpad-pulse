@@ -35,17 +35,7 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/comingSoon",
   "imageUrl":"/static/cp/projects/thumb/moving.jpg"
 }
-,
-{
-  "name": "Using the BrainGamer",
-  "description": "Using the BrainGamer to control your game",
-  "cardType": "tutorial",
-  "label": "BrainGamer",
-  "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
-  "imageUrl":"/static/cp/projects/thumb/braingamer.jpg"
 
-}
 ]
 
 ```

@@ -8,7 +8,7 @@ We're going to create a Jumper Game and we'll need 'sprites' to do it. A 'sprite
 
 ## Step 2 @fullscreen
 
-To create a sprite the first step is to select the ``||sprites:set mySprite||`` block it can be found in the menu below the 'ADVANCED' drop-down. Once you drag in the block click on the 'mySprite' drop down and select 'Rename variable...'. Let's name our variable 'Jumper' since that's the game we'll be creating.
+To create a sprite the first step is to select the ``||sprites:set mySprite||`` block it can be found in the 'SPRITES' menu below the 'ADVANCED' drop-down. Once you drag in the block click on the 'mySprite' drop down and select 'Rename variable...'. Let's name our variable 'Jumper' since that's the game we'll be creating.
 
 
 ```blocks

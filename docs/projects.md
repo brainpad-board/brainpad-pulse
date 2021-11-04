@@ -3,7 +3,12 @@
 ```codecard
 [
     {
-        "name": "Basics",
+        "name": "Block Basics",
+        "url": "/blocks",
+        "imageUrl": "/static/cp/projects/thumb/onStart.jpg"
+    },
+    {
+        "name": "On Board Components",
         "url": "/basics",
         "imageUrl": "/static/cp/projects/thumb/led.jpg"
     },
@@ -13,34 +18,29 @@
         "imageUrl": "/static/cp/projects/thumb/display.jpg"
     },
     {
+        "name": "Robots - Coming Soon",
+        "url": "/brainbot",
+        "imageUrl": "/static/cp/projects/thumb/movingBrainBot.jpg"
+    },
+    {
         "name": "Games",
         "url": "/games",
         "imageUrl": "/static/cp/projects/thumb/sprites.jpg"
     },
     {
-        "name": "BrainBot",
-        "url": "/brainbot",
-        "imageUrl": "/static/cp/projects/thumb/movingBrainBot.jpg"
-    },
-    {
         "name": "Circuits",
         "url": "/circuits",
-        "imageUrl": "/static/cp/projects/thumb/digitalWrite.jpg"
-    },
-    {
-        "name": "Blocks",
-        "url": "/blocks",
-        "imageUrl": "/static/cp/projects/thumb/onStart.jpg"
+        "imageUrl": "/static/cp/projects/thumb/digital.jpg"
     }
 ]
 ```
 
 ## See Also
 
-[Basics](/basics),
+[Block Basics](/blocks),
+[On Board Components](/basics),
 [Display](/display),
+[Robots - Coming Soon](/brainbot),
 [Games](/games),
-[BrainBot](/brainbot),
-[Circuits](/circuits),
-[Blocks](/blocks)
+[Circuits](/circuits)
 

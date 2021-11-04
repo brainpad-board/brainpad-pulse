@@ -7,6 +7,16 @@ Step by step guide to coding your @boardname@.
 ```codecard
 [
 {
+  "name": "BrainClip Kit",
+  "description": "In this tutorial, we will cover the BrainClips",
+  "cardType": "tutorial",
+  "label": "Introduction",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/brainclips",
+  "imageUrl":"/static/cp/projects/thumb/digital.jpg"
+} 
+,
+{
   "name": "BrainClip Digital Write",
   "description": "In this tutorial, we will cover the BrainClips that write Digital signals",
   "cardType": "tutorial",
@@ -27,7 +37,7 @@ Step by step guide to coding your @boardname@.
 } 
 ,
 {
-  "name": "BrainClip Digtal Read",
+  "name": "BrainClip Digital Read",
   "description": "In this tutorial, we will cover the BrainClips read Digital signals",
   "cardType": "tutorial",
   "label": "Digital Read",
@@ -37,7 +47,7 @@ Step by step guide to coding your @boardname@.
 } 
 ,
 {
-  "name": "Using Analog BrainClips",
+  "name": "BrainClip Digital Read",
   "description": "In this tutorial, we will cover the BrainClips that use Analog signals. ",
   "cardType": "tutorial",
   "label": "Analog Read",
@@ -45,38 +55,7 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/analog_read",
   "imageUrl":"/static/cp/projects/thumb/analog.jpg"
 } 
-,
-{
-  "name": "Using Other BrainClips",
-  "description": "In this tutorial, we will cover BrainClips that don't use Digital or Analog",
-  "cardType": "tutorial",
-  "label": "Other Clips",
-  "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
-  "imageUrl":"/static/cp/projects/thumb/other.jpg"
-}
-, 
-{
-  "name": "Using BrainPower",
-  "description": "Using the BrainPower to create wearable projects",
-  "cardType": "tutorial",
-  "label": "BrainPower",
-  "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
-  "imageUrl":"/static/cp/projects/thumb/brainpower.jpg"
-  
-}
-,
-{
-  "name": "Using BrainTronics",
-  "description": "Using the BrainTronics to expand your learning",
-  "cardType": "tutorial",
-  "label": "BrainTronics",
-  "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
-  "imageUrl":"/static/cp/projects/thumb/braintronics.jpg"
 
-}
 ]
 
 ```

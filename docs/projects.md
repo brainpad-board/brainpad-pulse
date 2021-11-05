@@ -18,7 +18,7 @@
         "imageUrl": "/static/cp/projects/thumb/display.jpg"
     },
     {
-        "name": "Robots - Coming Soon",
+        "name": "Robots",
         "url": "/brainbot",
         "imageUrl": "/static/cp/projects/thumb/movingBrainBot.jpg"
     },
@@ -40,7 +40,7 @@
 [Block Basics](/blocks),
 [On Board Components](/basics),
 [Display](/display),
-[Robots - Coming Soon](/brainbot),
+[Robots](/brainbot),
 [Games](/games),
 [Circuits](/circuits)
 

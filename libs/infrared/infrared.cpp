@@ -92,7 +92,7 @@ namespace infrared {
 
 		now = tsb.read_ms();
 
-		if(now - lastact[(RemoteButton)buf[0]] > 100) {			
+		if(now - lastact[(RemoteButton)buf[0]] > 50) {			
 			lastact[(RemoteButton)buf[0]] = now;
 			cA(actions[(RemoteButton)buf[0]]); 
 		}

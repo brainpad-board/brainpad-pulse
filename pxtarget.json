@@ -25,7 +25,8 @@
     "libs/sonar",
     "libs/brainbot",
     "libs/braingamer",
-    "libs/infrared"
+    "libs/infrared",
+    "libs/settings"
   ],
   "serial": {
     "useHF2": true,

@@ -8,7 +8,7 @@ enum GroundSensor {
  * GameBot
  */
 //% block="BrainBot"
-//% weight=70 icon="\uf185" color=#EC7505
+//% weight=70 icon="\uf1b9" color=#EC7505
 namespace brainbot {
     let init_ir: boolean = false
 	/**
@@ -172,7 +172,7 @@ namespace brainbot {
 	* button pushed.
 	*/
 	//% blockId=brainbot_infrared received_event
-	//% block="on |%btn| button pressed"
+	//% block="on Receiver button |%btn| pressed"
 	export function onPressEvent(btn: RemoteButton, body:Action): void {
 		if (init_ir == false) {
 			infrared.init(Pins.P8)

@@ -82,7 +82,7 @@ namespace pxt.editor {
                         icon: "help",
                         class: "lightgrey focused",
                         url: docUrl
-                    } : undefined]
+                    } : undefined].filter(b => !!b)
                     //timeout: 20000
                 }).then(() => { });
             }

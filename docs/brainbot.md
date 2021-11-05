@@ -19,11 +19,11 @@ Step by step guide to coding your @boardname@.
 , 
 {
   "name": "BrainBot Lights",
-  "description": "Using the BrainPad's built in Accelerometer",
+  "description": "Using the Lights on the BrainBot",
   "cardType": "tutorial",
   "label": "Light Show",
   "labelClass": "orange ribbon large",
-  "url":"/tutorials/comingSoon",
+  "url":"/tutorials/brainbot_lights",
   "imageUrl":"/static/cp/projects/thumb/lightshow.jpg"
   
 }

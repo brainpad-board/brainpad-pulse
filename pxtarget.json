@@ -96,6 +96,7 @@
     }
   },
   "cloud": {
+    "apiRoot": "https://makecode.com/api/",
     "workspace": false,
     "packages": true,
     "sharing": false,
@@ -286,7 +287,7 @@
       "zh-CN",
       "zh-TW"
     ],
-	"python": true,
+    "python": true,
     "allowPackageExtensions": true
   }
 }

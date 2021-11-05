@@ -26,4 +26,4 @@
   * [BrainClip Digital Write](/tutorials/digital_write)
   * [BrainClip Analog Write](/tutorials/analog_write)
   * [BrainClip Digital Read](/tutorials/digital_read)
-  * [BrainClip Digital Read](/tutorials/analog_read)
+  * [BrainClip Analog Read](/tutorials/analog_read)

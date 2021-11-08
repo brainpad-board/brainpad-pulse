@@ -1,9 +1,18 @@
-enum GroundSensor {
-	None = 0,
-	Right = 1,
-	Left = 2,
-	Both = 3
+
+interface IGroundSensorActionVector {
+    _key: state;
+    _action: Action;
 }
+
+enum state {
+	state1=0x10,
+	state2=0x11,
+	state3=0x20,
+	state4=0x21,
+	state5=0x30,
+	state6=0x31,
+}
+
 /**
  * GameBot
  */
@@ -11,7 +20,23 @@ enum GroundSensor {
 //% weight=70 icon="\uf1b9" color=#EC7505
 //% groups='["Wheels", "Lights", "Sound", "Sensors", "Receiver"]'
 namespace brainbot {
+	export enum GroundSensorPos {
+		//% blockId="patrolLeft" block="left"
+		Left = 0x10,
+		//% blockId="patrolRight" block="right"
+		Right = 0x20,
+		//% blockId="patrolBoth" block="both"
+		Both = 0x30
+	}
+	export enum Voltage {
+		//%block="high"
+		High = 0x01,
+		//% block="low"
+		Low = 0x00
+	}
+
     let init_ir: boolean = false
+	let groundSensorCallback: IGroundSensorActionVector[] = []
 	/**
      * Move
      */
@@ -132,21 +157,50 @@ namespace brainbot {
 		strip.setPixelColor(1, neopixel.colors(rightcolor))
 		strip.show()
     } 
+		
+	 /**
+     * Line tracking sensor event function
+     */
+    //% weight=2
+    //% blockId=brainbot_gndsensor_event block="on|%value line tracking sensor|%vi"
+    export function onGroundSensorEvent(value: GroundSensorPos, vi: Voltage, a: Action) {
+        let state = value + vi;
+        let item: IGroundSensorActionVector = { _key: state, _action: a };
+        groundSensorCallback.push(item);
+    }
 	
-	//% blockId=brainbot_groundsensor block="read ground sensor"
-	//% group="Sensors"
-    export function ReadGroundSensor(): GroundSensor {
+	let groundSensorValue:number
+    let groundSensorScanIdx:number = 1;
+    function patorlState():number{
+        switch(groundSensorScanIdx){
+            case 1: groundSensorValue = pins.P13.digitalRead() == 0 ? state.state1:0;break;            
+			case 2: groundSensorValue = pins.P13.digitalRead() == 1 ? state.state2:0;break;            
+            case 3: groundSensorValue = pins.P14.digitalRead() == 0 ? state.state3:0;break;   
+			case 4: groundSensorValue = pins.P14.digitalRead() == 1 ? state.state4:0;break;   
+			case 5: groundSensorValue = (pins.P13.digitalRead() == 0 && pins.P14.digitalRead() == 0) ? state.state5:0;break;            
+			case 6: groundSensorValue = (pins.P13.digitalRead() == 1 && pins.P14.digitalRead() == 1) ? state.state6:0;break;            
+              		
+        }
+        groundSensorScanIdx+=1;
+        if(groundSensorScanIdx==7) groundSensorScanIdx=1;
         
-		if (pins.P14.digitalRead() && pins.P13.digitalRead()) {
-			return GroundSensor.None;
-		}
-		else if (pins.P14.digitalRead())
-			return GroundSensor.Left;
-		else if (pins.P13.digitalRead())
-			return GroundSensor.Right;
-
-		return GroundSensor.Both;
-    } 
+        return groundSensorValue;
+    }
+	
+	forever(() => {
+        if (groundSensorCallback != null) {
+            let sta = patorlState();
+            if (sta != 0) {
+                for (let item of groundSensorCallback) {
+                    if (item._key == sta) {
+                        item._action();
+                    }
+                }
+            }
+        }
+        pause(40);
+    })
+		
 	
 	//% blockId=brainbot_distancesensor block="read distance"
 	//% group="Sensors"

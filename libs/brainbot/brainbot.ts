@@ -124,13 +124,13 @@ namespace brainbot {
 			pins.P0.analogWrite(0)
     }	
 		
-	//% blockId=brainbot_headlight block="Set headlight color to red %red green %green blue %blue"
-	//% red.min=0 red.max=255
-	//% green.min=0 green.max=255
-	//% blue.min=0 blue.max=255
+	//% blockId=brainbot_headlight block="Set headlight color to red %red green %green blue %blue"	
 	//% group="Lights"
 	//% weight=99
-    export function Headlight(red: number, green: number, blue: number): void {
+    export function Headlight(color: NeoPixelColors): void {
+		let red = (color >> 16) & 0xFF;
+		let green = (color >> 8) & 0xFF;
+		let blue = (color >> 0) & 0xFF;
 		let deviceAddress = 0x1;		
 		let data: number[] = [0x1, red, green, blue ];
 	

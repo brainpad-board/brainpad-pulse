@@ -1,5 +1,7 @@
 #include "pxt.h"
 
+extern uint32_t __StackTop;
+
 namespace control {
 
 /**
@@ -45,5 +47,10 @@ void dmesgPtr(String str, Object_ ptr) {
     //DMESG("# %s: %p", str->data, ptr);
 }
 
+//%
+uint32_t _ramSize()
+{
+    return (uint32_t)&__StackTop & 0x1fffffff;
+}
 
 }

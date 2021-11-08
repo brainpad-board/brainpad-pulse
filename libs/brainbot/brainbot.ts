@@ -18,14 +18,22 @@ enum state {
  */
 //% block="BrainBot"
 //% weight=70 icon="\uf1b9" color=#EC7505
-//% groups='["Wheels", "Lights", "Sound", "Sensors", "Receiver"]'
+//% groups='["Wheels", "Headlights", "Taillights", "Sound", "Sensors", "Receiver"]'
 namespace brainbot {
-	export enum GroundSensorPos {
+	export enum TurnDirection {
 		//% blockId="patrolLeft" block="left"
 		Left = 0x10,
 		//% blockId="patrolRight" block="right"
 		Right = 0x20,		
 	}
+	
+	export enum MoveDirection {
+		//% blockId="patrolLeft" block="forward"
+		Forward = 0x10,
+		//% blockId="patrolRight" block="back"
+		Back = 0x20,		
+	}
+	
 	export enum Voltage {
 		//%block="high"
 		High = 0x01,
@@ -35,15 +43,49 @@ namespace brainbot {
 
     let init_ir: boolean = false
 	let groundSensorCallback: IGroundSensorActionVector[] = []
+	
+	let taillightLeftcolor: number;
+	let taillightRightColor: number;
+	
+	/**
+     * Move forward or backward
+     */
+    //% blockId=brainbot_move block="Move %movedirection speed %speed"
+	//% speed.min=0 speed.max=100 speed.defl=50
+	//% group="Wheels"
+	//% weight=99
+    export function Move(movedirection: MoveDirection, speed: number): void {
+		
+		if (movedirection == MoveDirection.Forward)
+			MoveCustom(speed, speed);
+		else 	
+			MoveCustom(speed * -1, speed * -1);
+	}
+	
+	/**
+     * Turn left or right
+     */
+    //% blockId=brainbot_Turn block="Turn %turndirection speed %speed"
+	//% speed.min=-100 speed.max=100 speed.defl=0
+	//% group="Wheels"
+	//% weight=98
+    export function Turn(turndirection: TurnDirection, speed: number): void {
+		
+		if (turndirection == TurnDirection.Left)
+			MoveCustom(speed, 0);
+		else 	
+			MoveCustom(0, speed);
+	}
+	
 	/**
      * Move
      */
-    //% blockId=brainbot_move block="Move left speed %leftspeed right speed %rightspeed"
+    //% blockId=brainbot_movecustom block="Move left speed %leftspeed right speed %rightspeed"
 	//% leftspeed.min=-100 leftspeed.max=100
 	//% rightspeed.min=-100 rightspeed.max=100
 	//% group="Wheels"
-	//% weight=99
-    export function Move(leftspeed: number, rightspeed: number): void {
+	//% weight=97
+    export function MoveCustom(leftspeed: number, rightspeed: number): void {
 		let deviceAddress = 0x1;
 		
 		
@@ -86,7 +128,7 @@ namespace brainbot {
 	
 	//% blockId=brainbot_stop block="Stop"
 	//% group="Wheels"
-	//% weight=98
+	//% weight=96
     export function Stop(): void {
 		let deviceAddress = 0x1;
 		let data: number[] = [0x2, 0, 0, 0, 0]
@@ -124,10 +166,10 @@ namespace brainbot {
 			pins.P0.analogWrite(0)
     }	
 		
-	//% blockId=brainbot_headlight block="Set headlight color to red %red green %green blue %blue"	
-	//% group="Lights"
+	//% blockId=brainbot_headlight_color block="Set headlight color to %color"	
+	//% group="Headlights"
 	//% weight=99
-    export function Headlight(color: NeoPixelColors): void {
+    export function HeadlightColor(color: NeoPixelColors): void {
 		let red = (color >> 16) & 0xFF;
 		let green = (color >> 8) & 0xFF;
 		let blue = (color >> 0) & 0xFF;
@@ -144,25 +186,88 @@ namespace brainbot {
 		}		
         
     } 
+	//% blockId=brainbot_headlight_rgb block="Set headlight color to red %red green %green blue %blue"
+	//% red.min=0 red.max=255
+	//% green.min=0 green.max=255
+	//% blue.min=0 blue.max=255
+	//% group="Headlights"
+	//% weight=99
+    export function HeadlightRgb(red: number, green: number, blue: number): void {
+		let deviceAddress = 0x1;		
+		let data: number[] = [0x1, red, green, blue ];
 	
-	//% blockId=brainbot_taillight block="Set taillight left color %leftcolor right color %rightcolor"
-	//% group="Lights"
+		for (let i = 0; i <4 ; i++) {
+			pins.i2cWriteNumber(
+					deviceAddress,
+					data[i],
+					NumberFormat.Int8LE,
+					i < 3 ? true : false
+				);
+		}		
+        
+    }
+	
+	//% blockId=brainbot_taillight_color1 block="Set left taillight color to %leftcolor, right taillight color to %rightcolor"
+	//% group="Taillights"
 	//% weight=98
-    export function Taillight(leftcolor: NeoPixelColors, rightcolor: NeoPixelColors): void {
+	//% blockHidden=true
+    export function TaillightColor1(leftcolor: NeoPixelColors, rightcolor: NeoPixelColors): void {
 		let strip: neopixel.Strip = null
 		strip = neopixel.create(pins.P12, 2)
 		strip.setPixelColor(0, neopixel.colors(leftcolor))
 		strip.setPixelColor(1, neopixel.colors(rightcolor))
 		strip.show()
     } 
+	
+	//% blockId=brainbot_taillight_rgb block="Set taillight %direction color to red%red green%green blue%blue"
+	//% group="Taillights"
+	//% red.min=0 red.max=255
+	//% green.min=0 green.max=255
+	//% blue.min=0 blue.max=255
+	//% weight=97
+	//% inlineInputMode=inline
+    export function TaillightRgb(direction: TurnDirection, red: number, green: number, blue: number): void {
+		let strip: neopixel.Strip = null
+		strip = neopixel.create(pins.P12, 2)
+		
+		if (direction == TurnDirection.Left)		
+			taillightLeftcolor = (red << 16) | (green << 8) | (blue << 0);		
+		else 
+			taillightRightColor = (red << 16) | (green << 8) | (blue << 0);	
+		
+		strip.setPixelColor(0, neopixel.colors(taillightLeftcolor))
+		strip.setPixelColor(1, neopixel.colors(taillightRightColor))
+		strip.show()
+    } 
+	
+	
+	
+	//% blockId=brainbot_taillight_color2 block="Set taillight %direction color to %color"
+	//% group="Taillights"
+	//% weight=95
+    export function TaillightColor2(direction: TurnDirection, color: NeoPixelColors): void {
+		let strip: neopixel.Strip = null
+		strip = neopixel.create(pins.P12, 2)
+		
+		if (direction == TurnDirection.Left)		
+			taillightLeftcolor = color;		
+		else 
+			taillightRightColor = color;	
+		
+		strip.setPixelColor(0, neopixel.colors(taillightLeftcolor))
+		strip.setPixelColor(1, neopixel.colors(taillightRightColor))
+		strip.show()
+    } 
+				
 		
 	 /**
      * Line tracking sensor event function
      */
     //% weight=2
-    //% blockId=brainbot_gndsensor_event block="on|%value line tracking sensor|%vi"
-    export function onGroundSensorEvent(value: GroundSensorPos, vi: Voltage, a: Action) {
-        let state = value + vi;
+    //% blockId=brainbot_gndsensor_event block="on|%direction line tracking sensor|%vi"
+	//% group="Sensors"
+    export function onGroundSensorEvent(direction: TurnDirection, vi: Voltage, a: Action) {
+        let state = direction + vi;
         let item: IGroundSensorActionVector = { _key: state, _action: a };
         groundSensorCallback.push(item);
     }

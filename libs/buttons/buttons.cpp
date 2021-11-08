@@ -15,15 +15,12 @@ These button events need CODAL work.
 /**
 * User interaction on buttons
 */
-enum class ButtonEvent {
-    //% block="click"
-    Click = DEVICE_BUTTON_EVT_CLICK,
-    //% block="long click"
-    LongClick = DEVICE_BUTTON_EVT_LONG_CLICK,
-    //% block="up"
-    Up = DEVICE_BUTTON_EVT_UP,
-    //% block="down"
-    Down = DEVICE_BUTTON_EVT_DOWN
+enum class ButtonEvent {    
+    //% block="pressed"
+    Down = DEVICE_BUTTON_EVT_DOWN,
+	//% block="released"
+    Up = DEVICE_BUTTON_EVT_UP
+    
 };
 
 namespace pxt {

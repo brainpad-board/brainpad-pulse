@@ -4,134 +4,39 @@ enum GamerRocket {
 }
 
 enum GamerButton {
-    Up = 0,
-    Down= 1,    
-	Left= 2,
-	Right= 3
+    up = 0,
+    down= 1,    
+	left= 2,
+	right= 3
 }
-
 
 /**
  * BrainGamer
  */
 //% block="BrainGamer"
 //% weight=70 color="#e15f41" icon="\uf11b"
-namespace braingamer {
+namespace braingamer {	
 		
-	let _userEventsEnabled = true;
-    let _activeButtons: ButtonGamer[];
-
-    //% fixedInstances
-    export class ButtonGamer {
-        public id: number;
-        public repeatDelay: number;
-        public repeatInterval: number;
-        private _pressed: boolean;
-        private _pressedElasped: number;
-        private _repeatCount: number;
-
-        constructor(id: number, buttonId?: number, upid?: number, downid?: number) {
-            this.id = id;
-            this._pressed = false;
-            this.repeatDelay = 500;
-            this.repeatInterval = 30;
-            this._repeatCount = 0;
-            control.internalOnEvent(INTERNAL_KEY_UP, this.id, () => {
-                if (this._pressed) {
-                    this._pressed = false
-                    this.raiseButtonUp();
-                }
-            }, 16)
-            control.internalOnEvent(INTERNAL_KEY_DOWN, this.id, () => {
-                if (!this._pressed) {
-                    this._pressed = true;
-                    this._pressedElasped = 0;
-                    this._repeatCount = 0;
-                    this.raiseButtonDown();
-                }
-            }, 16)
-            if (buttonId && upid && downid) {
-                control.internalOnEvent(buttonId, upid, () => control.raiseEvent(INTERNAL_KEY_UP, this.id), 16)
-                control.internalOnEvent(buttonId, downid, () => control.raiseEvent(INTERNAL_KEY_DOWN, this.id), 16)
-            }
-
-            // register button in global list
-            if (!_activeButtons) _activeButtons = [];
-            _activeButtons.push(this);
-        }
-
-        private raiseButtonUp() {
-            if (_userEventsEnabled)
-                control.raiseEvent(KEY_UP, this.id)
-            else
-                control.raiseEvent(SYSTEM_KEY_UP, this.id);
-        }
-
-        private raiseButtonDown() {
-            if (_userEventsEnabled)
-                control.raiseEvent(KEY_DOWN, this.id)
-            else
-                control.raiseEvent(SYSTEM_KEY_DOWN, this.id)
-        }
-
-        private raiseButtonRepeat() {
-            if (_userEventsEnabled)
-                control.raiseEvent(KEY_REPEAT, this.id)
-            else
-                control.raiseEvent(SYSTEM_KEY_REPEAT, this.id)
-        }
-
-        /**
-         * Run some code when a button is pressed or released
-         */
-        //% weight=99 blockGap=8 help=controller/button/on-event
-        //% blockId=keyonevent block="on %button **button** %event"
-        onEvent(event: ControllerButtonEvent, handler: () => void) {
-            control.onEvent(event, this.id, handler);
-        }
-
-        /**
-         * Pauses until a button is pressed or released
-         */        
-        //%
-        pauseUntil(event: ControllerButtonEvent) {
-            control.waitForEvent(event, this.id)
-        }
-
-        /**
-         * Indicates if the button is currently pressed
-        */
-        //% weight=96 blockGap=8 help=controller/button/is-pressed
-        //% blockId=keyispressed block="is %button **button** pressed"
-        isPressed() {
-            return this._pressed;
-        }
-
-        __update(dtms: number) {
-            if (!this._pressed) return;
-            this._pressedElasped += dtms;
-            // inital delay
-            if (this._pressedElasped < this.repeatDelay) 
-                return;
-            
-            // do we have enough time to repeat
-            const count = Math.floor((this._pressedElasped - this.repeatDelay) / this.repeatInterval);
-            if (count != this._repeatCount) {
-                this.raiseButtonRepeat();
-                this._repeatCount = count;
-            }
-        }
-    }
-	
-	//% fixedInstance block="left"
-    export const left = new ButtonGamer(1, braingamer.buttonLeft.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-    //% fixedInstance block="up"
-    export const up = new ButtonGamer(2, braingamer.buttonUp.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-    //% fixedInstance block="right"
-    export const right = new ButtonGamer(3, braingamer.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-    //% fixedInstance block="down"
-    export const down = new ButtonGamer(4, braingamer.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
-	
+	/**
+	 * Run some code when a button is pressed or released
+	 */
+	//% weight=99 blockGap=8 help=controller/button/on-event
+	//% blockId=braingamer_keyonevent block="on button %button %event"
+	export function onEvent(button: GamerButton, event: ControllerButtonEvent, handler: () => void) {
+		let id = 0;
+		
+		if (button == GamerButton.up)
+			id = controller.up.id;
+		else if (button == GamerButton.down)
+			id = controller.down.id;
+		else if (button == GamerButton.left)
+			id = controller.left.id;
+		else
+			id = controller.right.id;
+		
+		control.onEvent(event, id, handler);
+	}
+			
 	//% blockId=braingamer_rocket block="rocket %gamerrocket"
     export function Rocket(gamerrocket: GamerRocket): number {
         let value = 0;

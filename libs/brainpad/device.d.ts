@@ -93,34 +93,28 @@ declare namespace input {
     //% block="button B" weight=94 fixedInstance
     //% shim=pxt::getButtonByPin(PB_7,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonB: Button;
-}
 
-declare namespace braingamer {	
 	/**
      * Up button.
-     */
-
+     */	
     //% shim=pxt::getButtonByPin(PB_4,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonUp: Button;
 	
 	/**
      * Down button.
-     */
-
+     */	
     //% shim=pxt::getButtonByPin(PB_5,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonDown: Button;
 	
 	/**
      * Left button.
-     */
-
+     */	
     //% shim=pxt::getButtonByPin(PB_3,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonLeft: Button;
 	
 	/**
-     * Left button.
-     */
-
+     * Right button.
+     */	
     //% shim=pxt::getButtonByPin(PB_12,BUTTON_ACTIVE_LOW_PULL_UP)
     const buttonRight: Button;
 

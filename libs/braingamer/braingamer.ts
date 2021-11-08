@@ -36,6 +36,26 @@ namespace braingamer {
 		
 		control.onEvent(event, id, handler);
 	}
+	
+	/**
+	 * Indicates if the button is currently pressed
+	 */
+	//% weight=96 blockGap=8 help=controller/button/is-pressed
+	//% blockId=braingamer_keyispressed block="is %button pressed"	
+	export function isPressed(button: GamerButton) : boolean {
+		let pressed = controller.up.isPressed();
+		
+		if (button == GamerButton.up)
+			pressed = controller.up.isPressed();
+		else if (button == GamerButton.down)
+			pressed = controller.down.isPressed();
+		else if (button == GamerButton.left)
+			pressed = controller.left.isPressed();
+		else
+			pressed = controller.right.isPressed();
+		
+		return pressed;
+	}
 			
 	//% blockId=braingamer_rocket block="rocket %gamerrocket"
     export function Rocket(gamerrocket: GamerRocket): number {

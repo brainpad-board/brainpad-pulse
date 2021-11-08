@@ -18,7 +18,7 @@ enum state {
  */
 //% block="BrainBot"
 //% weight=70 icon="\uf1b9" color=#EC7505
-//% groups='["Wheels", "Headlights", "Taillights", "Sound", "Sensors", "Receiver"]'
+//% groups='["Wheels", "Lights", "Sound", "Sensors", "Receiver"]'
 namespace brainbot {
 	export enum TurnDirection {
 		//% blockId="patrolLeft" block="left"
@@ -66,7 +66,7 @@ namespace brainbot {
      * Turn left or right
      */
     //% blockId=brainbot_Turn block="Turn %turndirection speed %speed"
-	//% speed.min=-100 speed.max=100 speed.defl=0
+	//% speed.min=-100 speed.max=100 speed.defl=50
 	//% group="Wheels"
 	//% weight=98
     export function Turn(turndirection: TurnDirection, speed: number): void {
@@ -81,8 +81,8 @@ namespace brainbot {
      * Move
      */
     //% blockId=brainbot_movecustom block="Move left speed %leftspeed right speed %rightspeed"
-	//% leftspeed.min=-100 leftspeed.max=100
-	//% rightspeed.min=-100 rightspeed.max=100
+	//% leftspeed.min=-100 leftspeed.max=100 leftspeed.defl=50
+	//% rightspeed.min=-100 rightspeed.max=100 rightspeed.defl=50
 	//% group="Wheels"
 	//% weight=97
     export function MoveCustom(leftspeed: number, rightspeed: number): void {
@@ -167,9 +167,10 @@ namespace brainbot {
     }	
 		
 	//% blockId=brainbot_headlight_color block="Set headlight color to %color"	
-	//% group="Headlights"
+	//% group="Lights"
 	//% weight=99
-    export function HeadlightColor(color: NeoPixelColors): void {
+	//% color.defl=255
+    export function HeadlightColor(color: number): void {
 		let red = (color >> 16) & 0xFF;
 		let green = (color >> 8) & 0xFF;
 		let blue = (color >> 0) & 0xFF;
@@ -185,67 +186,16 @@ namespace brainbot {
 				);
 		}		
         
-    } 
-	//% blockId=brainbot_headlight_rgb block="Set headlight color to red %red green %green blue %blue"
-	//% red.min=0 red.max=255
-	//% green.min=0 green.max=255
-	//% blue.min=0 blue.max=255
-	//% group="Headlights"
-	//% weight=99
-    export function HeadlightRgb(red: number, green: number, blue: number): void {
-		let deviceAddress = 0x1;		
-		let data: number[] = [0x1, red, green, blue ];
+    } 	
 	
-		for (let i = 0; i <4 ; i++) {
-			pins.i2cWriteNumber(
-					deviceAddress,
-					data[i],
-					NumberFormat.Int8LE,
-					i < 3 ? true : false
-				);
-		}		
-        
-    }
-	
-	//% blockId=brainbot_taillight_color1 block="Set left taillight color to %leftcolor, right taillight color to %rightcolor"
-	//% group="Taillights"
-	//% weight=98
-	//% blockHidden=true
-    export function TaillightColor1(leftcolor: NeoPixelColors, rightcolor: NeoPixelColors): void {
-		let strip: neopixel.Strip = null
-		strip = neopixel.create(pins.P12, 2)
-		strip.setPixelColor(0, neopixel.colors(leftcolor))
-		strip.setPixelColor(1, neopixel.colors(rightcolor))
-		strip.show()
-    } 
-	
-	//% blockId=brainbot_taillight_rgb block="Set taillight %direction color to red%red green%green blue%blue"
-	//% group="Taillights"
-	//% red.min=0 red.max=255
-	//% green.min=0 green.max=255
-	//% blue.min=0 blue.max=255
-	//% weight=97
-	//% inlineInputMode=inline
-    export function TaillightRgb(direction: TurnDirection, red: number, green: number, blue: number): void {
-		let strip: neopixel.Strip = null
-		strip = neopixel.create(pins.P12, 2)
-		
-		if (direction == TurnDirection.Left)		
-			taillightLeftcolor = (red << 16) | (green << 8) | (blue << 0);		
-		else 
-			taillightRightColor = (red << 16) | (green << 8) | (blue << 0);	
-		
-		strip.setPixelColor(0, neopixel.colors(taillightLeftcolor))
-		strip.setPixelColor(1, neopixel.colors(taillightRightColor))
-		strip.show()
-    } 
+			
 	
 	
-	
-	//% blockId=brainbot_taillight_color2 block="Set taillight %direction color to %color"
-	//% group="Taillights"
+	//% blockId=brainbot_taillight_color block="Set taillight %direction color to %color"
+	//% group="Lights"
 	//% weight=95
-    export function TaillightColor2(direction: TurnDirection, color: NeoPixelColors): void {
+	//% color.defl=255
+    export function TaillightColor(direction: TurnDirection, color: number): void {
 		let strip: neopixel.Strip = null
 		strip = neopixel.create(pins.P12, 2)
 		
@@ -257,7 +207,34 @@ namespace brainbot {
 		strip.setPixelColor(0, neopixel.colors(taillightLeftcolor))
 		strip.setPixelColor(1, neopixel.colors(taillightRightColor))
 		strip.show()
-    } 
+    }
+
+	function packRGB(a: number, b: number, c: number): number {
+        return ((a & 0xFF) << 16) | ((b & 0xFF) << 8) | (c & 0xFF);
+    }
+	
+	/**
+     * Converts red, green, blue channels into a RGB color
+     * @param red value of the red channel between 0 and 255. eg: 255
+     * @param green value of the green channel between 0 and 255. eg: 255
+     * @param blue value of the blue channel between 0 and 255. eg: 255
+     */
+    //% weight=1
+    //% blockId="brainbot_rgb" block="red %red|green %green|blue %blue" 
+	//% group="Lights"	
+    export function rgb(red: number, green: number, blue: number): number {
+        return packRGB(red, green, blue);
+    }
+
+    /**
+     * Gets the RGB value of a known color
+    */
+    //% weight=2 blockGap=8
+    //% blockId="brainbot_colors" block="%color" 
+	//% group="Lights"	
+    export function colors(color: NeoPixelColors): number {
+        return color;
+    }	
 				
 		
 	 /**

@@ -23,8 +23,9 @@ namespace led {
 	//% blockId=led_toggle block="led toggle"
     //% weight=89
     export function toggle() {		
-		__setLed(led_state)
 		led_state = !led_state
+		__setLed(led_state)
+		
     }
 
     function update() {

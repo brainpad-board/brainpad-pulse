@@ -24,9 +24,7 @@ namespace brainbot {
 		//% blockId="patrolLeft" block="left"
 		Left = 0x10,
 		//% blockId="patrolRight" block="right"
-		Right = 0x20,
-		//% blockId="patrolBoth" block="both"
-		Both = 0x30
+		Right = 0x20,		
 	}
 	export enum Voltage {
 		//%block="high"
@@ -177,12 +175,12 @@ namespace brainbot {
 			case 2: groundSensorValue = pins.P13.digitalRead() == 1 ? state.state2:0;break;            
             case 3: groundSensorValue = pins.P14.digitalRead() == 0 ? state.state3:0;break;   
 			case 4: groundSensorValue = pins.P14.digitalRead() == 1 ? state.state4:0;break;   
-			case 5: groundSensorValue = (pins.P13.digitalRead() == 0 && pins.P14.digitalRead() == 0) ? state.state5:0;break;            
-			case 6: groundSensorValue = (pins.P13.digitalRead() == 1 && pins.P14.digitalRead() == 1) ? state.state6:0;break;            
+			// case 5: groundSensorValue = (pins.P13.digitalRead() == 0 && pins.P14.digitalRead() == 0) ? state.state5:0;break;            
+			// case 6: groundSensorValue = (pins.P13.digitalRead() == 1 && pins.P14.digitalRead() == 1) ? state.state6:0;break;            
               		
         }
         groundSensorScanIdx+=1;
-        if(groundSensorScanIdx==7) groundSensorScanIdx=1;
+        if(groundSensorScanIdx==5) groundSensorScanIdx=1;
         
         return groundSensorValue;
     }

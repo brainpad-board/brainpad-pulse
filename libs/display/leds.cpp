@@ -75,6 +75,46 @@ namespace display {
 	   	 	  	   
     }
 	
+	/**
+     * Draws an image on the LED screen.
+     * @param leds the pattern of LED to turn on/off
+     * @param interval time in milliseconds to pause after drawing
+     */
+    //% weight=95 blockGap=8
+    //% imageLiteral=1 async
+    //% blockId=display_show_leds
+    //% block="show leds"
+	//% group="Virtual Leds"	
+    void __setMatrixLeds(ImageLiteral_ leds, int interval = 400) {
+	  
+	  uint8_t* ptr = (uint8_t*)imageBytes(leds);
+	  
+	  ptr += 6; // byte 6th is raw data;
+	  
+	  for (int i = 0; i < 25; i++) {	
+		if (ptr[i] != 0)
+			setMatrixLeds(i, 1);
+		else 
+			setMatrixLeds(i, 0);
+	  }
+
+    }
 	
+	/**
+     * Draws an image on the LED screen.
+     * @param leds the pattern of LED to turn on/off
+     * @param interval time in milliseconds to pause after drawing
+     */
+    //% weight=94 blockGap=8    
+    //% blockId=display_clear_leds
+    //% block="clear leds"
+	//% group="Virtual Leds"	
+    void __ClearMatrixLeds() {	  	  
+	  for (int i = 0; i < 25; i++) {	
+		setMatrixLeds(i, 0);
+	  }
+
+    }
+					
 }
 

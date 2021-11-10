@@ -93,7 +93,7 @@ namespace pxsim {
         accelState: AccelState;
         screenState: ScreenState;
         ledState: LedState;
-        // matrixLedState: LedState[];
+        matrixLedState: LedState[];
 
         invertAccelerometerYAxis = true;
 
@@ -163,13 +163,13 @@ namespace pxsim {
             this.builtinPartVisuals["microservo"] = (xy: visuals.Coord) => visuals.mkMicroServoPart(xy);
             this.builtinParts["led"] = this.ledState = new LedState(runtime);
 
-            // this.matrixLedState = new Array(25)
+            this.matrixLedState = new Array(25)
 
-            // for (let i = 0; i < 25; i++) {
-            // this.matrixLedState[i] = new LedState(runtime);
-            // }
+            for (let i = 0; i < 25; i++) {
+				this.matrixLedState[i] = new LedState(runtime);
+            }
 
-            // this.builtinParts["matrixLedState"] = this.matrixLedState;
+            this.builtinParts["matrixLedState"] = this.matrixLedState;
         }
 
         receiveMessage(msg: SimulatorMessage) {

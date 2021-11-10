@@ -310,6 +310,7 @@ namespace pxsim.visuals {
 
         private led: SVGCircleElement;
         private counter: number = 0;
+		private ledMatrixActive = false;
 
         constructor(public props: IBoardProps) {
 
@@ -379,7 +380,8 @@ namespace pxsim.visuals {
 
                 const flush = () => {
                     requested = false
-                    ctx.putImageData(imgdata, 0, 0)
+                    if (this.ledMatrixActive == false)
+						ctx.putImageData(imgdata, 0, 0)
                     this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());
 
                 }
@@ -391,8 +393,8 @@ namespace pxsim.visuals {
                     runtime.queueDisplayUpdate();
                     if (!requested) {
                         requested = true
-                        ctx.putImageData(imgdata, 0, 0)
-                        this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());
+                        // ctx.putImageData(imgdata, 0, 0)
+                        // this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());
                         window.requestAnimationFrame(flush)
                     }
                 }
@@ -493,7 +495,7 @@ namespace pxsim.visuals {
             */
             this.updateSound();
             this.updateLed();
-            //this.UpdateScreen();
+            this.UpdateScreen();
 
         }
 
@@ -531,70 +533,79 @@ namespace pxsim.visuals {
         }
 
         private UpdateScreen() {
-            // let state = this.board;
-            // if (!state) return;
+            let state = this.board;
+            if (!state) return;
 
-            // const ledMatrix = state.matrixLedState;
+            const ledMatrix = state.matrixLedState;			
 
-            // if (ledMatrix) { 
+            if (ledMatrix) { 
 
-            // if (!pxsim.basic.getMatrixLedUpdateState()) {
-            // return;
-            // }
+				if (!pxsim.display.getMatrixLedUpdateState()) {
+					return;
+				}
 
-            // pxsim.basic.setMatrixLedUpdateState(false);
+				pxsim.display.setMatrixLedUpdateState(false);
 
-            // const on = ledMatrix[0].getState();
+				//const on = ledMatrix[0].getState();
 
-            // update led matrix screen
-            // this.screenCanvas.width = this.board.screenState.width
-            // this.screenCanvas.height = this.board.screenState.height
+				//update led matrix screen
+				this.screenCanvas.width = this.board.screenState.width
+				this.screenCanvas.height = this.board.screenState.height
 
-            // const ctx = this.screenCanvas.getContext("2d")
-            // ctx.imageSmoothingEnabled = false
-            // const imgdata = ctx.getImageData(0, 0, this.board.screenState.width, this.board.screenState.height)
-
-
-            // const arr = new Uint32Array(imgdata.data.buffer)
-
-            // let ledWidth = (this.board.screenState.width / 5) | 0;
-            // let ledHeight = (this.board.screenState.height / 5) | 0;
+				const ctx = this.screenCanvas.getContext("2d")
+				ctx.imageSmoothingEnabled = false
+				const imgdata = ctx.getImageData(0, 0, this.board.screenState.width, this.board.screenState.height)
 
 
-            // for (let i = 0; i < this.board.screenState.screen.length; i++) {
-            // this.board.screenState.screen[i] = 0xFF000000;
-            // }
+				const arr = new Uint32Array(imgdata.data.buffer)
 
-            // for (let led = 0; led < ledMatrix.length; led++) {
-            // let xSrc = (led % 5) | 0;
-            // let ySrc = (led / 5) | 0;
-
-            // let xDest = xSrc * ledWidth;
-            // let yDest = ySrc * ledHeight;
-
-            // for (let y = yDest+1; y < yDest + ledHeight-2; y++) {
-            // for (let x = xDest+1; x < xDest + ledWidth-2; x++) {
-            // let arrId = (y * this.board.screenState.width + x) | 0;
-
-            // if (ledMatrix[led].getState() == true) {
-            // this.board.screenState.screen[arrId] = 0xFFFFFF00;
-            // }
-
-            // }
-            // }										
-            // }
+				// let ledWidth = (this.board.screenState.width / 5) | 0;
+				// let ledHeight = (this.board.screenState.height / 5) | 0;
+				
+				let ledWidth = (this.board.screenState.height / 5) | 0;
+				let ledHeight = (this.board.screenState.height / 5) | 0;
 
 
+				for (let i = 0; i < this.board.screenState.screen.length; i++) {
+					this.board.screenState.screen[i] = 0xFF000000;
+				}
+				
+				let active = false; // TQD_TODO: 
+				
+				for (let led = 0; led < ledMatrix.length; led++) {
+					let xSrc = (led % 5) | 0;
+					let ySrc = (led / 5) | 0;
 
-            // arr.set(this.board.screenState.screen)
+					let xDest = xSrc * ledWidth + 34;
+					let yDest = ySrc * ledHeight;
 
-            // runtime.queueDisplayUpdate();
-            // ctx.putImageData(imgdata, 0, 0)
+					
+					
+					for (let y = yDest+1; y < yDest + ledHeight-2; y++) {
+						for (let x = xDest+1; x < xDest + ledWidth-2; x++) {
+							let arrId = (y * this.board.screenState.width + x) | 0;
 
-            // this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());				
+							if (ledMatrix[led].getState() == true) {
+								this.board.screenState.screen[arrId] = 0xFFFFFFFF;
+								
+								active = true;
+							}							
 
-            // window.requestAnimationFrame(this.flush)
-            // }
+						}
+					}					
+				}
+				
+				this.ledMatrixActive = active;
+
+				arr.set(this.board.screenState.screen)
+
+				runtime.queueDisplayUpdate();
+				ctx.putImageData(imgdata, 0, 0)
+
+				this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());				
+
+				window.requestAnimationFrame(this.flush)
+            }
 
 
 

@@ -6,8 +6,8 @@
     "device.d.ts",
     "config.ts",
     "ns.ts",
-    "images.ts",
-    "images.jres",
+    "smallFood.ts",
+    "smallFood.jres",
     "servos.ts"
   ],
   "dependencies": {

@@ -809,16 +809,20 @@ bool drawImageCore(Image_ img, Image_ from, int x, int y, int color) {
                 mask <<= -y & 7;
                 off = 0;
             }
-            for (int i = off; i < len + off; ++i) {
+            			
+			// TQD fixed draw icon 16x16 has nothing
+			auto c1 = !color;
+			
+			for (int i = off; i < len + off; ++i) {
                 if (mask == 0x100) {
                     mask = 0x01;
                     v = *fdata++;
                 }
                 if (v & mask) {
                     if (i & 1)
-                        *tdata = (*tdata & 0x0f) | (color << 4);
+                        *tdata = (*tdata & 0x0f) | (c1 << 4);
                     else
-                        *tdata = (*tdata & 0xf0) | color;
+                        *tdata = (*tdata & 0xf0) | c1;
                 }
                 mask <<= 1;
                 if (i & 1)

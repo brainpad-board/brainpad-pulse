@@ -35,7 +35,7 @@ using namespace codal;
 #define CODAL_ACCELEROMETER_HEADER "MC3216.h"
 #define CODAL_ACCELEROMETER codal::MC3216
 
-#define IMAGE_BITS 1
+#define IMAGE_BITS 4
 #define LCD_WIDTH 128
 #define LCD_HEIGHT 64
 

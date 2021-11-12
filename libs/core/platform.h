@@ -13,6 +13,8 @@
 
 using namespace codal;
 
+#define STM32L4
+
 #define PAGE_SIZE 256 // doesn't really apply
 
 // 3 ports times 16 pins in each; there are bigger packages with 4 or 5 ports

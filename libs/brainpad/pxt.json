@@ -10,6 +10,12 @@
     "images.jres",
 	"players.ts",
     "players.jres",
+	"barrels.ts",
+    "barrels.jres",
+	"food.ts",
+    "food.jres",
+	"obstacles.ts",
+    "obstacles.jres",
     "servos.ts"
   ],
   "dependencies": {

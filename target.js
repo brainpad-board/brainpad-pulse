@@ -266,10 +266,10 @@ var pxtTargetBundle = {
         "organizationUrl": "https://www.ghielectronics.com/",
         "organizationLogo": "docs/static/ghi-logo.png",
         "organizationWideLogo": "docs/static/ghi-logo.png",
-        "homeUrl": "/brainpad-pulse/",
+        "homeUrl": "/",
         "privacyUrl": "https://www.ghielectronics.com/policies/",
         "termsOfUseUrl": "https://www.ghielectronics.com/policies/",
-        "githubUrl": "https://github.com/brainpad-board/brainpad-pulse",
+        "githubUrl": "https://github.com/brainpad-board",
         "boardName": "BrainPad",
         "driveDisplayName": "BRAINPAD",
         "print": true,
@@ -277,15 +277,15 @@ var pxtTargetBundle = {
         "docMenu": [
             {
                 "name": "Blocks",
-                "path": "/brainpad-pulse/docs/blocks"
+                "path": "/docs/blocks"
             },
             {
                 "name": "JavaScript",
-                "path": "/brainpad-pulse/docs/javascript"
+                "path": "/docs/javascript"
             },
             {
                 "name": "Reference",
-                "path": "/brainpad-pulse/docs/reference"
+                "path": "/docs/reference"
             },
             {
                 "name": "Buy",

@@ -67,6 +67,20 @@ namespace pxsim {
     const paletteSrc = [
         "#000000", // black
         "#FFFFFF", // white
+		"#FF2121",
+		"#FF93C4",
+		"#FF8135",
+		"#FFF609",
+		"#249CA3",
+		"#78DC52",
+		"#003FAD",
+		"#87F2FF",
+		"#8E2EC4",
+		"#A4839F",
+		"#5c406c",
+		"#E5CDC4",
+		"#91463D",
+		"#000000"
     ];
 
     export class DalBoard extends CoreBoard implements

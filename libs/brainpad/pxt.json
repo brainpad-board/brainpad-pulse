@@ -16,6 +16,8 @@
     "food.jres",
 	"obstacles.ts",
     "obstacles.jres",
+	"background.ts",
+	"background.jres",
     "servos.ts"
   ],
   "dependencies": {

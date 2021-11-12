@@ -8,6 +8,8 @@
     "ns.ts",
     "images.ts",
     "images.jres",
+	"players.ts",
+    "players.jres",
     "servos.ts"
   ],
   "dependencies": {
@@ -40,7 +42,7 @@
 	"#a4839f",
 	"#5c406c",
 	"#e5cdc4",
-	"#91463d",
+	"#4b7bec",
 	"#000000"
   ],
   "screenSize": {

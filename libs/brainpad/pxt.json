@@ -8,8 +8,6 @@
     "ns.ts",
     "images.ts",
     "images.jres",
-	"smallFood.ts",
-    "smallFood.jres",
     "servos.ts"
   ],
   "dependencies": {

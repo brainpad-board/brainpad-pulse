@@ -5,7 +5,8 @@
 //% groups='["Screen", "Tiles", "Collisions", "Camera"]'
 //% blockGap=8
 namespace scene {
-    /**
+    let isMonoColorScene = true;
+	/**
      * Get the width of the screen in pixels
      */
     //% blockId=scenescreenwidth block="screen width"
@@ -37,7 +38,11 @@ namespace scene {
     //% help=scene/set-background-color
     export function setBackgroundColor(color: number) {
         const scene = game.currentScene();
-        scene.background.color = color;
+        
+		if (isMonoColorScene == true && color != 0)
+			color = 1;
+			
+		scene.background.color = color;
     }
 
     /**
@@ -117,6 +122,10 @@ namespace scene {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
+		
+		if (isMonoColorScene == true && index != 0)
+			index = 1;
+		
         scene.tileMap.setTileAt(tile.x >> 4, tile.y >> 4, index);
     }
 
@@ -132,6 +141,10 @@ namespace scene {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
+		
+		if (isMonoColorScene == true && index != 0)
+			index = 1;
+		
         scene.tileMap.setTile(index, img, !!wall);
     }
 
@@ -161,6 +174,10 @@ namespace scene {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
+		
+		if (isMonoColorScene == true && index != 0)
+			index = 1;
+		
         return scene.tileMap.getTilesByType(index);
     }
 

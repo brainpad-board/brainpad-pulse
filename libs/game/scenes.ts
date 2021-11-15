@@ -39,8 +39,8 @@ namespace scene {
     export function setBackgroundColor(color: number) {
         const scene = game.currentScene();
         
-		if (isMonoColorScene == true && color != 0)
-			color = 1;
+		// if (isMonoColorScene == true && color != 0)
+			// color = 1;
 			
 		scene.background.color = color;
     }
@@ -123,8 +123,8 @@ namespace scene {
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         scene.tileMap.setTileAt(tile.x >> 4, tile.y >> 4, index);
     }
@@ -142,8 +142,8 @@ namespace scene {
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         scene.tileMap.setTile(index, img, !!wall);
     }
@@ -175,8 +175,8 @@ namespace scene {
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         return scene.tileMap.getTilesByType(index);
     }

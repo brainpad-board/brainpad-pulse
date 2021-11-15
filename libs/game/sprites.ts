@@ -43,18 +43,6 @@ namespace sprites {
     }
 	
 	 /**
-     * Set Controller Input   
-     *
-     * @param ControllerInput     
-     */
-	//% group="Controller"
-	//% blockId="sprite_controller_input" block="set controller input %controllerinput"
-    //% weight=100
-    export function setSpriteControllerInput(controllerinput: ControllerInput) {
-		controller.setControllerInput(controllerinput);
-	}
-	
-	 /**
      * Control a sprite using the direction buttons from the controller. Note that this
      * control will take over the vx and vy of the sprite and overwrite any changes
      * made unless a 0 is passed.

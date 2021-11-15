@@ -139,7 +139,7 @@ int height(Image_ img) {
  */
 //% property
 bool isMono(Image_ img) {
-    return img->bpp() == 1;
+    return true;//img->bpp() == 1; // TQD all image on native is mono
 }
 
 //% property
@@ -851,7 +851,7 @@ void drawImage(Image_ img, Image_ from, int x, int y) {
 //%
 void drawTransparentImage(Image_ img, Image_ from, int x, int y) {
     img->makeWritable();
-    drawImageCore(img, from, x, y, 0);
+    drawImageCore(img, from, x, y, 1); // fix draw icon on game has nothing
 }
 
 /**

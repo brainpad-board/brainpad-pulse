@@ -29,7 +29,8 @@
     "sim/public",
     "docs/*.md",
     "docs/*/*.md",
-    "docs/*/*/*.md"
+    "docs/*/*/*.md",
+	"docs/static/icons/favicon.ico"
   ],
   "devDependencies": {
     "less": "3.13.1",

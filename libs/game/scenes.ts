@@ -39,8 +39,8 @@ namespace scene {
     export function setBackgroundColor(color: number) {
         const scene = game.currentScene();
         
-		if (isMonoColorScene == true && color != 0)
-			color = 1;
+		// if (isMonoColorScene == true && color != 0)
+			// color = 1;
 			
 		scene.background.color = color;
     }
@@ -102,6 +102,7 @@ namespace scene {
     //% blockId=gamesettilemap block="set tile map to %map=tilemap_image_picker"
     //% group="Tiles"
     //% help=scene/set-tile-map
+	//% blockHidden=true
     export function setTileMap(map: Image) {
         const scene = game.currentScene();
         if (!scene.tileMap)
@@ -118,13 +119,14 @@ namespace scene {
     //% group="Tiles"
     //% weight=30
     //% help=scene/set-tile-at
+	//% blockHidden=true
     export function setTileAt(tile: tiles.Tile, index: number) {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         scene.tileMap.setTileAt(tile.x >> 4, tile.y >> 4, index);
     }
@@ -137,13 +139,14 @@ namespace scene {
     //% blockId=gamesettile block="set tile %index=colorindexpicker to %img=screen_image_picker||with wall %wall=toggleOnOff"
     //% group="Tiles"
     //% help=scene/set-tile
+	//% blockHidden=true
     export function setTile(index: number, img: Image, wall?: boolean) {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         scene.tileMap.setTile(index, img, !!wall);
     }
@@ -156,6 +159,7 @@ namespace scene {
     //% blockId=gamegettile block="tile col %col row %row"
     //% group="Tiles" blockSetVariable="myTile"
     //% help=scene/get-tile
+	//% blockHidden=true
     export function getTile(col: number, row: number): tiles.Tile {
         const scene = game.currentScene();
         if (!scene.tileMap)
@@ -170,13 +174,14 @@ namespace scene {
     //% blockId=gamegettilestype block="array of all %index=colorindexpicker tiles"
     //% group="Tiles" blockSetVariable="tile list"
     //% help=scene/get-tiles-by-type
+	//% blockHidden=true
     export function getTilesByType(index: number): tiles.Tile[] {
         const scene = game.currentScene();
         if (!scene.tileMap)
             scene.tileMap = new tiles.TileMap();
 		
-		if (isMonoColorScene == true && index != 0)
-			index = 1;
+		// if (isMonoColorScene == true && index != 0)
+			// index = 1;
 		
         return scene.tileMap.getTilesByType(index);
     }

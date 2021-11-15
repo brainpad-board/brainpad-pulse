@@ -58,19 +58,22 @@ namespace braingamer {
     } 
 	
 	/**
-	 * Read rocket value
+	 * Read rocket value in range -1024..1024
 	 */
-	//% blockId=braingamer_rocket block="rocket %gamerrocket"
+	//% blockId=braingamer_rocket block="rocker %gamerrocket"
 	//% weight=96
     export function Rocket(gamerrocket: GamerRocket): number {
         let value = 0;
 		if (gamerrocket == GamerRocket.X) {
 			value = pins.P4.analogRead();
+			value = Math.map(value, 0, 1024, 1024, -1024);
 		}
-		else 
+		else {
 			value = pins.P3.analogRead();
+			value = Math.map(value, 0, 1024, -1024, 1024);
+		}
 		
-		value = Math.map(value, 0, 1024, 0, 100);
+		
 		
 		return value | 0;
     } 

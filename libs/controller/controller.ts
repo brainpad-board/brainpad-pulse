@@ -7,12 +7,61 @@ enum ControllerButtonEvent {
     
 }
 
+enum ControllerInput {
+	//% block="buttons"
+	_button=1,
+	//% block="accelerometer"
+	_accelerometer=2,
+	//% block="analog"
+	_analog=4,
+}
+
 /**
  * Access to game controls
  */
 namespace controller {
     let _userEventsEnabled = true;
     let _activeButtons: Button[];
+	let _controllerInput: ControllerInput;
+	
+	//% fixedInstances
+	export class Rocker {
+		private up: boolean;
+		private down: boolean;
+		private left: boolean;
+		private right: boolean;
+		
+		constructor() {
+			this.up = false;
+			this.down = false;
+			this.left = false;
+			this.right = false;
+		}
+		
+		public SetUp() : void {
+			this.up = true;
+			this.down = false;
+			this.down = false;
+			this.down = false;
+			
+		}
+		
+		public  SetDown() : void {
+			this.up = false;
+			this.down = true;
+			this.down = false;
+			this.down = false;
+			
+		}
+		
+		public SetD()  : void{
+			this.up = false;
+			this.down = true;
+			this.down = false;
+			this.down = false;
+			
+		}
+	}
 
     //% fixedInstances
     export class Button {
@@ -173,6 +222,17 @@ namespace controller {
     export function pauseUntilAnyButtonIsPressed() {
         control.waitForEvent(KEY_DOWN, 0)
     }
+	
+	/**
+     * Set Controller Input   
+     *
+     * @param ControllerInput     
+     */
+	//% group="Controller"
+	//% blockHidden=true
+    export function setControllerInput(controllerinput: ControllerInput) {
+		this._controllerInput = controllerinput;
+	}
 
     export function _setUserEventsEnabled(enabled: boolean) {
         _userEventsEnabled = enabled;

@@ -176,6 +176,8 @@ void runInParallel(Action a) {
     if (a != 0) {
         incr(a);
         create_fiber((void (*)(void *))runAction0, (void *)a, fiberDone);
+		
+		fiber_sleep(1); // TQD fixed crashed game engine - overlap event
     }
 }
 

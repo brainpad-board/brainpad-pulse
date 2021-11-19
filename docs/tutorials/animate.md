@@ -63,9 +63,7 @@ We've created sprites but they just sit there. Let's create an animation and add
 
 ## Step 2 @fullscreen
 
-We need to set the timing of our animation and create a name for that animation. We can find this block we need under 'ADVANCED' select 'ANIMATION' it's called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'myAnimation', change the interval to 200ms. This is how fast our animation will change frames.
-
- 
+We need to set the timing of our animation and create a name for that animation we're going to create. To do this we can need to select the block called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'running', change the interval to 200ms. This is how fast our animation will change between the frames.
 
 ```blocks
 
@@ -137,7 +135,7 @@ myAnimation = animation.createAnimation(ActionKind.Walking, 200)
 
  
 
-Next, we need to drag in the ``||animation:add frame||`` block. Click on the grey box in the center inside the block. Add the first Jumper image to the ``||animation:add frame||`` block. Remember to also change the size to 16x16 like we did our first sprite. Drag in another ``||animation:add frame||`` block followed by the next Jumper image from the gallery. Do this until all 4 Jumper images are created like the blocks below.
+Next, we need to drag in the ``||animation:add frame||`` block. Click on the grey box in the center inside the block. Add the first Jumper image to the ``||animation:add frame||`` block.  Drag in another ``||animation:add frame||`` block followed by the next Jumper image from the gallery. Do this until all 4 Jumper images are created like the blocks below.
 
  
 

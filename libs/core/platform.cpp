@@ -27,7 +27,7 @@ void platform_init() {
         globals[0] = (TValue)1;
     }
 */
-
+	IsPulse();
 }
 
 
@@ -37,7 +37,11 @@ bool IsPulse() {
 
 		pin->setPull(PullMode::Down);	
 
-		isPulse = pin->getDigitalValue();
+		volatile int i = 0;
+		while (i < 0xFF) {
+			i++;
+		}
+		isPulse = pin->getDigitalValue() != 0 ? true : false;
 
 		initIsPulse = true;		
 	}

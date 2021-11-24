@@ -380,8 +380,23 @@ namespace pxsim.visuals {
 
                 const flush = () => {
                     requested = false
-                    if (this.ledMatrixActive == false)
-						ctx.putImageData(imgdata, 0, 0)
+                    if (this.ledMatrixActive == false) {
+						for (let i = 0; i < this.board.screenState.screen.length; i++) {
+							if (this.board.screenState.screen[i] == 0xFF000000 || this.board.screenState.screen[i] == 0)
+								this.board.screenState.screen[i] = 0xFF000000;
+							else 
+								this.board.screenState.screen[i] = 0xFFFFFFFF;
+						}
+												
+						const imgdataFlush = ctx.getImageData(0, 0, this.board.screenState.width, this.board.screenState.height)
+
+
+						const arrFlush = new Uint32Array(imgdataFlush.data.buffer)
+						
+						arrFlush.set(this.board.screenState.screen)
+						
+						ctx.putImageData(imgdataFlush, 0, 0)
+					}
                     this.lcd.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", this.screenCanvas.toDataURL());
 
                 }

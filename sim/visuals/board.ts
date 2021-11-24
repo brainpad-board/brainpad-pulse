@@ -511,6 +511,7 @@ namespace pxsim.visuals {
             this.updateSound();
             this.updateLed();
             this.UpdateScreen();
+			this.updateGestures();
 
         }
 
@@ -900,6 +901,12 @@ namespace pxsim.visuals {
                 accessibility.setAria(this.shakeButtonGroup, "button", "Shake the board");
             }
             */
+			
+			let state = this.board;
+			
+			// Disable accelerometer now
+			if (state.accelerometerState.accelerometer.isActive)
+				state.accelerometerState.accelerometer.isActive = false;
         }
 
         private buildDom() {

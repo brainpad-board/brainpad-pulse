@@ -71,8 +71,5 @@ namespace display {
 			setMatrixLeds(led, false);	
 		}
 	}
-
-	export function ABCD(): void {
-		
-	}
+	
 }

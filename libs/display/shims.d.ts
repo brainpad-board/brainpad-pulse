@@ -7,7 +7,7 @@ declare namespace display {
      * @param interval.
      */
     //% shim=display::setMatrixLeds
-    function setMatrixLeds(leds: int32, value: boolean): void;
+    function setMatrixLeds(led: int32, value: boolean): void;
 
     /**
      * Draws an image on the LED screen.

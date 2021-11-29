@@ -99,7 +99,22 @@ namespace pxt {
 
 		return crc;
 	}
+	
+	void NativeClearImageBuffer() {
+		for (int i = 0; i < 1024; i++) {
+			lastImageBuffer[i] = 0;
+		}
+	}
+	
+	void NativeSetPixelToBuffer(int x, int y, int c) {
+		SetPixelToBuffer(x, y, lastImageBuffer, LCD_WIDTH, LCD_HEIGHT, 1, c);
+	}
 
+	void NativeFlushImageBuffer() {
+		auto display = getWDisplay();				
+								
+		display->lcd.writeScreenBuffer(lastImageBuffer);	
+	}
 	
     //%
     void updateScreen(Image_ img) {

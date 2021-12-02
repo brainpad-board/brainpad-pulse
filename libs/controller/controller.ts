@@ -171,6 +171,15 @@ namespace controller {
     export function pauseUntilAnyButtonIsPressed() {
         control.waitForEvent(KEY_DOWN, 0)
     }
+	
+	/**
+     * Pause the program until a button is released
+     */
+    //% weight=10
+	//% blockHidden=true
+    export function pauseUntilAnyButtonIsReleased() {
+        control.waitForEvent(KEY_UP, 0)
+    }
 
     export function _setUserEventsEnabled(enabled: boolean) {
         _userEventsEnabled = enabled;

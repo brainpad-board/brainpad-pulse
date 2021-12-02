@@ -21,14 +21,24 @@ namespace game {
     }
 
     let __waitAnyButton: () => void
+    let __waitAnyButtonReleased: () => void
     let __isOver = false;
 
     export function setWaitAnyButton(f: () => void) {
         __waitAnyButton = f
     }
+	
+	export function setWaitAnyButtonReleased(f: () => void) {
+        __waitAnyButtonReleased = f
+    }
 
     export function waitAnyButton() {
         if (__waitAnyButton) __waitAnyButton()
+        else pause(3000)
+    }
+	
+	export function waitAnyButtonReleased() {
+        if (__waitAnyButtonReleased) __waitAnyButtonReleased()
         else pause(3000)
     }
 
@@ -135,6 +145,7 @@ namespace game {
             }
             pause(2000) // wait for users to stop pressing keys
             waitAnyButton()
+			waitAnyButtonReleased()
             control.reset()
         })
     }

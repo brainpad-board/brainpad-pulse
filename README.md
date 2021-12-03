@@ -25,31 +25,32 @@ Put all of them inside MakeCode folder.
 
 These instructions assume Window 10 - 64bit
 
-- Open Command Prompt.
-
-### Build pxt
-- run "cd C:\MakeCode\pxt". 
-- run "npm install"
-- run "npm install -g jake"
-- run "jake"
-
-### Build common package
-- run "cd C:\MakeCode\pxt-common-packages"
-- run "npm install"
-
-### Build Brainpad pulse
-- run "cd C:\MakeCode\brainpad-pulse"
-- run "npm install"
-- run "npm install -g pxt"
-- run "pxt link ../pxt"
-- run "pxt link ../pxt-common-packages"
-
-### Run local
-- run "doRun". For the first run or after clean build, building process might take long time when clone and install "codal-mbedos" steps.
-
 ### Clean:
+
 - Run "doClean"
 - Once the build is clean, need to back to step "Build Brainpad pulse" above before run "doRun" again.
+
+### Build local:
+
+- Open Command Prompt.
+- Run "doBuild"
+
+### Run local
+
+- Run "doRun". For the first run or after clean build, building process might take long time when clone and install "codal-mbedos" steps.
+- Run "doOverwrite 0"
+- Refesh the page to see effect
+
+### Static host
+
+- Switch to toHost branch
+- Run "doClean"
+- Run "doBuild" 
+- Run "doRun"
+- ctrl C to stop
+- Run "pxt staticpkg --route foo --githubpages"
+- Run "doOverwrite 1"
+- Add CNAME
 
 ## License
 MIT

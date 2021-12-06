@@ -31,7 +31,13 @@
         "name": "Circuits",
         "url": "/circuits",
         "imageUrl": "/static/cp/projects/thumb/digital.jpg"
+    },
+    {
+        "name": "Complete Projects",
+        "url": "/complete",
+        "imageUrl": "/static/cp/projects/thumb/digital.jpg"
     }
+
 ]
 ```
 

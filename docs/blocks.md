@@ -17,13 +17,23 @@ Step by step guide to coding your @boardname@.
 } 
 ,
 {
-  "name": "Variables ",
+  "name": "Variables",
   "description": "In this tutorial, we show how to create and use variables",
   "cardType": "tutorial",
   "label": "Using Variables",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/variables",
   "imageUrl":"/static/cp/projects/thumb/variable.jpg"  
+} 
+,
+{
+  "name": "If-Then",
+  "description": "In this tutorial, we will show how to use if-then blocks in our code",
+  "cardType": "tutorial",
+  "label": "Logic Blocks",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/ifThen",
+  "imageUrl":"/static/cp/projects/thumb/ifThen.jpg"  
 } 
 ]
 ```

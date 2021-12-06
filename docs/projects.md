@@ -3,14 +3,14 @@
 ```codecard
 [
     {
-        "name": "Block Basics",
-        "url": "/blocks",
-        "imageUrl": "/static/cp/projects/thumb/onStart.jpg"
-    },
-    {
         "name": "On Board Components",
         "url": "/basics",
         "imageUrl": "/static/cp/projects/thumb/led.jpg"
+    },
+    {
+        "name": "Block Basics",
+        "url": "/blocks",
+        "imageUrl": "/static/cp/projects/thumb/onStart.jpg"
     },
     {
         "name": "Display",

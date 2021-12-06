@@ -14,7 +14,7 @@ If the BrainPad is laying flat on a the table as shown, the x-axis runs horizont
 
 ## Step 3 @fullscreen
 
-Let's use a GRAPH to chart the values from the accelerometer. First, we need to grab the ``||display:graph||`` block, it's found under DISPLAY, and put it inside our ``||loops:forever||`` block
+The accelerometer data won't display in the simulator. You'll have to download your code to the BrainPad Pulse to see the results. Let's use a GRAPH to chart the values from the accelerometer. First, we need to grab the ``||display:graph||`` block, it's found under DISPLAY, and put it inside our ``||loops:forever||`` block
 
 ```blocks
 forever(function () {
@@ -24,7 +24,7 @@ forever(function () {
 
 ## Step 4 @fullscreen
 
-Next, we need to grab the ``||input:acceleration||``block that will read the values from our accelerometer and graph them onto the display. We can find this under the INPUT tab. You can also change which value the accelerometer is reading. The default value is X
+Next, we need to grab the ``||input:acceleration||``block that will read the values from our accelerometer and graph them onto the display. We can find this under the INPUT tab. You can also change which value the accelerometer is reading. The default value is X. Download to the BrainPad Pulse.
 
 ```blocks
 forever(function () {
@@ -34,7 +34,7 @@ forever(function () {
 
 ## Step 5 @fullscreen
 
-Now you'll notice in the simulator we can move the BrainPad around with our mouse. Try tilting the BrainPad Up and watch the values on the graph change.
+After you download the code to the BrainPad, try tilting the BrainPad Up and watch the values on the graph change.
 
 ![BrainPad Accelerometer Image](../static/images/accel_sim_demo.gif)
 
@@ -81,7 +81,7 @@ Let's add an image and change it based on how we tilt the BrainPad. First drag o
 ```blocks
 forever(function () {
     if (input.acceleration(Dimension.X) < 500) {
-        display.showImage(images.cat1)
+        display.showImage(background.img12_cat1)
     }
 })
 ```
@@ -93,21 +93,21 @@ Finally click on the + sign at the bottom of the ``||logic:if-then||`` block. Th
 ```blocks
 forever(function () {
     if (input.acceleration(Dimension.X) < 500) {
-        display.showImage(images.cat1)
+        display.showImage(background.img12_cat1)
     } else {
-        display.showImage(images.cat2)
+        display.showImage(background.img11_cat2)
     }
 })
 ```
 
 ## Step 11 @fullscreen
 
-Now when you tilt the BrainPad in either direction the image will change. You can fine tune the values as you see fit.  
+Download the program to the BrainPad. Now when you tilt the Pulse in either direction the image will change. You can fine tune the values as you see fit.  
 
 ![BrainPad Accelerometer Image](../static/images/cats_eyes_accel.gif)
 
 ## Step 12 @fullscreen
 
-Now that you know how to use the accelerometer trying playing around with the other parameters and see what the results are. When you're done deploy your program and see how it acts on the actual BrainPad. 
+Now that you know how to use the accelerometer trying playing around with the other parameters and see what the results are. 
 
 ![BrainPad Accelerometer Image](../static/images/accelerometer.jpg)

@@ -17,17 +17,17 @@ loops.forever(function () {
 ```
 ## Step 3 @unplugged
 
-Let's drag in our first image. We can accomplish this by adding a ``||display:show image||`` block. The Butterfly is the default image.
+Let's drag in our first image. We can accomplish this by adding a ``||display:show image||`` block. The BrainPad Light Bulb is the default image.
 
 ```blocks
 forever(function () {
-    display.showImage(images.butterfly1)
+    display.showImage(background.img01_logo1)
 })
 ```
 
 ## Step 4 @fullscreen
 
-To make our character animate, we have to select the first image frame of the animation. Click on the Butterfly image and change it to the 'walker1' image.
+To make our character animate, we have to select the first image. Click on the Light Bulb image and change it to the 'walker1' image.
 
 ![BrainPad buzzer image](../static/images/selectframe1.jpg)
 
@@ -47,14 +47,14 @@ When we add the third frame of our animation. You'll notice in the simulator, ou
 
 ## Step 7 @fullscreen
 
-Finally, we need to add the last frame of our animation, which when complete loops back to the first image in our code, and completes the animation process. In future tutorials we'll use the BrainPad's inputs to control a simple animation. 
+Finally, we need to add the last frame of our animation, which when complete loops back to the first image in our code, and completes the animation process. Try using other images to create simple animations. In other tutorials we'll use animation blocks that are specifically designed to create animations and attach them to sprites we create.  
 
 ```blocks
 forever(function () {
-    display.showImage(images.walker1)
-    display.showImage(images.walker2)
-    display.showImage(images.walker3)
-    display.showImage(images.walker4)
+    display.showImage(background.img21_walker1)
+    display.showImage(background.img22_walker2)
+    display.showImage(background.img23_walker3)
+    display.showImage(background.img24_walker4)
 })
 ```
 

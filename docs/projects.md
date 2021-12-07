@@ -43,10 +43,11 @@
 
 ## See Also
 
-[Block Basics](/blocks),
 [On Board Components](/basics),
+[Block Basics](/blocks),
 [Display](/display),
 [Robots](/brainbot),
 [Games](/games),
-[Circuits](/circuits)
+[Circuits](/circuits),
+[Complete Projects](/complete)
 

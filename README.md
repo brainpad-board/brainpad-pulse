@@ -43,11 +43,7 @@ These instructions assume Window 10 - 64bit
 
 ### Static host
 
-- Switch to toHost branch
-- Run "doClean"
-- Run "doBuild" 
-- Run "doRun"
-- ctrl C to stop
+- Ensure called "doRun" and "doOverwrite 0".
 - Run "pxt staticpkg --route foo --githubpages"
 - Run "doOverwrite 1"
 - Add CNAME

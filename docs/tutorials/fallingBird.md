@@ -1,8 +1,9 @@
-# Smarty Bird
+# Falling Bird
 
 ## Step 1 @unplugged
 
-The Smarty Bird game is a complete game example that demonstrates how animation, gravity and projectiles work inside the game engine. Look at the code and download the game to your BrainPad Pulse to see how it works. 
+The Falling Bird game is a complete game example that demonstrates how animation, gravity and projectiles work inside the game engine. Look at the code and download the game to your BrainPad Pulse to see how it works. 
+
 
 
 

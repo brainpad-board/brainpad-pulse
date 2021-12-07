@@ -7,34 +7,33 @@ Step by step guide to coding your @boardname@.
 ```codecard
 [
 {
-  "name": "Demo",
+  "name": "BrainPad Pulse Demo",
   "description": "This demo uses all the components on the BrainPad Pulse in one program",
   "cardType": "tutorial",
-  "label": "BrainPad Pulse Demo",
+  "label": "Demo",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/demo",
   "imageUrl":"/static/cp/projects/thumb/demo.jpg"
 } 
 ,
 {
-  "name": "Games",
+  "name": "Falling Bird",
   "description": "This demo shows the complete Falling Bird Game",
   "cardType": "tutorial",
-  "label": "Falling Bird",
+  "label": "Games",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/fallingBird",
   "imageUrl":"/static/cp/projects/thumb/smartyBird.jpg"
 }
 ,
 {
-  "name": "Games",
+  "name": "Lunar Lander",
   "description": "This demo shows the complete Lunar Lander Game",
   "cardType": "tutorial",
-  "label": "Lunar Lander",
+  "label": "Games",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/lunarLander",
   "imageUrl":"/static/cp/projects/thumb/lunarLander.jpg"
-}
  
 ]
 

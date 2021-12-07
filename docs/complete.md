@@ -24,7 +24,17 @@ Step by step guide to coding your @boardname@.
   "labelClass": "orange ribbon large",
   "url":"/tutorials/fallingBird",
   "imageUrl":"/static/cp/projects/thumb/smartyBird.jpg"
-} 
+}
+,
+{
+  "name": "Games",
+  "description": "This demo shows the complete Lunar Lander Game",
+  "cardType": "tutorial",
+  "label": "Lunar Lander",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/lunarLander",
+  "imageUrl":"/static/cp/projects/thumb/lunarLander.jpg"
+}
  
 ]
 

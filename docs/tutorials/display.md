@@ -6,7 +6,7 @@ The BrainPad has an onboard display capable of displaying images, shapes, and te
 
 ![BrainPad buzzer image](../static/images/display.jpg)
 
-## Step 2 @unplugged
+## Step 2 @fullscreen
 
 Since we're creating an animation, we will want our images to keep playing in a loop, so we'll use the  ``||loops:forever||`` loop already in our project. 
 
@@ -15,7 +15,7 @@ loops.forever(function () {
     
 })
 ```
-## Step 3 @unplugged
+## Step 3 @fullscreen
 
 Let's drag in our first image. We can accomplish this by adding a ``||display:show image||`` block. The BrainPad Light Bulb is the default image.
 

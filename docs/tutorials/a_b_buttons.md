@@ -9,13 +9,13 @@
 
 The BrainPad Pulse is equipped with two directional buttons (A and B) that we can program. In this tutorial we'll use the BrainPad buttons to turn on change images on the display. 
 
-![BrainPad buzzer image](docs/static/images/buttons.jpg)
+![BrainPad buzzer image](../static/images/buttons.jpg)
 
 ## Step 2 @unplugged
 
 We use buttons every day to communicate with electronic devices all around us. Even the keyboard on your computer is made up of buttons. 
 
-![BrainPad buzzer image](docs/static/images/keys.jpg)
+![BrainPad buzzer image](../static/images/keys.jpg)
 
 ## Step 3 @fullscreen
 

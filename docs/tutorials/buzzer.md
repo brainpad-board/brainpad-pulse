@@ -9,7 +9,7 @@
 
 The BrainPad is equipped with an onboard buzzer that is capable of playing many different sounds. It can even be programmed to play a song. We will use it to make a simple 5 note melody, that's out of this world!
  
-![BrainPad buzzer image](docs/static/images/buzzer.jpg)
+![BrainPad buzzer image](../static/images/buzzer.jpg)
 
 
 ## Step 2 @fullscreen

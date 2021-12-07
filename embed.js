@@ -3,47 +3,47 @@
 
     // This line gets patched up by the cloud
     var pxtConfig = {
-    "relprefix": "/",
+    "relprefix": "/brainpad-pulse/",
     "verprefix": "",
-    "workerjs": "/worker.js",
-    "monacoworkerjs": "/monacoworker.js",
-    "gifworkerjs": "/gifjs/gif.worker.js",
-    "serviceworkerjs": "/serviceworker.js",
-    "typeScriptWorkerJs": "/tsworker.js",
+    "workerjs": "/brainpad-pulse/worker.js",
+    "monacoworkerjs": "/brainpad-pulse/monacoworker.js",
+    "gifworkerjs": "/brainpad-pulse/gifjs/gif.worker.js",
+    "serviceworkerjs": "/brainpad-pulse/serviceworker.js",
+    "typeScriptWorkerJs": "/brainpad-pulse/tsworker.js",
     "pxtVersion": "7.3.7",
     "pxtRelId": "localDirRelId",
-    "pxtCdnUrl": "/",
-    "commitCdnUrl": "/",
-    "blobCdnUrl": "/",
-    "cdnUrl": "/",
+    "pxtCdnUrl": "/brainpad-pulse/",
+    "commitCdnUrl": "/brainpad-pulse/",
+    "blobCdnUrl": "/brainpad-pulse/",
+    "cdnUrl": "/brainpad-pulse/",
     "targetVersion": "0.0.0",
     "targetRelId": "",
     "targetUrl": "",
     "targetId": "brainpad",
-    "simUrl": "/simulator.html",
-    "simserviceworkerUrl": "/simulatorserviceworker.js",
-    "simworkerconfigUrl": "/workerConfig.js",
-    "partsUrl": "/siminstructions.html",
-    "runUrl": "/run.html",
-    "docsUrl": "/docs.html",
-    "multiUrl": "/multi.html",
-    "asseteditorUrl": "/asseteditor.html",
-    "skillmapUrl": "/skillmap.html",
+    "simUrl": "/brainpad-pulse/simulator.html",
+    "simserviceworkerUrl": "/brainpad-pulse/simulatorserviceworker.js",
+    "simworkerconfigUrl": "/brainpad-pulse/workerConfig.js",
+    "partsUrl": "/brainpad-pulse/siminstructions.html",
+    "runUrl": "/brainpad-pulse/run.html",
+    "docsUrl": "/brainpad-pulse/docs.html",
+    "multiUrl": "/brainpad-pulse/multi.html",
+    "asseteditorUrl": "/brainpad-pulse/asseteditor.html",
+    "skillmapUrl": "/brainpad-pulse/skillmap.html",
     "isStatic": true
 };
 
     var scripts = [
-        "/highlight.js/highlight.pack.js",
-        "/marked/marked.min.js",
+        "/brainpad-pulse/highlight.js/highlight.pack.js",
+        "/brainpad-pulse/marked/marked.min.js",
     ]
 
     if (typeof jQuery == "undefined")
-        scripts.unshift("/jquery.js")
+        scripts.unshift("/brainpad-pulse/jquery.js")
     if (typeof jQuery == "undefined" || !jQuery.prototype.sidebar)
-        scripts.push("/semantic.js")
+        scripts.push("/brainpad-pulse/semantic.js")
     if (!window.pxtTargetBundle)
-        scripts.push("/target.js");
-    scripts.push("/pxtembed.js");
+        scripts.push("/brainpad-pulse/target.js");
+    scripts.push("/brainpad-pulse/pxtembed.js");
 
     var pxtCallbacks = []
 

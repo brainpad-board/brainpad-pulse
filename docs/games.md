@@ -17,7 +17,7 @@ Step by step guide to coding your @boardname@.
 } 
 ,
 {
-  "name": "Animating",
+  "name": "Animating Sprites",
   "description": "In this tutorial, we'll cover how to animate sprites",
   "cardType": "tutorial",
   "label": "Animating Sprites",
@@ -30,7 +30,7 @@ Step by step guide to coding your @boardname@.
   "name": "Moving Sprites",
   "description": "In this tutorial, we'll explain how to move the sprites we create",
   "cardType": "tutorial",
-  "label": "Moving",
+  "label": "Moving Sprites",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/moving",
   "imageUrl":"/static/cp/projects/thumb/moving.jpg"

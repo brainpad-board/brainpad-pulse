@@ -1,7 +1,9 @@
 ```template
 \\
 ```
-
+```package
+brainbot
+```
 # BrainBot Lights
 
 ## Step 1 @unplugged

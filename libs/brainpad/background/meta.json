@@ -1,7 +1,7 @@
 {
     "width": 128,
     "height": 64,
-	"blockIdentity": "background.showImage",
+	"blockIdentity": "images._image",
     "creator": "image.ofBuffer",
 	"basename": "background",
     "star": {

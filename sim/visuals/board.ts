@@ -332,6 +332,36 @@ namespace pxsim.visuals {
                 this.initScreen();
             }
             //getResume();
+			
+            let bpState = this.board.buttonState;
+            let stateButtons = bpState.buttons;
+			let button = stateButtons[0];
+			
+			const rootElement = document.documentElement;
+						
+			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
+                const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+                if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+                    stateButtons[0].setPressed(true);
+                    svg.fill(this.buttons[0], this.props.theme.buttonDown)
+                }
+				if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+                    stateButtons[1].setPressed(true);
+                    svg.fill(this.buttons[1], this.props.theme.buttonDown)
+                }
+            });
+			
+			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
+                const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+                if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+                    stateButtons[0].setPressed(false);
+                    svg.fill(this.buttons[0], this.props.theme.buttonUps[0])
+                }
+				if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+                    stateButtons[1].setPressed(false);
+                    svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
+                }
+            });
         }
 
         private fixPinIds() {

@@ -37,7 +37,7 @@ brainbot.HeadlightColor(brainbot.rgb(255, 255, 255))
 ```
 
 ## Step 5 @fullscreen
-What about a program that shows different random colors? From Math, use the ``||math:pick random||`` block. Drag it into RED, GREEN, and Blue parameters of the block we just added. Download the code to the BrainBot and see what happens.
+What about a program that shows different random colors? From Math, use the ``||math:pick random||`` block. Drag it into RED, GREEN, and BLUE parameters of the block we just added. Download the code to the BrainBot and see what happens.
 
 ```blocks
 brainbot.HeadlightColor(brainbot.rgb(randint(0, 255), randint(0, 255), randint(0, 255)))
@@ -64,13 +64,28 @@ forever(function () {
 ```
 
 ## Step 8 @fullscreen
-We need to add a brief pause between the ``||brainbot:set tailight||`` block. Put one between the two blocks and one at the bottom of the ``||loops:forever||`` block. Download the code to the BrainBot and observe the results.
+Duplicate the two blocks we just added but this time change left blue and the right to red. 
 
 ```blocks
 forever(function () {
     brainbot.TaillightColor(brainbot.TurnDirection.Left, brainbot.colors(NeoPixelColors.Red))
-    pause(100)
     brainbot.TaillightColor(brainbot.TurnDirection.Right, brainbot.colors(NeoPixelColors.Blue))
+    brainbot.TaillightColor(brainbot.TurnDirection.Left, brainbot.colors(NeoPixelColors.Blue))
+    brainbot.TaillightColor(brainbot.TurnDirection.Right, brainbot.colors(NeoPixelColors.Red))
+})
+```
+
+
+## Step 9 @fullscreen
+We need to add a brief pause between the ``||brainbot:set tailight||`` blocks we just added. Put one between the top two blocks and the bottom two blocks, also add one to the bottom of the ``||loops:forever||`` block. Download the code to the BrainBot and observe the results.
+
+```blocks
+forever(function () {
+    brainbot.TaillightColor(brainbot.TurnDirection.Left, brainbot.colors(NeoPixelColors.Red))
+    brainbot.TaillightColor(brainbot.TurnDirection.Right, brainbot.colors(NeoPixelColors.Blue))
+    pause(100)
+    brainbot.TaillightColor(brainbot.TurnDirection.Left, brainbot.colors(NeoPixelColors.Blue))
+    brainbot.TaillightColor(brainbot.TurnDirection.Right, brainbot.colors(NeoPixelColors.Red))
     pause(100)
 })
 ```

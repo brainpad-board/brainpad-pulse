@@ -2,7 +2,9 @@
 
 ## Step 1 @unplugged
 
-This example uses all the components found on the BrainPad Pulse inside on complete program. This can be used to test all the components and see how they work. For example when beating heart is shown try tipping the BrainPad Pulse until the LED comes on. After you press the button there is a simple game that follows called "Catch the Pizza"
+This example uses all the components found on the BrainPad Pulse inside on complete program. This can be used to test all the components and see how they work. For example when beating heart is shown try tipping the BrainPad Pulse until the LED comes on. After you press the button a game appears called "Catch the Pizza". Press "Done" to exit the tutorial and modify the code.
+
+![BrainPad Demo](../static/images/demo.gif)
 
 ```template
 enum SpriteKind {

@@ -1,0 +1,78 @@
+CACHE MANIFEST
+
+CACHE:
+/brainpad-pulse/semantic.js
+/brainpad-pulse/main.js
+/brainpad-pulse/pxtapp.js
+/brainpad-pulse/typescript.js
+/brainpad-pulse/marked/marked.min.js
+/brainpad-pulse/highlight.js/highlight.pack.js
+/brainpad-pulse/jquery.js
+/brainpad-pulse/pxtlib.js
+/brainpad-pulse/pxtcompiler.js
+/brainpad-pulse/pxtpy.js
+/brainpad-pulse/pxtblockly.js
+/brainpad-pulse/pxtwinrt.js
+/brainpad-pulse/pxteditor.js
+/brainpad-pulse/pxtsim.js
+/brainpad-pulse/pxtembed.js
+/brainpad-pulse/pxtworker.js
+/brainpad-pulse/pxtweb.js
+/brainpad-pulse/blockly.css
+/brainpad-pulse/semantic.css
+/brainpad-pulse/rtlsemantic.css
+
+
+/brainpad-pulse/editor.js
+
+
+# blockly
+/brainpad-pulse/blockly/media/sprites.png
+/brainpad-pulse/blockly/media/click.mp3
+/brainpad-pulse/blockly/media/disconnect.wav
+/brainpad-pulse/blockly/media/delete.mp3
+
+# monaco; keep in sync with webapp/public/index.html
+/brainpad-pulse/vs/loader.js
+/brainpad-pulse/vs/base/worker/workerMain.js
+/brainpad-pulse/vs/basic-languages/bat/bat.js
+/brainpad-pulse/vs/basic-languages/cpp/cpp.js
+/brainpad-pulse/vs/basic-languages/python/python.js
+/brainpad-pulse/vs/basic-languages/typescript/typescript.js
+/brainpad-pulse/vs/basic-languages/markdown/markdown.js
+/brainpad-pulse/vs/editor/editor.main.css
+/brainpad-pulse/vs/editor/editor.main.js
+/brainpad-pulse/vs/editor/editor.main.nls.js
+/brainpad-pulse/vs/language/json/jsonMode.js
+/brainpad-pulse/vs/language/json/jsonWorker.js
+/brainpad-pulse/vs/language/typescript/tsMode.js
+/brainpad-pulse/vs/language/typescript/tsWorker.js
+
+# charts
+/brainpad-pulse/smoothie/smoothie_compressed.js
+/brainpad-pulse/images/Bars_black.gif
+
+# gifjs
+/brainpad-pulse/gifjs/gif.js
+
+# ai
+/brainpad-pulse/ai.0.js
+
+/brainpad-pulse/worker.js
+/brainpad-pulse/monacoworker.js
+
+# ver Wed Dec 08 2021 09:56:54 GMT-0500 (Eastern Standard Time)
+
+# target
+/brainpad-pulse/docs\static\logo.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\logo.square.png
+/brainpad-pulse/docs\static\ghi-logo.png
+/brainpad-pulse/docs\static\ghi-logo.png
+/brainpad-pulse/docs\static\hero.jpg
+
+/brainpad-pulse/target.js
+
+NETWORK:
+*

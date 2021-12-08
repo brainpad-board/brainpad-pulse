@@ -1048,11 +1048,11 @@ namespace pxsim.visuals {
 									
 			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
 				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-				if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
 					stateButtons[0].setPressed(true);
 					svg.fill(this.buttons[0], this.props.theme.buttonDown)
 				}
-				else if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
 					stateButtons[1].setPressed(true);
 					svg.fill(this.buttons[1], this.props.theme.buttonDown)
 				}
@@ -1061,11 +1061,11 @@ namespace pxsim.visuals {
 			
 			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
 				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-				if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
 					stateButtons[0].setPressed(false);
 					svg.fill(this.buttons[0], this.props.theme.buttonUps[0])
 				}
-				else if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
 					stateButtons[1].setPressed(false);
 					svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
 				}

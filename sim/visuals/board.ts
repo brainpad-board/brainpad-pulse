@@ -1043,18 +1043,47 @@ namespace pxsim.visuals {
 
             let bpState = this.board.buttonState;
             let stateButtons = bpState.buttons;
+			
+			const rootElement = document.documentElement;
+									
+			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
+				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+				if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+					stateButtons[0].setPressed(true);
+					svg.fill(this.buttons[0], this.props.theme.buttonDown)
+				}
+				else if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+					stateButtons[1].setPressed(true);
+					svg.fill(this.buttons[1], this.props.theme.buttonDown)
+				}
+
+			});
+			
+			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
+				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+				if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+					stateButtons[0].setPressed(false);
+					svg.fill(this.buttons[0], this.props.theme.buttonUps[0])
+				}
+				else if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+					stateButtons[1].setPressed(false);
+					svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
+				}
+								
+			});
+			
             this.buttons.forEach((btn, index) => {
                 let button = stateButtons[index];
 
                 pointerEvents.down.forEach(evid => btn.addEventListener(evid, ev => {
-                    button.setPressed(true);
+					button.setPressed(true);
                     svg.fill(this.buttons[index], this.props.theme.buttonDown);
                 }))
                 btn.addEventListener(pointerEvents.leave, ev => {
                     button.setPressed(false);
                     svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
                 })
-                btn.addEventListener(pointerEvents.up, ev => {
+                btn.addEventListener(pointerEvents.up, ev => {	
                     button.setPressed(false);
                     svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
                 })
@@ -1068,6 +1097,10 @@ namespace pxsim.visuals {
                         svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
                     }
                 );
+				
+				
+									
+				
             })
 
         }

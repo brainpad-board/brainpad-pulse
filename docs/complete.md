@@ -34,6 +34,7 @@ Step by step guide to coding your @boardname@.
   "labelClass": "orange ribbon large",
   "url":"/tutorials/lunarLander",
   "imageUrl":"/static/cp/projects/thumb/lunarLander.jpg"
+}  
  
 ]
 

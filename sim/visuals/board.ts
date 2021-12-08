@@ -338,7 +338,10 @@ namespace pxsim.visuals {
 			let button = stateButtons[0];
 			
 			const rootElement = document.documentElement;
-						
+			
+			rootElement.setAttribute("focusable", "true");
+			rootElement.setAttribute("tabindex", "0");
+							
 			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
                 const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
                 if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key

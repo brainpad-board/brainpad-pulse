@@ -13,6 +13,17 @@ enum state {
 	state6=0x31,
 }
 
+enum GroundSensorDetected {
+	//% block="none"
+	None =0,
+	//% block="right"
+	Right =1,
+	//% block="left"
+	Left =2,
+	//% block="left and right"
+	Both =3,
+}
+
 /**
  * GameBot
  */
@@ -35,9 +46,9 @@ namespace brainbot {
 	}
 	
 	export enum Voltage {
-		//%block="high"
+		//%block="found"
 		High = 0x01,
-		//% block="low"
+		//% block="lost"
 		Low = 0x00
 	}
 
@@ -281,6 +292,31 @@ namespace brainbot {
         pause(40);
     })
 		
+	/**
+     * Ground sensor detected
+    */
+    //% weight=2 blockGap=8
+    //% blockId="brainbot_groundsensor_detected" block="line detected |%detect" 
+	//% group="Sensors"	
+    export function ReadGroundSensor(detect: GroundSensorDetected): boolean {
+        switch (detect) {
+			case GroundSensorDetected.None:
+				return pins.P13.digitalRead() == 0 && pins.P14.digitalRead() == 0
+				
+			case GroundSensorDetected.Right:
+				return pins.P14.digitalRead() > 0 && pins.P13.digitalRead() == 0
+				
+			case GroundSensorDetected.Left:
+				return pins.P13.digitalRead() > 0 && pins.P14.digitalRead() == 0
+				
+			case GroundSensorDetected.Both:
+				return pins.P13.digitalRead() > 0 && pins.P14.digitalRead() > 0
+				
+		}
+		
+		return false
+    }	
+	
 	
 	//% blockId=brainbot_distancesensor block="read distance"
 	//% group="Sensors"

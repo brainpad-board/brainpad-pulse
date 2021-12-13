@@ -83,9 +83,24 @@ namespace brainbot {
     export function Turn(turndirection: TurnDirection, speed: number): void {
 		
 		if (turndirection == TurnDirection.Left)
-			MoveCustom(speed, 0);
+			MoveCustom(0, speed);			
 		else 	
-			MoveCustom(0, speed);
+			MoveCustom(speed, 0);
+	}
+	
+	/**
+     * Spin left or right
+     */
+    //% blockId=brainbot_Spin block="Spin %turndirection speed %speed"
+	//% speed.min=-100 speed.max=100 speed.defl=50
+	//% group="Wheels"
+	//% weight=97
+    export function Spin(turndirection: TurnDirection, speed: number): void {
+		
+		if (turndirection == TurnDirection.Left)
+			MoveCustom(speed * -1, speed);			
+		else 	
+			MoveCustom(speed, speed * -1);
 	}
 	
 	/**
@@ -95,7 +110,7 @@ namespace brainbot {
 	//% leftspeed.min=-100 leftspeed.max=100 leftspeed.defl=50
 	//% rightspeed.min=-100 rightspeed.max=100 rightspeed.defl=50
 	//% group="Wheels"
-	//% weight=97
+	//% weight=96
     export function MoveCustom(leftspeed: number, rightspeed: number): void {
 		let deviceAddress = 0x1;
 		
@@ -139,7 +154,7 @@ namespace brainbot {
 	
 	//% blockId=brainbot_stop block="Stop"
 	//% group="Wheels"
-	//% weight=96
+	//% weight=95
     export function Stop(): void {
 		let deviceAddress = 0x1;
 		let data: number[] = [0x2, 0, 0, 0, 0]

@@ -110,7 +110,7 @@ animation.setAction(Jumper, ActionKind.Walking)
 
 We've got our sprite animated, now let's use the buttons to control it and make our player jump. 
 
-![BrainPad buzzer image](../static/images/animate.gif)
+![BrainPad buzzer image](docs/static/images/animate.gif)
 
 
 ## Step 2 @fullscreen
@@ -227,7 +227,7 @@ sprites.controlSprite(Jumper, 100, 100)
 
 You can either download the code to the BrainPad or you can try it on the simulator. You'll notice that our sprite moves back and forth when we press the A or B buttons. 
 
-![Moving Sprite](../static/images/moveSprite.gif)
+![Moving Sprite](docs/static/images/moveSprite.gif)
 
 ## Step 4 @fullscreen
 Now let's use a ``||input:on button||`` event block to control our sprite's movement instead of the one we previously used. Remove the last block we added to move our sprite and drag it to the menu to delete it. Drag in two ``||input:on button||`` event blocks. Set one to "pressed" and the other to "released". 
@@ -366,5 +366,5 @@ input.buttonA.onEvent(ButtonEvent.Up, function () {
 ## Step 7 @unplugged
 Our Jumper is now jumping, in the next tutorial we'll give him something to jump over. 
 
-![Jumping Sprite](../static/images/jumpingSprite.gif)
+![Jumping Sprite](docs/static/images/jumpingSprite.gif)
 

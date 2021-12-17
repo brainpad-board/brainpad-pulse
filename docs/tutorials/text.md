@@ -4,7 +4,7 @@
 
 You can display lots of things on the BrainPad Pulse's display. One useful thing is displaying text. We'll create a string variable and display it on screen then change the variable when we press the buttons. 
 
-![BrainPad buzzer image](../static/images/display.jpg)
+![BrainPad buzzer image](docs/static/images/display.jpg)
 
 ## Step 2 @unplugged
 
@@ -31,7 +31,7 @@ forever(function () {
 
 Now let's make a variable to hold our name, we'll later use this variable to switch between our first and last name. Under VARIABLES click 'Make a Variable'
 
-![create a variable](../static/images/create-variable.jpg)
+![create a variable](docs/static/images/create-variable.jpg)
 
 ## Step 5 @unplugged
 

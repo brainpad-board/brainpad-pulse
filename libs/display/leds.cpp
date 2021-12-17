@@ -41,10 +41,17 @@ namespace display {
 	//%  
     void setMatrixLeds(int led, bool value) {
 		if (!init) {
-			
+								
 			init = true;
 			
 			if (!pxt::IsPulse()) {
+				// sleep_ms(50) This fixed bug on Tick.
+				// Wait for I2C initialize on 2 Pin LED1 and LED6.
+				// Then we reset these two pin to GPIO.
+				// If we initilaize gpio first then I2C switch these to pin to I2C mode
+				// then we can't control these two pins any more.
+				sleep_ms(50);
+				
 				auto en = lookupPin(PA_9);	
 				
 				en->setDigitalValue(1);

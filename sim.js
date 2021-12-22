@@ -1337,8 +1337,7 @@ var pxsim;
 					stateButtons[1].setPressed(true);
 					svg.fill(this.buttons[1], this.props.theme.buttonDown)
 				}
-				
-				lastPressed = dd.getMilliseconds()
+								
 
 			});
 			
@@ -1361,8 +1360,7 @@ var pxsim;
 					stateButtons[1].setPressed(false);
 					svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
 				}
-				
-				lastReleased = du.getMilliseconds()
+								
 								
 			});
                 this.buttons.forEach((btn, index) => {

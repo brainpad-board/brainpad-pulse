@@ -1052,7 +1052,7 @@ namespace pxsim.visuals {
 									
 			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
 	
-				if (Math.abs(d.getMilliseconds() - lastPressed) < 100)
+				if (Math.abs(d.getMilliseconds() - lastPressed) < 200)
 					return
 				
 				lastPressed = d.getMilliseconds()				
@@ -1072,7 +1072,7 @@ namespace pxsim.visuals {
 			});
 			
 			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
-				if (Math.abs(d.getMilliseconds() - lastReleased) < 100)
+				if (Math.abs(d.getMilliseconds() - lastReleased) < 200)
 					return
 				
 				lastReleased = d.getMilliseconds()

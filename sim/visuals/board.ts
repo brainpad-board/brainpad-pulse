@@ -1045,12 +1045,24 @@ namespace pxsim.visuals {
             let stateButtons = bpState.buttons;
 			
 			const rootElement = document.documentElement;
+		
+			const d = new Date()
+			let lastPressed = d.getMilliseconds()
+			let lastReleased = d.getMilliseconds()
 									
 			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
+	
+				if (Math.abs(d.getMilliseconds() - lastPressed) < 100)
+					return
+				
+				lastPressed = d.getMilliseconds()				
+				
 				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+
 				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
+					
 					stateButtons[0].setPressed(true);
-					svg.fill(this.buttons[0], this.props.theme.buttonDown)
+					svg.fill(this.buttons[0], this.props.theme.buttonDown)					
 				}
 				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
 					stateButtons[1].setPressed(true);
@@ -1060,10 +1072,18 @@ namespace pxsim.visuals {
 			});
 			
 			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
+				if (Math.abs(d.getMilliseconds() - lastReleased) < 100)
+					return
+				
+				lastReleased = d.getMilliseconds()
+				
 				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
+				
+				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left				
+					
 					stateButtons[0].setPressed(false);
-					svg.fill(this.buttons[0], this.props.theme.buttonUps[0])
+					svg.fill(this.buttons[0], this.props.theme.buttonUps[0])									
+					
 				}
 				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
 					stateButtons[1].setPressed(false);

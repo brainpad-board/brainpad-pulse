@@ -3,17 +3,17 @@
 ## Step 1 @unplugged
 This lesson uses the BrainClips kit. We're going to demonstrate how to read an analog value from the Rocker Module
 
-![BrainClip RGB Module](../static/images/rockermodule.jpg)
+![BrainClip RGB Module](docs/static/images/rockermodule.jpg)
 
 ## Step 2 @fullscreen
 Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to X, P1 to Y, 3V to VCC, GND to GND).
 
- ![Rocker Module wiring diagram](../static/images/clipdiagram3.jpg)
+ ![Rocker Module wiring diagram](docs/static/images/clipdiagram3.jpg)
 
 ## Step 3 @fullscreen
 While connecting the wires, you may have noticed we connected P0 to X and P1 to Y. The rocker returns both an X and Y signal. The values range from 0 to 1023 for both X & Y
 
- ![Rocker Module XY](../static/images/rockerXY.jpg)
+ ![Rocker Module XY](docs/static/images/rockerXY.jpg)
 
 ## Step 4 @fullscreen
 Let's display the values of X & Y on the screen when we move the rocker. We need for the BrainPad to constantly read the X and Y. So let's put ``||display:showNumber||`` block inside our ``||loops:forever||`` block 

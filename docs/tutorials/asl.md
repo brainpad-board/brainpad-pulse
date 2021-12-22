@@ -4,7 +4,7 @@
 
 American Sign Language is used by nearly 500,000 people to communicate with the deaf. This program teaches the ASL alphabet while demonstrating the use of arrays, random numbers, and functions. Use the A button to select an answer, use the B button to change the selection. After 3 incorrect answers the quiz is over. Note this is a large program and may take a bit to load in the simulator.  
 
-![BrainPad Demo](../static/images/asl.gif)
+![BrainPad Demo](docs/static/images/asl.gif)
 
 ```template
 enum SpriteKind {

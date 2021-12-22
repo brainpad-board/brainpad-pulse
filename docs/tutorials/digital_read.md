@@ -6,7 +6,7 @@ This lesson uses the BrainClips kit. Remember that a digital signal is either ON
 ![BrainClip Button Module](../static/images/buttonmodule.jpg)
 
 
-## Step 2 @unplugged
+## Step 2 @fullscreen
 Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to OUT, 3V to VCC, GND to GND).
 
  ![RGB Module Wiring Diagram](../static/images/clipdiagram2.jpg)
@@ -30,7 +30,7 @@ pins.P0.onEvent(PinEvent.Fall, function () {
 })
 ```
 
-## Step 5 @unplugged
+## Step 5 @fullscreen
 Now that we understand how the ``||pins:on pin||`` event block works let's drag in another one and set this one to 'pulse high'. Remove the ``||pins:led toggle||`` block. Let's use the screen to change the image. Under 'DISPLAY' drag the ``||display:show image||`` block into one of the ``||pins:on pin||`` event block and change it to the STOP image, and another ``||display:show image||`` and drag in the GO image. 
 
  ```blocks
@@ -42,5 +42,5 @@ pins.P0.onEvent(PinEvent.Rise, function () {
 })
 ```
 
-## Step 6 @unplugged
+## Step 6 @fullscreen
 With this tutorial you can see how buttons are connected to a brain. Try changing what's inside the ``||pins:on pin||`` event block to something else. Maybe a song? You decide. 

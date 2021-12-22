@@ -5,12 +5,12 @@ This lesson uses the BrainClips kit. We're going to demonstrate how to read an a
 
 ![BrainClip RGB Module](../static/images/rockermodule.jpg)
 
-## Step 2 @unplugged
+## Step 2 @fullscreen
 Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to X, P1 to Y, 3V to VCC, GND to GND).
 
  ![Rocker Module wiring diagram](../static/images/clipdiagram3.jpg)
 
-## Step 3 @unplugged
+## Step 3 @fullscreen
 While connecting the wires, you may have noticed we connected P0 to X and P1 to Y. The rocker returns both an X and Y signal. The values range from 0 to 1023 for both X & Y
 
  ![Rocker Module XY](../static/images/rockerXY.jpg)
@@ -34,10 +34,10 @@ forever(function () {
 
 ```
 
-## Step 6 @unplugged
+## Step 6 @fullscreen
 The values when we aren't touching the rocker are around 500 for X and 500 Y. We could tell our program not to do anything when the Rocker is in this range. 
 
 
-## Step 7 @unplugged
+## Step 7 @fullscreen
 You'll also notice it's never exactly one number. This is the nature of an analog signal and the sensitivity of the Rocker. We have to adjust our code for this sensitivity. Code we create would have to read an acceptable range, say between 450 & 550 to tell us when the Rocker isn't moving.
 

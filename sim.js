@@ -1315,54 +1315,55 @@ var pxsim;
                 let stateButtons = bpState.buttons;
                 const rootElement = document.documentElement;
                 const d = new Date()
-			let lastPressed = d.getMilliseconds()
-			let lastReleased = d.getMilliseconds()
+				let lastPressed = d.getMilliseconds()
+				let lastReleased = d.getMilliseconds()
+										
+				rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
+					const dd = new Date()
+					
+					if (Math.abs(dd.getMilliseconds() - lastPressed) < 200)
+						return
+					
+					lastPressed = dd.getMilliseconds()				
+					
+					const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+
+					if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
+						
+						stateButtons[0].setPressed(true);
+						svg.fill(this.buttons[0], this.props.theme.buttonDown)					
+					}
+					else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
+						stateButtons[1].setPressed(true);
+						svg.fill(this.buttons[1], this.props.theme.buttonDown)
+					}
+					
+					lastPressed = dd.getMilliseconds()
+	
+				});
+				
+				rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
+					const du = new Date()
+					if (Math.abs(du.getMilliseconds() - lastReleased) < 200)
+						return
+					
+					lastReleased = du.getMilliseconds()
+					
+					const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+					
+					if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left				
+						
+						stateButtons[0].setPressed(false);
+						svg.fill(this.buttons[0], this.props.theme.buttonUps[0])									
+						
+					}
+					else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
+						stateButtons[1].setPressed(false);
+						svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
+					}
 									
-			rootElement.addEventListener('keydown', (e: KeyboardEvent) => {
-				const dd = new Date()
-				
-				if (Math.abs(dd.getMilliseconds() - lastPressed) < 200)
-					return
-				
-				lastPressed = dd.getMilliseconds()				
-				
-				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-
-				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
-					
-					stateButtons[0].setPressed(true);
-					svg.fill(this.buttons[0], this.props.theme.buttonDown)					
-				}
-				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
-					stateButtons[1].setPressed(true);
-					svg.fill(this.buttons[1], this.props.theme.buttonDown)
-				}
-								
-
-			});
-			
-			rootElement.addEventListener('keyup', (e: KeyboardEvent) => {
-				const du = new Date()
-				if (Math.abs(du.getMilliseconds() - lastReleased) < 200)
-					return
-				
-				lastReleased = du.getMilliseconds()
-				
-				const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-				
-				if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left				
-					
-					stateButtons[0].setPressed(false);
-					svg.fill(this.buttons[0], this.props.theme.buttonUps[0])									
-					
-				}
-				else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
-					stateButtons[1].setPressed(false);
-					svg.fill(this.buttons[1], this.props.theme.buttonUps[1])
-				}
-								
-								
-			});
+					lastReleased = du.getMilliseconds()
+				});
                 this.buttons.forEach((btn, index) => {
                     let button = stateButtons[index];
                     pxsim.pointerEvents.down.forEach(evid => btn.addEventListener(evid, ev => {

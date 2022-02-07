@@ -671,7 +671,7 @@ var pxsim;
                 ledOn: "#ff7777",
                 ledOff: "transparent",
                 buttonOuter: "#979797",
-                buttonUps: ["#000", "#000", "#000", "#000"],
+                buttonUps: "#000000",
                 buttonDown: "#FFA500",
                 virtualButtonDown: "#FFA500",
                 virtualButtonOuter: "#333",
@@ -709,31 +709,6 @@ var pxsim;
                     this.initScreen();
                 }
                 //getResume();
-                let bpState = this.board.buttonState;
-                let stateButtons = bpState.buttons;
-                const rootElement = document.documentElement;
-                rootElement.addEventListener('keydown', (e) => {
-                    const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-                    if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
-                        stateButtons[0].setPressed(true);
-                        pxsim.svg.fill(this.buttons[0], this.props.theme.buttonDown);
-                    }
-                    if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
-                        stateButtons[1].setPressed(true);
-                        pxsim.svg.fill(this.buttons[1], this.props.theme.buttonDown);
-                    }
-                });
-                rootElement.addEventListener('keyup', (e) => {
-                    const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-                    if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
-                        stateButtons[0].setPressed(false);
-                        pxsim.svg.fill(this.buttons[0], this.props.theme.buttonUps[0]);
-                    }
-                    if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
-                        stateButtons[1].setPressed(false);
-                        pxsim.svg.fill(this.buttons[1], this.props.theme.buttonUps[1]);
-                    }
-                });
             }
             fixPinIds() {
                 /* GHI changed
@@ -829,8 +804,8 @@ var pxsim;
             updateTheme() {
                 let theme = this.props.theme;
                 // GHI changed svg.fills(this.buttonsOuter, theme.buttonOuter);
-                pxsim.svg.fill(this.buttons[0], theme.buttonUps[0]);
-                pxsim.svg.fill(this.buttons[1], theme.buttonUps[1]);
+                pxsim.svg.fill(this.buttons[0], theme.buttonUps);
+                pxsim.svg.fill(this.buttons[1], theme.buttonUps);
                 // if (this.shakeButtonGroup) {
                 //     svg.fill(this.shakeButtonGroup, this.props.theme.gestureButtonOff);
                 // }
@@ -848,8 +823,8 @@ var pxsim;
                 let theme = this.props.theme;
                 let bpState = state.buttonState;
                 let buttons = bpState.buttons;
-                pxsim.svg.fill(this.buttons[0], buttons[0].pressed ? theme.buttonDown : theme.buttonUps[0]);
-                pxsim.svg.fill(this.buttons[1], buttons[1].pressed ? theme.buttonDown : theme.buttonUps[1]);
+                pxsim.svg.fill(this.buttons[0], buttons[0].pressed ? theme.buttonDown : theme.buttonUps);
+                pxsim.svg.fill(this.buttons[1], buttons[1].pressed ? theme.buttonDown : theme.buttonUps);
                 /* GHI changed
                 this.updateRgbLed();
                 
@@ -866,6 +841,7 @@ var pxsim;
                 this.updateLed();
                 this.UpdateScreen();
                 this.updateGestures();
+                this.UpdateButton();
             }
             flashSystemLed() {
                 /* GHI changed
@@ -893,6 +869,16 @@ var pxsim;
                         pxsim.svg.fill(this.led, `#ffffff`);
                         this.led.style.strokeWidth = "0.28349999";
                         this.led.style.stroke = "#0000ff";
+                    }
+                }
+            }
+            UpdateButton() {
+                for (let i = 0; i < 2; i++) {
+                    if (BrainPadBoardSvg.buttonsPressed[i] == true) {
+                        pxsim.svg.fill(this.buttons[i], this.props.theme.buttonDown);
+                    }
+                    else {
+                        pxsim.svg.fill(this.buttons[i], this.props.theme.buttonUps);
                     }
                 }
             }
@@ -1313,53 +1299,71 @@ var pxsim;
                 };
                 let bpState = this.board.buttonState;
                 let stateButtons = bpState.buttons;
+                BrainPadBoardSvg.buttonsPressed[0] = false;
+                BrainPadBoardSvg.buttonsPressed[1] = false;
                 const rootElement = document.documentElement;
                 rootElement.addEventListener('keydown', (e) => {
                     const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-                    if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
-                        stateButtons[0].setPressed(true);
-                        pxsim.svg.fill(this.buttons[0], this.props.theme.buttonDown);
+                    let index = 2;
+                    if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+                        index = 0;
                     }
-                    else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
-                        stateButtons[1].setPressed(true);
-                        pxsim.svg.fill(this.buttons[1], this.props.theme.buttonDown);
+                    if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+                        index = 1;
                     }
+                    if (index > 1)
+                        return;
+                    if (BrainPadBoardSvg.buttonsPressed[index] == true)
+                        return;
+                    BrainPadBoardSvg.buttonsPressed[index] = true;
+                    let button = stateButtons[index];
+                    button.setPressed(true);
                 });
                 rootElement.addEventListener('keyup', (e) => {
                     const charCode = (typeof e.which == "number") ? e.which : e.keyCode;
-                    if (charCode === 37 || charCode === 97 || charCode === 65) { // 'A' or 'a' or Left
-                        stateButtons[0].setPressed(false);
-                        pxsim.svg.fill(this.buttons[0], this.props.theme.buttonUps[0]);
+                    let index = 2;
+                    if (charCode === 37 || charCode === 97 || charCode === 65) { // Enter or Space key
+                        index = 0;
                     }
-                    else if (charCode === 39 || charCode === 98 || charCode === 66) { // 'B' or 'b' or Right
-                        stateButtons[1].setPressed(false);
-                        pxsim.svg.fill(this.buttons[1], this.props.theme.buttonUps[1]);
+                    if (charCode === 39 || charCode === 98 || charCode === 66) { // Enter or Space key
+                        index = 1;
                     }
+                    if (index > 1)
+                        return;
+                    if (BrainPadBoardSvg.buttonsPressed[index] == false)
+                        return;
+                    BrainPadBoardSvg.buttonsPressed[index] = false;
+                    let button = stateButtons[index];
+                    button.setPressed(false);
                 });
                 this.buttons.forEach((btn, index) => {
                     let button = stateButtons[index];
                     pxsim.pointerEvents.down.forEach(evid => btn.addEventListener(evid, ev => {
                         button.setPressed(true);
                         pxsim.svg.fill(this.buttons[index], this.props.theme.buttonDown);
+                        BrainPadBoardSvg.buttonsPressed[index] = true;
                     }));
                     btn.addEventListener(pxsim.pointerEvents.leave, ev => {
                         button.setPressed(false);
-                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
+                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps);
+                        BrainPadBoardSvg.buttonsPressed[index] = false;
                     });
                     btn.addEventListener(pxsim.pointerEvents.up, ev => {
                         button.setPressed(false);
-                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
+                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps);
+                        BrainPadBoardSvg.buttonsPressed[index] = false;
                     });
                     pxsim.accessibility.enableKeyboardInteraction(btn, () => {
                         button.setPressed(true);
                         pxsim.svg.fill(this.buttons[index], this.props.theme.buttonDown);
                     }, () => {
                         button.setPressed(false);
-                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps[index]);
+                        pxsim.svg.fill(this.buttons[index], this.props.theme.buttonUps);
                     });
                 });
             }
         }
+        BrainPadBoardSvg.buttonsPressed = [false, false];
         visuals.BrainPadBoardSvg = BrainPadBoardSvg;
     })(visuals = pxsim.visuals || (pxsim.visuals = {}));
 })(pxsim || (pxsim = {}));

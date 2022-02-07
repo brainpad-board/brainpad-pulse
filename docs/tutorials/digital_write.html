@@ -423,17 +423,17 @@
         <pre><code class="lang-template">//</code></pre>
 <h1 id="digital-write">Digital Write</h1><h2 id="step-1-unplugged">Step 1</h2><p>Digital clips can either read or write. A button is an example of a module that we would read, while an LED would be an example of a module we would write to. In this lesson we’ll cover digital write.</p>
 <p><img class="ui image" src="../static/images/digitalclip.jpg" alt="BrainClip Button Module" loading="lazy"></p>
-<h2 id="step-2-unplugged">Step 2</h2><p>Digital signals can only be one of two states, ON or OFF, 1 or 0, HIGH or LOW. An example would be like a regular light switch. We can either turn it ON or OFF. We achieve this same results on a circuit by setting pins HIGH or LOW. </p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>Digital signals can only be one of two states, ON or OFF, 1 or 0, HIGH or LOW. An example would be like a regular light switch. We can either turn it ON or OFF. We achieve this same results on a circuit by setting pins HIGH or LOW. </p>
 <p><img class="ui image" src="../static/images/digital1.jpg" alt="Digital Signal" loading="lazy"></p>
-<h2 id="step-3-unplugged">Step 3</h2><p>Let’s use the RGB module found inside the kit. The RGB LED has 3 different color LEDs inside it. RED, GREEN, and BLUE. You’ll notice each corner of the module has a hole we’ll use these holes to connect the alligator clips found inside the kit to the BrainPad Pulse </p>
+<h2 id="step-3-fullscreen">Step 3</h2><p>Let’s use the RGB module found inside the kit. The RGB LED has 3 different color LEDs inside it. RED, GREEN, and BLUE. You’ll notice each corner of the module has a hole we’ll use these holes to connect the alligator clips found inside the kit to the BrainPad Pulse </p>
 <p><img class="ui image" src="../static/images/rgbmodule.jpg" alt="BrainClip RGB Module" loading="lazy"></p>
-<h2 id="step-4-unplugged">Step 4</h2><p>Connect the alligator clips as shown in the diagram from the Pulse to the Module.</p>
+<h2 id="step-4-fullscreen">Step 4</h2><p>Connect the alligator clips as shown in the diagram from the Pulse to the Module.</p>
 <p> <img class="ui image" src="../static/images/clipdiagram1.jpg" alt="RGB Module Wiring Diagram" loading="lazy"></p>
 <h2 id="step-5-fullscreen">Step 5</h2><p>Now we’re ready to start building our code blocks. Under <code>||pins:PINS||</code> grab the <code>||pins:digital write||</code> block and drag it into the <code>||loops:on start||</code> block. Set the pin HIGH by click the switch inside the block. Let’s download what we have to the BrainPad and see what happens. Can you guess what will happen?</p>
 <pre><code class="lang-blocks">pins.P0.digitalWrite(true)</code></pre>
-<h2 id="step-6-unplugged">Step 6</h2><p>If you said the LED would turn RED then you guessed correctly. We sent a Digital signal out of P0 to the RED hole of the module and set it HIGH or ON. </p>
+<h2 id="step-6-fullscreen">Step 6</h2><p>If you said the LED would turn RED then you guessed correctly. We sent a Digital signal out of P0 to the RED hole of the module and set it HIGH or ON. </p>
 <p><img class="ui image" src="../static/images/redLed.jpg" alt="RGB Module Wiring Diagram" loading="lazy"></p>
-<h2 id="step-7-unplugged">Step 7</h2><p>Drag in two more of the <code>||pins:digital write||</code> blocks and change pins to P1 and P2 in the new blocks. Set P0 and P2 to LOW, and P1 to HIGH. Download to the BrainPad. By now you should know what the result will be. </p>
+<h2 id="step-7-fullscreen">Step 7</h2><p>Drag in two more of the <code>||pins:digital write||</code> blocks and change pins to P1 and P2 in the new blocks. Set P0 and P2 to LOW, and P1 to HIGH. Download to the BrainPad. By now you should know what the result will be. </p>
 <pre><code class="lang-blocks">pins.P0.digitalWrite(false)
 pins.P1.digitalWrite(true)
 pins.P2.digitalWrite(false)</code></pre>

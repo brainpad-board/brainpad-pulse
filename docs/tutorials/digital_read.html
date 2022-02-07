@@ -422,7 +422,7 @@
     <div class="ui text">
         <h1 id="digital-read">Digital Read</h1><h2 id="step-1-unplugged">Step 1</h2><p>This lesson uses the BrainClips kit. Remember that a digital signal is either ON or OFF. When reading a digital signal the value we read is also either ON or OFF, this is represented by 1 or 0, HIGH or LOW. In this tutorial we’ll read the digital signal of an external button to turn on/off the Pulse’s on-board LED.</p>
 <p><img class="ui image" src="../static/images/buttonmodule.jpg" alt="BrainClip Button Module" loading="lazy"></p>
-<h2 id="step-2-unplugged">Step 2</h2><p>Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to OUT, 3V to VCC, GND to GND).</p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to OUT, 3V to VCC, GND to GND).</p>
 <p> <img class="ui image" src="../static/images/clipdiagram2.jpg" alt="RGB Module Wiring Diagram" loading="lazy"></p>
 <h2 id="step-3-fullscreen">Step 3</h2><p>Under the ADVANCED tab click on PINS and drag the <code>||pins:on pin||</code> event block into the work area. You can see this is a block is similar in shape to the <code>||loops:on start||</code> &amp; <code>||loops:forever||</code> that holds other blocks. We call this type of block an event block. When the event is triggered the code inside this block will run. Keep the pin P0, but set the value to trigger to ‘high’</p>
 <pre><code class="lang-blocks">pins.P0.onEvent(PinEvent.Rise, function () {
@@ -432,14 +432,14 @@
 <pre><code class="lang-blocks">pins.P0.onEvent(PinEvent.Fall, function () {
     led.toggle()
 })</code></pre>
-<h2 id="step-5-unplugged">Step 5</h2><p>Now that we understand how the <code>||pins:on pin||</code> event block works let’s drag in another one and set this one to ‘pulse high’. Remove the <code>||pins:led toggle||</code> block. Let’s use the screen to change the image. Under ‘DISPLAY’ drag the <code>||display:show image||</code> block into one of the <code>||pins:on pin||</code> event block and change it to the STOP image, and another <code>||display:show image||</code> and drag in the GO image. </p>
+<h2 id="step-5-fullscreen">Step 5</h2><p>Now that we understand how the <code>||pins:on pin||</code> event block works let’s drag in another one and set this one to ‘pulse high’. Remove the <code>||pins:led toggle||</code> block. Let’s use the screen to change the image. Under ‘DISPLAY’ drag the <code>||display:show image||</code> block into one of the <code>||pins:on pin||</code> event block and change it to the STOP image, and another <code>||display:show image||</code> and drag in the GO image. </p>
 <pre><code class="lang-blocks">pins.P0.onEvent(PinEvent.Fall, function () {
     display.showImage(images.stop)
 })
 pins.P0.onEvent(PinEvent.Rise, function () {
     display.showImage(images.go)
 })</code></pre>
-<h2 id="step-6-unplugged">Step 6</h2><p>With this tutorial you can see how buttons are connected to a brain. Try changing what’s inside the <code>||pins:on pin||</code> event block to something else. Maybe a song? You decide. </p>
+<h2 id="step-6-fullscreen">Step 6</h2><p>With this tutorial you can see how buttons are connected to a brain. Try changing what’s inside the <code>||pins:on pin||</code> event block to something else. Maybe a song? You decide. </p>
 
     </div>
 

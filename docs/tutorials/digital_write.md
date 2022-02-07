@@ -12,17 +12,17 @@ Digital clips can either read or write. A button is an example of a module that 
 ![BrainClip Button Module](docs/static/images/digitalclip.jpg)
 
 
-## Step 2 @unplugged
+## Step 2 @fullscreen
 Digital signals can only be one of two states, ON or OFF, 1 or 0, HIGH or LOW. An example would be like a regular light switch. We can either turn it ON or OFF. We achieve this same results on a circuit by setting pins HIGH or LOW. 
 
 ![Digital Signal](docs/static/images/digital1.jpg)
 
-## Step 3 @unplugged
+## Step 3 @fullscreen
 Let's use the RGB module found inside the kit. The RGB LED has 3 different color LEDs inside it. RED, GREEN, and BLUE. You'll notice each corner of the module has a hole we'll use these holes to connect the alligator clips found inside the kit to the BrainPad Pulse 
 
 ![BrainClip RGB Module](docs/static/images/rgbmodule.jpg)
 
-## Step 4 @unplugged
+## Step 4 @fullscreen
 Connect the alligator clips as shown in the diagram from the Pulse to the Module.
 
  ![RGB Module Wiring Diagram](docs/static/images/clipdiagram1.jpg)
@@ -34,12 +34,12 @@ Now we're ready to start building our code blocks. Under ``||pins:PINS||`` grab 
 pins.P0.digitalWrite(true)
 ```
 
-## Step 6 @unplugged
+## Step 6 @fullscreen
 If you said the LED would turn RED then you guessed correctly. We sent a Digital signal out of P0 to the RED hole of the module and set it HIGH or ON. 
 
 ![RGB Module Wiring Diagram](docs/static/images/redLed.jpg)
 
-## Step 7 @unplugged
+## Step 7 @fullscreen
 Drag in two more of the ``||pins:digital write||`` blocks and change pins to P1 and P2 in the new blocks. Set P0 and P2 to LOW, and P1 to HIGH. Download to the BrainPad. By now you should know what the result will be. 
 
  ```blocks

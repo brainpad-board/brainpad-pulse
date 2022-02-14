@@ -1,14 +1,9 @@
 # Falling Bird
 
-## Step 1 @unplugged
-
 The Falling Bird game is a complete game example that demonstrates how animation, gravity and projectiles work inside the game engine. Use the A button to keep your bird in the air and avoid obstacles. Look at the code and download the game to your BrainPad Pulse to see how it works. Press "Done" to exit the tutorial and modify the code.
 
 
-![BrainPad Demo](../static/images/fallingBird.gif)
-
-
-```template
+```blocks
 enum SpriteKind {
     Player,
     Enemy,

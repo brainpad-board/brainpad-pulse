@@ -36,6 +36,7 @@
   ],
   "galleries": {
 
+    "MakeCode eBook": "ebook",
     "On Board Components": "basics",
     "Block Basics": "blocks",
     "Display": "display",

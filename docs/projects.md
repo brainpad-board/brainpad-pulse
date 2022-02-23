@@ -3,6 +3,11 @@
 ```codecard
 [
     {
+        "name": "MakeCode eBook",
+        "url": "/ebook",
+        "imageUrl": "/docs/static/cp/projects/thumb/ebook.jpg"
+    },
+    {
         "name": "On Board Components",
         "url": "/basics",
         "imageUrl": "/docs/static/cp/projects/thumb/led.jpg"
@@ -42,6 +47,7 @@
 
 ## See Also
 
+[MakeCode eBook](/ebook),
 [On Board Components](/basics),
 [Block Basics](/blocks),
 [Display](/display),

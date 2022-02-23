@@ -1,5 +1,7 @@
 # Projects
 
+* [MakeCode eBook](/ebook)
+  * [MakeCode eBook](https://ghistorage.blob.core.windows.net/downloads/BrainPad/MakeCode-for-BrainPad.pdf)
 * [On Board Components](/basics)
   * [New? Try This First](/tutorials/led)
   * [Play a Song](/tutorials/buzzer)

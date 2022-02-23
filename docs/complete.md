@@ -9,7 +9,7 @@ Step by step guide to coding your @boardname@.
 {
   "name": "BrainPad Pulse Demo",
   "description": "This demo uses all the components on the BrainPad Pulse in one program",
-  "cardType": "tutorial",
+  "cardType": "example",
   "label": "Demo",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/demo",
@@ -19,7 +19,7 @@ Step by step guide to coding your @boardname@.
 {
   "name": "Falling Bird",
   "description": "This demo shows the complete Falling Bird Game",
-  "cardType": "tutorial",
+  "cardType": "example",
   "label": "Games",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/fallingBird",
@@ -29,7 +29,7 @@ Step by step guide to coding your @boardname@.
 {
   "name": "Lunar Lander",
   "description": "This demo shows the complete Lunar Lander Game",
-  "cardType": "tutorial",
+  "cardType": "example",
   "label": "Games",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/lunarLander",
@@ -39,7 +39,7 @@ Step by step guide to coding your @boardname@.
 {
   "name": "American Sign Language",
   "description": "Learn the sign language alphabet",
-  "cardType": "tutorial",
+  "cardType": "example",
   "label": "Quiz",
   "labelClass": "orange ribbon large",
   "url":"/tutorials/asl",

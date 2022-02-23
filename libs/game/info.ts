@@ -69,7 +69,7 @@ namespace info {
                         _lifeOverHandler();
                     }
                     else {
-                        game.over();
+                        game.over(false);
                     }
                 }
             }
@@ -85,7 +85,7 @@ namespace info {
                             _countdownEndHandler();
                         }
                         else {
-                            game.over();
+                            game.over(false);
                         }
                     }
                 }

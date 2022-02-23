@@ -119,9 +119,9 @@ namespace game {
      * Finish the game and display the score
      */
     //% group="Gameplay"
-    //% blockId=gameOver block="game over||win %win"
+    //% blockId=gameOver block="game over %win=toggleWinLose"
     //% weight=80 help=game/over
-    export function over(win: boolean = false) {
+    export function over(win: boolean) {
         init();
         if (__isOver) return
         __isOver = true;
@@ -129,8 +129,13 @@ namespace game {
         control.pushEventContext();
         // one last screenshot
         takeScreenshot();
-        control.runInParallel(() => {
-            if (gameOverSound) gameOverSound();
+        control.runInParallel(() => {            
+            if (gameOverSound) {
+				if (win)
+					music.playSound(music.sounds(Sounds.PowerUp));
+				else 
+					music.playSound(music.sounds(Sounds.Wawawawaa));
+			}
             meltScreen();
             let top = showDialogBackground(44, 4)
             screen.printCenter(win ? "YOU WIN!" : "GAME OVER!", top + 8, isMonoColorGame ? 1 : 5, image.font8)

@@ -15,7 +15,6 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/brainbot",
   "imageUrl":"/static/cp/projects/thumb/movingBrainBot.jpg"
 } 
-
 , 
 {
   "name": "BrainBot Lights",
@@ -27,6 +26,18 @@ Step by step guide to coding your @boardname@.
   "imageUrl":"/static/cp/projects/thumb/lightshow.jpg"
   
 }
+,
+{
+  "name": "Follow the Line",
+  "description": "Using the Line sensor on the BrainBot to follow a line",
+  "cardType": "tutorial",
+  "label": "Line Follower",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/brainbot_linefollow",
+  "imageUrl":"/static/cp/projects/thumb/linefollower.jpg"
+  
+}
+
 
 ]
 

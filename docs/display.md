@@ -25,7 +25,16 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/text",
   "imageUrl":"/static/cp/projects/thumb/text.jpg"
 }
-
+,
+{
+  "name": "Graphing Data",
+  "description": "In this tutorial, we show how to to use graph on the display.",
+  "cardType": "tutorial",
+  "label": "Graphing",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/graph",
+  "imageUrl":"/static/cp/projects/thumb/graph.jpg"
+}
 ]
 
 ```

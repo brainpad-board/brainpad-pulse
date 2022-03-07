@@ -38,6 +38,17 @@ Step by step guide to coding your @boardname@.
   
 }
 
+,
+{
+  "name": "Distance Sensor",
+  "description": "Using the Distance sensor on the BrainBot to check distance",
+  "cardType": "tutorial",
+  "label": "Distance",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/brainbot_distance",
+  "imageUrl":"/static/cp/projects/thumb/distance.jpg"
+  
+}
 
 ]
 

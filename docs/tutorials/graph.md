@@ -19,7 +19,7 @@ forever(function () {
 
 ## Step 3 @fullscreen
 
-We're going to graph data from the BrainPad Pulse's on board accelerometer. Drag in the ``||input:accleration||`` block into the ``||display:graph||`` block we just added.
+We're going to graph data from the BrainPad Pulse's on board accelerometer. Drag in the ``||input:acceleration||`` block into the ``||display:graph||`` block we just added.
 
 ```blocks
 forever(function () {

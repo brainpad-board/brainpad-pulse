@@ -3,37 +3,37 @@
 ```codecard
 [
     {
-        "name": "MakeCode eBook",
+        "name": "MakeCode eBook & Videos",
         "url": "/ebook",
         "imageUrl": "/static/cp/projects/thumb/ebook.jpg"
     },
     {
-        "name": "On Board Components",
+        "name": "On Board Components Tutorials",
         "url": "/basics",
         "imageUrl": "/static/cp/projects/thumb/led.jpg"
     },
     {
-        "name": "Block Basics",
+        "name": "Block Basics Tutorials",
         "url": "/blocks",
         "imageUrl": "/static/cp/projects/thumb/onStart.jpg"
     },
     {
-        "name": "Display",
+        "name": "Display Tutorials",
         "url": "/display",
         "imageUrl": "/static/cp/projects/thumb/display.jpg"
     },
     {
-        "name": "Robots",
+        "name": "Robot Tutorials",
         "url": "/brainbot",
         "imageUrl": "/static/cp/projects/thumb/movingBrainBot.jpg"
     },
     {
-        "name": "Games",
+        "name": "Game Tutorials",
         "url": "/games",
         "imageUrl": "/static/cp/projects/thumb/sprites.jpg"
     },
     {
-        "name": "Circuits",
+        "name": "Circuit Tutorials",
         "url": "/circuits",
         "imageUrl": "/static/cp/projects/thumb/digital.jpg"
     },
@@ -47,12 +47,12 @@
 
 ## See Also
 
-[MakeCode eBook](/ebook),
-[On Board Components](/basics),
-[Block Basics](/blocks),
-[Display](/display),
-[Robots](/brainbot),
-[Games](/games),
-[Circuits](/circuits),
+[MakeCode eBook & Videos](/ebook),
+[On Board Components Tutorials](/basics),
+[Block Basics Tutorials](/blocks),
+[Display Tutorials](/display),
+[Robot Tutorials](/brainbot),
+[Game Tutorials](/games),
+[Circuit Tutorials](/circuits),
 [Complete Projects](/complete)
 

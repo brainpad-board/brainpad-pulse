@@ -27,6 +27,16 @@ Step by step guide to coding your @boardname@.
 }
 ,
 {
+  "name": "Basketball",
+  "description": "30 seconds to make as many baskets as you can. This game demonstrates how accleration and gravity work inside the MakeCode",
+  "cardType": "example",
+  "label": "Games",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/basketball",
+  "imageUrl":"/static/cp/projects/thumb/basketball.jpg"
+}
+,
+{
   "name": "Lunar Lander",
   "description": "This demo shows the complete Lunar Lander Game",
   "cardType": "example",
@@ -38,7 +48,7 @@ Step by step guide to coding your @boardname@.
 ,
 {
   "name": "American Sign Language",
-  "description": "Learn the sign language alphabet",
+  "description": "NOTE: This is a LARGE program and may take awhile to load in the simulator. American Sign Language is used by nearly 500,000 people to communicate with the deaf. This program teaches the ASL alphabet while demonstrating the use of arrays, random numbers, and functions. Use the A button to select an answer, use the B button to change the selection. After 3 incorrect answers the quiz is over.",
   "cardType": "example",
   "label": "Quiz",
   "labelClass": "orange ribbon large",

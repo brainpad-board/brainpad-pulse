@@ -45,6 +45,16 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/barrels",
   "imageUrl":"/static/cp/projects/thumb/barrels.jpg"
 }
+,
+{
+  "name": "Collision & Scoring",
+  "description": "In this tutorial, we'll detect when the Jumper and Barrels overlap and add sound and scoring'",
+  "cardType": "tutorial",
+  "label": "Making it a Game",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/collision",
+  "imageUrl":"/static/cp/projects/thumb/collision.jpg"
+}
 ]
 
 ```

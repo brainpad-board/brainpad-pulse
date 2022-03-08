@@ -35,7 +35,16 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/moving",
   "imageUrl":"/static/cp/projects/thumb/moving.jpg"
 }
-
+,
+{
+  "name": "Adding Obstacles",
+  "description": "In this tutorial, add some barrels for the Jumper to jump over",
+  "cardType": "tutorial",
+  "label": "Barrels",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/barrels",
+  "imageUrl":"/static/cp/projects/thumb/barrels.jpg"
+}
 ]
 
 ```

@@ -44,8 +44,7 @@ Jumper = sprites.create(img`
 
 ## Step 3 @fullscreen
 
-Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the 'LightBulb' Hint to see the names of the areas within the sprite editor. You can draw in any color but all colors will display as white since the Pulse screen is only Black and White. 
-
+Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the 'LightBulb' Hint to see the names of the areas within the sprite editor.
  ![BrainPad buzzer image](../static/images/spriteEditor.jpg)
 
 ## Step 4 @fullscreen

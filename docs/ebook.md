@@ -9,7 +9,7 @@ Step by step guide to coding your @boardname@.
 
 {
   "name": "MakeCode eBook",
-  "description": "Everything you need to get started using the BrainPad Pulse and MakeCode",
+  "description": "A comprehensive guide with everything you need to get started using the BrainPad Pulse and MakeCode",
   "label": "eBook",
   "labelClass": "orange ribbon large",
   "url": "https://ghistorage.blob.core.windows.net/downloads/BrainPad/MakeCode-for-BrainPad.pdf",

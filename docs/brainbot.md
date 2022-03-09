@@ -49,6 +49,18 @@ Step by step guide to coding your @boardname@.
   "imageUrl":"/static/cp/projects/thumb/distance.jpg"
   
 }
+,
+{
+  "name": "Infrared Remote",
+  "description": "Using the IR remote to control the BrainBot",
+  "cardType": "tutorial",
+  "label": "IR Remote",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/brainbot_remote",
+  "imageUrl":"/static/cp/projects/thumb/brainbot-remote.jpg"
+  
+}
+
 
 ]
 

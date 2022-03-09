@@ -35,5 +35,17 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/ifThen",
   "imageUrl":"/static/cp/projects/thumb/ifThen.jpg"  
 } 
+
+,
+{
+  "name": "Creating Functions",
+  "description": "In this tutorial, create and use functions",
+  "cardType": "tutorial",
+  "label": "Functions",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/functions",
+  "imageUrl":"/static/cp/projects/thumb/functions.jpg"  
+} 
+
 ]
 ```

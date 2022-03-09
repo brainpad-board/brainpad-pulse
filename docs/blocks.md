@@ -45,6 +45,17 @@ Step by step guide to coding your @boardname@.
   "labelClass": "orange ribbon large",
   "url":"/tutorials/functions",
   "imageUrl":"/static/cp/projects/thumb/functions.jpg"  
+}
+
+,
+{
+  "name": "Using Arrays",
+  "description": "In this tutorial, create and use arrays",
+  "cardType": "tutorial",
+  "label": "Arrays",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/arrays",
+  "imageUrl":"/static/cp/projects/thumb/array.jpg"  
 } 
 
 ]

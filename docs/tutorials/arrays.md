@@ -14,7 +14,7 @@ forever(function () {
 
 Arrays are list that contain several things of the same type. Arrays can hold text, numbers, images...etc. Once the array is created, we can use our program to access any element inside that array. 
 
-![BrainPad Array](../static/images/array.jpg)
+![BrainPad Array](docs/static/images/array.jpg)
 
 ## Step 2 @fullscreen
 
@@ -29,7 +29,7 @@ let text_list = ["rose", "daisy", "tulip"]
 
 The values stored in an array are accessed by a number. The first element of an array ALWAYS starts with "0" not "1", the second element is "1" and so on for the entire length of the array. 
 
-![BrainPad Array Elements](../static/images/arrayElements.jpg)
+![BrainPad Array Elements](docs/static/images/arrayElements.jpg)
 
 ## Step 4 @fullscreen
 
@@ -58,7 +58,7 @@ forever(function () {
 Unfortunatly the block we dragged in won't quite work yet we need to make one small change to it. Remember how we said the values in an array start at 0 which means our array ends at 2. The ``||array:lengh of array||`` block 
 will count 3 elements. So we need to subtract one from the lengh of the array so it will end on the last element, which is 2. Confused yet?
 
-![BrainPad Array Elements](../static/images/arrayLength.jpg)
+![BrainPad Array Elements](docs/static/images/arrayLength.jpg)
 
 ## Step 7 @fullscreen
 Pull the  ``||array:lengh of array||`` block out of the ``||loops:for loop||`` and just set it in the workspace. We'll need it again in a moment. Under ``||Math:Math||`` grab the ``||Math:0 - 0||`` block and replace the 
@@ -122,4 +122,4 @@ forever(function () {
 That's it! You now have an understand of how arrays work. Arrays can hold things other then just names, they can hold images, sprites, numbers, etc. One rule is that the array must only contain
 the same type of elements. You can't mix text and images in the same array. 
 
-![BrainPad Array](../static/images/array.jpg)
+![BrainPad Array](docs/static/images/array.jpg)

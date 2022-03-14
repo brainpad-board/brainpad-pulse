@@ -23,7 +23,7 @@ forever(function () {
 Drawing images and shapes can be done using image tools. Using these tools we can create lines, pixels, and rectangles. One advantage to using this method of drawing is math art can be created. 
 One thing to keep in mind, images created this way can't be used in games. Game images have to be created as SPRITES or SCENES.   
 
-![BrainPad Display Graph](../static/images/images.gif)
+![BrainPad Display Graph](docs/static/images/images.gif)
 
 ## Step 2 @fullscreen
 
@@ -123,6 +123,6 @@ forever(function () {
 That's it for now. Try playing around with the values x and y by moving the ``||variables:pointX||`` & ``||variables:pointY||`` variables into different spots. You're making computer ART.
 There are some other tools to check out under the `images` menu after you're done with the tutorial to play around with like filled in rectangles, and comparing images together. You can also flip the images both horizontally or vertically too. 
 
-![BrainPad Display Graph](../static/images/images2.gif)
+![BrainPad Display Graph](docs/static/images/images2.gif)
 
 

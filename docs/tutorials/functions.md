@@ -4,13 +4,13 @@
 
 Functions are used when we need sections of code to repeat or do something over and over again when called. Functions are an import part of programming in every language. 
 
-![BrainPad Function](../static/images/function.jpg)
+![BrainPad Function](docs/static/images/function.jpg)
 
 ## Step 2 @fullscreen
 
 Functions can be found under the `Advanced` tab on the side menu. Click on `Functions` this brings up the button `Make a Function...`. Click on the Button. 
 
-![BrainPad Function](../static/images/make-function.jpg)
+![BrainPad Function](docs/static/images/make-function.jpg)
 
 ## Step 3 @fullscreen
 
@@ -39,7 +39,7 @@ function myFunction () {
 We've created the function now all we need to do is call it when ever we need it inside our program. To call the ``||functions:function||`` we just go back to the same spot we created the function. This time
 we'll see blocks have been created since we created ours. There is a new block called ``||functions:call myFunction||``
 
-![BrainPad Function](../static/images/callFunction.jpg)
+![BrainPad Function](docs/static/images/callFunction.jpg)
 
 ## Step 6 @fullscreen
 
@@ -59,4 +59,4 @@ myFunction()
 This may seem like a lot of extra steps to do something simple, but in more complex programs where we need to re-run sections of code at specific times a function is the only way to go. 
 Functions can also take in a parameter do something with the parameter and then return a parameter back. Trying playing with these to see what you can do.  
 
-![BrainPad Function](../static/images/function.jpg)
+![BrainPad Function](docs/static/images/function.jpg)

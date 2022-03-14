@@ -58,7 +58,7 @@ Jumper = sprites.create(img`
 
 We've created a ``||sprites:sprite||`` but it just sits there. Let's create an animation and add frames to it. To make it more fun!
 
-![BrainPad buzzer image](../static/images/animate.gif)
+![BrainPad buzzer image](docs/static/images/animate.gif)
 
 
 ## Step 2 @fullscreen
@@ -801,6 +801,6 @@ Congratulations!! You've completed your first animated sprite. Try creating your
 
  
 
-![BrainPad buzzer image](../static/images/animate.gif)
+![BrainPad buzzer image](docs/static/images/animate.gif)
 
 

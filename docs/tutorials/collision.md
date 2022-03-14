@@ -182,7 +182,7 @@ forever(function () {
 
 Now we're going to add more barrels and detect when a ``||sprites:Barrel||`` and ``||sprites:Jumper||`` collide. 
 
-![BrainPad Animated Sprite](../static/images/collision.gif)
+![BrainPad Animated Sprite](docs/static/images/collision.gif)
 
 ## Step 2 @fullscreen
 
@@ -315,4 +315,4 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 ## Step 9 @unplugged
 That's it. We have a fully playable game. Now that you understand how things go together, you can make it your own buy creating your own sprites. 
 
-![BrainPad Animated Sprite](../static/images/collision.gif)
+![BrainPad Animated Sprite](docs/static/images/collision.gif)

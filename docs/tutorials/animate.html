@@ -469,9 +469,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 </code></pre>
-<h1 id="animation">Animation</h1><h2 id="step-1-unplugged">Step 1</h2><p>We’ve created sprites but they just sit there. Let’s create an animation and add frames to it. To make it more fun!</p>
+<h1 id="animation">Animation</h1><h2 id="step-1-unplugged">Step 1</h2><p>We’ve created a <code>||sprites:sprite||</code> but it just sits there. Let’s create an animation and add frames to it. To make it more fun!</p>
 <p><img class="ui image" src="../static/images/animate.gif" alt="BrainPad buzzer image" loading="lazy"></p>
-<h2 id="step-2-fullscreen">Step 2</h2><p>We need to set the timing of our animation and create a name for that animation we’re going to create. To do this we can need to select the block called <code>||animation:set anim to||</code> block. Drag it into the <code>||loops:on start||</code> just under our JUMPER sprite. Rename ‘anim’ to something like ‘running’, change the interval to 200ms. This is how fast our animation will change between the frames.</p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>We need to set the timing of our animation and create a name for that animation we’re going to create. To do this we can need to select the block called <code>||animation:set anim to||</code> block. Drag it into the <code>||loops:on start||</code> just under our <code>||sprites:Jumper||</code> sprite. We can leave the name <code>||sprites:anim||</code> for this project, change the interval to 200ms. This is how fast our animation will change between the frames.</p>
 <pre><code class="lang-blocks">
 enum SpriteKind {
 
@@ -491,7 +491,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -531,7 +531,7 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 </code></pre>
 <h2 id="step-3-fullscreen">Step 3</h2><p>Next, we need to drag in the <code>||animation:add frame||</code> block. Click on the grey box in the center inside the block. Add the first Jumper image to the <code>||animation:add frame||</code> block.  Drag in another <code>||animation:add frame||</code> block followed by the next Jumper image from the gallery. Do this until all 4 Jumper images are created like the blocks below.</p>
 <pre><code class="lang-blocks">
@@ -553,7 +553,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -593,9 +593,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -631,7 +631,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -667,7 +667,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -703,7 +703,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -741,7 +741,7 @@ myAnimation.addAnimationFrame(img`
 
 
 </code></pre>
-<h2 id="step-4-fullscreen">Step 4</h2><p>In this step we need to attach ‘myAnimation’ to the ‘Jumper’ sprite. We can find the <code>||animation:attach animation||</code> block under ‘ANIMATION’ once dragged in change the selections to ‘myAnimation’ and to sprite ‘Jumper’</p>
+<h2 id="step-4-fullscreen">Step 4</h2><p>In this step we need to attach our animation to the <code>||sprites:Jumper||</code> sprite. We can find the <code>||animation:attach animation||</code> block under ‘ANIMATION’ once dragged in change the last parameter to <code>||sprites:Jumper||</code>.</p>
 <pre><code class="lang-blocks">
 enum SpriteKind {
 
@@ -761,7 +761,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -801,9 +801,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -839,7 +839,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -875,7 +875,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -911,7 +911,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -947,7 +947,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-animation.attachAnimation(Jumper, myAnimation)
+animation.attachAnimation(Jumper, anim)
 </code></pre>
 <h2 id="step-5-fullscreen">Step 5</h2><p>Once we’ve attached the animation to the sprite we just need to activate the animation using the <code>||animation:activate animation||</code> block. This may seem like an unnecessary step but we can activate different animations from different places in our code. In our sample though we do it all inside the <code>||loops:on start||</code> block just to show you all the necessary components of animation.</p>
 <pre><code class="lang-blocks">
@@ -969,7 +969,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -1009,9 +1009,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -1047,7 +1047,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -1083,7 +1083,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -1119,7 +1119,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -1155,11 +1155,11 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-animation.attachAnimation(Jumper, myAnimation)
+anim.attachAnimation(Jumper, myAnimation)
 
-animation.setAction(Jumper, ActionKind.Walking)
+anim.setAction(Jumper, ActionKind.Walking)
 </code></pre>
-<h2 id="step-6-fullscreen">Step 6</h2><p>Congratulations!! You’ve completed your first animated sprite. Try creating your own animated sprite using as many or few frames as you like. A game can contain many different animations attached to the same sprite. Say for example when standing still, jumping, or ducking, could all be different animations. With each animation attached to the same sprite. When we want to use that animation we just use the <code>||animation:activate animation||</code> block, say when a button is pressed or not pressed.</p>
+<h2 id="step-6-unplugged">Step 6</h2><p>Congratulations!! You’ve completed your first animated sprite. Try creating your own animated sprite using as many or few frames as you like. A game can contain many different animations attached to the same sprite. Say for example when standing still, jumping, or ducking, could all be different animations. With each animation attached to the same sprite. When we want to use that animation we just use the <code>||animation:activate animation||</code> block, say when a button is pressed or not pressed.</p>
 <p><img class="ui image" src="../static/images/animate.gif" alt="BrainPad buzzer image" loading="lazy"></p>
 
     </div>

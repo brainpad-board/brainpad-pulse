@@ -36,14 +36,18 @@
   ],
   "galleries": {
 
-    "MakeCode eBook": "ebook",
-    "On Board Components": "basics",
-    "Block Basics": "blocks",
-    "Display": "display",
-    "Robots": "brainbot",
-    "Games": "games",
-    "Circuits": "circuits",
-    "Complete Projects": "complete"
+    "MakeCode eBook & Videos": {
 
-  }
+      "url": "ebook",
+      "youTube": true
+    },
+      "On Board Components Tutorials": "basics",
+      "Block Basics Tutorials": "blocks",
+      "Display Tutorials": "display",
+      "Robot Tutorials": "brainbot",
+      "Game Tutorials": "games",
+      "Circuit Tutorials": "circuits",
+      "Complete Projects": "complete"
+
+    }
 }

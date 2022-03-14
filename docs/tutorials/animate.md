@@ -56,14 +56,14 @@ Jumper = sprites.create(img`
 
 ## Step 1 @unplugged
 
-We've created sprites but they just sit there. Let's create an animation and add frames to it. To make it more fun!
+We've created a ``||sprites:sprite||`` but it just sits there. Let's create an animation and add frames to it. To make it more fun!
 
 ![BrainPad buzzer image](docs/static/images/animate.gif)
 
 
 ## Step 2 @fullscreen
 
-We need to set the timing of our animation and create a name for that animation we're going to create. To do this we can need to select the block called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our JUMPER sprite. Rename 'anim' to something like 'running', change the interval to 200ms. This is how fast our animation will change between the frames.
+We need to set the timing of our animation and create a name for that animation we're going to create. To do this we can need to select the block called ``||animation:set anim to||`` block. Drag it into the ``||loops:on start||`` just under our ``||sprites:Jumper||`` sprite. We can leave the name ``||sprites:anim||`` for this project, change the interval to 200ms. This is how fast our animation will change between the frames.
 
 ```blocks
 
@@ -85,7 +85,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -125,7 +125,7 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
 ```
 
@@ -159,7 +159,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -199,9 +199,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -237,7 +237,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -273,7 +273,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -309,7 +309,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -355,7 +355,7 @@ myAnimation.addAnimationFrame(img`
 
  
 
-In this step we need to attach 'myAnimation' to the 'Jumper' sprite. We can find the ``||animation:attach animation||`` block under 'ANIMATION' once dragged in change the selections to 'myAnimation' and to sprite 'Jumper'
+In this step we need to attach our animation to the ``||sprites:Jumper||`` sprite. We can find the ``||animation:attach animation||`` block under 'ANIMATION' once dragged in change the last parameter to ``||sprites:Jumper||``.
 
  
 
@@ -379,7 +379,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -419,9 +419,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -457,7 +457,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -493,7 +493,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -529,7 +529,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -565,7 +565,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-animation.attachAnimation(Jumper, myAnimation)
+animation.attachAnimation(Jumper, anim)
 
 ```
 
@@ -599,7 +599,7 @@ enum ActionKind {
 
 }
 
-let myAnimation: animation.Animation = null
+let anim: animation.Animation = null
 
 let Jumper: Sprite = null
 
@@ -639,9 +639,9 @@ Jumper = sprites.create(img`
 
 `, SpriteKind.Player)
 
-myAnimation = animation.createAnimation(ActionKind.Walking, 200)
+anim = animation.createAnimation(ActionKind.Walking, 200)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -677,7 +677,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -713,7 +713,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . . . . . . . . . . .
 
@@ -749,7 +749,7 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-myAnimation.addAnimationFrame(img`
+anim.addAnimationFrame(img`
 
 . . . . . . 1 1 1 1 1 1 . . . .
 
@@ -785,15 +785,15 @@ myAnimation.addAnimationFrame(img`
 
 `)
 
-animation.attachAnimation(Jumper, myAnimation)
+anim.attachAnimation(Jumper, myAnimation)
 
-animation.setAction(Jumper, ActionKind.Walking)
+anim.setAction(Jumper, ActionKind.Walking)
 
 ```
 
  
 
-## Step 6 @fullscreen
+## Step 6 @unplugged
 
  
 

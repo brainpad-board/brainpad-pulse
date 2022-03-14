@@ -524,8 +524,8 @@ animation.attachAnimation(Jumper, anim)
 animation.setAction(Jumper, ActionKind.Walking)
 </code></pre>
 <h1 id="moving-sprites">Moving Sprites</h1><h2 id="step-1-unplugged">Step 1</h2><p>We’ve got our sprite animated, now let’s use the buttons to control it and make our player jump. </p>
-<p><img class="ui image" src="../static/images/animate.gif" alt="BrainPad buzzer image" loading="lazy"></p>
-<h2 id="step-2-fullscreen">Step 2</h2><p>Moving sprites can be done two different ways. If we just want to move back and forth we can just use the <code>sprites:control sprite</code> block. Drag in the <code>sprites:control sprite</code> block to the bottom of the existing blocks, and change the sprite we’re controlling to “Jumper”.</p>
+<p><img class="ui image" src="../static/images/animate.gif" alt="BrainPad Animated Sprite" loading="lazy"></p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>Moving sprites can be done two different ways. If we just want to move back and forth we can just use the <code>||sprites:control sprite||</code> block. Drag in the <code>||sprites:control sprite||</code> block to the bottom of the existing blocks, and change the sprite we’re controlling to “Jumper”.</p>
 <pre><code class="lang-blocks">enum SpriteKind {
     Player,
     Enemy
@@ -631,14 +631,14 @@ animation.setAction(Jumper, ActionKind.Walking)
 sprites.controlSprite(Jumper, 100, 100)</code></pre>
 <h2 id="step-3-unplugged">Step 3</h2><p>You can either download the code to the BrainPad or you can try it on the simulator. You’ll notice that our sprite moves back and forth when we press the A or B buttons. </p>
 <p><img class="ui image" src="../static/images/moveSprite.gif" alt="Moving Sprite" loading="lazy"></p>
-<h2 id="step-4-fullscreen">Step 4</h2><p>Now let’s use a <code>||input:on button||</code> event block to control our sprite’s movement instead of the one we previously used. Remove the last block we added to move our sprite and drag it to the menu to delete it. Drag in two <code>||input:on button||</code> event blocks. Set one to “pressed” and the other to “released”. </p>
+<h2 id="step-4-fullscreen">Step 4</h2><p>Now let’s use a <code>||input:on button||</code> event block to control our sprite’s movement instead of the one we previously used. Remove the last block we added to move our sprite and drag it to the menu to delete it. Drag in two <code>||input:on button||</code> event blocks. Set one to “pressed” and the other to “released”.</p>
 <pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
 
 })
 input.buttonA.onEvent(ButtonEvent.Up, function () {
 
 })</code></pre>
-<h2 id="step-5-fullscreen">Step 5</h2><p>First let’s position our jumper near the bottom of the screen where we want him to do his jumping. We do this by dragging in the <code>||sprites:set position||</code> block into the <code>||loops:on start||</code> block at the bottom. Make sure to change the name to our “Jumper” sprite and set the x to 20 and the y to 55. This will put our Jumper at the bottom of the screen slightly to the left. </p>
+<h2 id="step-5-fullscreen">Step 5</h2><p>First let’s position our Jumper near the bottom of the screen where we want him to do his jumping. We do this by dragging in the <code>||sprites:set position||</code> block into the <code>||loops:on start||</code> block at the bottom. Make sure to change the name to our “Jumper” sprite and set the x to 20 and the y to 55. This will put our Jumper at the bottom of the screen slightly to the left. Let’s also add a <code>||sprites:stay in screen||</code> block to the bottom and turn it <code>||sprites:ON||</code>. This will help when we add gravity to keep our Jumper from leaving the screen. </p>
 <pre><code class="lang-blocks">enum SpriteKind {
     Player,
     Enemy
@@ -741,14 +741,121 @@ anim.addAnimationFrame(img`
     `)
 animation.attachAnimation(Jumper, anim)
 animation.setAction(Jumper, ActionKind.Walking)
-Jumper.setPosition(20, 55)</code></pre>
-<h2 id="step-6-fullscreen">Step 6</h2><p>Now let’s make our Jumper jump! In this tutorial we’re only going to change the position of the sprite rather than using physic to make the sprite jump. In later tutorials we’ll use velocity and gravity to control sprite movement. Inside each <code>||input:on button||</code> event block, drag in a <code>||sprite: change mySprite position||</code> block. Change the sprite we’re controlling to “Jumper” and both blocks to “y (vertical position)”. In our “released” event change the value to 20, and in the “pressed” event change the value to -20. Download to the BrainPad or try on the simulator. </p>
-<pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
-    Jumper.y += -20
+sprites.controlSprite(Jumper, 100, 100)
+Jumper.setFlag(SpriteFlag.StayInScreen, true)
+</code></pre>
+<h2 id="step-6-fullscreen">Step 6</h2><p>Now let’s make our Jumper jump!. We’ll use gravity inside the game engine to do this. Inside each <code>||input:on button||</code> event block, drag in a <code>||sprite: change mySprite position||</code> block. Change the sprite we’re controlling to “Jumper” and both blocks to “vy (velocity y)”. In our “released” event change the value to 200, and in the “pressed” event change the value to -200. When the button is released there will be a gravity of 200 pulling it down. When we press “A” gravity will pull in the opposite direction, until we land on the ground.</p>
+<pre><code class="lang-blocks">enum SpriteKind {
+    Player,
+    Enemy
+}
+enum ActionKind {
+    Walking,
+    Idle,
+    Jumping
+}
+input.buttonA.onEvent(ButtonEvent.Down, function () {
+    Jumper.vy += -200
 })
 input.buttonA.onEvent(ButtonEvent.Up, function () {
-    Jumper.y += 20
-})</code></pre>
+    Jumper.vy += 200
+})
+let Jumper: Sprite = null
+Jumper = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 1 1 . . 
+    . . . . . . . . 1 1 . 1 . . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . . 1 1 1 . . 1 1 1 . 1 1 1 . 
+    . . . 1 1 1 1 1 1 1 . . . 1 . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . . . 1 1 1 1 1 1 1 . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 . . . 1 1 1 1 . . . . 
+    . . . 1 1 . . 1 1 1 1 1 . . . . 
+    . . . 1 1 . . 1 1 1 1 1 . . . . 
+    . . . . 1 1 . 1 1 . 1 . . . . . 
+    . . . . . 1 1 1 . 1 1 1 . . . . 
+    . . . . . 1 1 1 1 1 . . . . . . 
+    `, SpriteKind.Player)
+let anim = animation.createAnimation(ActionKind.Walking, 200)
+anim.addAnimationFrame(img`
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . . 1 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+    . 1 1 1 1 1 1 1 1 1 1 1 . . . . 
+    . 1 1 . . . . . . . . 1 . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . 1 1 1 1 1 . 1 1 1 1 . . . . . 
+    . 1 1 . . . . 1 1 1 . . . . . . 
+    . . . . . . . 1 1 1 1 . . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . . 1 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+    . 1 1 1 1 1 1 1 1 1 1 1 . . . . 
+    . 1 1 . . . . . . . . 1 . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . 1 1 1 1 1 . 1 1 1 1 . . . . . 
+    . 1 1 . . . . 1 1 1 . . . . . . 
+    . . . . . . . 1 1 1 1 . . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . . . . 1 . . . . . 
+    . . 1 . 1 1 1 1 . 1 . . . . . . 
+    . . . 1 1 1 . 1 1 1 1 1 . . . . 
+    . . . . 1 1 . . 1 1 1 1 . . . . 
+    . . . . 1 1 1 1 . . . . . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 1 1 . . 
+    . . . . . . . . 1 1 . 1 . . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . . 1 1 1 . . 1 1 1 . 1 1 1 . 
+    . . . 1 1 1 1 1 1 1 . . . 1 . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 . . . . 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 1 1 . 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 . . . . . . . 1 . 1 1 . 
+    . . 1 1 . 1 1 1 1 1 . . 1 1 1 . 
+    . . 1 1 1 1 1 . . . 1 1 1 1 1 . 
+    . . 1 1 . . . . . . . . . . . . 
+    . . 1 1 1 1 . . . . . . . . . . 
+    `)
+animation.attachAnimation(Jumper, anim)
+animation.setAction(Jumper, ActionKind.Walking)
+Jumper.setPosition(20, 55)
+Jumper.setFlag(SpriteFlag.StayInScreen, true)</code></pre>
 <h2 id="step-7-unplugged">Step 7</h2><p>Our Jumper is now jumping, in the next tutorial we’ll give him something to jump over. </p>
 <p><img class="ui image" src="../static/images/jumpingSprite.gif" alt="Jumping Sprite" loading="lazy"></p>
 

@@ -35,5 +35,28 @@ Step by step guide to coding your @boardname@.
   "url":"/tutorials/ifThen",
   "imageUrl":"/docs/static/cp/projects/thumb/ifThen.jpg"  
 } 
+
+,
+{
+  "name": "Creating Functions",
+  "description": "In this tutorial, create and use functions",
+  "cardType": "tutorial",
+  "label": "Functions",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/functions",
+  "imageUrl":"/docs/static/cp/projects/thumb/functions.jpg"  
+}
+
+,
+{
+  "name": "Using Arrays",
+  "description": "In this tutorial, create and use arrays",
+  "cardType": "tutorial",
+  "label": "Arrays",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/arrays",
+  "imageUrl":"/docs/static/cp/projects/thumb/array.jpg"  
+} 
+
 ]
 ```

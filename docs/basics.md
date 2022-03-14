@@ -47,6 +47,18 @@ Step by step guide to coding your @boardname@.
   "imageUrl":"/docs/static/cp/projects/thumb/buttons.jpg"
 
 }
+,
+{
+  "name": "Temperature Sensor",
+  "description": "Using the BrainPad Pulses Temperature Sensor",
+  "cardType": "tutorial",
+  "label": "Temperature",
+  "labelClass": "orange ribbon large",
+  "url":"/tutorials/temperature",
+  "imageUrl":"/docs/static/cp/projects/thumb/temperature.jpg"
+
+}
+
 ]
 
 ```

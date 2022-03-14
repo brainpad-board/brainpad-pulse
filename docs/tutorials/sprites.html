@@ -22,14 +22,14 @@
 <meta name="twitter:site" content="@msmakecode" />
 <meta name="twitter:title" content="BrainPad - Blocks / Javascript editor" />
 <meta name="twitter:description" content="A Blocks / JavaScript code editor for the BrainPad." />
-<meta name="twitter:image" content="../static/images/sprite1.jpg" />
+<meta name="twitter:image" content="../static/images/spritePlayer.jpg" />
 
 <meta property="og:title" content="BrainPad - Blocks / Javascript editor" />
 <meta property="og:site_name" content="Microsoft MakeCode" />
 <meta property="og:type" content="website" />
 <meta property="og:description" content="A Blocks / JavaScript code editor for the BrainPad." />
 <meta property="fb:app_id" content="" />
-<meta property="og:image" content="../static/images/sprite1.jpg" />
+<meta property="og:image" content="../static/images/spritePlayer.jpg" />
 
 <meta name="format-detection" content="telephone=no">
 <link rel="apple-touch-icon" href="">
@@ -421,9 +421,9 @@
 					
     <div class="ui text">
         <pre><code class="lang-template">\\</code></pre>
-<h1 id="creating-sprites">Creating Sprites</h1><h2 id="step-1-unplugged">Step 1</h2><p>We’re going to create a Jumper Game and we’ll need ‘sprites’ to do it. A ‘sprite’ is a 2-dimensional image that we use in games. A player’s character would be a good example of a sprite. So would the things they have to avoid.  </p>
-<p><img class="ui image" src="../static/images/sprite1.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
-<h2 id="step-2-fullscreen">Step 2</h2><p>Click on ‘Advanced’. Select <code>||sprites:Sprites||</code>. Grab the <code>||sprites:set mySprite||</code> block and drag it into the <code>||loops:on start||</code>. Let’s create a variable name. In the block click on the ‘mySprite’ drop down and select ‘New variable…’. Let’s name our variable ‘Jumper’ since that’s the game we’ll be creating. We can keep the type of sprite set to ‘player’</p>
+<h1 id="creating-sprites">Creating Sprites</h1><h2 id="step-1-unplugged">Step 1</h2><p>We’re going to create a Jumper Game and we’ll need <code>||sprites:Sprites||</code> to do it. A <code>||sprites:Sprite||</code> is a 2-dimensional image that we use in games. A player’s character would be a good example of a sprite. So would the things they have to avoid.  </p>
+<p><img class="ui image" src="../static/images/spritePlayer.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>Click on ‘Advanced’. Select <code>||sprites:Sprites||</code>. Grab the <code>||sprites:set mySprite||</code> block and drag it into the <code>||loops:on start||</code>. Let’s create a variable name. In the block click on the <code>||sprites:mySprite||</code> drop down and select ‘<code>||sprites:New variable...||</code>. Let’s name our variable <code>||sprites:Jumper||</code> since that’s the game we’ll be creating. We can keep the type of sprite set to <code>||sprites:player||</code></p>
 <pre><code class="lang-blocks">enum SpriteKind {
     Player,
     Enemy
@@ -448,8 +448,8 @@ Jumper = sprites.create(img`
 . . . . . . . . . . . . . . . . 
 `, SpriteKind.Player)
 </code></pre>
-<h2 id="step-3-fullscreen">Step 3</h2><p>Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the ‘LightBulb’ Hint to see the names of the areas within the sprite editor. You can draw in any color but all colors will display as white since the Pulse screen is only Black and White. </p>
-<p> <img class="ui image" src="../static/images/spriteEditor.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
+<h2 id="step-3-fullscreen">Step 3</h2><p>Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the ‘LightBulb’ Hint below to see the names of the areas within the sprite editor.
+ <img class="ui image" src="../static/images/spriteEditor.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
 <h2 id="step-4-fullscreen">Step 4</h2><p>For our game we’ll use one of the built-in sprites. To find the built-in sprites click on ‘Gallery’ at the top of the sprite editor. Find the first Jumper image in the Gallery and select it.
  <img class="ui image" src="../static/images/spriteJumper.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
 <h2 id="step-5-unplugged">Step 5</h2><p>We have a player! Download it to the Pulse to see the character we added on the screen 

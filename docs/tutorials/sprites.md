@@ -6,13 +6,13 @@
 
 ## Step 1 @unplugged
 
-We're going to create a Jumper Game and we'll need 'sprites' to do it. A 'sprite' is a 2-dimensional image that we use in games. A player's character would be a good example of a sprite. So would the things they have to avoid.  
+We're going to create a Jumper Game and we'll need ``||sprites:Sprites||`` to do it. A ``||sprites:Sprite||`` is a 2-dimensional image that we use in games. A player's character would be a good example of a sprite. So would the things they have to avoid.  
 
-![BrainPad buzzer image](docs/static/images/sprite1.jpg)
+![BrainPad buzzer image](docs/static/images/spritePlayer.jpg)
 
 ## Step 2 @fullscreen
 
-Click on 'Advanced'. Select ``||sprites:Sprites||``. Grab the ``||sprites:set mySprite||`` block and drag it into the ``||loops:on start||``. Let's create a variable name. In the block click on the 'mySprite' drop down and select 'New variable...'. Let's name our variable 'Jumper' since that's the game we'll be creating. We can keep the type of sprite set to 'player'
+Click on 'Advanced'. Select ``||sprites:Sprites||``. Grab the ``||sprites:set mySprite||`` block and drag it into the ``||loops:on start||``. Let's create a variable name. In the block click on the ``||sprites:mySprite||`` drop down and select '``||sprites:New variable...||``. Let's name our variable ``||sprites:Jumper||`` since that's the game we'll be creating. We can keep the type of sprite set to ``||sprites:player||``
 
 
 ```blocks
@@ -44,8 +44,7 @@ Jumper = sprites.create(img`
 
 ## Step 3 @fullscreen
 
-Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the 'LightBulb' Hint to see the names of the areas within the sprite editor. You can draw in any color but all colors will display as white since the Pulse screen is only Black and White. 
-
+Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the 'LightBulb' Hint below to see the names of the areas within the sprite editor.
  ![BrainPad buzzer image](docs/static/images/spriteEditor.jpg)
 
 ## Step 4 @fullscreen

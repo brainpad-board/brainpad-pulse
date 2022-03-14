@@ -62,7 +62,7 @@ forever(function () {
 
 ## Step 6 @fullscreen
 
-The acceleration outputs a value that is maxed at 1023 in one direction and -1023 on the other direction. The output will be zero right in the middle. Let’s compare the value to be more than 500. Change the equal sign inside the comparison block to greater than (>) and the value to 500. 
+The acceleration outputs a value that is maxed at 1023 in one direction and -1023 on the other direction. The output will be zero right in the middle. Let's compare the value to be more than 500. Change the equal sign inside the comparison block to greater than (>) and the value to 500. 
  
 ```blocks
 forever(function () {

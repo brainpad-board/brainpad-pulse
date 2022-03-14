@@ -82,7 +82,7 @@ Scene blocks, unlike the image blocks work with sprites when making games. We ca
 
 ## Step 2 @fullscreen
 
-The background images created are static backgrounds. They won't move when we move our sprites or collide with sprites. This can be handy. But if we want them to move we'll show in later in this tutorial how to create ``||sprites:sprites||`` 
+The background images created are static backgrounds. They won't move when we move our sprites or collide with sprites. This can be handy. But if we want them to move we'll show later in this tutorial how to create ``||sprites:sprites||`` 
 as a background. Remove the scene already loaded in the ``||loops:on start||`` block. We're going to create our own.'
 Under the `Advanced` tab, go to `Scene`. Drag in the ``||scene:set background image to||`` block. Click in the grey area and draw whatever you would like the background to be. In the tutorial we made a cityscape.
 

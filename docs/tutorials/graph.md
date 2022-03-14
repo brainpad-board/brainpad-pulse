@@ -6,10 +6,9 @@ The BrainPad Pulse's display allows for lots of display options. One of them is 
 
 ![BrainPad Display Graph](../static/images/graph.gif)
 
-
 ## Step 2 @fullscreen
 
-When graphing we need to continously read the values we're going graph on the display. We'll use the ``||loops:forever||`` loop to do this. To add graphing to the display we simply need to drag in the ``||display:graph||`` block. 
+When graphing we need to continously read the values we're going to graph on the display. We'll use the ``||loops:forever||`` loop to do this. To add graphing to the display we simply need to drag in the ``||display:graph||`` block. It's found under ``||display:Display||``.
 
 ```blocks
 forever(function () {
@@ -30,6 +29,8 @@ forever(function () {
 
 We won't see anything on the simulator and will need a physical BrainPad Pulse to view the affects of the code. Download the project to your Pulse and see what happens when you tip it a certain way.   
 
+![BrainPad Display Graph](../static/images/graph.gif)
+
 ## Step 5 @fullscreen
 
 Change the value inside the acceleration ``||input:accleration||`` block. Download again and see what happens. Do you notice anything different between the two blocks?
@@ -42,6 +43,6 @@ forever(function () {
 
 ## Step 6 @unplugged
 
-That's it. What other things do you think you might be able to graph? If you have a BrainClip kit you can use values from several of the sensors and graph them. 
+That's it. What other things do you think you might be able to graph? If you have a BrainClip kit you can use values from several of the sensors and graph them on the display. 
 
 ![BrainPad Display Graph](../static/images/graph.gif)

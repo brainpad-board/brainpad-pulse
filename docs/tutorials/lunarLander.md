@@ -1,12 +1,8 @@
 # Lunar Lander
 
-## Step 1 @unplugged
-
 The Lunar Lander game is a complete game example that demonstrates how animation, gravity and projectiles work inside the game engine. Look at the code and download the game to your BrainPad Pulse to see how it works. Press the A button to fire thrusters. Press B button for reverse thrusters. Try to land your ship on the landing pad with the flag. Press "Done" to exit the tutorial and modify the code.
 
-![BrainPad Demo](docs/static/images/lunarLander.gif)
-
-```template
+```blocks
 enum SpriteKind {
     Player,
     Enemy,

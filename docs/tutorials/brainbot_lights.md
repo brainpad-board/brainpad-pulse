@@ -45,7 +45,7 @@ brainbot.HeadlightColor(brainbot.rgb(randint(0, 255), randint(0, 255), randint(0
 
 
 ## Step 6 @fullscreen
-The two taillights can each be set to a different color. Let’s alternate the two lights red and blue. Something like a police car! Drag  in the ``||brainbot:set tailight||`` block into the ``||loops:forever||`` block. Drag in the ``||brainbot:red||`` parameter block. 
+The two taillights can each be set to a different color. Let's alternate the two lights red and blue. Something like a police car! Drag  in the ``||brainbot:set tailight||`` block into the ``||loops:forever||`` block. Drag in the ``||brainbot:red||`` parameter block. 
 
 ```blocks
 forever(function () {

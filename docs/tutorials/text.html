@@ -422,20 +422,46 @@
     <div class="ui text">
         <h1 id="text">Text</h1><h2 id="step-1-unplugged">Step 1</h2><p>You can display lots of things on the BrainPad Pulse’s display. One useful thing is displaying text. We’ll create a string variable and display it on screen then change the variable when we press the buttons. </p>
 <p><img class="ui image" src="../static/images/display.jpg" alt="BrainPad buzzer image" loading="lazy"></p>
-<h2 id="step-2-unplugged">Step 2</h2><p>To put text on the screen we can find first block we need found under DISPLAY on the side menu. Grab the <code>||display:show string||</code> block. This will display “Hello World” on the very first row. The BrainPad Pulse can display up to 6 rows of text. We can also center any text by adding extra spaces until it looks the way we want on the simulator. </p>
+<h2 id="step-2-fullscreen">Step 2</h2><p>To put text on the screen we can find first block we need found under <code>||display:Display||</code> on the side menu. Grab the <code>||display:show string||</code> block. This will display “Hello World” on the very first row. The BrainPad Pulse can display up to 6 rows of text. We can also center any text by adding extra spaces until it looks the way we want on the simulator. </p>
 <pre><code class="lang-blocks">forever(function () {
     display.showString(&quot;Hello world&quot;, 1)
 })</code></pre>
-<h2 id="step-3-unplugged">Step 3</h2><p>Let’s add a second <code>||display:show string||</code> block. This time let’s change the words inside the block to say “My name is” on the 2nd line.</p>
+<h2 id="step-3-fullscreen">Step 3</h2><p>Let’s add a second <code>||display:show string||</code> block. This time let’s change the words inside the block to say “My name is” on the 2nd line.</p>
 <pre><code class="lang-blocks">forever(function () {
     display.showString(&quot;Hello world&quot;, 1)
     display.showString(&quot;My Name is&quot;, 2)
 })</code></pre>
-<h2 id="step-4-unplugged">Step 4</h2><p>Now let’s make a variable to hold our name, we’ll later use this variable to switch between our first and last name. Under VARIABLES click ‘Make a Variable’</p>
+<h2 id="step-4-fullscreen">Step 4</h2><p>Now let’s make a variable to hold our name, we’ll later use this variable to switch between our first and last name. Under <code>||variables:Variables||</code> click <code>||variables:Make a Variables...||</code>. Name our new variable <code>||variables:name||</code> .</p>
 <p><img class="ui image" src="../static/images/create-variable.jpg" alt="create a variable" loading="lazy"></p>
-<h2 id="step-5-unplugged">Step 5</h2><p>Name our new variable ‘My Name’ and drag the newly created block into <code>||loops:on start||</code> block of our project. Don’t worry about the value of the variable yet. We’ll set that in the next step.</p>
-<pre><code class="lang-blocks">let My_Name = 0
-My_Name = 0</code></pre>
+<h2 id="step-5-fullscreen">Step 5</h2><p>Under <code>||variables:Variables||</code> grab the newly created <code>||variables:set name to||</code> block into <code>||loops:on start||</code> block of our project. Don’t worry about the value of the variable yet. We’ll set that in the next step.</p>
+<pre><code class="lang-blocks">let name = 0
+name = 0</code></pre>
+<h2 id="step-6-fullscreen">Step 6</h2><p>The new variable we created by default is a number. We need it to be text. To change the parameter, we need to go under ‘Advanced’ tab 
+and select <code>||text:text||</code> menu. We need to grab the <code>||text:&quot;&quot;||</code> double quotes block at the top and drag it into the <code>||variable:set name to||</code> block. We can leave it blank still. </p>
+<pre><code class="lang-blocks">let name = &quot;&quot;</code></pre>
+<h2 id="step-7-fullscreen">Step 7</h2><p>Add a third <code>||display:show string||</code> block to our <code>||loops:forever||</code> loop. Set it to line 3. This time drag in our <code>||variable:name||</code> variable block into block. </p>
+<pre><code class="lang-blocks">forever(function () {
+    display.showString(&quot;Hello world&quot;, 1)
+    display.showString(&quot;My Name is&quot;, 2)
+    display.showString(name, 3)
+})</code></pre>
+<h2 id="step-8-fullscreen">Step 8</h2><p>We have the basic structure of the program, now we need to add buttons blocks. Under <code>||input:Input||</code> grab two <code>||input:on button A pressed||</code> blocks to the workspace. Change one of them from A to B. </p>
+<pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
+
+})
+input.buttonB.onEvent(ButtonEvent.Down, function () {
+
+})</code></pre>
+<h2 id="step-9-fullscreen">Step 9</h2><p>We need to drag a <code>||variables:set name to||</code> block into each of our Button Events. Also don’t forget we need to change
+the <code>||variables:0||</code> to our <code>||variables:&quot;&quot;||</code> quotes block. Remember it’s found under <code>||text:text||</code>. Type your first name in the A Event, and last name in the B Event. Try it on the BrainPad Pulse.</p>
+<pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
+    name = &quot;John&quot;
+})
+input.buttonB.onEvent(ButtonEvent.Down, function () {
+    name = &quot;Smith&quot;
+})</code></pre>
+<h2 id="step-10-unplugged">Step 10</h2><p>Awesome, we’re using the display, buttons, and a variable to hold our first and last name. When we press A we see our first name, when we press B we see our last name. </p>
+<p><img class="ui image" src="../static/images/displayText.gif" alt="BrainPad Display" loading="lazy"></p>
 
     </div>
 

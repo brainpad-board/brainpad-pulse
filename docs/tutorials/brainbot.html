@@ -424,18 +424,16 @@
 <h1 id="moving-the-brainbot">Moving the BrainBot</h1><h2 id="step-1-unplugged">Step 1</h2><p>This tutorial assumes you’ve assembled your BrainBot and are ready to program. If you haven’t please visit the assembly page. </p>
 <p><a target="_blank" rel="nofollow noopener" href="https://www.brainpad.com/lessons/brainbot-assembly/">BrainBot Assembly Page</a></p>
 <p><img class="ui image" src="../static/images/brainbotbuild.gif" alt="BrainPad buzzer image" loading="lazy"></p>
-<h2 id="step-2-fullscreen">Step 2</h2><p>The BrainBot requires some extra blocks not found when we first start MakeCode. We need to add these blocks to MakeCode by importing an Extension. Under the ‘Advanced’ tab on the side menu at the very bottom click on ‘Extensions’ at the very bottom. Click on BrainBot to load the extension. </p>
-<pre><code class="lang-blocks">forever(function () {
-    brainbot.MoveCustom(50, 50)
-})</code></pre>
+<h2 id="step-2-unplugged">Step 2</h2><p>In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the ‘Advanced’ tab on the side menu at the very bottom click on ‘Extensions’ at the very bottom. Click on BrainBot to load the extension. </p>
+<p><img class="ui image" src="../static/images/brainbot.jpg" alt="BrainPad extension image" loading="lazy"></p>
 <h2 id="step-3-unplugged">Step 3</h2><p>If you look on the menu 3 new sections have been added. Sonar, Infrared, and BrainBot.</p>
 <p><img class="ui image" src="../static/images/brainbotblocks.jpg" alt="BrainPad Brainbot" loading="lazy"></p>
-<h2 id="step-4-unplugged">Step 4</h2><p>Let’s make the robot move forward. Click on <code>||Brainbot:BrainBot||</code> and drag in the <code>||Brainbot:Move left &amp; right||</code> block into the <code>||loops:on start||</code> block. The block has two parameter one for each motors speed. </p>
+<h2 id="step-4-fullscreen">Step 4</h2><p>Let’s make the robot move forward. Click on <code>||Brainbot:BrainBot||</code> and drag in the <code>||Brainbot:Move left &amp; right||</code> block into the <code>||loops:on start||</code> block. The block has two parameter one for each motors speed. </p>
 <p><img class="ui image" src="../static/images/brainbotMoveForward.gif" alt="BrainPad Brainbot" loading="lazy"></p>
 <h2 id="step-5-fullscreen">Step 5</h2><p>To move the robot forward we change both parameters in <code>||Brainbot:Move left speed &amp; right speed||</code> block to the same positive number. To move backwards you would make both parameters the same negative number. Download it the BrainPad to see what happens. </p>
 <p><img class="ui image" src="../static/images/robotspeed.gif" alt="BrainPad Brainbot" loading="lazy"></p>
-<h2 id="step-6-fullscreen">Step 6</h2><p>We can make the BrainBot spin in place by setting both parameters to opposite values. Set the first number to -100 and the second number to 100.
-Try this and Download to the Brainpad. </p>
+<h2 id="step-6-fullscreen">Step 6</h2><p>We can make the BrainBot spin in place by setting both parameters to opposite values. Set the first number to <code>||Brainbot:-100||</code> and the second number to <code>||Brainbot:100||</code>.
+Try this and Download to the Brainpad Pulse. </p>
 <p><img class="ui image" src="../static/images/spinning.gif" alt="BrainPad Brainbot" loading="lazy"></p>
 <h2 id="step-7-unplugged">Step 7</h2><p>Finally let’s make the BrainBot drive around in a larger circle. To do this we’ll add a couple move blocks and some pauses. </p>
 <p><img class="ui image" src="../static/images/turning.gif" alt="BrainPad Brainbot" loading="lazy"></p>

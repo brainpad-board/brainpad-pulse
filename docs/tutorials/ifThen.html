@@ -450,7 +450,7 @@
         display.showString(&quot;Right&quot;, 1)
     }
 })</code></pre>
-<h2 id="step-6-fullscreen">Step 6</h2><p>The acceleration outputs a value that is maxed at 1023 in one direction and -1023 on the other direction. The output will be zero right in the middle. Let�s compare the value to be more than 500. Change the equal sign inside the comparison block to greater than (&gt;) and the value to 500. </p>
+<h2 id="step-6-fullscreen">Step 6</h2><p>The acceleration outputs a value that is maxed at 1023 in one direction and -1023 on the other direction. The output will be zero right in the middle. Let’s compare the value to be more than 500. Change the equal sign inside the comparison block to greater than (&gt;) and the value to 500. </p>
 <pre><code class="lang-blocks">forever(function () {
     if (input.acceleration(Dimension.X) &gt; 500) {
         display.showString(&quot;Right&quot;, 1)

@@ -243,75 +243,42 @@ let Barrel = sprites.create(img`
 ## Step 3 @fullscreen
 Now let's detect when a Barrel and our Jumper over lap and then remove one life from the game. We need to drag in an ``||sprite:overlap||`` event block. We only need to change the last parameter from ``||sprite:Enemy||`` to ``||sprite:Player||``.
 
-```blocks
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-	
-})
-```
+![BrainPad Animated Sprite](docs/static/images/collisionBlock.jpg)
+
+
 ## Step 4 @fullscreen
 Inside the ``||sprite:overlap||`` event block. We need to add blocks that will only run when the Player overlaps with an Enemy. The first thing to do is send the ``||sprite:Barrel||`` back to the starting position. Grab the ``||sprite:set mySprite position||`` block and drag it into the ``||sprite:overlap||`` event block.
 Change the ``||sprite:x||`` to 120 and the ``||sprite:y||`` to 60. This will move the ``||sprite:Barrel||`` back to the start position. 
 
-```blocks
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    Barrel.setPosition(120, 60)
-})
-```
+![BrainPad Animated Sprite](docs/static/images/collisionBlock2.jpg)
+
 ## Step 5 @fullscreen
 Now that the ``||sprite:Barrel||`` goes back to the start position. Let's take away one life from the ``||sprite:Jumper||``. We only need to add a ``||info:change life by -1||`` block. This will subtract a life everytime there's an overlap.
 We can verify this by watching the simulator. The ``||sprite:Barrel||`` will overlap the ``||sprite:Jumper||`` 3 times and then end the game. 
 
-```blocks
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    Barrel.setPosition(120, 60)
-    info.changeLifeBy(-1)
-})
-```
+![BrainPad Animated Sprite](docs/static/images/collisionBlock3.jpg)
+
 
 ## Step 6 @fullscreen
 We need to change our score everytime the ``||sprite:Jumper||`` successfully jumps over a ``||sprite:Barrel||``. We can do this by just changing the score when the ``||sprite:Barrel||`` reaches the end of the screen. We already have an ``||logic:if-then||`` block in the ``||loops:forever||`` block to check for this. So lets put it there. 
 Grab the ``||info:change score by 1||`` block and drag it into the ``||logic:if-then||``.
 
-```blocks
-forever(function () {
-    if (Barrel.x < 0) {
-        Barrel.setPosition(120, 60)
-        Barrel.vx += -2
-        info.changeScoreBy(1)
-    }
-})
-```
+![BrainPad Animated Sprite](docs/static/images/collisionBlock4.jpg)
+
+
 ## Step 7 @fullscreen
 We're almost there. There is a small bug in our code. If we hold down the A button our ``||sprite:Jumper||`` will always stay in the air. We can fix this buy adding a ``||loops:pause||`` and ``||sprite:set mySprite x(horizontal position)||`` block. 
 Set the ``||loops:pause||`` to 300 milliseconds. Then change the ``||sprite:set mySprite x(horizontal position)||`` block to ``||sprite:Jumper||`` and select ``||sprite:vy (velociy y)||`` and change to 200. This will bring the ``||sprite:Jumper||``
 back to the ground after 300 milliseconds. 
 
-```blocks
-input.buttonA.onEvent(ButtonEvent.Down, function () {
-    Jumper.vy = -200
-    pause(300)
-    Jumper.vy = 200
-})
-```
+![BrainPad Animated Sprite](docs/static/images/jumperButton.jpg)
 
 ## Step 8 @fullscreen
 We have a game. For one last finishing touch lets add a couple sounds to the game. When the ``||sprite:Jumper||`` jumps and when a there is a collision. First drag in a ``||music:play sound||`` at the top of the ``||input:on button A pressed||`` event block. Change the sound it will play to ``||music:ba ding||``. In the ``||sprite:overlap||`` event block drag another ``||music:play sound||`` block at into it at the top. Change the sound it plays to ``||music:wawawaa||``. 
 
-```blocks
-input.buttonA.onEvent(ButtonEvent.Down, function () {
-    music.playSound(music.sounds(Sounds.BaDing))
-    Jumper.vy = -200
-    pause(300)
-    Jumper.vy = 200
-})
+![BrainPad Animated Sprite](docs/static/images/gameSound.jpg)
 
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    music.playSound(music.sounds(Sounds.Wawawawaa))
-    Barrel.setPosition(120, 60)
-    info.changeLifeBy(-1)
-})
 
-```
 ## Step 9 @unplugged
 That's it. We have a fully playable game. Now that you understand how things go together, you can make it your own buy creating your own sprites. 
 

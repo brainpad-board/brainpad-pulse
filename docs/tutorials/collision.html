@@ -649,51 +649,22 @@ let Barrel = sprites.create(img`
     }
 })</code></pre>
 <h2 id="step-3-fullscreen">Step 3</h2><p>Now let’s detect when a Barrel and our Jumper over lap and then remove one life from the game. We need to drag in an <code>||sprite:overlap||</code> event block. We only need to change the last parameter from <code>||sprite:Enemy||</code> to <code>||sprite:Player||</code>.</p>
-<pre><code class="lang-blocks">sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-
-})</code></pre>
+<p><img class="ui image" src="../static/images/collisionBlock.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-4-fullscreen">Step 4</h2><p>Inside the <code>||sprite:overlap||</code> event block. We need to add blocks that will only run when the Player overlaps with an Enemy. The first thing to do is send the <code>||sprite:Barrel||</code> back to the starting position. Grab the <code>||sprite:set mySprite position||</code> block and drag it into the <code>||sprite:overlap||</code> event block.
 Change the <code>||sprite:x||</code> to 120 and the <code>||sprite:y||</code> to 60. This will move the <code>||sprite:Barrel||</code> back to the start position. </p>
-<pre><code class="lang-blocks">sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    Barrel.setPosition(120, 60)
-})</code></pre>
+<p><img class="ui image" src="../static/images/collisionBlock2.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-5-fullscreen">Step 5</h2><p>Now that the <code>||sprite:Barrel||</code> goes back to the start position. Let’s take away one life from the <code>||sprite:Jumper||</code>. We only need to add a <code>||info:change life by -1||</code> block. This will subtract a life everytime there’s an overlap.
 We can verify this by watching the simulator. The <code>||sprite:Barrel||</code> will overlap the <code>||sprite:Jumper||</code> 3 times and then end the game. </p>
-<pre><code class="lang-blocks">sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    Barrel.setPosition(120, 60)
-    info.changeLifeBy(-1)
-})</code></pre>
+<p><img class="ui image" src="../static/images/collisionBlock3.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-6-fullscreen">Step 6</h2><p>We need to change our score everytime the <code>||sprite:Jumper||</code> successfully jumps over a <code>||sprite:Barrel||</code>. We can do this by just changing the score when the <code>||sprite:Barrel||</code> reaches the end of the screen. We already have an <code>||logic:if-then||</code> block in the <code>||loops:forever||</code> block to check for this. So lets put it there. 
 Grab the <code>||info:change score by 1||</code> block and drag it into the <code>||logic:if-then||</code>.</p>
-<pre><code class="lang-blocks">forever(function () {
-    if (Barrel.x &lt; 0) {
-        Barrel.setPosition(120, 60)
-        Barrel.vx += -2
-        info.changeScoreBy(1)
-    }
-})</code></pre>
+<p><img class="ui image" src="../static/images/collisionBlock4.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-7-fullscreen">Step 7</h2><p>We’re almost there. There is a small bug in our code. If we hold down the A button our <code>||sprite:Jumper||</code> will always stay in the air. We can fix this buy adding a <code>||loops:pause||</code> and <code>||sprite:set mySprite x(horizontal position)||</code> block. 
 Set the <code>||loops:pause||</code> to 300 milliseconds. Then change the <code>||sprite:set mySprite x(horizontal position)||</code> block to <code>||sprite:Jumper||</code> and select <code>||sprite:vy (velociy y)||</code> and change to 200. This will bring the <code>||sprite:Jumper||</code>
 back to the ground after 300 milliseconds. </p>
-<pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
-    Jumper.vy = -200
-    pause(300)
-    Jumper.vy = 200
-})</code></pre>
+<p><img class="ui image" src="../static/images/jumperButton.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-8-fullscreen">Step 8</h2><p>We have a game. For one last finishing touch lets add a couple sounds to the game. When the <code>||sprite:Jumper||</code> jumps and when a there is a collision. First drag in a <code>||music:play sound||</code> at the top of the <code>||input:on button A pressed||</code> event block. Change the sound it will play to <code>||music:ba ding||</code>. In the <code>||sprite:overlap||</code> event block drag another <code>||music:play sound||</code> block at into it at the top. Change the sound it plays to <code>||music:wawawaa||</code>. </p>
-<pre><code class="lang-blocks">input.buttonA.onEvent(ButtonEvent.Down, function () {
-    music.playSound(music.sounds(Sounds.BaDing))
-    Jumper.vy = -200
-    pause(300)
-    Jumper.vy = 200
-})
-
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    music.playSound(music.sounds(Sounds.Wawawawaa))
-    Barrel.setPosition(120, 60)
-    info.changeLifeBy(-1)
-})
-</code></pre>
+<p><img class="ui image" src="../static/images/gameSound.jpg" alt="BrainPad Animated Sprite" loading="lazy"></p>
 <h2 id="step-9-unplugged">Step 9</h2><p>That’s it. We have a fully playable game. Now that you understand how things go together, you can make it your own buy creating your own sprites. </p>
 <p><img class="ui image" src="../static/images/collision.gif" alt="BrainPad Animated Sprite" loading="lazy"></p>
 

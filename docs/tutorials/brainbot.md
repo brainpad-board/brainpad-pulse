@@ -12,15 +12,11 @@ This tutorial assumes you've assembled your BrainBot and are ready to program. I
 
 ![BrainPad buzzer image](docs/static/images/brainbotbuild.gif)
 
-## Step 2 @fullscreen
+## Step 2 @unplugged
 
-The BrainBot requires some extra blocks not found when we first start MakeCode. We need to add these blocks to MakeCode by importing an Extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
+In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
 
-```blocks
-forever(function () {
-    brainbot.MoveCustom(50, 50)
-})
-```
+![BrainPad extension image](docs/static/images/brainbot.jpg)
 
 
 ## Step 3 @unplugged
@@ -29,7 +25,7 @@ If you look on the menu 3 new sections have been added. Sonar, Infrared, and Bra
 
 ![BrainPad Brainbot](docs/static/images/brainbotblocks.jpg)
 
-## Step 4 @unplugged
+## Step 4 @fullscreen
 
 Let's make the robot move forward. Click on ``||Brainbot:BrainBot||`` and drag in the ``||Brainbot:Move left & right||`` block into the ``||loops:on start||`` block. The block has two parameter one for each motors speed. 
 
@@ -44,8 +40,8 @@ To move the robot forward we change both parameters in ``||Brainbot:Move left sp
 
 ## Step 6 @fullscreen
 
-We can make the BrainBot spin in place by setting both parameters to opposite values. Set the first number to -100 and the second number to 100.
-Try this and Download to the Brainpad. 
+We can make the BrainBot spin in place by setting both parameters to opposite values. Set the first number to ``||Brainbot:-100||`` and the second number to ``||Brainbot:100||``.
+Try this and Download to the Brainpad Pulse. 
 
 ![BrainPad Brainbot](docs/static/images/spinning.gif)
 

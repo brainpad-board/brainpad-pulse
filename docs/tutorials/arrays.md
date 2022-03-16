@@ -7,7 +7,6 @@ forever(function () {
 })
 ```
 
-
 # Arrays
 
 ## Step 1 @unplugged
@@ -46,13 +45,7 @@ forever(function () {
 To count through our array instead of hardcoding the number of elements in our array, we'll use a block that stores the ``||array:lengh of array||`` block. Grab it and drag it where the value ``||loops:4||`` is inside the ``||loops:for loop||`` 
 Also change the name in the drop down to ``||array:text list||``.
 
-```blocks
-forever(function () {
-    for (let index = 0; index <= text_list.length; index++) {
-    	
-    }
-})
-```
+![BrainPad Array](docs/static/images/arrays.jpg)
 
 ## Step 6 @unplugged
 Unfortunatly the block we dragged in won't quite work yet we need to make one small change to it. Remember how we said the values in an array start at 0 which means our array ends at 2. The ``||array:lengh of array||`` block 
@@ -75,51 +68,28 @@ forever(function () {
 ## Step 8 @fullscreen
 Now drag the ``||array:lengh of array||`` block into the first value of the ``||Math:0 - 0||`` block. Change the last value to 1. 
 
-```blocks
-forever(function () {
-    for (let index = 0; index <= text_list.length - 1; index++) {
-    	
-    }
-})
-```
+![BrainPad Array](docs/static/images/arrays2.jpg)
+
 
 ## Step 9 @fullscreen
 Now the ``||loops:for loop||`` is set up to cycle through all the elements of the array. Let's show them each on the screen. Drag in the ``||Display:show string||`` block into the ``||loops:for loop||``
 
-```blocks
-forever(function () {
-    for (let index = 0; index <= text_list.length - 1; index++) {
-        display.showString("Hello world", 1)
-    }
-})
-```
+![BrainPad Array](docs/static/images/arrays3.jpg)
 
 ## Step 10 @fullscreen
 Now we need to read each value individually in the array. To do this we will use the ``||array:list get value at 0||`` block. It can be found under `Arrays` in the menu. Drag it into our ``||Display:show string||`` block
 where we see the string "Hello World". Change the value dropdown from ``||array:list||`` to ``||array:text list||``. 
 
-```blocks
-forever(function () {
-    for (let index = 0; index <= text_list.length - 1; index++) {
-        display.showString(text_list[0], 1)
-    }
-})
-```
+![BrainPad Array](docs/static/images/arrays4.jpg)
 
 ## Step 11 @fullscreen
 This will only show the first element of our array, which is 0. We want to increment the number everytime it runs through our ``||loops:for loop||``. We need to use the ``||variables:index||`` variable where
 "0" is. Also let's add a ``||loops:pause||`` 100 ms block. To give us time to read the names. 
 
-```blocks
-forever(function () {
-    for (let index = 0; index <= text_list.length - 1; index++) {
-        display.showString(text_list[index], 1)
-        pause(100)
-    }
-})
-```
+![BrainPad Array](docs/static/images/arrays5.jpg)
+
 ## Step 12 @unplugged
-That's it! You now have an understand of how arrays work. Arrays can hold things other then just names, they can hold images, sprites, numbers, etc. One rule is that the array must only contain
+That's it! You now have a better understanding of how arrays work. Arrays can hold things other then just names, they can hold images, sprites, numbers, etc. One rule is that the array must only contain
 the same type of elements. You can't mix text and images in the same array. 
 
 ![BrainPad Array](docs/static/images/array.jpg)

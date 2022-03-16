@@ -434,7 +434,7 @@ and red make purple. Drag the <code>||brainbot:set headlights||</code> block int
 <pre><code class="lang-blocks">brainbot.HeadlightColor(brainbot.rgb(255, 255, 255))</code></pre>
 <h2 id="step-5-fullscreen">Step 5</h2><p>What about a program that shows different random colors? From Math, use the <code>||math:pick random||</code> block. Drag it into RED, GREEN, and BLUE parameters of the block we just added. Download the code to the BrainBot and see what happens.</p>
 <pre><code class="lang-blocks">brainbot.HeadlightColor(brainbot.rgb(randint(0, 255), randint(0, 255), randint(0, 255)))</code></pre>
-<h2 id="step-6-fullscreen">Step 6</h2><p>The two taillights can each be set to a different color. Let�s alternate the two lights red and blue. Something like a police car! Drag  in the <code>||brainbot:set tailight||</code> block into the <code>||loops:forever||</code> block. Drag in the <code>||brainbot:red||</code> parameter block. </p>
+<h2 id="step-6-fullscreen">Step 6</h2><p>The two taillights can each be set to a different color. Let’s alternate the two lights red and blue. Something like a police car! Drag  in the <code>||brainbot:set tailight||</code> block into the <code>||loops:forever||</code> block. Drag in the <code>||brainbot:red||</code> parameter block. </p>
 <pre><code class="lang-blocks">forever(function () {
     brainbot.TaillightColor(brainbot.TurnDirection.Left, brainbot.colors(NeoPixelColors.Red))
 })</code></pre>

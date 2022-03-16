@@ -442,11 +442,7 @@ or remove elements by hitting the <code>||array:-||</code></p>
 })</code></pre>
 <h2 id="step-5-fullscreen">Step 5</h2><p>To count through our array instead of hardcoding the number of elements in our array, we’ll use a block that stores the <code>||array:lengh of array||</code> block. Grab it and drag it where the value <code>||loops:4||</code> is inside the <code>||loops:for loop||</code> 
 Also change the name in the drop down to <code>||array:text list||</code>.</p>
-<pre><code class="lang-blocks">forever(function () {
-    for (let index = 0; index &lt;= text_list.length; index++) {
-
-    }
-})</code></pre>
+<p><img class="ui image" src="../static/images/arrays.jpg" alt="BrainPad Array" loading="lazy"></p>
 <h2 id="step-6-unplugged">Step 6</h2><p>Unfortunatly the block we dragged in won’t quite work yet we need to make one small change to it. Remember how we said the values in an array start at 0 which means our array ends at 2. The <code>||array:lengh of array||</code> block 
 will count 3 elements. So we need to subtract one from the lengh of the array so it will end on the last element, which is 2. Confused yet?</p>
 <p><img class="ui image" src="../static/images/arrayLength.jpg" alt="BrainPad Array Elements" loading="lazy"></p>
@@ -458,33 +454,16 @@ will count 3 elements. So we need to subtract one from the lengh of the array so
     }
 })</code></pre>
 <h2 id="step-8-fullscreen">Step 8</h2><p>Now drag the <code>||array:lengh of array||</code> block into the first value of the <code>||Math:0 - 0||</code> block. Change the last value to 1. </p>
-<pre><code class="lang-blocks">forever(function () {
-    for (let index = 0; index &lt;= text_list.length - 1; index++) {
-
-    }
-})</code></pre>
+<p><img class="ui image" src="../static/images/arrays2.jpg" alt="BrainPad Array" loading="lazy"></p>
 <h2 id="step-9-fullscreen">Step 9</h2><p>Now the <code>||loops:for loop||</code> is set up to cycle through all the elements of the array. Let’s show them each on the screen. Drag in the <code>||Display:show string||</code> block into the <code>||loops:for loop||</code></p>
-<pre><code class="lang-blocks">forever(function () {
-    for (let index = 0; index &lt;= text_list.length - 1; index++) {
-        display.showString(&quot;Hello world&quot;, 1)
-    }
-})</code></pre>
+<p><img class="ui image" src="../static/images/arrays3.jpg" alt="BrainPad Array" loading="lazy"></p>
 <h2 id="step-10-fullscreen">Step 10</h2><p>Now we need to read each value individually in the array. To do this we will use the <code>||array:list get value at 0||</code> block. It can be found under <code>Arrays</code> in the menu. Drag it into our <code>||Display:show string||</code> block
 where we see the string “Hello World”. Change the value dropdown from <code>||array:list||</code> to <code>||array:text list||</code>. </p>
-<pre><code class="lang-blocks">forever(function () {
-    for (let index = 0; index &lt;= text_list.length - 1; index++) {
-        display.showString(text_list[0], 1)
-    }
-})</code></pre>
+<p><img class="ui image" src="../static/images/arrays4.jpg" alt="BrainPad Array" loading="lazy"></p>
 <h2 id="step-11-fullscreen">Step 11</h2><p>This will only show the first element of our array, which is 0. We want to increment the number everytime it runs through our <code>||loops:for loop||</code>. We need to use the <code>||variables:index||</code> variable where
 “0” is. Also let’s add a <code>||loops:pause||</code> 100 ms block. To give us time to read the names. </p>
-<pre><code class="lang-blocks">forever(function () {
-    for (let index = 0; index &lt;= text_list.length - 1; index++) {
-        display.showString(text_list[index], 1)
-        pause(100)
-    }
-})</code></pre>
-<h2 id="step-12-unplugged">Step 12</h2><p>That’s it! You now have an understand of how arrays work. Arrays can hold things other then just names, they can hold images, sprites, numbers, etc. One rule is that the array must only contain
+<p><img class="ui image" src="../static/images/arrays5.jpg" alt="BrainPad Array" loading="lazy"></p>
+<h2 id="step-12-unplugged">Step 12</h2><p>That’s it! You now have a better understanding of how arrays work. Arrays can hold things other then just names, they can hold images, sprites, numbers, etc. One rule is that the array must only contain
 the same type of elements. You can’t mix text and images in the same array. </p>
 <p><img class="ui image" src="../static/images/array.jpg" alt="BrainPad Array" loading="lazy"></p>
 

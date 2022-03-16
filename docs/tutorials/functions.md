@@ -8,14 +8,14 @@ Functions are used when we need sections of code to repeat or do something over 
 
 ## Step 2 @fullscreen
 
-Functions can be found under the `Advanced` tab on the side menu. Click on `Functions` this brings up the button `Make a Function...`. Click on the Button. 
+Functions can be found under the `Advanced` tab on the side menu. Click on ``||Functions:Functions||`` this brings up the button ``||Functions:Make a Function...||`` Click on the Button. 
 
 ![BrainPad Function](docs/static/images/make-function.jpg)
 
 ## Step 3 @fullscreen
 
-The first thing we need to do is name our function. Click on the block where it says `doSomething`. Let's name ours 'myFunction'. Generally you want to name your functions based on what the function will be doing. But for this demonstration 'myFunction' is fine. 
-Don't worry about adding a parameter yet. We'll do that later. 
+The first thing we need to do is name our function. Click on the block where it says ``||Functions:doSomething||``. Let's name ours ``||Functions:myFunction||``. Generally you want to name functions based on what the function will be doing. But for this demonstration ``||Functions:myFunction||`` is fine. 
+Don't worry about adding a parameter. 
 
 ```blocks
 function myFunction () {

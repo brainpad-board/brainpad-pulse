@@ -950,215 +950,108 @@ anim.addAnimationFrame(img`
 animation.attachAnimation(Jumper, anim)
 </code></pre>
 <h2 id="step-5-fullscreen">Step 5</h2><p>Once we’ve attached the animation to the sprite we just need to activate the animation using the <code>||animation:activate animation||</code> block. This may seem like an unnecessary step but we can activate different animations from different places in our code. In our sample though we do it all inside the <code>||loops:on start||</code> block just to show you all the necessary components of animation.</p>
-<pre><code class="lang-blocks">
-enum SpriteKind {
-
+<pre><code class="lang-blocks">enum SpriteKind {
     Player,
-
     Enemy
-
 }
-
 enum ActionKind {
-
     Walking,
-
     Idle,
-
     Jumping
-
 }
-
-let anim: animation.Animation = null
-
-let Jumper: Sprite = null
-
-Jumper = sprites.create(img`
-
-. . . . . . . . . . . . . . . .
-
-. . . . . 1 1 1 1 1 1 . . . . .
-
-. . . . 1 1 1 1 1 1 1 1 1 1 . .
-
-. . . . . . . . 1 1 . 1 . . . .
-
-. . . 1 1 1 . 1 1 1 . 1 1 1 . .
-
-. . . 1 1 1 . . 1 1 1 . 1 1 1 .
-
-. . . 1 1 1 1 1 1 1 . . . 1 . .
-
-. . . . . 1 1 1 1 1 1 1 1 . . .
-
-. . . . 1 1 1 1 1 1 1 . . . . .
-
-. . . 1 1 1 1 1 1 1 1 1 . . . .
-
-. . . 1 1 . . . 1 1 1 1 . . . .
-
-. . . 1 1 . . 1 1 1 1 1 . . . .
-
-. . . 1 1 . . 1 1 1 1 1 . . . .
-
-. . . . 1 1 . 1 1 . 1 . . . . .
-
-. . . . . 1 1 1 . 1 1 1 . . . .
-
-. . . . . 1 1 1 1 1 . . . . . .
-
-`, SpriteKind.Player)
-
-anim = animation.createAnimation(ActionKind.Walking, 200)
-
+let Jumper = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . . 1 1 . 1 1 . 1 . . . . . . 
+    . . . . 1 1 1 . 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 . . . . . . . 
+    `, SpriteKind.Player)
+let anim = animation.createAnimation(ActionKind.Walking, 200)
 anim.addAnimationFrame(img`
-
-. . . . . . . . . . . . . . . .
-
-. . . . . 1 1 1 1 1 1 . . . . .
-
-. . . . 1 1 1 1 1 1 1 1 1 1 . .
-
-. . . . . . . . 1 1 . 1 . . . .
-
-. . . 1 1 1 . 1 1 1 . 1 1 1 . .
-
-. . . 1 1 1 . . 1 1 1 . 1 1 1 .
-
-. . . 1 1 1 1 1 1 1 . . . 1 . .
-
-. . . . . 1 1 1 1 1 1 1 1 . . .
-
-. . . . 1 1 1 1 1 1 1 . . . . .
-
-. . . 1 1 1 1 1 1 1 1 1 . . . .
-
-. . . 1 1 . . . 1 1 1 1 . . . .
-
-. . . 1 1 . . 1 1 1 1 1 . . . .
-
-. . . 1 1 . . 1 1 1 1 1 . . . .
-
-. . . . 1 1 . 1 1 . 1 . . . . .
-
-. . . . . 1 1 1 . 1 1 1 . . . .
-
-. . . . . 1 1 1 1 1 . . . . . .
-
-`)
-
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . . 1 1 . 1 1 . 1 . . . . . . 
+    . . . . 1 1 1 . 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 . . . . . . . 
+    `)
 anim.addAnimationFrame(img`
-
-. . . . . . 1 1 1 1 1 1 . . . .
-
-. . . . . 1 1 1 1 1 1 1 1 1 1 .
-
-. . . . . . . . . 1 1 . 1 . . .
-
-. . . . 1 1 1 . 1 1 1 . 1 1 . .
-
-. . . . 1 1 1 1 . 1 1 1 . 1 1 1
-
-. . . . 1 1 1 1 1 1 1 . . . 1 .
-
-. . . . . . 1 1 1 1 1 1 1 1 . .
-
-. . . . . . . 1 1 1 1 1 1 . . .
-
-. . . . . . 1 1 1 1 1 1 1 1 . .
-
-. . . . 1 1 1 1 1 1 1 1 1 1 1 1
-
-. . . 1 1 1 1 1 1 1 1 1 1 1 . .
-
-. . . 1 1 . . . . . . . . 1 . .
-
-. . . . 1 1 1 . 1 1 1 . 1 1 . .
-
-. . . 1 1 1 1 1 . 1 1 1 1 . . .
-
-. . . 1 1 . . . . 1 1 1 . . . .
-
-. . . . . . . . . 1 1 1 1 . . .
-
-`)
-
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . . 1 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+    . 1 1 1 1 1 1 1 1 1 1 1 . . . . 
+    . 1 1 . . . . . . . . 1 . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 . . . . 
+    . 1 1 1 1 1 . 1 1 1 1 . . . . . 
+    . 1 1 . . . . 1 1 1 . . . . . . 
+    . . . . . . . 1 1 1 1 . . . . . 
+    `)
 anim.addAnimationFrame(img`
-
-. . . . . . . . . . . . . . . .
-
-. . . . . 1 1 1 1 1 1 . . . . .
-
-. . . . 1 1 1 1 1 1 1 1 1 1 . .
-
-. . . . . . . . 1 1 . 1 . . . .
-
-. . . 1 1 1 . 1 1 1 . 1 1 1 . .
-
-. . . 1 1 1 . . 1 1 1 . 1 1 1 .
-
-. . . 1 1 1 1 1 1 1 . . . 1 . .
-
-. . . . . 1 1 1 1 1 1 1 1 . . .
-
-. . . . 1 1 1 1 1 1 1 . . . . .
-
-. . . 1 1 1 1 1 1 1 1 1 . . . .
-
-. . . 1 1 1 1 1 1 1 1 1 . . . .
-
-. . . 1 1 . . . . . . 1 . . . .
-
-. . . 1 . 1 1 1 1 . 1 . . . . .
-
-. . . . 1 1 1 . 1 1 1 1 1 . . .
-
-. . . . . 1 1 . . 1 1 1 1 . . .
-
-. . . . . 1 1 1 1 . . . . . . .
-
-`)
-
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . . . . 1 . . . . . 
+    . . 1 . 1 1 1 1 . 1 . . . . . . 
+    . . . 1 1 1 . 1 1 1 1 1 . . . . 
+    . . . . 1 1 . . 1 1 1 1 . . . . 
+    . . . . 1 1 1 1 . . . . . . . . 
+    `)
 anim.addAnimationFrame(img`
-
-. . . . . . 1 1 1 1 1 1 . . . .
-
-. . . . . 1 1 1 1 1 1 1 1 1 1 .
-
-. . . . . . . . . 1 1 . 1 . . .
-
-. . . . 1 1 1 . 1 1 1 . 1 1 1 .
-
-. . . . 1 1 1 . . 1 1 1 . 1 1 1
-
-. . . . 1 1 1 1 1 1 1 . . . 1 .
-
-. . . . . . 1 1 1 1 1 1 1 1 . .
-
-. . . 1 1 1 1 1 1 1 1 1 1 . . .
-
-. 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-
-. 1 1 1 1 . 1 1 1 1 1 1 1 1 1 1
-
-. 1 1 . . 1 1 1 1 1 1 1 1 . . .
-
-. . . . 1 . . . . . . . 1 . 1 1
-
-. . . 1 1 . 1 1 1 1 1 . . 1 1 1
-
-. . . 1 1 1 1 1 . . . 1 1 1 1 1
-
-. . . 1 1 . . . . . . . . . . .
-
-. . . 1 1 1 1 . . . . . . . . .
-
-`)
-
-anim.attachAnimation(Jumper, myAnimation)
-
-anim.setAction(Jumper, ActionKind.Walking)
-</code></pre>
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 1 1 . . 
+    . . . . . . . . 1 1 . 1 . . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . . 1 1 1 . . 1 1 1 . 1 1 1 . 
+    . . . 1 1 1 1 1 1 1 . . . 1 . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 . . . . 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 1 1 . 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 . . . . . . . 1 . 1 1 . 
+    . . 1 1 . 1 1 1 1 1 . . 1 1 1 . 
+    . . 1 1 1 1 1 . . . 1 1 1 1 1 . 
+    . . 1 1 . . . . . . . . . . . . 
+    . . 1 1 1 1 . . . . . . . . . . 
+    `)
+animation.attachAnimation(Jumper, anim)
+animation.setAction(Jumper, ActionKind.Walking)</code></pre>
 <h2 id="step-6-unplugged">Step 6</h2><p>Congratulations!! You’ve completed your first animated sprite. Try creating your own animated sprite using as many or few frames as you like. A game can contain many different animations attached to the same sprite. Say for example when standing still, jumping, or ducking, could all be different animations. With each animation attached to the same sprite. When we want to use that animation we just use the <code>||animation:activate animation||</code> block, say when a button is pressed or not pressed.</p>
 <p><img class="ui image" src="../static/images/animate.gif" alt="BrainPad buzzer image" loading="lazy"></p>
 

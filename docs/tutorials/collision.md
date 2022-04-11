@@ -1,3 +1,9 @@
+```ghost
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+	
+})
+```
+
 ```template
 enum SpriteKind {
     Player,

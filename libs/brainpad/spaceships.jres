@@ -1,0 +1,11 @@
+{
+    "*": {
+        "namespace": "sprites.tiles",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "spaceships_spaceship1": "hwEQABAAAADgP1hA4HcAGgBywMU+vIFQgVA+vMDFAHIAGuB3WEDgPw==",
+    "spaceships_spaceship2": "hwEQABAAAAAAA4AEQARABKCI/N8CoAmQCZACoPzfoIhABEAEgAQAAw==",
+    "spaceships_alienship": "hwEQABAAAAAAAgAFgAWAD8ANoA2QD5ANkA2QD6ANwA2AD4AFAAUAAg==",
+    "spaceships_asteroid": "hwEQABAAAACAAXAODBACIAEmQURxSDogAiABJ+FDwWMBIAYYmAZgAQ=="
+}

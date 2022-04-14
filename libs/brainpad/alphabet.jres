@@ -1,0 +1,33 @@
+{
+    "*": {
+        "namespace": "sprites.alphabet",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "alphabet0": "hwEQABAAAAAAAAAAAAD+//7///+DAYMBgwGDAf///v/+/wAAAAAAAA==",
+    "alphabet1": "hwEQABAAAAAAAAAAAAD///////+DwYPBg8GDwf//fn5+fgAAAAAAAA==",
+    "alphabet2": "hwEQABAAAAAAAAAAAAD+f/////8DwAPAA8ADwB/4HngeeAAAAAAAAA==",
+    "alphabet3": "hwEQABAAAAAAAAAAAAD///////8DwAPAA8ADwP///n/4HwAAAAAAAA==",
+    "alphabet4": "hwEQABAAAAAAAAAAAAD///////+DwYPBg8GDwYPBA8ADwAAAAAAAAA==",
+    "alphabet5": "hwEQABAAAAAAAAAAAAD///////+DAYMBgwGDAQMAAwADAAAAAAAAAA==",
+    "alphabet6": "hwEQABAAAAAAAAAAAAD+f/////8DwAPAA8CDwZ//n3+e/wAAAAAAAA==",
+    "alphabet7": "hwEQABAAAAAAAAAAAAD///////+AAYABgAGAAf///////wAAAAAAAA==",
+    "alphabet8": "hwEQABAAAAAAAAAAAAADwAPAA8D//////////wPAA8ADwAAAAAAAAA==",
+    "alphabet9": "hwEQABAAAAAAAAAAAAAAfAD8APwAwADAAMAAwP///3//fwAAAAAAAA==",
+    "alphabet10": "hwEQABAAAAAAAAAAAAD///////+AAYABgAGAAX/+P/w//AAAAAAAAA==",
+    "alphabet11": "hwEQABAAAAAAAAAAAAD///////8AwADAAMAAwADAAMAAwAAAAAAAAA==",
+    "alphabet12": "hwEQABAAAAAAAAAAAAD//////v8cAHAAcAAcAP7//////wAAAAAAAA==",
+    "alphabet13": "hwEQABAAAAAAAAAAAAD////////wAeADwAeAD////////wAAAAAAAA==",
+    "alphabet14": "hwEQABAAAAAAAAAAAAD+f/////8DwAPAA8ADwP/////+fwAAAAAAAA==",
+    "alphabet15": "hwEQABAAAAAAAAAAAAD///////8DAwMDAwMDA/8D/wP+AQAAAAAAAA==",
+    "alphabet16": "hwEQABAAAAAAAAAAAAD+P/4///8DwAPYA/gDcP///t/+HwAAAAAAAA==",
+    "alphabet17": "hwEQABAAAAAAAAAAAAD///////+DAYMBgwGDAf//fv5+/gAAAAAAAA==",
+    "alphabet18": "hwEQABAAAAAAAAAAAAB+OP/5//mDwYPBg8GDwY//j/8OPgAAAAAAAA==",
+    "alphabet19": "hwEQABAAAAAAAAAAAAADAAMAAwD//////////wMAAwADAAAAAAAAAA==",
+    "alphabet20": "hwEQABAAAAAAAAAAAAD/f/////8AwADAAMAA4P9//z///wAAAAAAAA==",
+    "alphabet21": "hwEQABAAAAAAAAAAAAAfAP8B/x/g/wD4APjg//8f/wEfAAAAAAAAAA==",
+    "alphabet22": "hwEQABAAAAAAAAAAAAD/H/8///8A+OA/4D8A+P///z//HwAAAAAAAA==",
+    "alphabet23": "hwEQABAAAAAAAAAAAAAH4AfgP/x4HsADwAN4Hj/8B+AH4AAAAAAAAA==",
+    "alphabet24": "hwEQABAAAAAAAAAAAAAfAH8A8ADAAYD/gP/AAfAAfwAfAAAAAAAAAA==",
+    "alphabet25": "hwEQABAAAAAAAAAAAAAD/AP+A/+Dz8PH48Pzwf/Af8A/wAAAAAAAAA=="
+}

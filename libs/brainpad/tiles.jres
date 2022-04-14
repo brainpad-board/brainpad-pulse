@@ -1,0 +1,16 @@
+{
+    "*": {
+        "namespace": "sprites.tiles",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "tiles_tile1": "hwEQABAAAAA4OBQUIiJBQYODBQWIiFBQODgUFCIiQUGDgwUFiIhQUA==",
+    "tiles_tile2": "hwEQABAAAAAH3HOe+R78DHzAPeCb4cfj5+PnweeZ4z3gPeGdw9wH3A==",
+    "tiles_tile3": "hwEQABAAAAABAQMDPz8/Pz8/Pz9/f///AQEDAz8/Pz8/Pz8/f3///w==",
+    "tiles_tile4": "hwEQABAAAAD75/v/AwDD2/PdA85zx7PTwsHj3HMSO8Cb3wMAe//7/w==",
+    "tiles_tile5": "hwEQABAAAAABAYKCREQoKBAQCAhERIKAAQGCgkREKCgQEAgoRESCgg==",
+    "tiles_tile6": "hwEQABAAAAD2b/WvA8AAAAPAA8ADwAPAA8ADwAPAA8AAAAPA9a/2bw==",
+    "tiles_tile7": "hwEQABAAAAD//wGA/b/13/3/TfRN9E30TfRN9E30TfT9//Xf/f///w==",
+    "tiles_tile8": "hwEQABAAAADs7u7uxm4KBm7u7uzkYMCg5O7m7OZODgbMbu7u5u7g4A==",
+    "tiles_tile9": "hwEQABAAAAAcADAAcDhQYFBgIOD4o/xHHp4P/AP6DAIMAhIFHgeHAw=="
+}

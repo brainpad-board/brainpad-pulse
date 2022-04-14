@@ -1,0 +1,29 @@
+namespace sprites.tiles {
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile2 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile3 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile5 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile6 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile7 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile8 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="tiles"
+    export const tiles_tile9 = image.ofBuffer(hex``);
+}

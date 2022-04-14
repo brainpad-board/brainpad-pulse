@@ -1,6 +1,6 @@
 {
     "*": {
-        "namespace": "sprites.enemy",
+        "namespace": "sprites.alphabet",
         "mimeType": "image/x-mkcd-f1",
         "dataEncoding": "base64"
     },

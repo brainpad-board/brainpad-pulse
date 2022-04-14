@@ -1,0 +1,53 @@
+{
+    "packages": {
+        "approvedOrgs": [
+            "Microsoft",
+            "ghi-electronics"
+        ],
+        "approvedRepos": [
+        ]
+    },
+  "languages": [
+    "en",
+    "ar",
+    "cs",
+    "da",
+    "de",
+    "el",
+    "es-ES",
+    "fi",
+    "fr",
+    "hu",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "no",
+    "pt-BR",
+    "pt-PT",
+    "ru",
+    "si-LK",
+    "sk",
+    "sv-SE",
+    "tr",
+    "uk",
+    "zh-CN",
+    "zh-TW"
+  ],
+  "galleries": {
+
+    "MakeCode eBook & Videos": {
+
+      "url": "ebook",
+      "youTube": true
+    },
+      "On Board Components Tutorials": "basics",
+      "Block Basics Tutorials": "blocks",
+      "Display Tutorials": "display",
+      "Robot Tutorials": "brainbot",
+      "Game Tutorials": "games",
+      "Circuit Tutorials": "circuits",
+      "Complete Projects": "complete"
+
+    }
+}

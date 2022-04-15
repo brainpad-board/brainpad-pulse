@@ -32,7 +32,15 @@ Step by step guide to coding your @boardname@.
 	"youTubeId":"xuEFJzuvlXg",
 	"imageUrl": "/static/cp/projects/thumb/download.jpg"	
 }
-
+,
+{
+	"name": "Going Beyond MakeCode",
+	"description": "You've mastered Makecode now you want to Go Beyond'",
+	"label": "Video",
+    "labelClass": "orange ribbon large",
+	"youTubeId":"rsVinVmXcxE",
+	"imageUrl": "/static/cp/projects/thumb/beyond.jpg"	
+}
 ]
 
 

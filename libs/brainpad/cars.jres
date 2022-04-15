@@ -1,0 +1,16 @@
+{
+    "*": {
+        "namespace": "sprites.cars",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "carsCar1": "hwEQABAAAACAH4B0AEEA54CogOqAKoAogCsAbgBCAOIAogDiAEQAeA==",
+    "carsCar2": "hwEQABAAAAAAbQCXoNfAZ8APQD1ALUAtQC6ALAA/AA4AZgDWAJYAZA==",
+    "carsCar3": "hwEQABAAAADga6CVINWgZygP6H8oKKAroCsgKOB/oA6gZiDXQJaAZw==",
+    "carsCar4": "hwEQABAAAADAD9Bn8JdQtlBmUA5QPtA/UD5wPlAOQGcAlgC2AG4AHA==",
+    "carsCar5": "hwEQABAAAADYb9iX+Nf4Z9iP2P/4r/iv2K7YrUD/QI5AZkDWgJcAZw==",
+    "carsCar6": "hwEQABAAAAAAAAAAODg4OBCQkr/+/1/UX6z+/5K/EJA4ODg4AAAAAA==",
+    "carsCar7": "hwEQABAAAAAAAAAAHDgcOMiTfpyD+YGZgZmD+X6cyJMcOBw4AAAAAA==",
+    "carsCar8": "hwEQABAAAAAAAAAAHDgcOP5/F/iTR1NMU0yTZxf4/n8cOBw4AAAAAA==",
+    "carsCar9": "hwEQABAAAAAAAAAAHDgcOOoTz68g8K9nr2cg8M+v6hMcOBw4AAAAAA=="
+}

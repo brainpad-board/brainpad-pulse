@@ -1,0 +1,12 @@
+{
+    "width": 8,
+    "height": 8,
+    "blockIdentity": "images._image",
+    "creator": "image.ofBuffer",
+    "basename": "aliens",
+  "star": {
+    "namespace": "sprites.aliens",
+    "mimeType": "image/x-mkcd-f1"
+  },
+    "tags": "enemy"
+}

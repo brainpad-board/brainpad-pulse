@@ -1,0 +1,17 @@
+{
+    "*": {
+        "namespace": "sprites.numbers",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "numbersNumber0": "hwEQABAAAAAAAAAA+D/+//7/Bt4G3sbHxsf2wPbA/v/+//g/AAAAAA==",
+    "numbersNumber1": "hwEQABAAAAAAAAAAMMAwwDDAMMD4//j//v/+/wDAAMAAwADAAAAAAA==",
+    "numbersNumber2": "hwEQABAAAAAAAAAAOOA44D74PvgG3gbeBscGx/7h/uH44PjgAAAAAA==",
+    "numbersNumber3": "hwEQABAAAAAAAAAACCAIIAjgDuAOwQbBBsEGwf7//v/4Pvg+AAAAAA==",
+    "numbersNumber4": "hwEQABAAAAAAAAAAAAcAB8AHwAfwBvAGOMY4xv7//v8AxgDGAAAAAA==",
+    "numbersNumber5": "hwEQABAAAAAAAAAA/iD+YP7gxsDGwMbAxsDGwMbAxv/G/4Z/AAAAAA==",
+    "numbersNumber6": "hwEQABAAAAAAAAAA+D/4P/7//v8GwwbDBsMGwwbDBv8G/wA8AAAAAA==",
+    "numbersNumber7": "hwEQABAAAAAAAAAABgAG+Ab4Bv4G/gYGhgeGB/4B/gF+AH4AAAAAAA==",
+    "numbersNumber8": "hwEQABAAAAAAAAAAeD/4P/7//v+GwYbBhsGGwf7//v/4P3g+AAAAAA==",
+    "numbersNumber9": "hwEQABAAAAAAAAAA+AD+w/7DhsOGw4bDhsOGw/7//v/4P/g/AAAAAA=="
+}

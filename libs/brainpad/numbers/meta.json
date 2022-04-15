@@ -1,0 +1,12 @@
+{
+    "width": 16,
+    "height": 16,
+    "blockIdentity": "images._image",
+    "creator": "image.ofBuffer",
+    "basename": "numbers",
+    "star": {
+        "namespace": "sprites.numbers",
+        "mimeType": "image/x-mkcd-f1"
+    },
+    "tags": "numbers"
+}

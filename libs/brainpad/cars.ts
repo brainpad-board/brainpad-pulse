@@ -1,0 +1,29 @@
+namespace sprites.cars {
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar2 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar3 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar5 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar6 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar7 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar8 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="cars"
+    export const carsCar9 = image.ofBuffer(hex``);
+}

@@ -1,0 +1,13 @@
+{
+    "*": {
+        "namespace": "sprites.aliens",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "aliensAlien1": "hwEIAAgAAAAYsmw4OGyyGA==",
+    "aliensAlien2": "hwEIAAgAAAA0FGy4uGwUNA==",
+    "aliensAlien3": "hwEIAAgAAAA8DtV8fNUOPA==",
+    "aliensAlien4": "hwEIAAgAAAAYrlZ8fFauGA==",
+    "aliensAlien5": "hwEIAAgAAACYXLZfX7ZcmA==",
+    "aliensAlien6": "hwEIAAgAAABYvBY/Pxa8WA=="
+}

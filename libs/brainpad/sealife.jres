@@ -1,0 +1,14 @@
+{
+    "*": {
+        "namespace": "sprites.sealife",
+        "mimeType": "image/x-mkcd-f1",
+        "dataEncoding": "base64"
+    },
+    "sealifeFish1": "hwEQABAAAAAAAAgQBCACQQLBjuP2nCKEAoSEYQggcDCAGwAEAAQABA==",
+    "sealifeFish2": "hwEQABAAAAACQAJAAkECQQLBjuP2nCKEAsQEYQggcDCAGwAKAAoACg==",
+    "sealifeClam": "hwEQABAAAADAAbgDfAf+Hv4e4L0f//////8f/+C9/h7+HnwHuAPAAQ==",
+    "sealifeSeaweed1": "hwEQABAAAAAQARABEQGhAKIAogCiAJE8kTwRwyH4IfjGxxgw+D/gDw==",
+    "sealifeSeaweed2": "hwEQABAAAAAAAACeAJLA8wCAP54wkvDzAIA+/DCI8I8AgPDxgJGAnw==",
+    "sealifeCrab": "hwEQABAAAAB44PwQbNc0P4Av2B54H8AfwB94H9gegC+MP1lXPxAeIA==",
+    "sealifeShrimp": "hwEQABAAAACAH2AvYW/5bvlu+baBuX3J/fDFAJFwgjDCOCw8EB4AAA=="
+}

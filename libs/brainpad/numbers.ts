@@ -1,0 +1,32 @@
+namespace sprites.numbers {
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber0 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber2 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber3 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber5 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber6 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber7 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber8 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._image
+    //% tags="numbers"
+    export const numbersNumber9 = image.ofBuffer(hex``);
+}

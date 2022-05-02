@@ -15,10 +15,30 @@ enum ActionKind {
     Jumping,
     Flapping
 }
+braingamer.onEvent(GamerButton.down, ControllerButtonEvent.pressed, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
+})
+braingamer.onEvent(GamerButton.up, ControllerButtonEvent.pressed, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    game.over()
+    game.over(false)
 })
 input.buttonA.onEvent(ButtonEvent.Down, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
+})
+braingamer.onEvent(GamerButton.right, ControllerButtonEvent.pressed, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
+})
+braingamer.onEvent(GamerButton.left, ControllerButtonEvent.pressed, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
+})
+input.buttonB.onEvent(ButtonEvent.Down, function () {
     smartyBird.vy = -100
     animation.setAction(smartyBird, ActionKind.Flapping)
 })
@@ -26,10 +46,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Gap, function (sprite, otherSpri
     if (otherSprite.right - sprite.left < 2) {
         info.changeScoreBy(1)
     }
-})
-input.buttonB.onEvent(ButtonEvent.Down, function () {
-    smartyBird.vy = -100
-    animation.setAction(smartyBird, ActionKind.Flapping)
 })
 let projectile: Sprite = null
 let gapSprite: Sprite = null

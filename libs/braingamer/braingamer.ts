@@ -4,10 +4,10 @@ enum GamerRocket {
 }
 
 enum GamerButton {
-    up = 0,
-    down= 1,    
-	left= 2,
-	right= 3
+    up = controller.BUTTON_UP_ID,
+    down= controller.BUTTON_DOWN_ID,    
+	left= controller.BUTTON_LEFT_ID,
+	right= controller.BUTTON_RIGHT_ID
 }
 
 /**
@@ -79,7 +79,7 @@ namespace braingamer {
     } 
 
 	
-	
+	let init_gamer_button: boolean 
 	
 	/**
 	 * Run some code when a button is pressed or released
@@ -89,14 +89,16 @@ namespace braingamer {
 	export function onEvent(button: GamerButton, event: ControllerButtonEvent, handler: () => void) {
 		let id = 0;
 		
+		controller.EnsureInitGamerButtons()
+				
 		if (button == GamerButton.up)
-			id = controller.up.id;
+			id = controller.BUTTON_UP_ID;
 		else if (button == GamerButton.down)
-			id = controller.down.id;
+			id = controller.BUTTON_DOWN_ID;
 		else if (button == GamerButton.left)
-			id = controller.left.id;
+			id = controller.BUTTON_LEFT_ID;
 		else
-			id = controller.right.id;
+			id = controller.BUTTON_RIGHT_ID;
 		
 		control.onEvent(event, id, handler);
 	}
@@ -107,18 +109,20 @@ namespace braingamer {
 	//% weight=94 blockGap=8 help=controller/button/is-pressed
 	//% blockId=braingamer_keyispressed block="is %button pressed"	
 	export function isPressed(button: GamerButton) : boolean {
-		let pressed = controller.up.isPressed();
+		let pressed = false;
+		 
+		controller.EnsureInitGamerButtons()
 		
 		if (button == GamerButton.up)
-			pressed = controller.up.isPressed();
+			pressed = controller.ButtonUp_IsPressed();
 		else if (button == GamerButton.down)
-			pressed = controller.down.isPressed();
+			pressed = controller.ButtonDown_IsPressed();
 		else if (button == GamerButton.left)
-			pressed = controller.left.isPressed();
+			pressed = controller.ButtonLeft_IsPressed();
 		else
-			pressed = controller.right.isPressed();
+			pressed = controller.ButtonRight_IsPressed();
 		
-		return pressed;
+		return pressed;				
 	}
 
 }

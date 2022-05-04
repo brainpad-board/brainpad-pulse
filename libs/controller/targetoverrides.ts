@@ -1,5 +1,5 @@
 namespace controller {
-	
+/*	
     //% fixedInstance block="left"
     export const left = new Button(1, input.buttonLeft.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="up"
@@ -8,6 +8,12 @@ namespace controller {
     export const right = new Button(3, input.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
     //% fixedInstance block="down"
     export const down = new Button(4, input.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+*/	
+
+	export const BUTTON_LEFT_ID = 1;
+	export const BUTTON_UP_ID = 2;
+	export const BUTTON_RIGHT_ID = 3;
+	export const BUTTON_DOWN_ID = 4;
 	
 	//% fixedInstance block="A"
     export const A = new Button(5, input.buttonA.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);

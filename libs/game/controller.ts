@@ -6,6 +6,54 @@ namespace controller {
     }
 
     let controlledSprites: ControlledSprite[];
+	
+	let right : Button
+	let left : Button
+	let up : Button
+	let down : Button
+	let init_up_down_left_right = false
+		
+	export function ButtonUp_IsPressed() : boolean {
+		if (!up)
+			return false
+		
+		return up.isPressed();
+	}
+	
+	export function ButtonDown_IsPressed() : boolean {
+		if (!down)
+			return false
+		
+		return down.isPressed();
+	}
+	
+	export function ButtonLeft_IsPressed() : boolean {
+		if (!left)
+			return false
+		
+		return left.isPressed();
+	}
+	
+	export function ButtonRight_IsPressed() : boolean {
+		if (!right)
+			return false
+		
+		return right.isPressed();
+	}
+	
+	export function EnsureInitGamerButtons() {
+		if (init_up_down_left_right) {
+			return;
+		}		
+		
+		right = new Button(BUTTON_RIGHT_ID, input.buttonRight.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);	
+		left = new Button(BUTTON_LEFT_ID, input.buttonLeft.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);		
+		up = new Button(BUTTON_UP_ID, input.buttonUp.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);	
+		down = new Button(BUTTON_DOWN_ID, input.buttonDown.id(), DAL.DEVICE_BUTTON_EVT_UP, DAL.DEVICE_BUTTON_EVT_DOWN);
+				
+		init_up_down_left_right = true;
+	}
+
 
     /**
      * Control a sprite using the direction buttons from the controller. Note that this
@@ -30,10 +78,10 @@ namespace controller {
                     if (controlled.vx) {
                         controlled.s.vx = 0;
 
-                        if (controller.right.isPressed() || controller.B.isPressed()) {
+                        if ((this.right && this.right.isPressed()) || controller.B.isPressed()) {
                             controlled.s.vx = controlled.vx;
                         }
-                        if (controller.left.isPressed() || controller.A.isPressed()) {
+                        if ((this.left && this.left.isPressed()) || controller.A.isPressed()) {
                             controlled.s.vx = -controlled.vx;
                         }
                     }
@@ -41,10 +89,10 @@ namespace controller {
                     if (controlled.vy) {
                         controlled.s.vy = 0;
 
-                        if (controller.down.isPressed()) {
+                        if (this.down && this.down.isPressed()) {
                             controlled.s.vy = controlled.vy;
                         }
-                        if (controller.up.isPressed()) {
+                        if (this.up && this.up.isPressed()) {
                             controlled.s.vy = -controlled.vy;
                         }
                     }

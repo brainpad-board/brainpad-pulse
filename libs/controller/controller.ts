@@ -135,11 +135,11 @@ namespace controller {
         const ctx = control.eventContext();
         if (!ctx) return 0;
 
-        if (controller.left.isPressed()) {
-            if (controller.right.isPressed()) return 0
+        if (controller.ButtonLeft_IsPressed()) {
+            if (controller.ButtonRight_IsPressed()) return 0
             else return -step * ctx.deltaTime;
         }
-        else if (controller.right.isPressed()) return step * ctx.deltaTime
+        else if (controller.ButtonRight_IsPressed()) return step * ctx.deltaTime
         else return 0
     }
 
@@ -155,11 +155,11 @@ namespace controller {
         const ctx = control.eventContext();
         if (!ctx) return 0;
 
-        if (controller.up.isPressed()) {
-            if (controller.down.isPressed()) return 0
+        if (controller.ButtonUp_IsPressed()) {
+            if (controller.ButtonDown_IsPressed()) return 0
             else return -step * ctx.deltaTime;
         }
-        else if (controller.down.isPressed()) return step * ctx.deltaTime
+        else if (controller.ButtonDown_IsPressed()) return step * ctx.deltaTime
         else return 0
     }
 

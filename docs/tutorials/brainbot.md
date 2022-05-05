@@ -10,32 +10,32 @@ This tutorial assumes you've assembled your BrainBot and are ready to program. I
 
 [BrainBot Assembly Page](https://www.brainpad.com/lessons/brainbot-assembly/)
 
-![BrainPad buzzer image](../static/images/brainbotbuild.gif)
+![BrainPad buzzer image](docs/static/images/brainbotbuild.gif)
 
 ## Step 2 @unplugged
 
 In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
 
-![BrainPad extension image](../static/images/brainbot.jpg)
+![BrainPad extension image](docs/static/images/brainbot.jpg)
 
 
 ## Step 3 @unplugged
 
 If you look on the menu 3 new sections have been added. Sonar, Infrared, and BrainBot.
 
-![BrainPad Brainbot](../static/images/brainbotblocks.jpg)
+![BrainPad Brainbot](docs/static/images/brainbotblocks.jpg)
 
 ## Step 4 @fullscreen
 
 Let's make the robot move forward. Click on ``||Brainbot:BrainBot||`` and drag in the ``||Brainbot:Move left & right||`` block into the ``||loops:on start||`` block. The block has two parameter one for each motors speed. 
 
-![BrainPad Brainbot](../static/images/brainbotMoveForward.gif)
+![BrainPad Brainbot](docs/static/images/brainbotMoveForward.gif)
 
 ## Step 5 @fullscreen
 
 To move the robot forward we change both parameters in ``||Brainbot:Move left speed & right speed||`` block to the same positive number. To move backwards you would make both parameters the same negative number. Download it the BrainPad to see what happens. 
 
-![BrainPad Brainbot](../static/images/robotspeed.gif)
+![BrainPad Brainbot](docs/static/images/robotspeed.gif)
 
 
 ## Step 6 @fullscreen
@@ -43,14 +43,14 @@ To move the robot forward we change both parameters in ``||Brainbot:Move left sp
 We can make the BrainBot spin in place by setting both parameters to opposite values. Set the first number to ``||Brainbot:-100||`` and the second number to ``||Brainbot:100||``.
 Try this and Download to the Brainpad Pulse. 
 
-![BrainPad Brainbot](../static/images/spinning.gif)
+![BrainPad Brainbot](docs/static/images/spinning.gif)
 
 
 ## Step 7 @unplugged
 
 Finally let's make the BrainBot drive around in a larger circle. To do this we'll add a couple move blocks and some pauses. 
 
-![BrainPad Brainbot](../static/images/turning.gif)
+![BrainPad Brainbot](docs/static/images/turning.gif)
 
 ## Step 8 @fullscreen
 
@@ -103,4 +103,4 @@ forever(function () {
 
 We've got the BrainBot dancing around now! Try playing around with different values in the ``||Brainbot:Move left speed & right speed||`` block and different ``||loops:pause||`` durations to see what kind of BrainBot driving patterns you can create. 
 
-![BrainPad Brainbot](../static/images/turning.gif) 
+![BrainPad Brainbot](docs/static/images/turning.gif) 

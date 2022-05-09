@@ -19,10 +19,6 @@ enum ActionKind {
     Idle,
     Jumping
 }
-braingamer.onEvent(GamerButton.down, ControllerButtonEvent.pressed, function () {
-    myBall.vx = 60
-    myBall.vy = -70
-})
 function createCourt () {
     basket = sprites.create(img`
         1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -115,14 +111,38 @@ function createCourt () {
     basket.setPosition(104, 30)
     rim.setPosition(104, 30)
 }
-braingamer.onEvent(GamerButton.up, ControllerButtonEvent.pressed, function () {
-    myBall.vx = 60
-    myBall.vy = -70
-})
 sprites.onOverlap(SpriteKind.ball, SpriteKind.backboard, function (sprite, otherSprite) {
     myBall.vx = -20
     myBall.vy = 10
     music.playTone(139, music.beat(BeatFraction.Sixteenth))
+})
+sprites.onOverlap(SpriteKind.ball, SpriteKind.rim, function (sprite, otherSprite) {
+    if (myBall.x > 100 && myBall.y < 25) {
+        info.changeScoreBy(2)
+        music.playSound(music.sounds(Sounds.BaDing))
+        myBall.destroy()
+        ballScored = sprites.create(img`
+            . 1 1 1 1 1 . . 
+            1 . 1 1 1 . 1 . 
+            1 1 . 1 . 1 1 . 
+            . . . . . . . . 
+            1 1 . 1 . 1 1 . 
+            1 . 1 1 1 . 1 . 
+            . 1 1 1 1 1 . . 
+            . . . . . . . . 
+            `, SpriteKind.ballScored)
+        ballScored.setPosition(105, 20)
+        ballScored.vy = 50
+        pause(750)
+        newBall()
+    } else {
+        music.playTone(139, music.beat(BeatFraction.Half))
+        myBall.vx = -4
+        myBall.vy = 50
+        pause(1000)
+        myBall.destroy()
+        newBall()
+    }
 })
 input.buttonA.onEvent(ButtonEvent.Down, function () {
     myBall.vx = 60
@@ -130,14 +150,6 @@ input.buttonA.onEvent(ButtonEvent.Down, function () {
 })
 info.onCountdownEnd(function () {
     game.over(true)
-})
-braingamer.onEvent(GamerButton.right, ControllerButtonEvent.pressed, function () {
-    myBall.vx = 60
-    myBall.vy = -70
-})
-braingamer.onEvent(GamerButton.left, ControllerButtonEvent.pressed, function () {
-    myBall.vx = 60
-    myBall.vy = -70
 })
 input.buttonB.onEvent(ButtonEvent.Down, function () {
     myBall.vx = 60
@@ -156,36 +168,6 @@ sprites.onDestroyed(SpriteKind.Player, function (sprite) {
         `, SpriteKind.shotmade)
     pause(2000)
 })
-sprites.onOverlap(SpriteKind.ball, SpriteKind.rim, function (sprite, otherSprite) {
-    if (myBall.x > 100 && myBall.y < 25) {
-        info.changeScoreBy(2)
-        braingamer.Vibrate(true)
-        music.playSound(music.sounds(Sounds.BaDing))
-        myBall.destroy()
-        ballScored = sprites.create(img`
-            . 1 1 1 1 1 . . 
-            1 . 1 1 1 . 1 . 
-            1 1 . 1 . 1 1 . 
-            . . . . . . . . 
-            1 1 . 1 . 1 1 . 
-            1 . 1 1 1 . 1 . 
-            . 1 1 1 1 1 . . 
-            . . . . . . . . 
-            `, SpriteKind.ballScored)
-        ballScored.setPosition(105, 20)
-        ballScored.vy = 50
-        pause(750)
-        braingamer.Vibrate(false)
-        newBall()
-    } else {
-        music.playTone(139, music.beat(BeatFraction.Half))
-        myBall.vx = -4
-        myBall.vy = 50
-        pause(1000)
-        myBall.destroy()
-        newBall()
-    }
-})
 function newBall () {
     myBall = sprites.create(img`
         . 1 1 1 1 1 . . 
@@ -201,12 +183,12 @@ function newBall () {
     myBall.setPosition(30, 10)
     myBall.vy = 60
 }
-let ballScored: Sprite = null
 let ballNet: Sprite = null
+let ballScored: Sprite = null
+let myBall: Sprite = null
 let rim: Sprite = null
 let backboard: Sprite = null
 let basket: Sprite = null
-let myBall: Sprite = null
 info.startCountdown(30)
 info.setScore(0)
 createCourt()

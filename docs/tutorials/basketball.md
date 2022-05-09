@@ -151,6 +151,10 @@ input.buttonA.onEvent(ButtonEvent.Down, function () {
 info.onCountdownEnd(function () {
     game.over(true)
 })
+input.buttonB.onEvent(ButtonEvent.Down, function () {
+    myBall.vx = 60
+    myBall.vy = -70
+})
 sprites.onDestroyed(SpriteKind.Player, function (sprite) {
     ballNet = sprites.create(img`
         . 1 1 1 1 1 . . 

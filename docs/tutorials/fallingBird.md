@@ -7,8 +7,7 @@ The Falling Bird game is a complete game example that demonstrates how animation
 enum SpriteKind {
     Player,
     Enemy,
-    Gap,
-    background
+    Gap
 }
 enum ActionKind {
     Walking,
@@ -16,38 +15,21 @@ enum ActionKind {
     Jumping,
     Flapping
 }
-braingamer.onEvent(GamerButton.down, ControllerButtonEvent.pressed, function () {
-    flapWings()
-})
-braingamer.onEvent(GamerButton.up, ControllerButtonEvent.pressed, function () {
-    flapWings()
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     game.over(false)
-    braingamer.Vibrate(true)
-    pause(1000)
-    braingamer.Vibrate(false)
 })
 input.buttonA.onEvent(ButtonEvent.Down, function () {
-    flapWings()
-})
-braingamer.onEvent(GamerButton.right, ControllerButtonEvent.pressed, function () {
-    flapWings()
-})
-braingamer.onEvent(GamerButton.left, ControllerButtonEvent.pressed, function () {
-    flapWings()
-})
-function flapWings () {
-    smartyBird.vy = -75
+    smartyBird.vy = -100
     animation.setAction(smartyBird, ActionKind.Flapping)
-}
-input.buttonB.onEvent(ButtonEvent.Down, function () {
-    flapWings()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Gap, function (sprite, otherSprite) {
     if (otherSprite.right - sprite.left < 2) {
-    	
+        info.changeScoreBy(1)
     }
+})
+input.buttonB.onEvent(ButtonEvent.Down, function () {
+    smartyBird.vy = -100
+    animation.setAction(smartyBird, ActionKind.Flapping)
 })
 let projectile: Sprite = null
 let gapSprite: Sprite = null
@@ -56,7 +38,7 @@ let bottomImage: Image = null
 let topImage: Image = null
 let gap = 0
 let smartyBird: Sprite = null
-info.setScore(-1)
+info.setScore(0)
 smartyBird = sprites.create(img`
     . . . . . e . . e . . . . . . . 
     . . . . . . e . . e . . . . . . 
@@ -431,7 +413,6 @@ game.onUpdateInterval(1500, function () {
     projectile.top = -3
     projectile = sprites.createProjectile(bottomImage, -45, 0, SpriteKind.Enemy)
     projectile.bottom = scene.screenHeight()
-    info.changeScoreBy(1)
 })
 
 ```

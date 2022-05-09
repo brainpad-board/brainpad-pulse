@@ -78,10 +78,10 @@ namespace controller {
                     if (controlled.vx) {
                         controlled.s.vx = 0;
 
-                        if ((this.right && this.right.isPressed()) || controller.B.isPressed()) {
+                        if ((right && right.isPressed()) || controller.B.isPressed()) {
                             controlled.s.vx = controlled.vx;
                         }
-                        if ((this.left && this.left.isPressed()) || controller.A.isPressed()) {
+                        if ((left && left.isPressed()) || controller.A.isPressed()) {
                             controlled.s.vx = -controlled.vx;
                         }
                     }
@@ -89,10 +89,10 @@ namespace controller {
                     if (controlled.vy) {
                         controlled.s.vy = 0;
 
-                        if (this.down && this.down.isPressed()) {
+                        if (down && down.isPressed()) {
                             controlled.s.vy = controlled.vy;
                         }
-                        if (this.up && this.up.isPressed()) {
+                        if (up && up.isPressed()) {
                             controlled.s.vy = -controlled.vy;
                         }
                     }

@@ -1,7 +1,6 @@
 # Still under development!
 # Only for testing purpose!
 
-
 ## Tools:
 
 - Install Node.js (https://nodejs.org/en/download/). Keep setup configuration as default,  except check on box "Automatically install the nececsary tools..." when asked.
@@ -11,6 +10,9 @@
   Create a folder called ninja from. Let say C:\ninja.
   Put ninja.exe to C:\ninja. We will have "C:\ninja\ninja.exe".
   Add "C:\ninja" to PATH in setting enveronment.
+  
+- pxt version v7.3.7: https://github.com/microsoft/pxt/releases/tag/v7.3.7
+- pxt-common-packages v9.3.11: https://github.com/microsoft/pxt-common-packages/releases/tag/v9.3.11
   
 ## Clone Github:
 

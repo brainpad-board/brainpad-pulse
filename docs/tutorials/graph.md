@@ -4,7 +4,7 @@
 
 The BrainPad Pulse's display allows for lots of display options. One of them is graphing data from sensors. Graphing is built in we just need to decide what data we want to send to the graph. 
 
-![BrainPad Display Graph](../static/images/graph.gif)
+![BrainPad Display Graph](docs/static/images/graph.gif)
 
 ## Step 2 @fullscreen
 
@@ -29,7 +29,7 @@ forever(function () {
 
 We won't see anything on the simulator and will need a physical BrainPad Pulse to view the affects of the code. Download the project to your Pulse and see what happens when you tip it a certain way.   
 
-![BrainPad Display Graph](../static/images/graph.gif)
+![BrainPad Display Graph](docs/static/images/graph.gif)
 
 ## Step 5 @fullscreen
 
@@ -45,4 +45,4 @@ forever(function () {
 
 That's it. What other things do you think you might be able to graph? If you have a BrainClip kit you can use values from several of the sensors and graph them on the display. 
 
-![BrainPad Display Graph](../static/images/graph.gif)
+![BrainPad Display Graph](docs/static/images/graph.gif)

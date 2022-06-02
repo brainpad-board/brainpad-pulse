@@ -41,13 +41,25 @@
       "url": "ebook",
       "youTube": true
     },
-      "On Board Components Tutorials": "basics",
-      "Block Basics Tutorials": "blocks",
-      "Display Tutorials": "display",
-      "Robot Tutorials": "brainbot",
-      "Game Tutorials": "games",
-      "Circuit Tutorials": "circuits",
-      "Complete Projects": "complete"
+    "On Board Components Tutorials": "basics",
+    "Block Basics Tutorials": "blocks",
+    "Display Tutorials": "display",
+    "Robot Tutorials": "brainbot",
+    "Game Tutorials": "games",
+    "Showcase Games": "complete",
+    "Circuit Tutorials": "circuits",
+    "Circuit Videos": {
+
+      "url": "circuitVideos",
+      "youTube": true
+    },
+
+      "Showcase Projects": {
+
+        "url": "showcaseVideos",
+        "youTube": true
+
+      }
 
     }
 }

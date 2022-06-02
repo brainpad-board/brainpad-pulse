@@ -33,14 +33,24 @@
         "imageUrl": "/static/cp/projects/thumb/sprites.jpg"
     },
     {
+        "name": "Showcase Games",
+        "url": "/complete",
+        "imageUrl": "/static/cp/projects/thumb/demo.jpg"
+    },
+    {
         "name": "Circuit Tutorials",
         "url": "/circuits",
         "imageUrl": "/static/cp/projects/thumb/digital.jpg"
     },
     {
-        "name": "Complete Projects",
-        "url": "/complete",
-        "imageUrl": "/static/cp/projects/thumb/demo.jpg"
+        "name": "Circuit Videos",
+        "url": "/circuitVideos",
+        "imageUrl": "/static/cp/projects/thumb/rgbLED.jpg"
+    },
+    {
+        "name": "Showcase Projects",
+        "url": "/showcaseVideos",
+        "imageUrl": "/static/cp/projects/thumb/roulette.jpg"
     }
 ]
 ```
@@ -53,6 +63,8 @@
 [Display Tutorials](/display),
 [Robot Tutorials](/brainbot),
 [Game Tutorials](/games),
+[Showcase Games](/complete),
 [Circuit Tutorials](/circuits),
-[Complete Projects](/complete)
+[Circuit Videos](/circuitVideos),
+[Showcase Projects](/showcaseVideos)
 

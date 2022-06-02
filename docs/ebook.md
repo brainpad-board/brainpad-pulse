@@ -41,6 +41,15 @@ Step by step guide to coding your @boardname@.
 	"youTubeId":"rsVinVmXcxE",
 	"imageUrl": "/static/cp/projects/thumb/beyond.jpg"	
 }
+,
+{
+	"name": "BrainPad Accessories",
+	"description": "BrainPad branded & fully supported accessory kits that teach coding Robots, Games, & Circuits",
+	"label": "Link",
+    "labelClass": "orange ribbon large",
+    "url":"https://www.brainpad.com/accessories/",
+	"imageUrl": "/static/cp/projects/thumb/kits.jpg"	
+}
 ]
 
 

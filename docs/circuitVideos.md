@@ -45,6 +45,14 @@ Step-by-step tutorials using BrainClip modules.
   "labelClass": "orange ribbon large",
   "youTubeId":"wmLj0s4n1Mg",
   "imageUrl": "/static/cp/projects/thumb/IRremote.jpg"	
+},
+{
+  "name": "BrainClip Motion Sensor",
+  "description": "Step-by-step instructions on wiring and coding the BrainClip Motion Sensor module to the BrainPad Pulse using MakeCode.",
+  "label": "Video Tutorial",
+  "labelClass": "orange ribbon large",
+  "youTubeId":"oXz21HtIEQI",
+  "imageUrl": "/static/cp/projects/thumb/motion.jpg"	
 }
  
 ]

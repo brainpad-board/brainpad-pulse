@@ -2,7 +2,8 @@
 let text_list = ["rose", "daisy", "tulip"]
 forever(function () {
     for (let index = 0; index <= text_list.length; index++) {
-    	display.showString(text_list[index], index + 1)
+    	display.showString(text_list[index], 1)
+        pause(100)
     }
 })
 ```

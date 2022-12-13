@@ -35,7 +35,7 @@ function createCourt () {
         . . . . 1 1 . 1 . 1 1 . . . . 
         . . . 1 1 . 1 . 1 . 1 1 . . . 
         . . . 1 . 1 . 1 . 1 . 1 . . . 
-        `, SpriteKind.basket)
+        `, SpriteKind.Player)
     backboard = sprites.create(img`
         ...................1111.......
         ...................1.11.......
@@ -111,14 +111,8 @@ function createCourt () {
     basket.setPosition(104, 30)
     rim.setPosition(104, 30)
 }
-sprites.onOverlap(SpriteKind.ball, SpriteKind.backboard, function (sprite, otherSprite) {
-    myBall.vx = -20
-    myBall.vy = 10
-    music.playTone(139, music.beat(BeatFraction.Sixteenth))
-})
 sprites.onOverlap(SpriteKind.ball, SpriteKind.rim, function (sprite, otherSprite) {
     if (myBall.x > 100 && myBall.y < 25) {
-        info.changeScoreBy(2)
         music.playSound(music.sounds(Sounds.BaDing))
         myBall.destroy()
         ballScored = sprites.create(img`
@@ -135,6 +129,7 @@ sprites.onOverlap(SpriteKind.ball, SpriteKind.rim, function (sprite, otherSprite
         ballScored.vy = 50
         pause(750)
         newBall()
+        info.changeScoreBy(2)
     } else {
         music.playTone(139, music.beat(BeatFraction.Half))
         myBall.vx = -4
@@ -167,6 +162,11 @@ sprites.onDestroyed(SpriteKind.Player, function (sprite) {
         . . . . . . . . 
         `, SpriteKind.shotmade)
     pause(2000)
+})
+sprites.onOverlap(SpriteKind.ball, SpriteKind.backboard, function (sprite, otherSprite) {
+    myBall.vx = -20
+    myBall.vy = 10
+    music.playTone(139, music.beat(BeatFraction.Sixteenth))
 })
 function newBall () {
     myBall = sprites.create(img`
@@ -210,5 +210,6 @@ game.onUpdate(function () {
         newBall()
     }
 })
+
 
 ```

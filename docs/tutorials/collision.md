@@ -1,7 +1,191 @@
 ```ghost
+enum SpriteKind {
+    Player,
+    Enemy
+}
+enum ActionKind {
+    Walking,
+    Idle,
+    Jumping,
+    Rolling,
+    Jump,
+    Swimming
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-	
+    music.playSound(music.sounds(Sounds.Wawawawaa))
+    Barrel.setPosition(120, 60)
+    info.changeLifeBy(-1)
 })
+input.buttonA.onEvent(ButtonEvent.Down, function () {
+    music.playSound(music.sounds(Sounds.BaDing))
+    Jumper.vy += -300
+    pause(300)
+    Jumper.vy += 200
+})
+input.buttonA.onEvent(ButtonEvent.Up, function () {
+    Jumper.vy += 200
+})
+let Barrel: Sprite = null
+let Jumper: Sprite = null
+info.setLife(3)
+info.setScore(0)
+Jumper = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . . 1 1 . 1 1 . 1 . . . . . . 
+    . . . . 1 1 1 . 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 . . . . . . . 
+    `, SpriteKind.Player)
+Barrel = sprites.create(img`
+    . . 1 1 1 1 . . 
+    . 1 . . . . 1 . 
+    1 . . 1 . . . 1 
+    1 . 1 . . . . 1 
+    1 . . . 1 . . 1 
+    1 . . . . . . 1 
+    . 1 . . . . 1 . 
+    . . 1 1 1 1 . . 
+    `, SpriteKind.Enemy)
+let anim = animation.createAnimation(ActionKind.Walking, 200)
+let rolling = animation.createAnimation(ActionKind.Walking, 200)
+anim.addAnimationFrame(img`
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . 1 1 . . 1 1 1 1 1 . . . . . 
+    . . . 1 1 . 1 1 . 1 . . . . . . 
+    . . . . 1 1 1 . 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 . . . . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 1 1 . . 
+    . . . . . . . . 1 1 . 1 . . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 . . . 
+    . . . 1 1 1 1 . 1 1 1 . 1 1 1 . 
+    . . . 1 1 1 1 1 1 1 . . . 1 . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . 1 1 1 1 1 1 . . . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 1 1 . 
+    . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . 1 1 . . . . . . . . 1 . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 . . . 
+    . . 1 1 1 1 1 . 1 1 1 1 . . . . 
+    . . 1 1 . . . . 1 1 1 . . . . . 
+    . . . . . . . . 1 1 1 1 . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . 1 1 1 1 1 1 . . . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . . . . . 1 1 . 1 . . . . . 
+    . . 1 1 1 . 1 1 1 . 1 1 1 . . . 
+    . . 1 1 1 . . 1 1 1 . 1 1 1 . . 
+    . . 1 1 1 1 1 1 1 . . . 1 . . . 
+    . . . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 1 1 1 1 1 1 . . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 1 1 1 1 1 1 1 . . . . . 
+    . . 1 1 . . . . . . 1 . . . . . 
+    . . 1 . 1 1 1 1 . 1 . . . . . . 
+    . . . 1 1 1 . 1 1 1 1 1 . . . . 
+    . . . . 1 1 . . 1 1 1 1 . . . . 
+    . . . . 1 1 1 1 . . . . . . . . 
+    `)
+anim.addAnimationFrame(img`
+    . . . . . 1 1 1 1 1 1 . . . . . 
+    . . . . 1 1 1 1 1 1 1 1 1 1 . . 
+    . . . . . . . . 1 1 . 1 . . . . 
+    . . . 1 1 1 . 1 1 1 . 1 1 1 . . 
+    . . . 1 1 1 . . 1 1 1 . 1 1 1 . 
+    . . . 1 1 1 1 1 1 1 . . . 1 . . 
+    . . . . . 1 1 1 1 1 1 1 1 . . . 
+    . . 1 1 1 1 1 1 1 1 1 1 . . . . 
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 1 1 . 1 1 1 1 1 1 1 1 1 1 . 
+    1 1 . . 1 1 1 1 1 1 1 1 . . . . 
+    . . . 1 . . . . . . . 1 . 1 1 . 
+    . . 1 1 . 1 1 1 1 1 . . 1 1 1 . 
+    . . 1 1 1 1 1 . . . 1 1 1 1 1 . 
+    . . 1 1 . . . . . . . . . . . . 
+    . . 1 1 1 1 . . . . . . . . . . 
+    `)
+rolling.addAnimationFrame(img`
+    . . 1 1 1 1 . . 
+    . 1 . . . . 1 . 
+    1 . . 1 . . . 1 
+    1 . 1 . . 1 . 1 
+    1 . 1 . . 1 . 1 
+    1 . . 1 . . . 1 
+    . 1 . . . . 1 . 
+    . . 1 1 1 1 . . 
+    `)
+rolling.addAnimationFrame(img`
+    . . 1 1 1 1 . . 
+    . 1 . . . . 1 . 
+    1 . . 1 1 . . 1 
+    1 . 1 . . 1 . 1 
+    1 . . . . . . 1 
+    1 . . 1 1 . . 1 
+    . 1 . . . . 1 . 
+    . . 1 1 1 1 . . 
+    `)
+rolling.addAnimationFrame(img`
+    . . 1 1 1 1 . . 
+    . 1 . . . . 1 . 
+    1 . . . 1 . . 1 
+    1 . 1 . . 1 . 1 
+    1 . 1 . . 1 . 1 
+    1 . . . 1 . . 1 
+    . 1 . . . . 1 . 
+    . . 1 1 1 1 . . 
+    `)
+rolling.addAnimationFrame(img`
+    . . 1 1 1 1 . . 
+    . 1 . . . . 1 . 
+    1 . . 1 1 . . 1 
+    1 . . . . . . 1 
+    1 . 1 . . 1 . 1 
+    1 . . 1 1 . . 1 
+    . 1 . . . . 1 . 
+    . . 1 1 1 1 . . 
+    `)
+animation.attachAnimation(Jumper, anim)
+animation.attachAnimation(Barrel, rolling)
+animation.setAction(Jumper, ActionKind.Walking)
+animation.setAction(Barrel, ActionKind.Walking)
+Jumper.setPosition(20, 55)
+Barrel.setPosition(120, 60)
+Jumper.setFlag(SpriteFlag.StayInScreen, true)
+Barrel.vx = -50
+forever(function () {
+    if (Barrel.x < 0) {
+        Barrel.setPosition(120, 60)
+        Barrel.vx += -2
+        info.changeScoreBy(1)
+    }
+})
+
 ```
 
 ```template
@@ -192,7 +376,7 @@ Now we're going to add more barrels and detect when a ``||sprites:Barrel||`` and
 
 ## Step 2 @fullscreen
 
-We've added a ``||loops:forever||`` loop and an ``||logic:if-then||`` block to our program. Now the when the ``||sprites:Barrel||`` reaches the end of the screen, it starts over and gets faster each time. To make it a game
+We've added a ``||loops:forever||`` loop and an ``||logic:if-then||`` block to our program. Now when the ``||sprites:Barrel||`` reaches the end of the screen, it starts over and gets faster each time. To make it a game
 let's add a ``||info:set life to 3||`` block and ``||info:set score to 0||`` block at the top of the ``||loops:on start||`` block. 
 
 ```blocks

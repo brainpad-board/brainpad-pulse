@@ -30,7 +30,6 @@ These instructions assume Window 10 - 64bit
 ### Clean:
 
 - Run "doClean"
-- Once the build is clean, need to back to step "Build Brainpad pulse" above before run "doRun" again.
 
 ### Build local:
 

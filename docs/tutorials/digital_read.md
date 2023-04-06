@@ -1,3 +1,12 @@
+```ghost
+pins.P0.onEvent(PinEvent.Fall, function () {
+    display.showImage(images.stop)
+})
+pins.P0.onEvent(PinEvent.Rise, function () {
+    display.showImage(images.go)
+})
+```
+
 # Digital Read
 
 ## Step 1 @unplugged

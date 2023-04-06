@@ -13,7 +13,7 @@ forever(function () {
 
 Let's start by doing something simple. Let's light up the LED on the BrainPad.
 
-![BrainPad led image](docs/static/images/led.jpg)
+![BrainPad led image](../static/images/led.jpg)
 
 ## Step 2 @unplugged
 

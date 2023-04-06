@@ -9,7 +9,7 @@
 
 The BrainPad Pulse chip is equipped with a temperture sensor. 
 
-![BrainPad Chip](docs/static/images/temperature.jpg)
+![BrainPad Chip](../static/images/temperature.jpg)
 
 ## Step 2 @fullscreen
 

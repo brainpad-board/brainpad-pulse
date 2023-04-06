@@ -3,13 +3,13 @@
 ## Step 1 @unplugged
 This lesson uses the BrainClips kit. Remember that a digital signal is either ON or OFF. When reading a digital signal the value we read is also either ON or OFF, this is represented by 1 or 0, HIGH or LOW. In this tutorial we'll read the digital signal of an external button to turn on/off the Pulse's on-board LED.
 
-![BrainClip Button Module](docs/static/images/buttonmodule.jpg)
+![BrainClip Button Module](../static/images/buttonmodule.jpg)
 
 
 ## Step 2 @fullscreen
 Connect the alligator clips as shown in the diagram from the Pulse to the Module (P0 to OUT, 3V to VCC, GND to GND).
 
- ![RGB Module Wiring Diagram](docs/static/images/clipdiagram2.jpg)
+ ![RGB Module Wiring Diagram](../static/images/clipdiagram2.jpg)
 
 
 ## Step 3 @fullscreen

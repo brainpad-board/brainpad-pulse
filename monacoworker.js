@@ -1,5 +1,5 @@
 // see https://github.com/Microsoft/monaco-editor
 self.MonacoEnvironment = { 
-    baseUrl: "/" 
+    baseUrl: "/brainpad-pulse/" 
 };
-importScripts("/vs/base/worker/workerMain.js");
+importScripts("/brainpad-pulse/vs/base/worker/workerMain.js");

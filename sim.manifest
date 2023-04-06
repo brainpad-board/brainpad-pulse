@@ -1,9 +1,9 @@
 CACHE MANIFEST
 
 CACHE:
-/pxtsim.js
-/common-sim.js
-/sim.js
+/brainpad-pulse/pxtsim.js
+/brainpad-pulse/common-sim.js
+/brainpad-pulse/sim.js
 
 NETWORK:
 *

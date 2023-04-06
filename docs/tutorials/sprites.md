@@ -8,7 +8,7 @@
 
 We're going to create a Jumper Game and we'll need ``||sprites:Sprites||`` to do it. A ``||sprites:Sprite||`` is a 2-dimensional image that we use in games. A player's character would be a good example of a sprite. So would the things they have to avoid.  
 
-![BrainPad buzzer image](docs/static/images/spritePlayer.jpg)
+![BrainPad buzzer image](../static/images/spritePlayer.jpg)
 
 ## Step 2 @fullscreen
 
@@ -45,12 +45,12 @@ Jumper = sprites.create(img`
 ## Step 3 @fullscreen
 
 Click inside the Grey empty space inside the block we just added. The sprite editor will pop up. Click on the 'LightBulb' Hint below to see the names of the areas within the sprite editor.
- ![BrainPad buzzer image](docs/static/images/spriteEditor.jpg)
+ ![BrainPad buzzer image](../static/images/spriteEditor.jpg)
 
 ## Step 4 @fullscreen
 
 For our game we'll use one of the built-in sprites. To find the built-in sprites click on 'Gallery' at the top of the sprite editor. Find the first Jumper image in the Gallery and select it.
- ![BrainPad buzzer image](docs/static/images/spriteJumper.jpg)
+ ![BrainPad buzzer image](../static/images/spriteJumper.jpg)
 
 
 ## Step 5 @unplugged
@@ -58,4 +58,4 @@ For our game we'll use one of the built-in sprites. To find the built-in sprites
 We have a player! Download it to the Pulse to see the character we added on the screen 
  In the next tutorial we'll teach him how to walk by animating our sprite. Any sprite you create can be animated. 
 
- ![BrainPad buzzer image](docs/static/images/spritePlayer.jpg)
+ ![BrainPad buzzer image](../static/images/spritePlayer.jpg)

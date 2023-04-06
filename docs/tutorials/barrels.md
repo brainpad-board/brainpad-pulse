@@ -120,7 +120,7 @@ Jumper.setFlag(SpriteFlag.StayInScreen, true)
 
 Now we're going to add barrels for our Jumper to jump over.  
 
-![BrainPad Animated Sprite](docs/static/images/barrels.gif)
+![BrainPad Animated Sprite](../static/images/barrels.gif)
 
 ## Step 2 @fullscreen
 
@@ -880,4 +880,4 @@ Barrel.vx = -50
 
 Our game currently only has one Barrel. In the next tutorial we'll add more Barrels and detect when the Jumper and Barrels collide and make a game out of it.  
 
-![BrainPad Animated Sprite](docs/static/images/barrels.gif)
+![BrainPad Animated Sprite](../static/images/barrels.gif)

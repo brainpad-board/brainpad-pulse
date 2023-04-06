@@ -10,13 +10,13 @@ brainbot
 
 The BrainBot kit includes an infrared remote. It can be used to control our BrainBot. Keep in mind that IR remotes are directional and must point towards the sensor, which is located between the distance sensors. 
 
-![BrainPad Brainbot Distance](docs/static/images/ir-sensor.jpg)
+![BrainPad Brainbot Distance](../static/images/ir-sensor.jpg)
 
 ## Step 2 @unplugged
 
 In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
 
-![BrainPad extension image](docs/static/images/brainbot.jpg)
+![BrainPad extension image](../static/images/brainbot.jpg)
 
 ## Step 3 @fullscreen
 
@@ -121,7 +121,7 @@ brainbot.onPressEvent(RemoteButton.Down, function () {
 
 That's It! Try adding more blocks to do things like make the BrainBot turn left or right, also try adding one to make it spin around and dance and control the taillights. 
 
-![BrainPad Brainbot Distance](docs/static/images/ir-sensor.jpg)
+![BrainPad Brainbot Distance](../static/images/ir-sensor.jpg)
 
 
 

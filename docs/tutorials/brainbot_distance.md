@@ -10,13 +10,13 @@ brainbot
 
 In this tutorial we'll use the BrainBot distance sensor to measure the distance from an object and then program the BrainBot to react to the object. 
 
-![BrainPad Brainbot Distance](docs/static/images/distance.gif)
+![BrainPad Brainbot Distance](../static/images/distance.gif)
 
 ## Step 2 @unplugged
 
 In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
 
-![BrainPad extension image](docs/static/images/brainbot.jpg)
+![BrainPad extension image](../static/images/brainbot.jpg)
 
 ## Step 3 @fullscreen
 
@@ -134,4 +134,4 @@ forever(function () {
 
 The BrainBot is now being controlled by the distance sensor and the lights change based on what it sees. Try changing the values and colors to see what happens.  
 
-![BrainPad Brainbot](docs/static/images/distance.gif)
+![BrainPad Brainbot](../static/images/distance.gif)

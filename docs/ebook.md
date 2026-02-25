@@ -47,7 +47,7 @@ Step by step guide to coding your @boardname@.
 	"description": "BrainPad branded & fully supported accessory kits that teach coding Robots, Games, & Circuits",
 	"label": "Link",
     "labelClass": "orange ribbon large",
-    "url":"https://www.brainpad.com/accessories/",
+    "url":"https://www.brainpad.com/docs/catalog/intro",
 	"imageUrl": "/static/cp/projects/thumb/kits.jpg"	
 }
 ]

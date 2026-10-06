@@ -1,4 +1,10 @@
 node_modules
+.node16
+.node16.zip
+.gh-pages-staging
+.gh-pages-worktree
+tools/**/bin/
+tools/**/obj/
 yotta_modules
 yotta_targets
 pxt_modules

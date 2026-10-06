@@ -1,0 +1,24 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "BrainPad",
+    "short_name": "brainpad",
+    "background_color": "#FAFAFA",
+    "icons": [
+        {
+            "src": "@cdnUrl@/blob/853258bd0ae1bd5f11ed80198baaac41d8b65197/static/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "types": "image/png"
+        },
+        {
+            "src": "@cdnUrl@/blob/069e2591f8f265e34257ef47e8e658143997f0f5/static/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "types": "image/png"
+        }
+    ],
+    "scope": "/",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "landscape",
+    "theme_color": "#F08000"
+}

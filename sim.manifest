@@ -1,0 +1,9 @@
+CACHE MANIFEST
+
+CACHE:
+/brainpad-pulse/pxtsim.js
+/brainpad-pulse/common-sim.js
+/brainpad-pulse/sim.js
+
+NETWORK:
+*

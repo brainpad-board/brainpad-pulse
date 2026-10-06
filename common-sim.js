@@ -5,11 +5,11 @@ var pxsim;
         function onGesture(gesture, handler) {
             let b = pxsim.accelerometer();
             b.accelerometer.activate();
-            if (gesture == 11 /* ACCELEROMETER_EVT_SHAKE */ && !b.useShake) {
+            if (gesture == 11 /* DAL.ACCELEROMETER_EVT_SHAKE */ && !b.useShake) {
                 b.useShake = true;
                 pxsim.runtime.queueDisplayUpdate();
             }
-            pxsim.pxtcore.registerWithDal(13 /* DEVICE_ID_GESTURE */, gesture, handler);
+            pxsim.pxtcore.registerWithDal(13 /* DAL.DEVICE_ID_GESTURE */, gesture, handler);
         }
         input.onGesture = onGesture;
         function rotation(kind) {
@@ -99,7 +99,7 @@ var pxsim;
             this.shake = { x: false, y: false, z: false, count: 0, shaken: 0, timer: 0 }; // State information needed to detect shake events.
             this.isActive = false;
             this.sampleRange = 2;
-            this.id = 5 /* DEVICE_ID_ACCELEROMETER */;
+            this.id = 5 /* DAL.DEVICE_ID_ACCELEROMETER */;
         }
         setSampleRange(range) {
             this.activate();
@@ -123,7 +123,7 @@ var pxsim;
             // Update gesture tracking
             this.updateGesture();
             // Indicate that a new sample is available
-            pxsim.board().bus.queue(this.id, 1 /* ACCELEROMETER_EVT_DATA_UPDATE */);
+            pxsim.board().bus.queue(this.id, 1 /* DAL.ACCELEROMETER_EVT_DATA_UPDATE */);
         }
         instantaneousAccelerationSquared() {
             // Use pythagoras theorem to determine the combined force acting on the device.
@@ -144,21 +144,21 @@ var pxsim;
             //
             // If we see enough zero crossings in succession (MICROBIT_ACCELEROMETER_SHAKE_COUNT_THRESHOLD), then we decide that the device
             // has been shaken.
-            if ((this.getX() < -400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.x) || (this.getX() > 400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.x)) {
+            if ((this.getX() < -400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.x) || (this.getX() > 400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.x)) {
                 shakeDetected = true;
                 this.shake.x = !this.shake.x;
             }
-            if ((this.getY() < -400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.y) || (this.getY() > 400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.y)) {
+            if ((this.getY() < -400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.y) || (this.getY() > 400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.y)) {
                 shakeDetected = true;
                 this.shake.y = !this.shake.y;
             }
-            if ((this.getZ() < -400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.z) || (this.getZ() > 400 /* ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.z)) {
+            if ((this.getZ() < -400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && this.shake.z) || (this.getZ() > 400 /* DAL.ACCELEROMETER_SHAKE_TOLERANCE */ && !this.shake.z)) {
                 shakeDetected = true;
                 this.shake.z = !this.shake.z;
             }
-            if (shakeDetected && this.shake.count < 4 /* ACCELEROMETER_SHAKE_COUNT_THRESHOLD */ && ++this.shake.count == 4 /* ACCELEROMETER_SHAKE_COUNT_THRESHOLD */)
+            if (shakeDetected && this.shake.count < 4 /* DAL.ACCELEROMETER_SHAKE_COUNT_THRESHOLD */ && ++this.shake.count == 4 /* DAL.ACCELEROMETER_SHAKE_COUNT_THRESHOLD */)
                 this.shake.shaken = 1;
-            if (++this.shake.timer >= 10 /* ACCELEROMETER_SHAKE_DAMPING */) {
+            if (++this.shake.timer >= 10 /* DAL.ACCELEROMETER_SHAKE_DAMPING */) {
                 this.shake.timer = 0;
                 if (this.shake.count > 0) {
                     if (--this.shake.count == 0)
@@ -166,29 +166,29 @@ var pxsim;
                 }
             }
             if (this.shake.shaken)
-                return 11 /* ACCELEROMETER_EVT_SHAKE */;
+                return 11 /* DAL.ACCELEROMETER_EVT_SHAKE */;
             let sq = (n) => n * n;
-            if (force < sq(400 /* ACCELEROMETER_FREEFALL_TOLERANCE */))
-                return 7 /* ACCELEROMETER_EVT_FREEFALL */;
-            if (force > sq(3072 /* ACCELEROMETER_3G_TOLERANCE */))
-                return 8 /* ACCELEROMETER_EVT_3G */;
-            if (force > sq(6144 /* ACCELEROMETER_6G_TOLERANCE */))
-                return 9 /* ACCELEROMETER_EVT_6G */;
-            if (force > sq(8192 /* ACCELEROMETER_8G_TOLERANCE */))
-                return 10 /* ACCELEROMETER_EVT_8G */;
+            if (force < sq(400 /* DAL.ACCELEROMETER_FREEFALL_TOLERANCE */))
+                return 7 /* DAL.ACCELEROMETER_EVT_FREEFALL */;
+            if (force > sq(3072 /* DAL.ACCELEROMETER_3G_TOLERANCE */))
+                return 8 /* DAL.ACCELEROMETER_EVT_3G */;
+            if (force > sq(6144 /* DAL.ACCELEROMETER_6G_TOLERANCE */))
+                return 9 /* DAL.ACCELEROMETER_EVT_6G */;
+            if (force > sq(8192 /* DAL.ACCELEROMETER_8G_TOLERANCE */))
+                return 10 /* DAL.ACCELEROMETER_EVT_8G */;
             // Determine our posture.
-            if (this.getX() < (-1000 + 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 3 /* ACCELEROMETER_EVT_TILT_LEFT */;
-            if (this.getX() > (1000 - 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 4 /* ACCELEROMETER_EVT_TILT_RIGHT */;
-            if (this.getY() < (-1000 + 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 1 /* ACCELEROMETER_EVT_TILT_UP */;
-            if (this.getY() > (1000 - 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 2 /* ACCELEROMETER_EVT_TILT_DOWN */;
-            if (this.getZ() < (-1000 + 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 5 /* ACCELEROMETER_EVT_FACE_UP */;
-            if (this.getZ() > (1000 - 200 /* ACCELEROMETER_TILT_TOLERANCE */))
-                return 6 /* ACCELEROMETER_EVT_FACE_DOWN */;
+            if (this.getX() < (-1000 + 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 3 /* DAL.ACCELEROMETER_EVT_TILT_LEFT */;
+            if (this.getX() > (1000 - 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 4 /* DAL.ACCELEROMETER_EVT_TILT_RIGHT */;
+            if (this.getY() < (-1000 + 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 1 /* DAL.ACCELEROMETER_EVT_TILT_UP */;
+            if (this.getY() > (1000 - 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 2 /* DAL.ACCELEROMETER_EVT_TILT_DOWN */;
+            if (this.getZ() < (-1000 + 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 5 /* DAL.ACCELEROMETER_EVT_FACE_UP */;
+            if (this.getZ() > (1000 - 200 /* DAL.ACCELEROMETER_TILT_TOLERANCE */))
+                return 6 /* DAL.ACCELEROMETER_EVT_FACE_DOWN */;
             return 0;
         }
         updateGesture() {
@@ -196,7 +196,7 @@ var pxsim;
             let g = this.instantaneousPosture();
             // Perform some low pass filtering to reduce jitter from any detected effects
             if (g == this.currentGesture) {
-                if (this.sigma < 5 /* ACCELEROMETER_GESTURE_DAMPING */)
+                if (this.sigma < 5 /* DAL.ACCELEROMETER_GESTURE_DAMPING */)
                     this.sigma++;
             }
             else {
@@ -204,9 +204,9 @@ var pxsim;
                 this.sigma = 0;
             }
             // If we've reached threshold, update our record and raise the relevant event...
-            if (this.currentGesture != this.lastGesture && this.sigma >= 5 /* ACCELEROMETER_GESTURE_DAMPING */) {
+            if (this.currentGesture != this.lastGesture && this.sigma >= 5 /* DAL.ACCELEROMETER_GESTURE_DAMPING */) {
                 this.lastGesture = this.currentGesture;
-                pxsim.board().bus.queue(13 /* DEVICE_ID_GESTURE */, this.lastGesture);
+                pxsim.board().bus.queue(13 /* DAL.DEVICE_ID_GESTURE */, this.lastGesture);
             }
         }
         /**
@@ -728,21 +728,21 @@ var pxsim;
             this.pressed = p;
             if (p) {
                 this._wasPressed = true;
-                pxsim.board().bus.queue(this.id, 1 /* DEVICE_BUTTON_EVT_DOWN */);
+                pxsim.board().bus.queue(this.id, 1 /* DAL.DEVICE_BUTTON_EVT_DOWN */);
                 this._pressedTime = pxsim.runtime.runningTime();
             }
             else if (this._pressedTime !== -1) {
-                pxsim.board().bus.queue(this.id, 2 /* DEVICE_BUTTON_EVT_UP */);
+                pxsim.board().bus.queue(this.id, 2 /* DAL.DEVICE_BUTTON_EVT_UP */);
                 const current = pxsim.runtime.runningTime();
-                if (current - this._pressedTime >= 1000 /* DEVICE_BUTTON_LONG_CLICK_TIME */) {
-                    pxsim.board().bus.queue(this.id, 4 /* DEVICE_BUTTON_EVT_LONG_CLICK */);
+                if (current - this._pressedTime >= 1000 /* DAL.DEVICE_BUTTON_LONG_CLICK_TIME */) {
+                    pxsim.board().bus.queue(this.id, 4 /* DAL.DEVICE_BUTTON_EVT_LONG_CLICK */);
                 }
                 else {
-                    pxsim.board().bus.queue(this.id, 3 /* DEVICE_BUTTON_EVT_CLICK */);
+                    pxsim.board().bus.queue(this.id, 3 /* DAL.DEVICE_BUTTON_EVT_CLICK */);
                 }
                 if (this._clickedTime !== -1) {
                     if (current - this._clickedTime <= DOUBLE_CLICK_TIME) {
-                        pxsim.board().bus.queue(this.id, 6 /* DEVICE_BUTTON_EVT_DOUBLE_CLICK */);
+                        pxsim.board().bus.queue(this.id, 6 /* DAL.DEVICE_BUTTON_EVT_DOUBLE_CLICK */);
                     }
                 }
                 this._clickedTime = current;
@@ -767,9 +767,9 @@ var pxsim;
             this.usesButtonAB = false;
             this.buttonsByPin = {};
             this.buttons = buttons || [
-                new CommonButton(1 /* DEVICE_ID_BUTTON_A */),
-                new CommonButton(2 /* DEVICE_ID_BUTTON_B */),
-                new CommonButton(3 /* DEVICE_ID_BUTTON_AB */)
+                new CommonButton(1 /* DAL.DEVICE_ID_BUTTON_A */),
+                new CommonButton(2 /* DAL.DEVICE_ID_BUTTON_B */),
+                new CommonButton(3 /* DAL.DEVICE_ID_BUTTON_AB */)
             ];
             this.buttons.forEach(btn => this.buttonsByPin[btn.id] = btn);
         }
@@ -966,10 +966,10 @@ var pxsim;
             this.state = state;
             switch (state) {
                 case ThresholdState.High:
-                    pxsim.board().bus.queue(this.id, 2 /* SENSOR_THRESHOLD_HIGH */);
+                    pxsim.board().bus.queue(this.id, 2 /* DAL.SENSOR_THRESHOLD_HIGH */);
                     break;
                 case ThresholdState.Low:
-                    pxsim.board().bus.queue(this.id, 1 /* SENSOR_THRESHOLD_LOW */);
+                    pxsim.board().bus.queue(this.id, 1 /* DAL.SENSOR_THRESHOLD_LOW */);
                     break;
                 case ThresholdState.Normal:
                     break;
@@ -1189,8 +1189,8 @@ var pxsim;
             const old = this.value;
             this.value = value;
             const b = pxsim.board();
-            if (b && this.eventMode == 2 /* DEVICE_PIN_EVENT_ON_EDGE */ && old != this.value)
-                b.bus.queue(this.id, this.value > 0 ? 2 /* DEVICE_PIN_EVT_RISE */ : 3 /* DEVICE_PIN_EVT_FALL */);
+            if (b && this.eventMode == 2 /* DAL.DEVICE_PIN_EVENT_ON_EDGE */ && old != this.value)
+                b.bus.queue(this.id, this.value > 0 ? 2 /* DAL.DEVICE_PIN_EVT_RISE */ : 3 /* DAL.DEVICE_PIN_EVT_FALL */);
         }
         digitalReadPin() {
             this.mode = PinFlags.Digital | PinFlags.Input;
@@ -1251,13 +1251,13 @@ var pxsim;
         onEvent(ev, handler) {
             const b = pxsim.board();
             switch (ev) {
-                case 4 /* DEVICE_PIN_EVT_PULSE_HI */:
-                case 5 /* DEVICE_PIN_EVT_PULSE_LO */:
-                    this.eventMode = 3 /* DEVICE_PIN_EVENT_ON_PULSE */;
+                case 4 /* DAL.DEVICE_PIN_EVT_PULSE_HI */:
+                case 5 /* DAL.DEVICE_PIN_EVT_PULSE_LO */:
+                    this.eventMode = 3 /* DAL.DEVICE_PIN_EVENT_ON_PULSE */;
                     break;
-                case 2 /* DEVICE_PIN_EVT_RISE */:
-                case 3 /* DEVICE_PIN_EVT_FALL */:
-                    this.eventMode = 2 /* DEVICE_PIN_EVENT_ON_EDGE */;
+                case 2 /* DAL.DEVICE_PIN_EVT_RISE */:
+                case 3 /* DAL.DEVICE_PIN_EVT_FALL */:
+                    this.eventMode = 2 /* DAL.DEVICE_PIN_EVENT_ON_EDGE */;
                     break;
                 default:
                     return;
@@ -2056,7 +2056,7 @@ var pxsim;
         */
         function onPulsed(name, high, body) {
             pxsim.pins.markUsed(name);
-            onEvent(name, high ? 4 /* DEVICE_PIN_EVT_PULSE_HI */ : 5 /* DEVICE_PIN_EVT_PULSE_LO */, body);
+            onEvent(name, high ? 4 /* DAL.DEVICE_PIN_EVT_PULSE_HI */ : 5 /* DAL.DEVICE_PIN_EVT_PULSE_LO */, body);
         }
         DigitalInOutPinMethods.onPulsed = onPulsed;
         function onEvent(name, ev, body) {
@@ -2071,7 +2071,7 @@ var pxsim;
         */
         function pulseIn(name, high, maxDuration = 2000000) {
             pxsim.pins.markUsed(name);
-            const pulse = high ? 4 /* DEVICE_PIN_EVT_PULSE_HI */ : 5 /* DEVICE_PIN_EVT_PULSE_LO */;
+            const pulse = high ? 4 /* DAL.DEVICE_PIN_EVT_PULSE_HI */ : 5 /* DAL.DEVICE_PIN_EVT_PULSE_LO */;
             // Always return default value, can't simulate
             return 500;
         }
@@ -2835,10 +2835,10 @@ var pxsim;
             let b = pxsim.lightSensorState();
             b.setUsed();
             switch (condition) {
-                case 1 /* SENSOR_THRESHOLD_LOW */:
+                case 1 /* DAL.SENSOR_THRESHOLD_LOW */:
                     b.setLowThreshold(value);
                     break;
-                case 2 /* SENSOR_THRESHOLD_HIGH */:
+                case 2 /* DAL.SENSOR_THRESHOLD_HIGH */:
                     b.setHighThreshold(value);
                     break;
             }
@@ -2870,7 +2870,7 @@ var pxsim;
             if (!b)
                 return;
             b.setUsed();
-            pxsim.pxtcore.registerWithDal(b.id, 2 /* LEVEL_THRESHOLD_HIGH */, body);
+            pxsim.pxtcore.registerWithDal(b.id, 2 /* DAL.LEVEL_THRESHOLD_HIGH */, body);
         }
         input.onLoudSound = onLoudSound;
         function setLoudSoundThreshold(value) {
@@ -4147,7 +4147,7 @@ var pxsim;
             const rd = new Uint32Array(ca.buffer);
             const src = buf.data;
             if (48 != src.length)
-                pxsim.pxtrt.panic(911 /* PANIC_SCREEN_ERROR */);
+                pxsim.pxtrt.panic(911 /* pxsim.PXT_PANIC.PANIC_SCREEN_ERROR */);
             this.palette = new Uint32Array((src.length / 3) | 0);
             for (let i = 0; i < this.palette.length; ++i) {
                 const p = i * 3;
@@ -4500,10 +4500,10 @@ var pxsim;
                 return;
             }
             else if (left) {
-                pxsim.board().bus.queue(SlideSwitchState.id, 2 /* DEVICE_BUTTON_EVT_UP */);
+                pxsim.board().bus.queue(SlideSwitchState.id, 2 /* DAL.DEVICE_BUTTON_EVT_UP */);
             }
             else {
-                pxsim.board().bus.queue(SlideSwitchState.id, 1 /* DEVICE_BUTTON_EVT_DOWN */);
+                pxsim.board().bus.queue(SlideSwitchState.id, 1 /* DAL.DEVICE_BUTTON_EVT_DOWN */);
             }
             this.left = left;
         }
@@ -4567,7 +4567,7 @@ var pxsim;
             const t = unit == pxsim.TemperatureUnit.Celsius
                 ? temperature
                 : (((temperature - 32) * 10) / 18 >> 0);
-            if (condition === 2 /* LEVEL_THRESHOLD_HIGH */) {
+            if (condition === 2 /* DAL.LEVEL_THRESHOLD_HIGH */) {
                 b.setHighThreshold(t);
             }
             else {
@@ -4926,7 +4926,7 @@ var pxsim;
         }
         _wifi.eventID = eventID;
         function scanStart() {
-            _raiseEvent(1 /* ScanDone */);
+            _raiseEvent(1 /* WifiEvent.ScanDone */);
         }
         _wifi.scanStart = scanStart;
         function scanResults() {
@@ -4938,7 +4938,7 @@ var pxsim;
         }
         _wifi.scanResults = scanResults;
         function connect(ssid, pass) {
-            _raiseEvent(2 /* GotIP */);
+            _raiseEvent(2 /* WifiEvent.GotIP */);
             return 0;
         }
         _wifi.connect = connect;

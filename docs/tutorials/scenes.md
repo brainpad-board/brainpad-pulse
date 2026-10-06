@@ -77,7 +77,7 @@ forever(function () {
 
 Scene blocks, unlike the image blocks work with sprites when making games. We can use the blocks to create backgrounds for games. The tutorial starts with a cityscape scene already created.  
 
-![BrainPad Display Cityscape](../static/images/cityscape.jpg)
+![BrainPad Display Cityscape](docs/static/images/cityscape.jpg)
 
 
 ## Step 2 @fullscreen
@@ -554,4 +554,4 @@ Jumper = sprites.create(img`
 
 You can see how creating a scene can be helpful. You can also use these to make splash screens for your games. 
 
-![BrainPad Display Cityscape](../static/images/cityscape.jpg)
+![BrainPad Display Cityscape](docs/static/images/cityscape.jpg)

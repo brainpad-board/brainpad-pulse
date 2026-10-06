@@ -10,13 +10,13 @@ brainbot
 
 In this tutorial we'll program the BrainPulse to follow a line using the BrainBot.  
 
-![BrainPad Brainbot](../static/images/linefollow.gif)
+![BrainPad Brainbot](docs/static/images/linefollow.gif)
 
 ## Step 2 @unplugged
 
 In the tutorial the BrainBot extension is already loaded. If we are making our own BrainBot program we need to add the BrainBot extension. Under the 'Advanced' tab on the side menu at the very bottom click on 'Extensions' at the very bottom. Click on BrainBot to load the extension. 
 
-![BrainPad extension image](../static/images/brainbot.jpg)
+![BrainPad extension image](docs/static/images/brainbot.jpg)
 
 ## Step 3 @fullscreen
 
@@ -134,4 +134,4 @@ forever(function () {
 
 That's it. Place the BrainBot on the line map or other line and watch it go. The BrainBot has become smarter thanks to the code we added. 
 
-![BrainPad Brainbot](../static/images/linefollow.gif)
+![BrainPad Brainbot](docs/static/images/linefollow.gif)

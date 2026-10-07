@@ -32,6 +32,9 @@
     "docs/*/*/*.md",
     "docs/static/icons/favicon.ico"
   ],
+  "engines": {
+    "node": "16.x"
+  },
   "devDependencies": {
     "less": "3.13.1",
     "react": "16.8.3",
@@ -47,6 +50,11 @@
     "pxt-core": "7.3.7"
   },
   "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "clean": "node scripts/clean.mjs",
+    "dev": "pxt serve --local --no-browser",
+    "build": "pxt staticpkg --route brainpad-pulse && node scripts/post-build.mjs",
+    "deploy": "node scripts/deploy.mjs",
     "test": "node node_modules/pxt-core/built/pxt.js travis"
   }
 }

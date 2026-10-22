@@ -21363,4 +21363,1744 @@ var ts;
                                 // console.log(m[1] + ": " + this.stack + " " + this.stackpointers[m[1]] + " " + m[2])
                                 v = this.ei.wordSize() * this.ei.computeStackOffset(m[1], this.stack - this.stackpointers[m[1]] + parseInt(m[2]));
                                 // console.log(v)
-                   
+                            }
+                            else
+                                this.directiveError(lf("saved stack not found"));
+                        }
+                        m = /^(.*)@(hi|lo|fn)$/.exec(s);
+                        if (m && this.looksLikeLabel(m[1])) {
+                            v = this.lookupLabel(m[1], true);
+                            if (v != null) {
+                                if (m[2] == "fn") {
+                                    v = this.ei.toFnPtr(v, this.baseOffset, m[1]);
+                                }
+                                else {
+                                    v >>= 1;
+                                    if (0 <= v && v <= 0xffff) {
+                                        if (m[2] == "hi")
+                                            v = (v >> 8) & 0xff;
+                                        else if (m[2] == "lo")
+                                            v = v & 0xff;
+                                        else
+                                            pxtc.oops();
+                                    }
+                                    else {
+                                        this.directiveError(lf("@hi/lo out of range"));
+                                        v = null;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (v == null && this.looksLikeLabel(s)) {
+                        v = this.lookupLabel(s, true);
+                        if (v != null) {
+                            if (this.ei.postProcessRelAddress(this, 1) == 1)
+                                v += this.baseOffset;
+                        }
+                    }
+                    if (v == null || isNaN(v))
+                        return null;
+                    return v * mul;
+                }
+                looksLikeLabel(name) {
+                    if (/^(r\d|pc|sp|lr)$/i.test(name))
+                        return false;
+                    return /^[\.a-zA-Z_][\.:\w+]*$/.test(name);
+                }
+                scopedName(name) {
+                    if (name[0] == "." && this.scope)
+                        return this.scope + "$" + name;
+                    else
+                        return name;
+                }
+                lookupLabel(name, direct = false) {
+                    let v = null;
+                    let scoped = this.scopedName(name);
+                    if (this.labels.hasOwnProperty(scoped)) {
+                        v = this.labels[scoped];
+                        v = this.ei.postProcessRelAddress(this, v);
+                    }
+                    else if (this.lookupExternalLabel) {
+                        v = this.lookupExternalLabel(name);
+                        if (v != null) {
+                            v = this.ei.postProcessAbsAddress(this, v);
+                        }
+                    }
+                    if (v == null && this.equs.hasOwnProperty(scoped)) {
+                        v = this.equs[scoped];
+                        // no post-processing
+                    }
+                    if (v == null && direct) {
+                        if (this.finalEmit) {
+                            this.directiveError(lf("unknown label: {0}", name));
+                        }
+                        else
+                            // use a number over 1 byte
+                            v = 11111;
+                    }
+                    return v;
+                }
+                align(n) {
+                    pxtc.assert(n == 2 || n == 4 || n == 8 || n == 16);
+                    while (this.location() % n != 0)
+                        this.emitOpCode(0);
+                }
+                pushError(msg, hints = "") {
+                    let err = {
+                        scope: this.scope,
+                        message: lf("  -> Line {2} ('{1}'), error: {0}\n{3}", msg, this.currLine.text, this.currLine.lineNo, hints),
+                        lineNo: this.currLine.lineNo,
+                        line: this.currLine.text,
+                        coremsg: msg,
+                        hints: hints
+                    };
+                    this.errors.push(err);
+                    if (this.throwOnError)
+                        throw new Error(err.message);
+                }
+                directiveError(msg) {
+                    this.pushError(msg);
+                    // this.pushError(lf("directive error: {0}", msg))
+                }
+                emitString(l, utf16 = false) {
+                    function byteAt(s, i) { return (s.charCodeAt(i) || 0) & 0xff; }
+                    let m = /^\s*([\w\.]+\s*:\s*)?.\w+\s+(".*")\s*$/.exec(l);
+                    let s;
+                    if (!m || null == (s = parseString(m[2]))) {
+                        this.directiveError(lf("expecting string"));
+                    }
+                    else {
+                        this.align(2);
+                        if (utf16) {
+                            for (let i = 0; i < s.length; i++) {
+                                this.emitShort(s.charCodeAt(i));
+                            }
+                        }
+                        else {
+                            // s.length + 1 to NUL terminate
+                            for (let i = 0; i < s.length + 1; i += 2) {
+                                this.emitShort((byteAt(s, i + 1) << 8) | byteAt(s, i));
+                            }
+                        }
+                    }
+                }
+                parseNumber(words) {
+                    let v = this.parseOneInt(words.shift());
+                    if (v == null)
+                        return null;
+                    return v;
+                }
+                parseNumbers(words) {
+                    words = words.slice(1);
+                    let nums = [];
+                    while (true) {
+                        let n = this.parseNumber(words);
+                        if (n == null) {
+                            this.directiveError(lf("cannot parse number at '{0}'", words[0]));
+                            break;
+                        }
+                        else
+                            nums.push(n);
+                        if (words[0] == ",") {
+                            words.shift();
+                            if (words[0] == null)
+                                break;
+                        }
+                        else if (words[0] == null) {
+                            break;
+                        }
+                        else {
+                            this.directiveError(lf("expecting number, got '{0}'", words[0]));
+                            break;
+                        }
+                    }
+                    return nums;
+                }
+                emitSpace(words) {
+                    let nums = this.parseNumbers(words);
+                    if (nums.length == 1)
+                        nums.push(0);
+                    if (nums.length != 2)
+                        this.directiveError(lf("expecting one or two numbers"));
+                    else if (nums[0] % 2 != 0)
+                        this.directiveError(lf("only even space supported"));
+                    else {
+                        let f = nums[1] & 0xff;
+                        f = f | (f << 8);
+                        for (let i = 0; i < nums[0]; i += 2)
+                            this.emitShort(f);
+                    }
+                }
+                emitBytes(words) {
+                    let nums = this.parseNumbers(words);
+                    if (nums.length % 2 != 0) {
+                        this.directiveError(".bytes needs an even number of arguments");
+                        nums.push(0);
+                    }
+                    for (let i = 0; i < nums.length; i += 2) {
+                        let n0 = nums[i];
+                        let n1 = nums[i + 1];
+                        if (0 <= n0 && n1 <= 0xff &&
+                            0 <= n1 && n0 <= 0xff)
+                            this.emitShort((n0 & 0xff) | ((n1 & 0xff) << 8));
+                        else
+                            this.directiveError(lf("expecting uint8"));
+                    }
+                }
+                emitHex(words) {
+                    words.slice(1).forEach(w => {
+                        if (w == ",")
+                            return;
+                        // TODO: why 4 and not 2?
+                        if (w.length % 4 != 0)
+                            this.directiveError(".hex needs an even number of bytes");
+                        else if (!/^[a-f0-9]+$/i.test(w))
+                            this.directiveError(".hex needs a hex number");
+                        else
+                            for (let i = 0; i < w.length; i += 4) {
+                                let n = parseInt(w.slice(i, i + 4), 16);
+                                n = ((n & 0xff) << 8) | ((n >> 8) & 0xff);
+                                this.emitShort(n);
+                            }
+                    });
+                }
+                handleDirective(l) {
+                    let words = l.words;
+                    let expectOne = () => {
+                        if (words.length != 2)
+                            this.directiveError(lf("expecting one argument"));
+                    };
+                    let num0;
+                    switch (words[0]) {
+                        case ".ascii":
+                        case ".asciz":
+                        case ".string":
+                            this.emitString(l.text);
+                            break;
+                        case ".utf16":
+                            this.emitString(l.text, true);
+                            break;
+                        case ".align":
+                            expectOne();
+                            num0 = this.parseOneInt(words[1]);
+                            if (num0 != null) {
+                                if (num0 == 0)
+                                    return;
+                                if (num0 <= 4) {
+                                    this.align(1 << num0);
+                                }
+                                else {
+                                    this.directiveError(lf("expecting 1, 2, 3 or 4 (for 2, 4, 8, or 16 byte alignment)"));
+                                }
+                            }
+                            else
+                                this.directiveError(lf("expecting number"));
+                            break;
+                        case ".balign":
+                            expectOne();
+                            num0 = this.parseOneInt(words[1]);
+                            if (num0 != null) {
+                                if (num0 == 1)
+                                    return;
+                                if (num0 == 2 || num0 == 4 || num0 == 8 || num0 == 16) {
+                                    this.align(num0);
+                                }
+                                else {
+                                    this.directiveError(lf("expecting 2, 4, 8, or 16"));
+                                }
+                            }
+                            else
+                                this.directiveError(lf("expecting number"));
+                            break;
+                        case ".p2align":
+                            expectOne();
+                            num0 = this.parseOneInt(words[1]);
+                            if (num0 != null) {
+                                this.align(1 << num0);
+                            }
+                            else
+                                this.directiveError(lf("expecting number"));
+                            break;
+                        case ".byte":
+                            this.emitBytes(words);
+                            break;
+                        case ".hex":
+                            this.emitHex(words);
+                            break;
+                        case ".hword":
+                        case ".short":
+                        case ".2bytes":
+                            this.parseNumbers(words).forEach(n => {
+                                // we allow negative numbers
+                                if (-0x8000 <= n && n <= 0xffff)
+                                    this.emitShort(n & 0xffff);
+                                else
+                                    this.directiveError(lf("expecting int16"));
+                            });
+                            break;
+                        case ".word":
+                        case ".4bytes":
+                        case ".long":
+                            // TODO: a word is machine-dependent (16-bit for AVR, 32-bit for ARM)
+                            this.parseNumbers(words).forEach(n => {
+                                // we allow negative numbers
+                                if (-0x80000000 <= n && n <= 0xffffffff) {
+                                    this.emitShort(n & 0xffff);
+                                    this.emitShort((n >> 16) & 0xffff);
+                                }
+                                else {
+                                    this.directiveError(lf("expecting int32"));
+                                }
+                            });
+                            break;
+                        case ".skip":
+                        case ".space":
+                            this.emitSpace(words);
+                            break;
+                        case ".set":
+                        case ".equ":
+                            if (!/^\w+$/.test(words[1]))
+                                this.directiveError(lf("expecting name"));
+                            const nums = this.parseNumbers(words.slice(words[2] == "," || words[2] == "="
+                                ? 2 : 1));
+                            if (nums.length != 1)
+                                this.directiveError(lf("expecting one value"));
+                            if (this.equs[words[1]] !== undefined &&
+                                this.equs[words[1]] != nums[0])
+                                this.directiveError(lf("redefinition of {0}", words[1]));
+                            this.equs[words[1]] = nums[0];
+                            break;
+                        case ".startaddr":
+                            if (this.location())
+                                this.directiveError(lf(".startaddr can be only be specified at the beginning of the file"));
+                            expectOne();
+                            this.baseOffset = this.parseOneInt(words[1]);
+                            break;
+                        // The usage for this is as follows:
+                        // push {...}
+                        // @stackmark locals   ; locals := sp
+                        // ... some push/pops ...
+                        // ldr r0, [sp, locals@3] ; load local number 3
+                        // ... some push/pops ...
+                        // @stackempty locals ; expect an empty stack here
+                        case "@stackmark":
+                            expectOne();
+                            this.stackpointers[words[1]] = this.stack;
+                            break;
+                        case "@stackempty":
+                            if (this.checkStack) {
+                                if (this.stackpointers[words[1]] == null)
+                                    this.directiveError(lf("no such saved stack"));
+                                else if (this.stackpointers[words[1]] != this.stack)
+                                    this.directiveError(lf("stack mismatch"));
+                            }
+                            break;
+                        case "@scope":
+                            this.scope = words[1] || "";
+                            this.currLineNo = this.scope ? 0 : this.realCurrLineNo;
+                            break;
+                        case ".syntax":
+                        case "@nostackcheck":
+                            this.checkStack = false;
+                            break;
+                        case "@dummystack":
+                            expectOne();
+                            this.stack += this.parseOneInt(words[1]);
+                            break;
+                        case ".section":
+                        case ".global":
+                            this.stackpointers = {};
+                            this.stack = 0;
+                            this.scope = "$S" + this.scopeId++;
+                            break;
+                        case ".comm": {
+                            words = words.filter(x => x != ",");
+                            words.shift();
+                            let sz = this.parseOneInt(words[1]);
+                            let align = 0;
+                            if (words[2])
+                                align = this.parseOneInt(words[2]);
+                            else
+                                align = 4; // not quite what AS does...
+                            let val = this.lookupLabel(words[0]);
+                            if (val == null) {
+                                if (!this.commPtr) {
+                                    this.commPtr = this.lookupExternalLabel("_pxt_comm_base") || 0;
+                                    if (!this.commPtr)
+                                        this.directiveError(lf("PXT_COMM_BASE not defined"));
+                                }
+                                while (this.commPtr & (align - 1))
+                                    this.commPtr++;
+                                this.labels[this.scopedName(words[0])] = this.commPtr - this.baseOffset;
+                                this.commPtr += sz;
+                            }
+                            break;
+                        }
+                        case ".file":
+                        case ".text":
+                        case ".cpu":
+                        case ".fpu":
+                        case ".eabi_attribute":
+                        case ".code":
+                        case ".thumb_func":
+                        case ".type":
+                        case ".fnstart":
+                        case ".save":
+                        case ".size":
+                        case ".fnend":
+                        case ".pad":
+                        case ".globl": // TODO might need this one
+                        case ".local":
+                            break;
+                        case "@":
+                            // @ sp needed
+                            break;
+                        default:
+                            if (/^\.cfi_/.test(words[0])) {
+                                // ignore
+                            }
+                            else {
+                                this.directiveError(lf("unknown directive"));
+                            }
+                            break;
+                    }
+                }
+                handleOneInstruction(ln, instr) {
+                    let op = instr.emit(ln);
+                    if (!op.error) {
+                        this.stack += op.stack;
+                        if (this.checkStack && this.stack < 0)
+                            this.pushError(lf("stack underflow"));
+                        ln.location = this.location();
+                        ln.opcode = op.opcode;
+                        ln.stack = op.stack;
+                        this.emitOpCode(op.opcode);
+                        if (op.opcode2 != null)
+                            this.emitOpCode(op.opcode2);
+                        if (op.opcode3 != null)
+                            this.emitOpCode(op.opcode3);
+                        ln.instruction = instr;
+                        ln.numArgs = op.numArgs;
+                        return true;
+                    }
+                    return false;
+                }
+                handleInstruction(ln) {
+                    if (ln.instruction) {
+                        if (this.handleOneInstruction(ln, ln.instruction))
+                            return;
+                    }
+                    let getIns = (n) => this.ei.instructions.hasOwnProperty(n) ? this.ei.instructions[n] : [];
+                    if (!ln.instruction) {
+                        let ins = getIns(ln.words[0]);
+                        for (let i = 0; i < ins.length; ++i) {
+                            if (this.handleOneInstruction(ln, ins[i]))
+                                return;
+                        }
+                    }
+                    let w0 = ln.words[0].toLowerCase().replace(/s$/, "").replace(/[^a-z]/g, "");
+                    let hints = "";
+                    let possibilities = getIns(w0).concat(getIns(w0 + "s"));
+                    if (possibilities.length > 0) {
+                        possibilities.forEach(i => {
+                            let err = i.emit(ln);
+                            hints += lf("   Maybe: {0} ({1} at '{2}')\n", i.toString(), err.error, err.errorAt);
+                        });
+                    }
+                    this.pushError(lf("assembly error"), hints);
+                }
+                buildLine(tx, lst) {
+                    let mkLine = (tx) => {
+                        let l = new Line(this, tx);
+                        l.scope = this.scope;
+                        l.lineNo = this.currLineNo;
+                        lst.push(l);
+                        return l;
+                    };
+                    let l = mkLine(tx);
+                    let words = tokenize(l.text) || [];
+                    l.words = words;
+                    let w0 = words[0] || "";
+                    if (w0.charAt(w0.length - 1) == ":") {
+                        let m = /^([\.\w]+):$/.exec(words[0]);
+                        if (m) {
+                            l.type = "label";
+                            l.text = m[1] + ":";
+                            l.words = [m[1]];
+                            if (words.length > 1) {
+                                words.shift();
+                                l = mkLine(tx.replace(/^[^:]*:/, ""));
+                                l.words = words;
+                                w0 = words[0] || "";
+                            }
+                            else {
+                                return;
+                            }
+                        }
+                    }
+                    let c0 = w0.charAt(0);
+                    if (c0 == "." || c0 == "@") {
+                        l.type = "directive";
+                        if (l.words[0] == "@scope")
+                            this.handleDirective(l);
+                    }
+                    else {
+                        if (l.words.length == 0)
+                            l.type = "empty";
+                        else
+                            l.type = "instruction";
+                    }
+                }
+                prepLines(text) {
+                    this.currLineNo = 0;
+                    this.realCurrLineNo = 0;
+                    this.lines = [];
+                    text.split(/\r?\n/).forEach(tx => {
+                        if (this.errors.length > 10)
+                            return;
+                        this.currLineNo++;
+                        this.realCurrLineNo++;
+                        this.buildLine(tx, this.lines);
+                    });
+                }
+                iterLines() {
+                    this.stack = 0;
+                    this.buf = [];
+                    this.scopeId = 0;
+                    this.lines.forEach(l => {
+                        if (this.errors.length > 10)
+                            return;
+                        this.currLine = l;
+                        if (l.words.length == 0)
+                            return;
+                        if (l.type == "label") {
+                            let lblname = this.scopedName(l.words[0]);
+                            this.prevLabel = lblname;
+                            if (this.finalEmit) {
+                                if (this.equs[lblname] != null)
+                                    this.directiveError(lf(".equ redefined as label"));
+                                let curr = this.labels[lblname];
+                                if (curr == null)
+                                    pxtc.oops();
+                                if (this.errors.length == 0 && curr != this.location()) {
+                                    pxtc.oops(`invalid location: ${this.location()} != ${curr} at ${lblname}`);
+                                }
+                                pxtc.assert(this.errors.length > 0 || curr == this.location());
+                                if (this.reallyFinalEmit) {
+                                    this.stackAtLabel[lblname] = this.stack;
+                                }
+                            }
+                            else {
+                                if (this.labels.hasOwnProperty(lblname))
+                                    this.directiveError(lf("label redefinition"));
+                                else if (this.inlineMode && /^_/.test(lblname))
+                                    this.directiveError(lf("labels starting with '_' are reserved for the compiler"));
+                                else {
+                                    this.labels[lblname] = this.location();
+                                }
+                            }
+                            l.location = this.location();
+                        }
+                        else if (l.type == "directive") {
+                            this.handleDirective(l);
+                        }
+                        else if (l.type == "instruction") {
+                            this.handleInstruction(l);
+                        }
+                        else if (l.type == "empty") {
+                            // nothing
+                        }
+                        else {
+                            pxtc.oops();
+                        }
+                    });
+                }
+                getSourceMap() {
+                    const sourceMap = {};
+                    let locFile = "";
+                    let locLn = 0;
+                    let locPos = 0;
+                    let locEnd = 0;
+                    this.lines.forEach((ln, i) => {
+                        const m = /^; ([\w\/\.-]+)\(([\d]+),\d+\):/.exec(ln.text);
+                        if (m) {
+                            flush();
+                            locFile = m[1];
+                            locLn = parseInt(m[2]);
+                        }
+                        if (ln.type == "instruction") {
+                            if (!locPos)
+                                locPos = ln.location;
+                            locEnd = ln.location;
+                        }
+                    });
+                    flush();
+                    function flush() {
+                        if (locFile && locPos) {
+                            if (!sourceMap[locFile])
+                                sourceMap[locFile] = [];
+                            sourceMap[locFile].push(locLn, locPos, locEnd - locPos);
+                        }
+                        locPos = 0;
+                        locEnd = 0;
+                    }
+                    return sourceMap;
+                }
+                getSource(clean, numStmts = 1, flashSize = 0) {
+                    let lenPrev = 0;
+                    let size = (lbl) => {
+                        let curr = this.labels[lbl] || lenPrev;
+                        let sz = curr - lenPrev;
+                        lenPrev = curr;
+                        return sz;
+                    };
+                    let lenTotal = this.buf ? this.location() : 0;
+                    let lenCode = size("_code_end");
+                    let lenHelpers = size("_helpers_end");
+                    let lenVtables = size("_vtables_end");
+                    let lenLiterals = size("_literals_end");
+                    let lenAllCode = lenPrev;
+                    let totalSize = (lenTotal + this.baseOffset) & 0xffffff;
+                    if (flashSize && totalSize > flashSize)
+                        pxtc.U.userError(lf("program too big by {0} bytes!", totalSize - flashSize));
+                    flashSize = flashSize || 128 * 1024;
+                    let totalInfo = lf("; total bytes: {0} ({1}% of {2}k flash with {3} free)", totalSize, (100 * totalSize / flashSize).toFixed(1), (flashSize / 1024).toFixed(1), flashSize - totalSize);
+                    let res = 
+                    // ARM-specific
+                    lf("; generated code sizes (bytes): {0} (incl. {1} user, {2} helpers, {3} vtables, {4} lits); src size {5}\n", lenAllCode, lenCode, lenHelpers, lenVtables, lenLiterals, lenTotal - lenAllCode) +
+                        lf("; assembly: {0} lines; density: {1} bytes/stmt; ({2} stmts)\n", this.lines.length, Math.round(100 * lenCode / numStmts) / 100, numStmts) +
+                        totalInfo + "\n" +
+                        this.stats + "\n\n";
+                    let skipOne = false;
+                    this.lines.forEach((ln, i) => {
+                        if (ln.words[0] == "_stored_program") {
+                            res += "_stored_program: .string \"...\"\n";
+                            skipOne = true;
+                            return;
+                        }
+                        if (skipOne) {
+                            skipOne = false;
+                            return;
+                        }
+                        let text = ln.text;
+                        if (clean) {
+                            if (ln.words[0] == "@stackempty" &&
+                                this.lines[i - 1].text == ln.text)
+                                return;
+                            text = text.replace(/; WAS: .*/, "");
+                            if (!text.trim())
+                                return;
+                        }
+                        if (assembler.debug)
+                            if (ln.type == "label" || ln.type == "instruction")
+                                text += ` \t; 0x${(ln.location + this.baseOffset).toString(16)}`;
+                        res += text + "\n";
+                    });
+                    return res;
+                }
+                peepHole() {
+                    // TODO add: str X; ldr X -> str X ?
+                    let mylines = this.lines.filter(l => l.type != "empty");
+                    for (let i = 0; i < mylines.length; ++i) {
+                        let ln = mylines[i];
+                        if (/^user/.test(ln.scope)) // skip opt for user-supplied assembly
+                            continue;
+                        let lnNext = mylines[i + 1];
+                        if (!lnNext)
+                            continue;
+                        let lnNext2 = mylines[i + 2];
+                        if (ln.type == "instruction") {
+                            this.ei.peephole(ln, lnNext, lnNext2);
+                        }
+                    }
+                }
+                clearLabels() {
+                    this.labels = {};
+                    this.commPtr = 0;
+                }
+                peepPass(reallyFinal) {
+                    if (this.disablePeepHole)
+                        return;
+                    this.peepOps = 0;
+                    this.peepDel = 0;
+                    this.peepCounts = {};
+                    this.peepHole();
+                    this.throwOnError = true;
+                    this.finalEmit = false;
+                    this.clearLabels();
+                    this.iterLines();
+                    pxtc.assert(!this.checkStack || this.stack == 0);
+                    this.finalEmit = true;
+                    this.reallyFinalEmit = reallyFinal || this.peepOps == 0;
+                    this.iterLines();
+                    this.stats += lf("; peep hole pass: {0} instructions removed and {1} updated\n", this.peepDel, this.peepOps - this.peepDel);
+                }
+                getLabels() {
+                    if (!this.userLabelsCache)
+                        this.userLabelsCache = pxtc.U.mapMap(this.labels, (k, v) => v + this.baseOffset);
+                    return this.userLabelsCache;
+                }
+                emit(text) {
+                    pxtc.assert(this.buf == null);
+                    this.prepLines(text);
+                    if (this.errors.length > 0)
+                        return;
+                    this.clearLabels();
+                    this.iterLines();
+                    if (this.checkStack && this.stack != 0)
+                        this.directiveError(lf("stack misaligned at the end of the file"));
+                    if (this.errors.length > 0)
+                        return;
+                    this.ei.expandLdlit(this);
+                    this.clearLabels();
+                    this.iterLines();
+                    this.finalEmit = true;
+                    this.reallyFinalEmit = this.disablePeepHole;
+                    this.iterLines();
+                    if (this.errors.length > 0)
+                        return;
+                    let maxPasses = 5;
+                    for (let i = 0; i < maxPasses; ++i) {
+                        pxt.debug(`Peephole OPT, pass ${i}`);
+                        this.peepPass(i == maxPasses);
+                        if (this.peepOps == 0)
+                            break;
+                    }
+                    pxt.debug("emit done");
+                }
+            }
+            assembler.File = File;
+            class VMFile extends File {
+                constructor(ei) {
+                    super(ei);
+                }
+            }
+            assembler.VMFile = VMFile;
+            // an assembler provider must inherit from this
+            // class and provide Encoders and Instructions
+            class AbstractProcessor {
+                constructor() {
+                    this.file = null;
+                    this.addEnc = (n, p, e) => {
+                        let ee = {
+                            name: n,
+                            pretty: p,
+                            encode: e,
+                            isRegister: /^\$r\d/.test(n),
+                            isImmediate: /^\$i\d/.test(n),
+                            isRegList: /^\$rl\d/.test(n),
+                            isLabel: /^\$l[a-z]/.test(n),
+                        };
+                        this.encoders[n] = ee;
+                        return ee;
+                    };
+                    this.inrange = (max, v, e) => {
+                        if (Math.floor(v) != v)
+                            return null;
+                        if (v < 0)
+                            return null;
+                        if (v > max)
+                            return null;
+                        return e;
+                    };
+                    this.inminmax = (min, max, v, e) => {
+                        if (Math.floor(v) != v)
+                            return null;
+                        if (v < min)
+                            return null;
+                        if (v > max)
+                            return null;
+                        return e;
+                    };
+                    this.inseq = (seq, v) => {
+                        let ind = seq.indexOf(v);
+                        if (ind < 0)
+                            return null;
+                        return ind;
+                    };
+                    this.inrangeSigned = (max, v, e) => {
+                        if (Math.floor(v) != v)
+                            return null;
+                        if (v < -(max + 1))
+                            return null;
+                        if (v > max)
+                            return null;
+                        let mask = (max << 1) | 1;
+                        return e & mask;
+                    };
+                    this.addInst = (name, code, mask, is32Bit) => {
+                        let ins = new Instruction(this, name, code, mask, is32Bit);
+                        if (!this.instructions.hasOwnProperty(ins.name))
+                            this.instructions[ins.name] = [];
+                        this.instructions[ins.name].push(ins);
+                        return ins;
+                    };
+                    this.encoders = {};
+                    this.instructions = {};
+                }
+                toFnPtr(v, baseOff, lbl) {
+                    return v;
+                }
+                wordSize() {
+                    return -1;
+                }
+                computeStackOffset(kind, offset) {
+                    return offset;
+                }
+                is32bit(i) {
+                    return false;
+                }
+                emit32(v1, v2, actual) {
+                    return null;
+                }
+                postProcessRelAddress(f, v) {
+                    return v;
+                }
+                postProcessAbsAddress(f, v) {
+                    return v;
+                }
+                peephole(ln, lnNext, lnNext2) {
+                    return;
+                }
+                registerNo(actual) {
+                    return null;
+                }
+                getAddressFromLabel(f, i, s, wordAligned = false) {
+                    return null;
+                }
+                isPop(opcode) {
+                    return false;
+                }
+                isPush(opcode) {
+                    return false;
+                }
+                isAddSP(opcode) {
+                    return false;
+                }
+                isSubSP(opcode) {
+                    return false;
+                }
+                testAssembler() {
+                    pxtc.assert(false);
+                }
+                expandLdlit(f) {
+                }
+            }
+            assembler.AbstractProcessor = AbstractProcessor;
+            // utility functions
+            function tokenize(line) {
+                let words = [];
+                let w = "";
+                loop: for (let i = 0; i < line.length; ++i) {
+                    switch (line[i]) {
+                        case "[":
+                        case "]":
+                        case "!":
+                        case "{":
+                        case "}":
+                        case ",":
+                            if (w) {
+                                words.push(w);
+                                w = "";
+                            }
+                            words.push(line[i]);
+                            break;
+                        case " ":
+                        case "\t":
+                        case "\r":
+                        case "\n":
+                            if (w) {
+                                words.push(w);
+                                w = "";
+                            }
+                            break;
+                        case ";":
+                            // drop the trailing comment
+                            break loop;
+                        default:
+                            w += line[i];
+                            break;
+                    }
+                }
+                if (w) {
+                    words.push(w);
+                    w = "";
+                }
+                if (!words[0])
+                    return null;
+                return words;
+            }
+            function parseString(s) {
+                s = s.replace(/\\\\/g, "\\B") // don't get confused by double backslash
+                    .replace(/\\(['\?])/g, (f, q) => q) // these are not valid in JSON yet valid in C
+                    .replace(/\\[z0]/g, "\u0000") // \0 is valid in C
+                    .replace(/\\x([0-9a-f][0-9a-f])/gi, (f, h) => "\\u00" + h)
+                    .replace(/\\B/g, "\\\\"); // undo anti-confusion above
+                try {
+                    return JSON.parse(s);
+                }
+                catch (e) {
+                    return null;
+                }
+            }
+            function emitErr(msg, tok) {
+                return {
+                    stack: null,
+                    opcode: null,
+                    error: msg,
+                    errorAt: tok
+                };
+            }
+            assembler.emitErr = emitErr;
+            function testOne(ei, op, code) {
+                let b = new File(ei);
+                b.checkStack = false;
+                b.emit(op);
+                pxtc.assert(b.buf[0] == code);
+            }
+            function expectError(ei, asm) {
+                let b = new File(ei);
+                b.emit(asm);
+                if (b.errors.length == 0) {
+                    pxtc.oops("ASMTEST: expecting error for: " + asm);
+                }
+                // console.log(b.errors[0].message)
+            }
+            assembler.expectError = expectError;
+            function tohex(n) {
+                if (n < 0 || n > 0xffff)
+                    return ("0x" + n.toString(16)).toLowerCase();
+                else
+                    return ("0x" + ("000" + n.toString(16)).slice(-4)).toLowerCase();
+            }
+            assembler.tohex = tohex;
+            function expect(ei, disasm) {
+                let exp = [];
+                let asm = disasm.replace(/^([0-9a-fA-F]{4,8})\s/gm, (w, n) => {
+                    exp.push(parseInt(n.slice(0, 4), 16));
+                    if (n.length == 8)
+                        exp.push(parseInt(n.slice(4, 8), 16));
+                    return "";
+                });
+                let b = new File(ei);
+                b.throwOnError = true;
+                b.disablePeepHole = true;
+                b.emit(asm);
+                if (b.errors.length > 0) {
+                    console.debug(b.errors[0].message);
+                    pxtc.oops("ASMTEST: not expecting errors");
+                }
+                if (b.buf.length != exp.length)
+                    pxtc.oops("ASMTEST: wrong buf len");
+                for (let i = 0; i < exp.length; ++i) {
+                    if (b.buf[i] != exp[i])
+                        pxtc.oops("ASMTEST: wrong buf content at " + i + " , exp:" + tohex(exp[i]) + ", got: " + tohex(b.buf[i]));
+                }
+            }
+            assembler.expect = expect;
+        })(assembler = pxtc.assembler || (pxtc.assembler = {}));
+    })(pxtc = ts.pxtc || (ts.pxtc = {}));
+})(ts || (ts = {}));
+/// <reference path="../../localtypings/projectheader.d.ts"/>
+var pxt;
+(function (pxt) {
+    var Cloud;
+    (function (Cloud) {
+        var Util = pxtc.Util;
+        Cloud.apiRoot = (pxt.BrowserUtils.isLocalHost() || Util.isNodeJS) ? "https://www.makecode.com/api/" : "/api/";
+        Cloud.accessToken = "";
+        Cloud.localToken = "";
+        let _isOnline = true;
+        Cloud.onOffline = () => { };
+        function offlineError(url) {
+            let e = new Error(Util.lf("Cannot access {0} while offline", url));
+            e.isOffline = true;
+            return pxt.U.delay(1000).then(() => Promise.reject(e));
+        }
+        function hasAccessToken() {
+            return !!Cloud.accessToken;
+        }
+        Cloud.hasAccessToken = hasAccessToken;
+        function localRequestAsync(path, data) {
+            return pxt.U.requestAsync({
+                url: "/api/" + path,
+                headers: { "Authorization": Cloud.localToken },
+                method: data ? "POST" : "GET",
+                data: data || undefined,
+                allowHttpErrors: true
+            });
+        }
+        Cloud.localRequestAsync = localRequestAsync;
+        function useCdnApi() {
+            return pxt.webConfig && !pxt.webConfig.isStatic
+                && !pxt.BrowserUtils.isLocalHost() && !!pxt.webConfig.cdnUrl;
+        }
+        Cloud.useCdnApi = useCdnApi;
+        function cdnApiUrl(url) {
+            url = url.replace(/^\//, '');
+            if (!useCdnApi())
+                return Cloud.apiRoot + url;
+            const d = new Date();
+            const timestamp = d.getUTCFullYear() + ("0" + (d.getUTCMonth() + 1)).slice(-2) + ("0" + d.getUTCDate()).slice(-2);
+            if (url.indexOf("?") < 0)
+                url += "?";
+            else
+                url += "&";
+            url += "cdn=" + timestamp;
+            // url = url.replace("?", "$")
+            return pxt.webConfig.cdnUrl + "/api/" + url;
+        }
+        Cloud.cdnApiUrl = cdnApiUrl;
+        function apiRequestWithCdnAsync(options) {
+            if (!useCdnApi())
+                return privateRequestAsync(options);
+            options.url = cdnApiUrl(options.url);
+            return Util.requestAsync(options)
+                .catch(e => handleNetworkError(options, e));
+        }
+        Cloud.apiRequestWithCdnAsync = apiRequestWithCdnAsync;
+        function handleNetworkError(options, e) {
+            if (e.statusCode == 0) {
+                if (_isOnline) {
+                    _isOnline = false;
+                    Cloud.onOffline();
+                }
+                return offlineError(options.url);
+            }
+            else {
+                return Promise.reject(e);
+            }
+        }
+        function privateRequestAsync(options) {
+            var _a;
+            options.url = ((_a = pxt.webConfig) === null || _a === void 0 ? void 0 : _a.isStatic) && !options.forceLiveEndpoint ? pxt.webConfig.relprefix + options.url : Cloud.apiRoot + options.url;
+            options.allowGzipPost = true;
+            if (!Cloud.isOnline() && !pxt.BrowserUtils.isPxtElectron()) {
+                return offlineError(options.url);
+            }
+            if (!options.headers)
+                options.headers = {};
+            if (pxt.BrowserUtils.isLocalHost()) {
+                if (Cloud.localToken)
+                    options.headers["Authorization"] = Cloud.localToken;
+            }
+            else if (Cloud.accessToken) {
+                options.headers["x-td-access-token"] = Cloud.accessToken;
+            }
+            return Util.requestAsync(options)
+                .catch(e => handleNetworkError(options, e));
+        }
+        Cloud.privateRequestAsync = privateRequestAsync;
+        function privateGetTextAsync(path, headers) {
+            return privateRequestAsync({ url: path, headers }).then(resp => resp.text);
+        }
+        Cloud.privateGetTextAsync = privateGetTextAsync;
+        function privateGetAsync(path, forceLiveEndpoint = false) {
+            return privateRequestAsync({ url: path, forceLiveEndpoint }).then(resp => resp.json);
+        }
+        Cloud.privateGetAsync = privateGetAsync;
+        function downloadTargetConfigAsync() {
+            if (!Cloud.isOnline()) // offline
+                return Promise.resolve(undefined);
+            const targetVersion = pxt.appTarget.versions && pxt.appTarget.versions.target;
+            const url = pxt.webConfig && pxt.webConfig.isStatic ? `targetconfig.json` : `config/${pxt.appTarget.id}/targetconfig${targetVersion ? `/v${targetVersion}` : ''}`;
+            if (pxt.BrowserUtils.isLocalHost())
+                return localRequestAsync(url).then(r => r ? r.json : undefined);
+            else
+                return apiRequestWithCdnAsync({ url }).then(r => r.json);
+        }
+        Cloud.downloadTargetConfigAsync = downloadTargetConfigAsync;
+        function downloadScriptFilesAsync(id) {
+            return privateRequestAsync({ url: id + "/text", forceLiveEndpoint: true }).then(resp => {
+                return JSON.parse(resp.text);
+            });
+        }
+        Cloud.downloadScriptFilesAsync = downloadScriptFilesAsync;
+        async function markdownAsync(docid, locale) {
+            // 1h check on markdown content if not on development server
+            const MARKDOWN_EXPIRATION = pxt.BrowserUtils.isLocalHostDev() ? 0 : 1 * 60 * 60 * 1000;
+            // 1w check don't use cached version and wait for new content
+            const FORCE_MARKDOWN_UPDATE = MARKDOWN_EXPIRATION * 24 * 7;
+            locale = locale || pxt.Util.userLanguage();
+            const branch = "";
+            const db = await pxt.BrowserUtils.translationDbAsync();
+            const entry = await db.getAsync(locale, docid, branch);
+            const downloadAndSetMarkdownAsync = async () => {
+                try {
+                    const r = await downloadMarkdownAsync(docid, locale, entry === null || entry === void 0 ? void 0 : entry.etag);
+                    // TODO directly compare the entry/response etags after backend change
+                    if (!entry || (r.md && entry.md !== r.md)) {
+                        await db.setAsync(locale, docid, branch, r.etag, undefined, r.md);
+                        return r.md;
+                    }
+                    return entry.md;
+                }
+                catch (_a) {
+                    return ""; // no translation
+                }
+            };
+            if (entry) {
+                const timeDiff = Date.now() - entry.time;
+                const shouldFetchInBackground = timeDiff > MARKDOWN_EXPIRATION;
+                const shouldWaitForNewContent = timeDiff > FORCE_MARKDOWN_UPDATE;
+                if (!shouldWaitForNewContent) {
+                    if (shouldFetchInBackground) {
+                        pxt.tickEvent("markdown.update.background");
+                        // background update, do not wait
+                        downloadAndSetMarkdownAsync();
+                    }
+                    // return cached entry
+                    if (entry.md) {
+                        return entry.md;
+                    }
+                }
+                else {
+                    pxt.tickEvent("markdown.update.wait");
+                }
+            }
+            // download and cache
+            return downloadAndSetMarkdownAsync();
+        }
+        Cloud.markdownAsync = markdownAsync;
+        function downloadMarkdownAsync(docid, locale, etag) {
+            var _a;
+            const packaged = (_a = pxt.webConfig) === null || _a === void 0 ? void 0 : _a.isStatic;
+            const targetVersion = pxt.appTarget.versions && pxt.appTarget.versions.target || '?';
+            let url;
+            if (packaged) {
+                url = docid;
+                const isUnderDocs = /\/?docs\//.test(url);
+                const hasExt = /\.\w+$/.test(url);
+                if (!isUnderDocs) {
+                    const hasLeadingSlash = url[0] === "/";
+                    url = `docs${hasLeadingSlash ? "" : "/"}${url}`;
+                }
+                if (!hasExt) {
+                    url = `${url}.md`;
+                }
+            }
+            else {
+                url = `md/${pxt.appTarget.id}/${docid.replace(/^\//, "")}?targetVersion=${encodeURIComponent(targetVersion)}`;
+            }
+            if (locale != "en") {
+                url += `${packaged ? "?" : "&"}lang=${encodeURIComponent(locale)}`;
+            }
+            if (pxt.BrowserUtils.isLocalHost() && !pxt.Util.liveLocalizationEnabled()) {
+                return localRequestAsync(url).then(resp => {
+                    if (resp.statusCode == 404)
+                        return privateRequestAsync({ url, method: "GET" })
+                            .then(resp => { return { md: resp.text, etag: resp.headers["etag"] }; });
+                    else
+                        return { md: resp.text, etag: undefined };
+                });
+            }
+            else {
+                const headers = etag && !useCdnApi() ? { "If-None-Match": etag } : undefined;
+                return apiRequestWithCdnAsync({ url, method: "GET", headers })
+                    .then(resp => { return { md: resp.text, etag: resp.headers["etag"] }; });
+            }
+        }
+        function privateDeleteAsync(path) {
+            return privateRequestAsync({ url: path, method: "DELETE" }).then(resp => resp.json);
+        }
+        Cloud.privateDeleteAsync = privateDeleteAsync;
+        function privatePostAsync(path, data, forceLiveEndpoint = false) {
+            return privateRequestAsync({ url: path, data: data || {}, forceLiveEndpoint }).then(resp => resp.json);
+        }
+        Cloud.privatePostAsync = privatePostAsync;
+        function isLoggedIn() { return !!Cloud.accessToken; }
+        Cloud.isLoggedIn = isLoggedIn;
+        function isNavigatorOnline() {
+            return navigator && navigator.onLine;
+        }
+        Cloud.isNavigatorOnline = isNavigatorOnline;
+        function isOnline() {
+            if (typeof navigator !== "undefined" && isNavigatorOnline()) {
+                _isOnline = true;
+            }
+            return _isOnline;
+        }
+        Cloud.isOnline = isOnline;
+        function getServiceUrl() {
+            return Cloud.apiRoot.replace(/\/api\/$/, "");
+        }
+        Cloud.getServiceUrl = getServiceUrl;
+        function getUserId() {
+            let m = /^0(\w+)\./.exec(Cloud.accessToken);
+            if (m)
+                return m[1];
+            return null;
+        }
+        Cloud.getUserId = getUserId;
+        function parseScriptId(uri) {
+            const target = pxt.appTarget;
+            if (!uri || !target.appTheme || !target.cloud || !target.cloud.sharing)
+                return undefined;
+            let domains = ["makecode.com"];
+            if (target.appTheme.embedUrl)
+                domains.push(target.appTheme.embedUrl);
+            if (target.appTheme.shareUrl)
+                domains.push(target.appTheme.shareUrl);
+            domains = Util.unique(domains, d => d).map(d => Util.escapeForRegex(Util.stripUrlProtocol(d).replace(/\/$/, '')).toLowerCase());
+            const rx = `^((https:\/\/)?(?:${domains.join('|')})\/)?(?:v[0-9]+\/)?(api\/oembed\?url=.*%2F([^&]*)&.*?|([a-z0-9\-_]+))$`;
+            const m = new RegExp(rx, 'i').exec(uri.trim());
+            const scriptid = m && (!m[1] || domains.indexOf(Util.escapeForRegex(m[1].replace(/https:\/\//, '').replace(/\/$/, '')).toLowerCase()) >= 0) && (m[3] || m[4]) ? (m[3] ? m[3] : m[4]) : null;
+            if (!scriptid)
+                return undefined;
+            if (scriptid[0] == "_" && scriptid.length == 13)
+                return scriptid;
+            if (scriptid.length == 23 && /^[0-9\-]+$/.test(scriptid))
+                return scriptid;
+            return undefined;
+        }
+        Cloud.parseScriptId = parseScriptId;
+    })(Cloud = pxt.Cloud || (pxt.Cloud = {}));
+})(pxt || (pxt = {}));
+var ts;
+(function (ts) {
+    var pxtc;
+    (function (pxtc) {
+        function f4EncodeImg(w, h, bpp, getPix) {
+            const header = [
+                0x87, bpp,
+                w & 0xff, w >> 8,
+                h & 0xff, h >> 8,
+                0, 0
+            ];
+            let r = header.map(hex2).join("");
+            let ptr = 4;
+            let curr = 0;
+            let shift = 0;
+            let pushBits = (n) => {
+                curr |= n << shift;
+                if (shift == 8 - bpp) {
+                    r += hex2(curr);
+                    ptr++;
+                    curr = 0;
+                    shift = 0;
+                }
+                else {
+                    shift += bpp;
+                }
+            };
+            for (let i = 0; i < w; ++i) {
+                for (let j = 0; j < h; ++j)
+                    pushBits(getPix(i, j));
+                while (shift != 0)
+                    pushBits(0);
+                if (bpp > 1) {
+                    while (ptr & 3)
+                        pushBits(0);
+                }
+            }
+            return r;
+            function hex2(n) {
+                return ("0" + n.toString(16)).slice(-2);
+            }
+        }
+        pxtc.f4EncodeImg = f4EncodeImg;
+    })(pxtc = ts.pxtc || (ts.pxtc = {}));
+})(ts || (ts = {}));
+var pxtmelody;
+(function (pxtmelody) {
+    class MelodyArray {
+        // constructor
+        constructor(tempo) {
+            this.numCols = 8;
+            this.numRows = 8;
+            // Whether or now the melody can contain more than one note at a single beat
+            this.polyphonic = false;
+            if (tempo)
+                this.tempo = tempo;
+            // set all elements to false
+            this.resetMelody();
+        }
+        setTempo(tempo) {
+            this.tempo = tempo;
+        }
+        getArray() {
+            return this.melody;
+        }
+        setArray(array) {
+            this.melody = array;
+        }
+        getColor(row) {
+            // TODO
+            return 0;
+        }
+        getValue(row, col) {
+            return this.melody[row][col];
+        }
+        getWidth() {
+            return this.numCols;
+        }
+        getHeight() {
+            return this.numRows;
+        }
+        updateMelody(row, col) {
+            const newValue = !this.melody[row][col];
+            if (newValue && !this.polyphonic) {
+                for (let r = 0; r < this.numRows; r++) {
+                    this.melody[r][col] = false;
+                }
+            }
+            this.melody[row][col] = newValue;
+        }
+        // function to turn into string
+        getStringRepresentation() {
+            let stringMelody = "";
+            let queues = new Array(this.numCols);
+            let numMelodies = 0;
+            // create queues of notes
+            for (let i = 0; i < this.numRows; i++) {
+                let noteCount = 0;
+                queues[i] = [];
+                for (let j = 0; j < this.numCols; j++) {
+                    if (this.melody[j][i]) {
+                        queues[i].push(rowToNote(j));
+                        noteCount++;
+                    }
+                }
+                if (noteCount > numMelodies) {
+                    numMelodies = noteCount;
+                }
+            }
+            // create strings of melodies
+            if (numMelodies == 0)
+                return "- - - - - - - - ";
+            for (let j = 0; j < numMelodies; j++) {
+                for (let i = 0; i < this.numCols; i++) {
+                    if (queues[i] && queues[i].length > 0) { // if there is an element
+                        stringMelody += queues[i].shift() + " ";
+                    }
+                    else {
+                        stringMelody += "- "; // add rest if there is no selection for the note
+                    }
+                }
+                //stringMelody += "."; // this will be used to split each melody
+            }
+            return stringMelody;
+        }
+        // turn string into boolean array
+        parseNotes(stringNotes) {
+            // A melody is represented as a string of notes separated by spaces, with dashes representing rests
+            // ex: a scale is represented as "C5 B A G F E D C"
+            stringNotes = stringNotes.trim();
+            let notes = stringNotes.split(" ");
+            for (let i = 0; i < notes.length; i++) {
+                for (let j = 0; j < this.numRows; j++) {
+                    // reset everything to false
+                    this.melody[j][i] = false;
+                }
+                if (notes[i] != "-") {
+                    this.melody[noteToRow(notes[i])][i] = true;
+                }
+            }
+        }
+        setPolyphonic(isPolyphonic) {
+            this.polyphonic = isPolyphonic;
+        }
+        isPolyphonic() {
+            return this.polyphonic;
+        }
+        resetMelody() {
+            this.melody = new Array(this.numCols);
+            for (let i = 0; i < this.numCols; i++) {
+                this.melody[i] = new Array(this.numRows).fill(false);
+            }
+        }
+    }
+    pxtmelody.MelodyArray = MelodyArray;
+    function rowToNote(rowNum) {
+        let note = "";
+        switch (rowNum) {
+            case 0:
+                note = "C5";
+                break;
+            case 1:
+                note = "B";
+                break;
+            case 2:
+                note = "A";
+                break;
+            case 3:
+                note = "G";
+                break;
+            case 4:
+                note = "F";
+                break;
+            case 5:
+                note = "E";
+                break;
+            case 6:
+                note = "D";
+                break;
+            case 7:
+                note = "C";
+                break;
+        }
+        return note;
+    }
+    pxtmelody.rowToNote = rowToNote;
+    function noteToRow(note) {
+        let rowNum = -1;
+        switch (note) {
+            case "C5":
+                rowNum = 0;
+                break;
+            case "B":
+                rowNum = 1;
+                break;
+            case "A":
+                rowNum = 2;
+                break;
+            case "G":
+                rowNum = 3;
+                break;
+            case "F":
+                rowNum = 4;
+                break;
+            case "E":
+                rowNum = 5;
+                break;
+            case "D":
+                rowNum = 6;
+                break;
+            case "C":
+                rowNum = 7;
+                break;
+        }
+        return rowNum;
+    }
+    pxtmelody.noteToRow = noteToRow;
+    function getColorClass(row) {
+        let colorClass = "melody-default";
+        switch (row) {
+            case 0:
+                colorClass = "melody-red";
+                break; // Middle C
+            case 1:
+                colorClass = "melody-orange";
+                break; // Middle D
+            case 2:
+                colorClass = "melody-yellow";
+                break; // Middle E
+            case 3:
+                colorClass = "melody-green";
+                break; // Middle F
+            case 4:
+                colorClass = "melody-teal";
+                break; // Middle G
+            case 5:
+                colorClass = "melody-blue";
+                break; // Middle A
+            case 6:
+                colorClass = "melody-purple";
+                break; // Middle B
+            case 7:
+                colorClass = "melody-violet";
+                break; // Tenor C
+        }
+        return colorClass;
+    }
+    pxtmelody.getColorClass = getColorClass;
+})(pxtmelody || (pxtmelody = {}));
+var pxtmelody;
+(function (pxtmelody) {
+    class MelodyGallery {
+        constructor() {
+            this.value = null;
+            this.visible = false;
+            this.timeouts = []; // keep track of timeout
+            this.numSamples = pxtmelody.SampleMelodies.length;
+            this.containerDiv = document.createElement("div");
+            this.containerDiv.setAttribute("id", "melody-editor-gallery-outer");
+            this.contentDiv = document.createElement("div");
+            this.contentDiv.setAttribute("id", "melody-editor-gallery");
+            this.itemBackgroundColor = "#DCDCDC";
+            this.itemBorderColor = "white";
+            this.initStyles();
+            this.containerDiv.appendChild(this.contentDiv);
+            this.containerDiv.style.display = "none";
+            this.contentDiv.addEventListener("animationend", () => {
+                if (!this.visible) {
+                    this.containerDiv.style.display = "none";
+                }
+            });
+            this.contentDiv.addEventListener('wheel', e => {
+                e.stopPropagation();
+            }, true);
+        }
+        getElement() {
+            return this.containerDiv;
+        }
+        getValue() {
+            return this.value;
+        }
+        show(notes) {
+            this.pending = notes;
+            this.containerDiv.style.display = "block";
+            this.buildDom();
+            this.visible = true;
+            pxt.BrowserUtils.removeClass(this.contentDiv, "hidden-above");
+            pxt.BrowserUtils.addClass(this.contentDiv, "shown");
+        }
+        hide() {
+            this.visible = false;
+            pxt.BrowserUtils.removeClass(this.contentDiv, "shown");
+            pxt.BrowserUtils.addClass(this.contentDiv, "hidden-above");
+            this.value = null;
+            this.stopMelody();
+        }
+        clearDomReferences() {
+            this.contentDiv = null;
+            this.containerDiv = null;
+        }
+        layout(left, top, height) {
+            this.containerDiv.style.left = left + "px";
+            this.containerDiv.style.top = top + "px";
+            this.containerDiv.style.height = height + "px";
+        }
+        buildDom() {
+            while (this.contentDiv.firstChild)
+                this.contentDiv.removeChild(this.contentDiv.firstChild);
+            const buttonWidth = "255px";
+            const buttonHeight = "45px";
+            const samples = pxtmelody.SampleMelodies;
+            this.buttons = [];
+            for (let i = 0; i < samples.length; i++) {
+                this.mkButton(samples[i], i, buttonWidth, buttonHeight);
+            }
+        }
+        initStyles() {
+            // Style injected directly because animations are mangled by the less compiler
+            const style = document.createElement("style");
+            style.textContent = `
+            #melody-editor-gallery {
+                margin-top: -100%;
+            }
+
+            #melody-editor-gallery.hidden-above {
+                margin-top: -100%;
+                animation: slide-up 0.2s 0s ease;
+            }
+
+            #melody-editor-gallery.shown {
+                margin-top: 0px;
+                animation: slide-down 0.2s 0s ease;
+            }
+
+            @keyframes slide-down {
+                0% {
+                    margin-top: -100%;
+                }
+                100% {
+                    margin-top: 0px;
+                }
+            }
+
+            @keyframes slide-up {
+                0% {
+                    margin-top: 0px;
+                }
+                100% {
+                    margin-top: -100%;
+                }
+            }
+            `;
+            this.containerDiv.appendChild(style);
+        }
+        mkButton(sample, i, width, height) {
+            const outer = mkElement("div", {
+                className: "melody-gallery-button melody-editor-card",
+                role: "menuitem",
+                id: `:${i}`
+            });
+            const icon = mkElement("i", {
+                className: "music icon melody-icon"
+            });
+            const label = mkElement("div", {
+                className: "melody-editor-text"
+            });
+            label.innerText = sample.name;
+            const preview = this.createColorBlock(sample);
+            const leftButton = mkElement("div", {
+                className: "melody-editor-button left-button",
+                role: "button",
+                title: sample.name
+            }, () => this.handleSelection(sample));
+            leftButton.appendChild(icon);
+            leftButton.appendChild(label);
+            leftButton.appendChild(preview);
+            outer.appendChild(leftButton);
+            const rightButton = mkElement("div", {
+                className: "melody-editor-button right-button",
+                role: "button",
+                title: lf("Preview {0}", sample.name)
+            }, () => this.togglePlay(sample, i));
+            const playIcon = mkElement("i", {
+                className: "play icon"
+            });
+            this.buttons[i] = playIcon;
+            rightButton.appendChild(playIcon);
+            outer.appendChild(rightButton);
+            this.contentDiv.appendChild(outer);
+        }
+        handleSelection(sample) {
+            if (this.pending) {
+                const notes = this.pending;
+                this.pending = undefined;
+                notes(sample.notes);
+            }
+        }
+        playNote(note, colNumber, tempo) {
+            let tone = 0;
+            switch (note) {
+                case "C5":
+                    tone = 523;
+                    break; // Tenor C
+                case "B":
+                    tone = 494;
+                    break; // Middle B
+                case "A":
+                    tone = 440;
+                    break; // Middle A
+                case "G":
+                    tone = 392;
+                    break; // Middle G
+                case "F":
+                    tone = 349;
+                    break; // Middle F
+                case "E":
+                    tone = 330;
+                    break; // Middle E
+                case "D":
+                    tone = 294;
+                    break; // Middle D
+                case "C":
+                    tone = 262;
+                    break; // Middle C
+            }
+            // start note
+            this.timeouts.push(setTimeout(() => {
+                pxt.AudioContextManager.tone(tone);
+            }, colNumber * this.getDuration(tempo)));
+            // stop note
+            this.timeouts.push(setTimeout(() => {
+                pxt.AudioContextManager.stop();
+            }, (colNumber + 1) * this.getDuration(tempo)));
+        }
+        // ms to hold note
+        getDuration(tempo) {
+            return 60000 / tempo;
+        }
+        previewMelody(sample) {
+            // stop playing any other melody
+            this.stopMelody();
+            let notes = sample.notes.split(" ");
+            for (let i = 0; i < notes.length; i++) {
+                this.playNote(notes[i], i, sample.tempo);
+            }
+        }
+        togglePlay(sample, i) {
+            let button = this.buttons[i];
+            if (pxt.BrowserUtils.containsClass(button, "play icon")) {
+                // check for other stop icons and toggle back to play
+                this.resetPlayIcons();
+                pxt.BrowserUtils.removeClass(button, "play icon");
+                pxt.BrowserUtils.addClass(button, "stop icon");
+                this.previewMelody(sample);
+                // make icon toggle back to play when the melody finishes
+                this.timeouts.push(setTimeout(() => {
+                    pxt.BrowserUtils.removeClass(button, "stop icon");
+                    pxt.BrowserUtils.addClass(button, "play icon");
+                }, (sample.notes.split(" ").length) * this.getDuration(sample.tempo)));
+            }
+            else {
+                pxt.BrowserUtils.removeClass(button, "stop icon");
+                pxt.BrowserUtils.addClass(button, "play icon");
+                this.stopMelody();
+            }
+        }
+        stopMelody() {
+            while (this.timeouts.length)
+                clearTimeout(this.timeouts.shift());
+            pxt.AudioContextManager.stop();
+        }
+        resetPlayIcons() {
+            for (let i = 0; i < this.numSamples; i++) {
+                let button = this.buttons[i];
+                if (pxt.BrowserUtils.containsClass(button, "stop icon")) {
+                    pxt.BrowserUtils.removeClass(button, "stop icon");
+                    pxt.BrowserUtils.addClass(button, "play icon");
+                    break;
+                }
+            }
+        }
+        // create color representation of melody
+        createColorBlock(sample) {
+            let colorBlock = document.createElement("div");
+            pxt.BrowserUtils.addClass(colorBlock, "melody-color-block");
+            let notes = sample.notes.split(" ");
+            for (let i = 0; i < notes.length; i++) {
+                let className = pxtmelody.getColorClass(pxtmelody.noteToRow(notes[i]));
+                let colorDiv = document.createElement("div");
+                // create rounded effect on edge divs and fill in color
+                if (i == 0) {
+                    pxt.BrowserUtils.addClass(colorDiv, "left-edge sliver " + className);
+                }
+                else if (i == notes.length - 1) {
+                    pxt.BrowserUtils.addClass(colorDiv, "right-edge sliver " + className);
+                }
+                else {
+                    pxt.BrowserUtils.addClass(colorDiv, "sliver " + className);
+                }
+                colorBlock.appendChild(colorDiv);
+            }
+            return colorBlock;
+        }
+    }
+    pxtmelody.MelodyGallery = MelodyGallery;
+    function mkElement(tag, props, onClick) {
+        const el = document.createElement(tag);
+        return initElement(el, props, onClick);
+    }
+    function initElement(el, props, onClick) {
+        if (props) {
+            for (const key of Object.keys(props)) {
+                if (key === "className")
+                    el.setAttribute("class", props[key] + "");
+                else
+                    el.setAttribute(key, props[key] + "");
+            }
+        }
+        if (onClick) {
+            el.addEventListener("click", onClick);
+        }
+        return el;
+    }
+})(pxtmelody || (pxtmelody = {}));
+var pxtmelody;
+(function (pxtmelody) {
+    class MelodyInfo {
+        constructor(name, notes, tempo) {
+            this.name = name;
+            this.notes = notes;
+            this.tempo = tempo;
+        }
+    }
+    pxtmelody.MelodyInfo = MelodyInfo;
+    pxtmelody.SampleMelodies = [
+        new MelodyInfo(lf("Scale"), "C5 B A G F E D C", 120),
+        new MelodyInfo(lf("Reverse"), "C D E F G A B C5", 120),
+        new MelodyInfo(lf("Mystery"), "E B C5 A B G A F", 120),
+        new MelodyInfo(lf("Gilroy"), "A F E F D G E F", 120),
+        new MelodyInfo(lf("Falling"), "C5 A B G A F G E", 120),
+        new MelodyInfo(lf("Hopeful"), "G B A G C5 B A B", 120),
+        new MelodyInfo(lf("Tokyo"), "B A G A G F A C5", 120),
+        new MelodyInfo(lf("Paris"), "G F G A - F E D", 120),
+        new MelodyInfo(lf("Rising"), "E D G F B A C5 B", 120),
+        new MelodyInfo(lf("Sitka"), "C5 G B A F A C5 B", 120)
+    ];
+})(pxtmelody || (pxtmelody = {}));

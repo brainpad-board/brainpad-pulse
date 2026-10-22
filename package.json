@@ -55,6 +55,7 @@
     "dev": "pxt serve --local --no-browser",
     "build": "pxt staticpkg --route brainpad-pulse && node scripts/post-build.mjs",
     "deploy": "node scripts/deploy.mjs",
+    "harvest-hexes": "node scripts/harvest-hexes.mjs",
     "test": "node node_modules/pxt-core/built/pxt.js travis"
   }
 }

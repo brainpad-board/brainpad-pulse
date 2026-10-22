@@ -16,10 +16,12 @@
 //   3. index.html patches — restore the favicon reference (PXT emits
 //      an empty href) and inject the Google Analytics snippet.
 
-import { readFile, writeFile, readdir, stat } from "node:fs/promises";
-import { join, extname } from "node:path";
+import { readFile, writeFile, readdir, stat, copyFile, mkdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { join, extname, resolve } from "node:path";
 
 const DEFAULT_INPUT_DIR = "built/packaged/brainpad-pulse";
+const HEXCACHE_EXTRAS_DIR = "hexcache-extras";
 
 const GA_TRACKING_ID = "G-WWZF1Q6WT0";
 const FAVICON_HREF = "docs/static/icons/favicon.ico";
@@ -119,3 +121,18 @@ for await (const path of walk(inputDir)) {
 }
 
 console.log(`post-build: rewrote ${changed} file(s) under ${inputDir}`);
+
+// Merge tracked pre-cached hex files into the deploy output.
+// See hexcache-extras/README.md for why this exists.
+const extrasDir = resolve(process.cwd(), HEXCACHE_EXTRAS_DIR);
+const targetHexcache = join(inputDir, "hexcache");
+if (existsSync(extrasDir)) {
+    await mkdir(targetHexcache, { recursive: true });
+    let copied = 0;
+    for (const entry of await readdir(extrasDir)) {
+        if (!entry.endsWith(".hex")) continue;
+        await copyFile(join(extrasDir, entry), join(targetHexcache, entry));
+        copied++;
+    }
+    console.log(`post-build: merged ${copied} pre-cached hex file(s) from ${HEXCACHE_EXTRAS_DIR}/`);
+}
